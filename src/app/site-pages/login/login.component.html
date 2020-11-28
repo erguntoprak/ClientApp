@@ -1,0 +1,52 @@
+<section class="login_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="login_info">
+          <h2 class="f_p f_700 f_size_40 t_color3 mb_20">Eğitim Kurumu Giriş Yap</h2>
+          <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" class="login-form">
+            <div class="form-group text_box">
+              <label class="f_p text_c f_400">E-posta</label>
+              <input type="text" id="email" formControlName="email"
+                [ngClass]="{ 'is-invalid':loginForm.get('email').errors && (loginForm.get('email').dirty || loginForm.get('email').touched)}"
+                placeholder="E-posta">
+              <span class="not-valid"
+                *ngIf="(loginForm.get('email').dirty || loginForm.get('email').touched || submitted ) && loginForm.get('email').errors!=null ? loginForm.get('email').errors.required:false">
+                Lütfen e-posta adresi giriniz.
+              </span>
+              <span class="not-valid"
+                *ngIf="(loginForm.get('email').dirty || loginForm.get('email').touched || submitted ) && loginForm.get('email').errors!=null ? loginForm.get('email').errors.email:false">
+                Lütfen geçerli e-posta adresi giriniz.
+              </span>
+            </div>
+            <div class="form-group text_box">
+              <label class="f_p text_c f_400">Şifre</label>
+              <input type="password" id="password" formControlName="password"
+                [ngClass]="{ 'is-invalid':loginForm.controls['password'].errors && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)}"
+                placeholder="*******">
+              <div class="not-valid"
+                *ngIf="(loginForm.get('password').dirty || loginForm.get('password').touched || submitted) && loginForm.get('password').errors!=null ? loginForm.get('password').errors.required:false">
+                Lütfen şifrenizi giriniz.
+              </div>
+            </div>
+
+            <button type="submit" class="btn_three">Giriş</button>
+            <span><a routerLink="/sifreyi-unuttum">Şifremi unuttum</a></span>
+            <div class="alter-login text-center mt_30">
+              Kayıt olmak için lütfen ? <a class="login-link" routerLink="/kayit-ol">Kayıt Ol</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-4 d-flex align-items-center">
+        <div class="login_img">
+          <div class="seo_features_img">
+            <div class="round_circle"></div>
+            <div class="round_circle two"></div>
+            <img src="assets/img/seo/features_img.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

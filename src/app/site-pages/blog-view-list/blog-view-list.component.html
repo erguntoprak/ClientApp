@@ -1,0 +1,20 @@
+<section class="sec_pad blog-view-list mt_50" *ngIf="blogListModel">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3" *ngFor='let blog of blogListModel'>
+        <div class="blog_list_item mb_50">
+          <a routerLink="/blog/{{blog.seoUrl}}"><img class="img-fluid" src="{{apiUrl}}/images/blog/{{blog.firstVisibleImageName}}_300x180.jpg" alt="{{blog.title}}"></a>
+          <div class="blog_content">
+            <div class="entry_post_info">
+              <a routerLink="/bloglar/{{blog.userName}}">{{blog.userName}}</a>
+              <span>{{blog.createTime}}</span>
+            </div>
+            <a routerLink="/blog/{{blog.seoUrl}}">
+              <h3 class="f_p f_size_18 f_500 t_color mb_20">{{blog.title}}</h3>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

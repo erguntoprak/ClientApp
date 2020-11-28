@@ -1,0 +1,33 @@
+
+<div class="breadcrumb-area">
+    <h1>İletişim Form Listesi</h1>
+  
+    <ol class="breadcrumb">
+        <li class="item"><a routerLink="/panel" ><i class="bx bx-home-alt"></i></a></li>
+    </ol>
+  </div>
+<div class="card mb-30">
+  <div class="card-body" *ngIf="educationContactFormList.length>0">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Ad Soyad</th>
+          <th scope="col">Email</th>
+          <th scope="col">Telefon</th>
+          <th scope="col">Tarih</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let educationContactForm of educationContactFormList">
+          <th>{{educationContactForm.nameSurname}}</th>
+          <td>{{educationContactForm.email}}</td>
+          <td>{{educationContactForm.phoneNumber | mask: '(000) 000 00 00'}}</td>
+          <td>{{educationContactForm.createDateTime}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-body" *ngIf="educationContactFormList.length==0">
+    <p>İletişim formu bulunamadı.</p>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="breadcrumb-area">
+  <h1>Eğitim Listesi</h1>
+
+  <ol class="breadcrumb">
+    <li class="item"><a routerLink="/panel" ><i class="bx bx-home-alt"></i></a></li>
+  </ol>
+</div>
+<div class="card mb-30" *ngFor='let education of educationList'>
+  <div class="card-body">
+    <div style="margin-bottom:20px">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="most-viewed-img">
+            <a [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]"><img src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg" alt="{{education.name}}"></a>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="most-viewed-detail">
+            <a class="category" routerLink="/{{education.categorySeoUrl}}"><i class="bx bxs-label"></i> {{education.categoryName}}</a>
+            <h3><a [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]">{{education.name}} (<span [ngStyle]="education.isActive ? {'color': 'green'} : {'color': 'red'}">
+                {{education.isActive ? 'Aktif':'Aktif Değil'}}
+            </span> )</a></h3>
+            <p><i class="bx bx-current-location"></i> {{education.districtName}}</p>
+          </div>
+          <div class="action-list">
+            <a class="btn btn-outline-primary action-item" [routerLink]="['/panel/egitim-duzenle/',education.seoUrl]">
+              <i class='bx bx-edit-alt'></i> Düzenle
+            </a>
+            <a class="btn btn-outline-primary action-item" (click)="deleteEducation(education.id)">
+              <i class='bx bx-trash'></i> Sil
+            </a>
+            <a class="btn btn-outline-primary action-item"  [routerLink]="['/panel/egitim-iletisim-formlari/',education.seoUrl]">
+              <i class=' bx bx-envelope'></i> İletişim Formları
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

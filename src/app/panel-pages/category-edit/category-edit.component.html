@@ -1,0 +1,27 @@
+<div class="breadcrumb-area">
+    <h1>Kategori Güncelle</h1>
+  
+    <ol class="breadcrumb">
+        <li class="item"><a routerLink="/panel" ><i class="bx bx-home-alt"></i></a></li>
+    </ol>
+  </div>
+<div class="card mb-30">
+  <div class="card-body">
+    <form [formGroup]="categoryUpdateForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Ad</mat-label>
+            <input required matInput formControlName="name" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="categoryUpdateForm.get('name').hasError('required')">
+              Lütfen Kategori Adı giriniz.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-6">
+          <button type="submit" mat-raised-button color="primary">Güncelle</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

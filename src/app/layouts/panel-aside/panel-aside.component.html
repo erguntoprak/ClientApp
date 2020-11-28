@@ -1,0 +1,29 @@
+<div id="panel-aside" style="display:none" class="sidemenu-area">
+  <div class="sidemenu-header">
+    <a routerLink="/" class="navbar-brand d-flex align-items-center">
+      <img src="assets/img/izmir-egitim-kurumlari.png" alt="logo">
+    </a>
+
+    <div id="burger-menu" class="burger-menu d-none d-lg-block">
+      <span class="top-bar"></span>
+      <span class="middle-bar"></span>
+      <span class="bottom-bar"></span>
+    </div>
+  </div>
+
+  <div class="sidemenu-body">
+    <ul class="sidemenu-nav metisMenu h-100" id="sidemenu-nav" data-simplebar="">
+      <ng-container *ngFor="let navigationModel of navigationModelList">
+        <li class="nav-item-title" *ngIf="navigationModel.isVisible">{{navigationModel.title}}</li>
+        <ng-container *ngFor="let navigationItem of navigationModel.navigationItems">
+          <li class="nav-item" *ngIf="navigationItem.isVisible">
+            <a [routerLink]="navigationItem.routeUrl" class="nav-link">
+              <span class="icon"><i class='{{navigationItem.icon}}'></i></span>
+              <span class="menu-title">{{navigationItem.name}}</span>
+            </a>
+          </li>
+        </ng-container>
+      </ng-container>
+    </ul>
+  </div>
+</div>

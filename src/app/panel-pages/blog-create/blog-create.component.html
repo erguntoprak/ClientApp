@@ -1,0 +1,71 @@
+
+<div class="breadcrumb-area">
+  <h1>Blog Ekle</h1>
+
+  <ol class="breadcrumb">
+      <li class="item"><a routerLink="/panel" ><i class="bx bx-home-alt"></i></a></li>
+  </ol>
+</div>
+<div class="card mb-30">
+  <div class="card-body">
+    <form [formGroup]="blogInsertForm" (ngSubmit)="onInsertBlogSubmit()">
+      <div class="form-row" *ngIf="errorList">
+        <span class="not-valid" *ngFor="let error of errorList">
+          {{error}}
+        </span>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label>Başlık</label>
+          <input formControlName="title" class="form-control" placeholder="Başlık" />
+          <span class="not-valid" *ngIf="submitted && blogInsertForm.get('title').errors != null ? blogInsertForm.get('title').errors.required:false">
+            Lütfen başlık giriniz.
+          </span>
+        </div>
+        <div class="form-group col-md-12" *ngIf="blogInsertForm.get('firstVisibleImageName').value">
+          <div class="blog-image">
+            <img width="300" height="500" [src]="blogInsertForm.get('firstVisibleImageName').value" alt="Alternate Text" />
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <label>Sayfalarda Gösterilecek İlk Görsel</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" accept="image/png,image/jpeg" (change)="onFirstVisibleImageSelectFile($event)">
+            <label class="custom-file-label">Görsel Seç</label>
+          </div>
+          <span class="not-valid" *ngFor="let errorMessage of firstVisibleImageUploadErrorMessage">
+            {{errorMessage}}
+          </span>
+          <span class="not-valid" *ngIf="submitted && blogInsertForm.get('firstVisibleImageName').errors != null ? blogInsertForm.get('firstVisibleImageName').errors.required:false">
+            Lütfen sayfalarda gösterilecek ilk görsel seçiniz.
+          </span>
+        </div>
+      </div>
+      <div formArrayName="blogItems" class="col-md-12">
+        <span class="not-valid" *ngIf="imageUploadErrorMessage">
+          {{imageUploadErrorMessage}}
+        </span>
+        <div class="form-row group-box" [formGroupName]="i" *ngFor="let item of getBlogItemControl(); let i = index;">
+          <div class="form-group col-md-12" *ngIf="item.value.imageName">
+            <div class="blog-image">
+              <span class="remove-button" (click)="removeImage(i)"><i class="bx bxs-no-entry"></i></span>
+              <img width="300" height="500" [src]="item.value.imageName" alt="Alternate Text" />
+            </div>
+          </div>
+          <div class="form-group col-md-12">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" accept="image/png,image/jpeg" (change)="onSelectFile($event,i)">
+              <label class="custom-file-label">Görsel Seç</label>
+            </div>
+          </div>
+          <div class="form-group col-md-12">
+            <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary next-button float-right" type="submit">Kaydet</button>
+      <button class="btn btn-primary previous-button float-right" (click)="addBlogItem()" type="button">Blok Ekle</button>
+    </form>
+  </div>
+</div>
+

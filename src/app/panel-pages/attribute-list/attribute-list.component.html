@@ -1,0 +1,47 @@
+<div class="breadcrumb-area">
+    <h1>Özellik Listele</h1>
+
+    <ol class="breadcrumb">
+        <li class="item"><a routerLink="/panel" ><i class="bx bx-home-alt"></i></a></li>
+    </ol>
+  </div>
+<div class="card mb-30">
+  <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Ara</mat-label>
+            <input matInput (keyup)="applyFilter($event.target.value)">
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-6">
+          <button type="button" routerLink="/panel/ozellik-ekle" class="float-right" mat-raised-button color="primary">Yeni Özellik Ekle</button>
+        </div>
+      </div>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Özellik Adı </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="attributeCategoryName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Özellik Kategori Adı </th>
+          <td mat-cell *matCellDef="let element"> {{element.attributeCategoryName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="actions" class="header-align-right">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> İşlemler </th>
+          <td mat-cell *matCellDef="let element">
+            <button [routerLink]="['/panel/ozellik-duzenle',element.id]" mat-mini-fab matTooltip="Özellik Düzenle" color="primary" #tooltip="matTooltip"><mat-icon>edit</mat-icon></button>
+            <button (click)="onDeleteAttribute(element.id)" mat-mini-fab matTooltip="Özellik Sil" color="primary" #tooltip="matTooltip"><mat-icon>delete</mat-icon></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[10,20,30,40,50]" showFirstLastButtons></mat-paginator>
+    </div>
+
+  </div>
+
+</div>

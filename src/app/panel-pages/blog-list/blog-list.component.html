@@ -1,0 +1,39 @@
+<div class="breadcrumb-area">
+  <h1>Blog Listesi</h1>
+
+  <ol class="breadcrumb">
+      <li class="item"><a routerLink="/panel" ><i class="bx bx-home-alt"></i></a></li>
+  </ol>
+</div>
+<div class="card mb-30" *ngFor='let blog of blogList'>
+  <div class="card-body">
+    <div style="margin-bottom:20px">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="most-viewed-img">
+            <a routerLink="/blog/{{blog.seoUrl}}"><img src="{{apiUrl}}/images/blog/{{blog.firstVisibleImageName}}_300x180.jpg" alt="{{blog.title}}"></a>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="most-viewed-detail">
+            <h3><a routerLink="/blog/{{blog.seoUrl}}">{{blog.title}} (<span [ngStyle]="blog.isActive ? {'color': 'green'} : {'color': 'red'}">
+                {{blog.isActive ? 'Aktif':'Aktif Değil'}}
+            </span> )</a></h3>
+            <p><i class="bx bx-calendar"></i> {{blog.createTime}}</p>
+          </div>
+          <div class="action-list">
+            <a class="btn btn-outline-primary action-item" [routerLink]="['/panel/blog-duzenle/',blog.seoUrl]">
+              <i class='bx bx-edit-alt'></i> Düzenle
+            </a>
+            <a class="btn btn-outline-primary action-item" (click)="deleteBlog(blog.id)">
+              <i class='bx bx-trash'></i> Sil
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

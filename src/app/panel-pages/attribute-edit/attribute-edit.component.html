@@ -1,0 +1,40 @@
+<div class="breadcrumb-area">
+    <h1>Özellik Güncelle</h1>
+
+    <ol class="breadcrumb">
+        <li class="item"><a routerLink="/panel" ><i class="bx bx-home-alt"></i></a></li>
+    </ol>
+  </div>
+<div class="card mb-30">
+  <div class="card-body">
+    <form [formGroup]="attributeUpdateForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Ad</mat-label>
+            <input required matInput formControlName="name" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="attributeUpdateForm.get('name').hasError('required')">
+              Lütfen Özellik Kategori Adı giriniz.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Özellik Kategori</mat-label>
+            <mat-select formControlName="attributeCategoryId" [errorStateMatcher]="matcher">
+              <mat-option *ngFor="let attributeCategory of attributeCategoryList" [value]="attributeCategory.id">
+                {{attributeCategory.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="attributeUpdateForm.get('attributeCategoryId').hasError('required')">
+              Lütfen Özellik Adı giriniz.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="submit" class="float-right" mat-raised-button color="primary">Güncelle</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

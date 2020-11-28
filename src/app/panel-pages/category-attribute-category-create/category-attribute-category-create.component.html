@@ -1,0 +1,36 @@
+<div class="breadcrumb-area">
+    <h1>Özellik Kategori</h1>
+  
+    <ol class="breadcrumb">
+        <li class="item"><a routerLink="/panel" ><i class="bx bx-home-alt"></i></a></li>
+    </ol>
+  </div>
+<div class="card mb-30">
+  <div class="card-body">
+    <div cdkDropListGroup>
+      <div class="example-container">
+        <h3>Ekli Olmayan Özellik Listesi</h3>
+        <div cdkDropList
+             [cdkDropListData]="otherAttributeCategoryModelList"
+             class="example-list"
+             (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of otherAttributeCategoryModelList" cdkDrag>{{item.name}}</div>
+        </div>
+      </div>
+
+      <div class="example-container">
+        <h3>Ekli Özellik Listesi</h3>
+
+        <div cdkDropList
+             [cdkDropListData]="selectedAttributeCategoryModelList"
+             class="example-list"
+             (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of selectedAttributeCategoryModelList" cdkDrag>{{item.name}}</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button type="button" (click)="addAttributeCategory()" mat-raised-button color="primary">Güncelle</button>
+    </div>
+  </div>
+</div>

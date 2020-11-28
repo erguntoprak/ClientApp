@@ -1,0 +1,287 @@
+
+<div class="breadcrumb-area">
+    <h1>Eğitim Güncelle</h1>
+  
+    <ol class="breadcrumb">
+        <li class="item"><a routerLink="/panel" ><i class="bx bx-home-alt"></i></a></li>
+      </ol>
+  </div>
+<div class="card mb-30">
+  <div class="card-body">
+    <form [formGroup]="educationForm" (ngSubmit)="onSubmit()">
+      <div formGroupName="generalInformation" [style.display]="nextStepOneControl ? 'block': 'none'">
+        <div class="form-row" *ngIf="errorList">
+          <span class="not-valid" *ngFor="let error of errorList">
+            {{error}}
+          </span>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Eğitim Adı</label>
+            <input formControlName="educationName" class="form-control" placeholder="Eğitim Adı" />
+            <span class="not-valid" *ngIf="nextStepOneValidation && educationForm.get('generalInformation').get('educationName').errors != null ? educationForm.get('generalInformation').get('educationName').errors.required:false">
+              Lütfen eğitim adı giriniz.
+            </span>
+          </div>
+          <div class="form-group col-md-6">
+            <label>Eğitim Türü</label>
+            <select (change)="educationTypeOnChange($event)" formControlName="educationType" class="form-control">
+              <option value="0" selected>Seçiniz</option>
+              <option [ngValue]="category.id" *ngFor="let category of categories">{{category.name}}</option>
+            </select>
+            <span class="not-valid" *ngIf="nextStepOneValidation && educationForm.get('generalInformation').get('educationType').errors != null ? educationForm.get('generalInformation').get('educationType').errors.min:false">
+              Lütfen eğitim türü seçiniz.
+            </span>
+          </div>
+          <div class="form-group col-md-12">
+            <label>Açıklama</label>
+            <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+          </div>
+          <div class="form-group col-md-12">
+            <label>Kayıtlı Görseller</label>
+            <div class="row">
+              <div class="col-md-2" style="padding:10px;" *ngFor='let url of urlImages'>
+                <div class="single-place">
+                  <span class="remove-button" (click)="removeImage(url.key,url.value)"><i class="bx bxs-no-entry"></i></span>
+                  <img [id]="url.key" class="single-place-image" src="{{apiUrl}}/images/{{url.value}}_1000x600.jpg">
+                </div>
+              </div>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" accept="image/*" multiple (change)="onSelectFile($event)">
+              <label class="custom-file-label"><strong>{{fileCount ? fileCount + ' Görsel Seçildi': 'Görsel Ekle'}}</strong></label>
+            </div>
+            <span class="not-valid" *ngFor="let errorMessage of imageUploadErrorMessage">
+              {{errorMessage}}
+            </span>
+            <span class="not-valid" *ngIf="nextStepOneValidation && urlImages.length==0">
+              Lütfen görsel seçiniz.
+            </span>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary float-right" (click)="nextStepOneClick()">Devam Et</button>
+      </div>
+      <div [style.display]="nextStepTwoControl ? 'block': 'none'">
+        <div *ngFor="let attribute of attributeList" class="group-box">
+          <div class="group-box-title">
+            <h5>{{ attribute.categoryName }}</h5>
+          </div>
+          <div class="db-add-listing">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <div *ngFor="let attribute of attribute.attributeListModel" class="attribute-checkbox">
+                    <se-checkbox (change)="onChange(attribute.id, $event.target.checked)" [id]="attribute.id" [existingAttributeIds]="existingAttributeIds" [text]="attribute.name"></se-checkbox>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary next-button float-right" (click)="nextStepTwoClick()" type="button">Devam Et</button>
+        <button class="btn btn-primary previous-button float-right" (click)="previousStepTwoClick()" type="button">Geri</button>
+      </div>
+      <div [style.display]="nextStepThreeControl ? 'block': 'none'">
+        <div formGroupName="socialInformation" class="group-box">
+          <div class="group-box-title">
+            <h5>Sosyal Hesaplar</h5>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Youtube Link</label>
+              <input formControlName="youtubeAccountUrl" class="form-control" placeholder="https://www.youtube.com/channel/UCp3doE7jqhY8Q1" />
+            </div>
+            <div class="form-group col-md-6">
+              <label>Facebook Link</label>
+              <input formControlName="facebookAccountUrl" class="form-control" placeholder="https://www.facebook.com/izmiregitimkurumlari" />
+            </div>
+            <div class="form-group col-md-6">
+              <label>Instagram Link</label>
+              <input formControlName="instagramAccountUrl" class="form-control" placeholder="https://www.instagram.com/izmiregitimkurumlari" />
+            </div>
+            <div class="form-group col-md-6">
+              <label>Twitter Link</label>
+              <input formControlName="twitterAccountUrl" class="form-control" placeholder="https://twitter.com/izmiregitimkurumlari" />
+            </div>
+            <div class="form-group col-md-6">
+              <label>Youtube Video Link 1</label>
+              <input formControlName="youtubeVideoOne" class="form-control" placeholder="https://www.youtube.com/watch?v=aBxco_XXwGos" />
+              <span class="not-valid" *ngIf="nextStepThreeValidation && youtubeVideoOneId == undefined">
+                Lütfen geçerli Youtube video link giriniz. 
+              </span>
+              <div *ngIf='youtubeVideoOneId != "" ' class="iframe-container mt-10">
+                <youtube-player [height]="250" [width]="500" videoId="{{youtubeVideoOneId}}"></youtube-player>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Youtube Video Link 2</label>
+              <input formControlName="youtubeVideoTwo" class="form-control" placeholder="https://www.youtube.com/watch?v=aBxco_XXwGos" />
+              <span class="not-valid" *ngIf="nextStepThreeValidation && youtubeVideoTwoId == undefined">
+                Lütfen geçerli Youtube video link giriniz.
+              </span>
+              <div *ngIf='youtubeVideoTwoId != "" ' class="iframe-container mt-10">
+                <youtube-player [height]="250" [width]="500" videoId="{{youtubeVideoTwoId}}"></youtube-player>
+              </div>
+            </div>
+            <div class="form-group col-md-12">
+              <label>Google Map Kodu (Google Map Kodu nasıl eklenir.<strong><a target="_blank" href="https://youtu.be/toZHU21c8uw"> TIKLA)</a></strong></label>
+              <textarea formControlName="mapCode" class="form-control" rows="5" placeholder='<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3127.7079022854505!2d27.15847661479587!3d38.37887818494647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbdf4e35873a21%3A0xf7f55c74b3b3b350!2zWsO8YmV5ZGUgSGFuxLFtIEXEn2l0aW0gS3VydW1sYXLEsSBCdWNhIEthbXDDvHPDvA!5e0!3m2!1str!2str!4v1591191775876!5m2!1str!2str" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'></textarea>
+              <span class="not-valid" *ngIf="nextStepThreeValidation && iframeMapCode == null">
+                Lütfen geçerli Google Map kodu giriniz.
+              </span>
+              <div *ngIf="iframeMapCode != ''" class="iframe-container mt-10">
+                <div [innerHTML]="iframeMapCode"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary next-button float-right" (click)="nextStepThreeClick()" type="button">Devam Et</button>
+        <button class="btn btn-primary previous-button float-right" (click)="previousStepThreeClick()" type="button">Geri</button>
+      </div>
+      <div [style.display]="nextStepFourControl ? 'block': 'none'">
+        <div formGroupName="addressInformation" class="group-box">
+          <div class="group-box-title">
+            <h5>Adres Bilgileri</h5>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>İl</label>
+              <select formControlName="cityId" class="form-control">
+                <option value="0" selected>Seçiniz</option>
+                <option *ngIf="city" [ngValue]="city.id">{{city.name}}</option>
+              </select>
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('addressInformation').get('cityId').errors != null ? educationForm.get('addressInformation').get('cityId').errors.min:false">
+                Lütfen il seçiniz.
+              </span>
+            </div>
+            <div class="form-group col-md-6">
+              <label>İlçe</label>
+              <select formControlName="districtId" class="form-control">
+                <option value="0" selected>Seçiniz</option>
+                <option [ngValue]="district.id" *ngFor="let district of districtList">{{district.name}}</option>
+              </select>
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('addressInformation').get('districtId').errors != null ? educationForm.get('addressInformation').get('districtId').errors.min:false">
+                Lütfen ilçe seçiniz.
+              </span>
+            </div>
+            <div class="form-group col-md-12">
+              <label>Adres</label>
+              <input formControlName="address" class="form-control" placeholder="Adres" />
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('addressInformation').get('address').errors != null ? educationForm.get('addressInformation').get('address').errors.required:false">
+                Lütfen adres giriniz.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div formGroupName="contactInformation" class="group-box">
+          <div class="group-box-title">
+            <h5>İletişim Bilgileri</h5>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Yetkili Adı</label>
+              <input formControlName="authorizedName" class="form-control" placeholder="Yetkili Adı" />
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('contactInformation').get('authorizedName').errors != null ? educationForm.get('contactInformation').get('authorizedName').errors.required:false">
+                Lütfen yetkili adı giriniz.
+              </span>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Yetkili Email</label>
+              <input formControlName="authorizedEmail" class="form-control" placeholder="Yetkili Email" />
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('contactInformation').get('authorizedEmail').errors != null ? educationForm.get('contactInformation').get('authorizedEmail').errors.required:false">
+                Lütfen yetkili email giriniz.
+              </span>
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('contactInformation').get('authorizedEmail').errors != null ? educationForm.get('contactInformation').get('authorizedEmail').errors.email:false">
+                Lütfen geçerli Email giriniz.
+              </span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Telefon</label>
+              <input formControlName="phoneOne" mask="(000) 000 00 00" class="form-control" placeholder="Telefon" />
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('contactInformation').get('phoneOne').errors != null ? educationForm.get('contactInformation').get('phoneOne').errors.required:false">
+                Lütfen telefon giriniz.
+              </span>
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('contactInformation').get('phoneOne').errors != null ? educationForm.get('contactInformation').get('phoneOne').errors['Mask error']:false">
+                Lütfen geçerli bir telefon giriniz.
+              </span>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Telefon 2</label>
+              <input formControlName="phoneTwo" mask="(000) 000 00 00" class="form-control" placeholder="Telefon 2" />
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('contactInformation').get('phoneTwo').errors != null ? educationForm.get('contactInformation').get('phoneTwo').errors.required:false">
+                Lütfen telefon giriniz.
+              </span>
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('contactInformation').get('phoneTwo').errors != null ? educationForm.get('contactInformation').get('phoneTwo').errors['Mask error']:false">
+                Lütfen geçerli bir telefon giriniz.
+              </span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Kurum Email</label>
+              <input formControlName="educationEmail" class="form-control" placeholder="Kurum Email" />
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('contactInformation').get('educationEmail').errors != null ? educationForm.get('contactInformation').get('educationEmail').errors.required:false">
+                Lütfen Email giriniz.
+              </span>
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('contactInformation').get('educationEmail').errors != null ? educationForm.get('contactInformation').get('educationEmail').errors.email:false">
+                Lütfen geçerli Email giriniz.
+              </span>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Kurum Website</label>
+              <input formControlName="educationWebsite" class="form-control" placeholder="Kurum Website" />
+              <span class="not-valid" *ngIf="nextStepFourValidation && educationForm.get('contactInformation').get('educationWebsite').errors != null ? educationForm.get('contactInformation').get('educationWebsite').errors.required:false">
+                Lütfen kurum website giriniz.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="group-box">
+          <div class="group-box-title">
+            <h5>En Çok Sorulan Soru ve Cevap</h5>
+          </div>
+          <div formArrayName="questions">
+            <div class="form-row" [formGroupName]="i" *ngFor="let item of getQuestionControl(); let i = index;">
+              <div class="form-group col-md-6">
+                <label>Soru</label>
+                <textarea formControlName="question" class="form-control" placeholder="Soru"></textarea>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Cevap</label>
+                <textarea formControlName="answer" class="form-control" placeholder="Cevap"></textarea>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <button class="btn btn-primary previous-button" (click)="addQuestionItem()" type="button">Soru Ekle</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary next-button float-right" type="submit">Kaydet</button>
+        <button class="btn btn-primary previous-button float-right" (click)="previousStepFourClick()" type="button">Geri</button>
+      </div>
+    </form>
+    <div [style.display]="nextStepFiveControl ? 'block': 'none'">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <h3>Sayfalarda gösterilecek ilk görselini seçiniz.</h3>
+          <span class="not-valid" *ngIf="isSelectFirstVisibleImage">
+            Aşağıdaki görsellerden birini seçmeniz gerekiyor.
+          </span>
+          <div class="row">
+            <div class="col-md-2" style="padding:10px;" *ngFor='let image of savedImageList'>
+              <div class="single-place">
+                <img [id]="image.id" (click)="selectFirstVisibleImage(image)" class="single-place-image" [ngClass]="{'active': selectedImageModel.id === image.id}" src="{{apiUrl}}/images/{{image.imageUrl}}_1000x600.jpg">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" (click)="saveSelectedFirsImage()" class="btn btn-primary float-right">Kaydet</button>
+    </div>
+  </div>
+</div>
+

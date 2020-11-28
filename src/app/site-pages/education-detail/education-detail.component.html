@@ -1,0 +1,228 @@
+<section *ngIf="educationDetailModel" style="background: #fbfbfd;">
+  <div class="container">
+    <div class="breadcrumb-area">
+      <h1>{{educationDetailModel.generalInformation.educationName}}<img src="assets/img/tick.png" class="tick-image">
+      </h1>
+      <ol class="breadcrumb">
+        <li class="item"><a routerLink="/">Anasayfa</a></li>
+        <li class="item"><i class="ti-control-forward"></i><a
+            routerLink="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
+        </li>
+        <li class="item"><i class="ti-control-forward"></i><a
+            [queryParams]="{ilce: educationDetailModel.addressInformation.districSeoUrl}"
+            routerLink="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.addressInformation.districtName}}</a>
+        </li>
+        <li class="item"><i class="ti-control-forward"></i>{{educationDetailModel.generalInformation.educationName}}
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+<section class="education_details_area" *ngIf="educationDetailModel">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-8 lg-pr">
+        <div id="images">
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+        </div>
+        <div class="details_content" id="education-about">
+          <div class="mb_20">
+            <h3 class="f_p f_size_22 f_500 t_color3 mb_20">{{educationDetailModel.generalInformation.educationName}}
+              Hakkında
+            </h3>
+            <hr />
+            <p class="f_400 l_height32" [innerHTML]="educationDetailModel.generalInformation.description"></p>
+            <div class="f_widget social-widget text-right">
+              <share-buttons
+                [include]="['facebook','twitter','telegram','messenger','whatsapp','email']"></share-buttons>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="educationDetailModel.categoryAttributeList.length>0" class="details_content"
+          id="education-facilities">
+          <div class="mb_20" *ngFor="let attribute of educationDetailModel.categoryAttributeList">
+            <h3 class="f_p f_size_22 f_500 t_color3 mb_20">{{attribute.categoryName}}</h3>
+            <ul class="list-unstyled mb-0">
+              <li *ngFor="let attribute of attribute.attributeListModel"><i class="ti-check"></i>{{attribute.name}}</li>
+            </ul>
+          </div>
+        </div>
+        <div *ngIf="educationDetailModel.socialInformation.youtubeVideoOne != undefined" class="iframe-container">
+          <youtube-player videoId="{{educationDetailModel.socialInformation.youtubeVideoOne}}"></youtube-player>
+        </div>
+        <div *ngIf="educationDetailModel.questions.length>0" class="details_content" id="frequently-asked-questions">
+          <h3 class="f_p f_size_22 f_500 t_color3 mb-30">Sıkça Sorulan Sorular</h3>
+          <div class="stratup_service_info">
+            <div class="startup_service_item" *ngFor="let questionModel of educationDetailModel.questions">
+              <div class="icon icon_two"><i class="icon-question"></i></div>
+              <h3>{{questionModel.question}}</h3>
+              <p>{{questionModel.answer}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="iframe-container" *ngIf="educationDetailModel.socialInformation.mapCode != ''"
+          [innerHTML]="educationDetailModel.socialInformation.mapCode">
+        </div>
+        <div *ngIf="educationDetailModel.socialInformation.youtubeVideoTwo != undefined" class="iframe-container">
+          <youtube-player videoId="{{educationDetailModel.socialInformation.youtubeVideoTwo}}"></youtube-player>
+        </div>
+        <div *ngIf="educationDetailModel.blogList.length>0" class="details_content" id="contact-information">
+          <h3 class="f_p f_size_22 f_500 t_color3 mb_20">Blog</h3>
+          <div class="row">
+            <div class="col-lg-4 col-sm-6" *ngFor="let blog of educationDetailModel.blogList">
+              <div class="blog_grid_item mb-30">
+                <div class="blog_img">
+                  <a routerLink="/blog/{{blog.seoUrl}}"><img [src]="blog.firstVisibleImageName" alt="blog.title"></a>
+                </div>
+                <div class="blog_content">
+                  <div class="entry_post_info">
+                    <a routerLink="/bloglar/{{blog.userName}}">{{blog.userName}}</a>
+                    <span>{{blog.createTime}}</span>
+                  </div>
+                  <a routerLink="/blog/{{blog.seoUrl}}">
+                    <h4 class="f_p f_size_16 f_500 t_color mb_20">{{blog.title}}</h4>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <a routerLink="/bloglar/{{educationDetailModel.blogList[0].userName}}" class="learn_btn_two">Diğer ilgili
+                bloglara göz at<i class="ti-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="job_info">
+          <div class="info_item">
+            <i class="ti-location-pin"></i>
+            <h6>İl / İlçe</h6>
+            <p>{{educationDetailModel.addressInformation.cityName}} /
+              {{educationDetailModel.addressInformation.districtName}}</p>
+          </div>
+          <div class="info_item">
+            <i class="ti-home"></i>
+            <h6>Adres</h6>
+            <p>{{educationDetailModel.addressInformation.address}}</p>
+          </div>
+          <div class="info_item">
+            <i class="icon-call-end"></i>
+            <h6>Telefon</h6>
+            <p>0 {{educationDetailModel.contactInformation.phoneOne | mask: '000 000 00 00'}}</p>
+            <p>0 {{educationDetailModel.contactInformation.phoneTwo | mask: '000 000 00 00'}}</p>
+          </div>
+          <div class="info_item">
+            <i class="ti-email"></i>
+            <h6>Email</h6>
+            <p>{{educationDetailModel.contactInformation.educationEmail}}</p>
+          </div>
+          <div class="info_item">
+            <i class="icon-globe"></i>
+            <h6>Kurumsal Web Sitesi</h6>
+            <p>
+              <a target="_blank" href="{{educationDetailModel.contactInformation.educationWebsite}}">Siteye Git</a>
+            </p>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h6>Hemen Sizi Arıyalım</h6>
+          <p>Fiyat bilgileri, erken kayıt avantajları, randevu talepleri ve sorularınız için formu ücretsiz doldurun.
+            Eğitim kurumu sizi hemen arasın.</p>
+          <div class="contact-form-input" *ngIf="contactFormDiv">
+            <form [formGroup]="contactForm" (ngSubmit)="onContactFormSubmit()">
+              <div class="form-group text_box">
+                <label for="nameSurname">Ad Soyad</label>
+                <input type="text" formControlName="nameSurname" />
+                <span class="not-valid"
+                  *ngIf="submitted && contactForm.get('nameSurname').errors != null ? contactForm.get('nameSurname').errors.required:false">
+                  Lütfen Ad Soyad giriniz.
+                </span>
+              </div>
+              <div class="form-group text_box">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="text" formControlName="email" />
+                <span class="not-valid"
+                  *ngIf="submitted && contactForm.get('email').errors != null ? contactForm.get('email').errors.required:false">
+                  Lütfen Email adresi giriniz.
+                </span>
+                <span class="not-valid"
+                  *ngIf="submitted && contactForm.get('email').errors != null ? contactForm.get('email').errors.email:false">
+                  Lütfen geçerli Email adresi giriniz.
+                </span>
+              </div>
+              <div class="form-group text_box">
+                <label for="exampleInputEmail1">Telefon</label>
+                <input type="text" formControlName="phoneNumber" mask="(000) 000 00 00" [validation]="true" />
+                <span class="not-valid"
+                  *ngIf="submitted && contactForm.get('phoneNumber').errors != null ? contactForm.get('phoneNumber').errors.required:false">
+                  Lütfen Telefon numarası giriniz.
+                </span>
+                <span class="not-valid"
+                  *ngIf="submitted && contactForm.get('phoneNumber').errors != null ? contactForm.get('phoneNumber').errors['Mask error']:false">
+                  Lütfen geçerli bir Telefon numarası giriniz.
+                </span>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn_three sign_btn_transparent mt_c20">İletişime Geç</button>
+              </div>
+            </form>
+          </div>
+          <div class="contact-from-success" *ngIf="contactFormSuccessMessage">
+            <div class="box_alert media box_success">
+              <div class="icon"><i class="icon-check"></i></div>
+              <div class="media-body">
+                <h5>Bilgileriniz Gönderildi.</h5>
+                <p>En yakın zamanda dönüş yapılacaktır. Teşekkürler</p>
+              </div>
+              <div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="social">
+          <div class="row">
+            <div class="col-3 p-0" *ngIf="educationDetailModel.socialInformation.instagramAccountUrl != '' ">
+              <a target="_blank" href="{{educationDetailModel.socialInformation.instagramAccountUrl}}">
+                <div class="social-item">
+                  <div class="social-item-icon">
+                    <img src="assets/img/saas/icon/instagram.png" />
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-3 p-0" *ngIf="educationDetailModel.socialInformation.twitterAccountUrl != '' ">
+              <a target="_blank" href="{{educationDetailModel.socialInformation.twitterAccountUrl}}">
+                <div class="social-item">
+                  <div class="social-item-icon">
+                    <img src="assets/img/saas/icon/twitter.png" />
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-3 p-0" *ngIf="educationDetailModel.socialInformation.youtubeAccountUrl != '' ">
+              <a target="_blank" href="{{educationDetailModel.socialInformation.youtubeAccountUrl}}">
+                <div class="social-item">
+                  <div class="social-item-icon">
+                    <img src="assets/img/saas/icon/youtube.png" />
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-3 p-0" *ngIf="educationDetailModel.socialInformation.facebookAccountUrl != '' ">
+              <a target="_blank" href="{{educationDetailModel.socialInformation.facebookAccountUrl}}">
+                <div class="social-item">
+                  <div class="social-item-icon">
+                    <img src="assets/img/saas/icon/facebook.png" />
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

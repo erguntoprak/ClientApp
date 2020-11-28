@@ -1,0 +1,59 @@
+<header class="header_area">
+  <nav class="navbar navbar-expand-lg menu_one">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/"><img class="app-logo" src="assets/img/izmir-egitim-kurumlari.png" alt="logo"></a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="menu_toggle">
+          <span class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span class="hamburger-cross">
+            <span></span>
+            <span></span>
+          </span>
+        </span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml_40 menu">
+          <li class="nav-item dropdown submenu mega_menu mega_menu_two">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Eğitimler
+            </a>
+            <div class="mega_menu_inner">
+              <ul class="dropdown-menu">
+                <li class="nav-item">
+                  <ul class="dropdown-menu scroll">
+                    <li *ngFor="let category of categories;let i=index" class="nav-item">
+                      <a routerLink="/egitim-kurumlari/{{category.seoUrl}}" class="item">
+                        <span class="img">
+                          <img src="assets/img/egitim-kurumu-{{i}}.png" alt="{{category.name}}">
+                        </span>
+                        <span class="text">
+                          {{category.name}}
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/bloglar">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/iletisim">İletişim</a>
+          </li>
+          <li *ngIf="isUser" class="nav-item">
+            <a class="nav-link" routerLink="/panel">Panel</a>
+          </li>
+        </ul>
+        <a class="btn_get btn_hover" routerLink="/giris-yap">Giriş Yap veya Kaydol</a>
+      </div>
+    </div>
+  </nav>
+</header>
+

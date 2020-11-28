@@ -1,0 +1,95 @@
+
+<section class="sign_in_area bg_color sec_pad">
+  <div class="container">
+    <div class="sign_info">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="sign_info_content">
+            <h3 class="f_p f_600 f_size_24 t_color3 mb_40">Uzun bir yolun başlangıcı için Hemen Kayıt Ol!</h3>
+            <h2 class="f_p f_400 f_size_30 mb-30">İzmir Eğitim Kurumlarının<br> büyük ayrıcalıklarından<br> faydalanmaya başlayın.</h2>
+            <ul class="list-unstyled mb-0">
+              <li><i class="ti-check"></i> Eğitim Kurumunuz artık daha kolay bulunabilir.</li>
+              <li><i class="ti-check"></i> İzmir'in güvendiği tek adres</li>
+              <li><i class="ti-check"></i> Birden fazla Eğitim Kurumu ekleme fırsatı</li>
+            </ul>
+            <button type="submit" class="btn_three sign_btn_transparent" routerLink="/giris-yap">Giriş Yap</button>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="login_info">
+            <h2 class="f_p f_600 f_size_24 t_color3 mb_40">Eğitim Kurumu Kayıt Ol</h2>
+            <div *ngIf="errorList">
+              <span class="not-valid" *ngFor="let error of errorList">
+                {{error}}
+              </span>
+            </div>
+            <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" class="login-form sign-in-form">
+              <div class="form-group text_box">
+                <label class="f_p text_c f_400">Ad</label>
+                <input type="text" id="name" formControlName="name" [ngClass]="{ 'is-invalid':registerForm.controls['name'].errors && (registerForm.controls['name'].dirty || registerForm.controls['name'].touched)}" placeholder="Ad">
+                <span class="not-valid" *ngIf="(registerForm.controls['name'].dirty || registerForm.controls['name'].touched || submitted) && registerForm.controls.name.errors!=null ? registerForm.controls.name.errors.required:false">
+                  Lütfen ad giriniz.
+                </span>
+              </div>
+              <div class="form-group text_box">
+                <label class="f_p text_c f_400">Soyad</label>
+                <input type="text" id="surname" formControlName="surname" [ngClass]="{ 'is-invalid':registerForm.controls['surname'].errors && (registerForm.controls['surname'].dirty || registerForm.controls['surname'].touched)}" placeholder="Soyad">
+                <span class="not-valid" *ngIf="(registerForm.controls['surname'].dirty || registerForm.controls['surname'].touched || submitted) && registerForm.controls.surname.errors!=null ? registerForm.controls.surname.errors.required:false">
+                  Lütfen soyad giriniz.
+                </span>
+              </div>
+              <div class="form-group text_box">
+                <label class="f_p text_c f_400">E-posta</label>
+                <input type="text" id="email" formControlName="email" [ngClass]="{ 'is-invalid':registerForm.controls['email'].errors && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)}" placeholder="E-posta">
+                <span class="not-valid" *ngIf="(registerForm.controls['email'].dirty || registerForm.controls['email'].touched || submitted) && registerForm.controls.email.errors!=null ? registerForm.controls.email.errors.required:false">
+                  Lütfen e-posta giriniz.
+                </span>
+                <span class="not-valid" *ngIf="(registerForm.controls['email'].dirty || registerForm.controls['email'].touched || submitted) && registerForm.controls.email.errors!=null ? registerForm.controls.email.errors.email:false">
+                  Lütfen geçerli e-posta adresi giriniz.
+                </span>
+              </div>
+              <div class="form-group text_box">
+                <label class="f_p text_c f_400">Telefon</label>
+                <input type="text" id="phone" formControlName="phone" [validation]="true" mask="(000) 000 00 00" [ngClass]="{ 'is-invalid':registerForm.controls['phone'].errors && (registerForm.controls['phone'].dirty || registerForm.controls['phone'].touched)}" placeholder="Telefonunuz">
+                <span class="not-valid" *ngIf="(registerForm.controls['phone'].dirty || registerForm.controls['phone'].touched || submitted) && registerForm.controls.phone.errors!=null ? registerForm.controls.phone.errors.required:false">
+                  Lütfen telefon giriniz.
+                </span>
+                <span class="not-valid" *ngIf="(registerForm.controls['phone'].dirty || registerForm.controls['phone'].touched || submitted) && registerForm.controls.phone.errors!=null ? registerForm.controls.phone.errors['Mask error']:false">
+                  Lütfen geçerli bir telefon giriniz.
+                </span>
+              </div>
+
+
+              <div class="form-group text_box">
+                <label class="f_p text_c f_400">Şifre</label>
+                <input type="password" id="password" formControlName="password" [ngClass]="{ 'is-invalid':registerForm.controls['password'].errors && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)}" placeholder="******">
+                <div class="not-valid" *ngIf="(registerForm.controls['password'].dirty || registerForm.controls['password'].touched || submitted) && registerForm.controls.password.errors!=null ? registerForm.controls.password.errors.required:false">
+                  Lütfen şifre giriniz.
+                </div>
+                <div class="not-valid" *ngIf="(registerForm.controls['password'].dirty || registerForm.controls['password'].touched || submitted) && registerForm.controls.password.errors!=null ? registerForm.controls.password.errors.minlength:false">
+                  Lütfen en az 6 karakter giriniz.
+                </div>
+              </div>
+              <div class="form-group text_box">
+                <label class="f_p text_c f_400">Şifre Tekrar</label>
+                <input type="password" id="confirmPassword" formControlName="confirmPassword" [ngClass]="{ 'is-invalid':registerForm.controls['confirmPassword'].errors && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)}" placeholder="******">
+                <div class="not-valid" *ngIf="(registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched || submitted) && registerForm.controls.confirmPassword.errors!=null ? registerForm.controls.confirmPassword.errors.required:false">
+                  Lütfen şifreyi tekrar giriniz.
+                </div>
+                <div class="not-valid" *ngIf="(registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched || submitted) && registerForm.controls.confirmPassword.errors!=null ? registerForm.controls.confirmPassword.errors.mustMatch:false">
+                  Şifre eşleşmiyor.
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <button type="submit" class="btn_three">Kayıt Ol</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
