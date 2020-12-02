@@ -35,7 +35,7 @@ export class AuthGuard implements CanLoad {
           });
           return accessPermission;
         }
-        this.router.navigate(['/giris']);
+        this.router.navigate(['/giris-yap']);
         return false;
       })
     );

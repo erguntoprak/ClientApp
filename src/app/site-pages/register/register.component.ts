@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
       password: this.registerForm.value.password
     }
     this.authService.signup(this.registerModel).subscribe(responseModel => {
-      this.router.navigate(['/giris']);
+      this.router.navigate(['/giris-yap']);
       this.toastr.success('Kayıt olma işlemi yapıldı. E-posta onayı yapıldıktan sonra sizinle iletişime geçilecektir.', 'Başarılı!');
       this.acdcLoadingService.hideLoading();
     });
