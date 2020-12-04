@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "buildprod": "ng build --prod --configuration=production --output-path=dist/se-angular-app",
+    "buildprod": "ng build --prod --configuration=production --output-path=/dist",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
