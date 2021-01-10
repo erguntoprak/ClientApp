@@ -1061,7 +1061,7 @@ a, .btn, button {
 }
 
 .menu_one {
-  padding: 0px;
+  padding: 0px!important;
 }
 
   .menu_one .btn_get {
@@ -4636,7 +4636,7 @@ a, .btn, button {
 
   .home_bubble .bubble.b_three {
     background: #7d95fa;
-    top: 85%;
+    top: 68%;
     left: 255px;
     -webkit-animation: spin1 1s infinite alternate;
     animation: spin1 1s infinite alternate;
@@ -5018,7 +5018,7 @@ a, .btn, button {
 }
 
 .education_details_area {
-  padding: 30px 0;
+  padding: 20px 0;
   background: #fbfbfd;
 }
 
@@ -5270,8 +5270,7 @@ a, .btn, button {
 }
 
 .social {
-  margin-top: 20px;
-  padding: 12px;
+  margin: 10px -6px 0px -6px;
 }
 
 .iframe-container iframe {
@@ -11748,7 +11747,7 @@ a, .btn, button {
   }
 
     .job_info .info_item i {
-      color: #dd2f4d;
+      color: #ed5564;
       font-size: 25px;
       position: absolute;
       left: 0;
@@ -14174,7 +14173,8 @@ p {
 .blog-view-list .blog_content {
   background: #fff;
   padding: 10px;
-  height: 180px;
+  height: 160px;
+  margin-bottom: 30px;
 }
 
 .blog_content .post_date {
@@ -14962,7 +14962,7 @@ p {
 }
 
 .blog_grid_info .blog_list_item {
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   height: 330px;
   background: #fff;
   border-radius: 6px;
@@ -15000,7 +15000,7 @@ p {
 }
 
 .category_dropdown {
-  width: 60%;
+  width: 55%;
 }
 
 .nice-select.open .list {
@@ -15063,6 +15063,7 @@ p {
   .blog_grid_info .blog_list_item .blog_content span {
     margin-top:5px;
     font-size:18px;
+    color:#677294;
     margin-bottom:15px;
   }
 .blog_grid_info .blog_list_item:hover .sign_btn_transparent {
@@ -18097,12 +18098,15 @@ input[type="text"] {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 10px;
+  padding: 10px 10px 10px 0px;
   border-left: 8px solid #f8636b;
 }
-
+.domain_form_inner .search-bar{
+  width: 54%;
+  display: flex;
+}
   .domain_form_inner input {
-    width: 54%;
+    width: 96%;
     border: 0px;
     border-radius: 0px;
     padding: 0px;
@@ -26350,7 +26354,6 @@ a .h_head:hover {
   align-items: center;
   margin-top: 80px;
 }
-
   .breadcrumb-area h1 {
     margin-bottom: 0;
     position: relative;
@@ -26541,6 +26544,208 @@ a .h_head:hover {
   padding-right: 1em;
   padding-left: 0;
 }
+
+
+
+
+.bottomNav {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  bottom: 0px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #fbfbfd;
+  z-index:5;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(3, 115, 156, 0.1);
+  box-shadow: 0px 0px 10px 0px rgba(3, 115, 156, 0.1);
+  transition: border 0.3s linear;
+  -webkit-transition: border 0.3s linear;
+}
+.bottomNav.fill > [nav-id] {
+  flex-grow: 1;
+  min-width: 25%;
+}
+.bottomNav > [nav-id] {
+  min-width: 120px;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  line-height: 25px;
+  text-align: center;
+  text-align: center;
+  padding: 8px;
+  border: none;
+  background-color: #fbfbfd;
+  color: #000;
+  font-size: 16px;
+}
+.bottomNav > [nav-id] * {
+  display: block;
+}
+.bottomNav span a {
+  color: #000;
+}
+.bottomNav > [nav-id].active {
+  color: inherit;
+}
+.bottomNav > [nav-id] > i {
+  font-size: 25px;
+  text-align: center;
+}
+.bottomNav.no-label > button {
+  min-width: 80px;
+}
+.bottomNav.no-label > button > span {
+  height: 0px;
+  overflow: hidden;
+  transition: height .2s;
+}
+.bottomNav.no-label > button.active > span {
+  height: 20px;
+}
+
+
+
+
+.icon-button {
+	background-color: white;
+	border-radius: 2.6rem;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1.3rem;
+	height: 2.6rem;
+	line-height: 2.6rem;
+	margin: 0 5px;
+	position: relative;
+	text-align: center;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	width: 2.6rem;
+}
+
+/* Circle */
+.icon-button span {
+	border-radius: 0;
+	display: block;
+	height: 0;
+	left: 50%;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+	width: 0;
+}
+.icon-button:hover span {
+	width: 2.6rem;
+	height: 2.6rem;
+	border-radius: 2.6rem;
+	margin: -1.3rem;
+}
+
+/* Icons */
+.icon-button i {
+	background: none;
+	color: white;
+	height: 2.6rem;
+	left: 0;
+	line-height: 2.6rem;
+	position: absolute;
+	top: 0;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+	width: 2.6rem;
+	z-index: 10;
+}
+
+
+
+
+
+.twitter span {
+	background-color: #4099ff;
+}
+.facebook span {
+	background-color: #3B5998;
+}
+.google-plus span {
+	background-color: #db5a3c;
+}
+.tumblr span {
+	background-color: #34526f;
+}
+.instagram span {
+	background: #f09433; 
+background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+.youtube span {
+	background-color: #bb0000;
+}
+.pinterest span {
+	background-color: #cb2027;
+}
+
+
+
+.icon-button .fa-twitter {
+	color: #4099ff!important;
+}
+.icon-button .fa-facebook {
+	color: #3B5998!important;
+}
+.icon-button .fa-tumblr {
+	color: #34526f!important;
+}
+.icon-button .icon-google-plus {
+	color: #db5a3c!important;
+}
+.icon-button .fa-instagram {
+  color:#cc2366!important;  
+}
+.icon-button .fa-youtube {
+	color: #bb0000!important;
+}
+.icon-button .fa-pinterest {
+	color: #cb2027!important;
+}
+
+
+
+
+.icon-button:hover .fa-twitter,
+.icon-button:hover .fa-facebook,
+.icon-button:hover .icon-google-plus,
+.icon-button:hover .fa-tumblr,
+.icon-button:hover .fa-instagram,
+.icon-button:hover .fa-youtube,
+.icon-button:hover .fa-pinterest {
+	color: white!important;
+}
+
+.domain_form_inner .form-control-feedback {
+  z-index: 2;
+  display: block;
+  font-size: 21px;
+  width: 4%;
+  margin-top: 3px;
+  margin-left: 5px;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
 
 
 /*====================================================*/

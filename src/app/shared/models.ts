@@ -55,6 +55,7 @@ export interface EducationListModel {
   address: string;
   base64Image: string;
   seoUrl: string;
+  imageUrl: string;
 }
 
 export interface EducationFilterListModel {

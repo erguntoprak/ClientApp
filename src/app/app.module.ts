@@ -16,7 +16,7 @@ import { AcdcLoadingModule } from 'acdc-loading';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AppRoutingModule,
     PanelLayoutModule,

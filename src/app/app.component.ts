@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { AcdcLoadingService } from 'acdc-loading';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { AcdcLoadingService } from 'acdc-loading';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private _router: Router, private acdcLoadingService: AcdcLoadingService) {
+  constructor(private _router: Router, private acdcLoadingService: AcdcLoadingService,private metaTagService: Meta) {
 
   }
   ngOnInit() {

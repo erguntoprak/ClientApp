@@ -4,11 +4,11 @@ import { PanelLayoutComponent } from './layouts/panel-layout/panel-layout.compon
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
 import { AuthGuard } from './_services/auth-guard.service';
 import { Roles } from './shared/enums';
-const routerOptions: ExtraOptions = {
-  scrollPositionRestoration: 'disabled',
-  anchorScrolling: 'enabled',
-  scrollOffset: [0, 64],
-};
+// const routerOptions: ExtraOptions = {
+//   scrollPositionRestoration: 'disabled',
+//   anchorScrolling: 'enabled',
+//   scrollOffset: [0, 64],
+// };
 const routes: Routes = [
   {
     path: 'panel',
@@ -255,7 +255,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, routerOptions)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabled'
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

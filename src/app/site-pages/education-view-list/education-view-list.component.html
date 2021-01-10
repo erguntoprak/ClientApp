@@ -28,8 +28,7 @@
               <div class="sidebar__backdrop"></div>
               <div class="sidebar__body">
                 <div class="sidebar__header">
-                  <div class="sidebar__title">Filtreler</div><button class="sidebar__close"
-                                                                     type="button">
+                  <div class="sidebar__title">Filtreler</div><button class="sidebar__close" type="button">
                     <i class="ti-close"></i>
                   </button>
                 </div>
@@ -148,7 +147,7 @@
                               <a routerLink="/{{education.categorySeoUrl}}" class="post_date">
                                 <span>{{education.categoryName}}</span>
                               </a>
-                              <a [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]"><img class="img-fluid" src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg" alt="{{education.name}}"></a>
+                              <a [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]"><img class="img-fluid" src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg" alt="{{education.name}}" title="{{education.name}}"></a>
                               <div class="blog_content">
                                 <a [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]">
                                   <h5 class="blog_title">{{education.name}}<img src="assets/img/tick.png" class="tick-image" /></h5>

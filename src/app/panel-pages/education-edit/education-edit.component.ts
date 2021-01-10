@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { v4 as uuid } from 'uuid';
 import { BaseService } from '../../shared/base.service';
@@ -10,6 +10,7 @@ import { AcdcLoadingService } from 'acdc-loading';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import * as _ from 'lodash';
 import { environment } from 'src/environments/environment';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'se-education-edit',
@@ -47,7 +48,10 @@ export class EducationEditComponent implements OnInit, AfterViewInit {
   formData: FormData;
 
 
-  constructor(private formBuilder: FormBuilder, private baseService: BaseService, private router: Router, private toastr: ToastrService, private acdcLoadingService: AcdcLoadingService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
+  constructor(private formBuilder: FormBuilder, private baseService: BaseService, 
+    private router: Router, private toastr: ToastrService, 
+    private acdcLoadingService: AcdcLoadingService, private route: ActivatedRoute, 
+    private sanitizer: DomSanitizer, @Inject(PLATFORM_ID) private platformId: any) { }
 
   ngOnInit() {
     this.educationForm = this.formBuilder.group({
@@ -237,7 +241,9 @@ export class EducationEditComponent implements OnInit, AfterViewInit {
   //steps
   nextStepOneClick() {
     if (this.educationForm.controls.generalInformation.status == 'VALID' && this.urlImages.length > 0) {
-      window.scroll(0, 0);
+      if (isPlatformBrowser(this.platformId)) {
+        window.scroll(0, 0);
+      }
       this.nextStepOneControl = false;
       this.nextStepTwoControl = true;
     }
@@ -246,12 +252,16 @@ export class EducationEditComponent implements OnInit, AfterViewInit {
     }
   }
   nextStepTwoClick() {
-    window.scroll(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scroll(0, 0);
+    }
     this.nextStepTwoControl = false;
     this.nextStepThreeControl = true;
   }
   previousStepTwoClick() {
-    window.scroll(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scroll(0, 0);
+    }
     this.nextStepOneControl = true;
     this.nextStepTwoControl = false;
   }
@@ -260,17 +270,23 @@ export class EducationEditComponent implements OnInit, AfterViewInit {
       this.nextStepThreeValidation = true;
       return;
     }
-    window.scroll(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scroll(0, 0);
+    }
     this.nextStepThreeControl = false;
     this.nextStepFourControl = true;
   }
   previousStepThreeClick() {
-    window.scroll(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scroll(0, 0);
+    }
     this.nextStepTwoControl = true;
     this.nextStepThreeControl = false;
   }
   previousStepFourClick() {
-    window.scroll(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scroll(0, 0);
+    }
     this.nextStepThreeControl = true;
     this.nextStepFourControl = false;
   }

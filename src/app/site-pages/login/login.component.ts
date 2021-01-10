@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginModel } from '../../shared/models';
 import { AcdcLoadingService } from 'acdc-loading';
 import { ToastrService } from 'ngx-toastr';
+import { SeoService } from 'src/app/_services/seo.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -16,9 +18,13 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginModel: LoginModel;
   submitted = false;
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private acdcLoadingService: AcdcLoadingService, private toastr: ToastrService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, 
+    private acdcLoadingService: AcdcLoadingService, private toastr: ToastrService, private seoService: SeoService) { }
 
   ngOnInit() {
+    this.seoService.updateTitle("Giriş Yap - İzmir Eğitim Kurumları");
+    this.seoService.updateCanonicalUrl(environment.baseUrl + '/giris-yap');
+    this.seoService.updateMeta('robots','index, follow');
     this.acdcLoadingService.hideLoading();
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],

@@ -32,10 +32,11 @@
               Hakkında
             </h3>
             <hr />
-            <p class="f_400 l_height32" [innerHTML]="educationDetailModel.generalInformation.description"></p>
+            <p oncopy="return false;" class="f_400 l_height32" [innerHTML]="educationDetailModel.generalInformation.description"></p>
             <div class="f_widget social-widget text-right">
-              <share-buttons
-                [include]="['facebook','twitter','telegram','messenger','whatsapp','email']"></share-buttons>
+              <h3>Hemen Paylaş!</h3>
+              <share-buttons [include]="['facebook','twitter','telegram','messenger','whatsapp','email']">
+              </share-buttons>
             </div>
           </div>
         </div>
@@ -73,7 +74,7 @@
             <div class="col-lg-4 col-sm-6" *ngFor="let blog of educationDetailModel.blogList">
               <div class="blog_grid_item mb-30">
                 <div class="blog_img">
-                  <a routerLink="/blog/{{blog.seoUrl}}"><img [src]="blog.firstVisibleImageName" alt="blog.title"></a>
+                  <a routerLink="/blog/{{blog.seoUrl}}"><img [src]="blog.firstVisibleImageName" alt="blog.title" title="{{blog.title}}"></a>
                 </div>
                 <div class="blog_content">
                   <div class="entry_post_info">
@@ -93,40 +94,50 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-xs-12">
         <div class="job_info">
           <div class="info_item">
-            <i class="ti-location-pin"></i>
+            <i class="fa fa-map-marker"></i>
             <h6>İl / İlçe</h6>
             <p>{{educationDetailModel.addressInformation.cityName}} /
               {{educationDetailModel.addressInformation.districtName}}</p>
           </div>
           <div class="info_item">
-            <i class="ti-home"></i>
+            <i class="fa fa-home"></i>
             <h6>Adres</h6>
             <p>{{educationDetailModel.addressInformation.address}}</p>
           </div>
           <div class="info_item">
-            <i class="icon-call-end"></i>
+            <i class="fa fa-phone"></i>
             <h6>Telefon</h6>
             <p>0 {{educationDetailModel.contactInformation.phoneOne | mask: '000 000 00 00'}}</p>
             <p>0 {{educationDetailModel.contactInformation.phoneTwo | mask: '000 000 00 00'}}</p>
           </div>
           <div class="info_item">
-            <i class="ti-email"></i>
+            <i class="fa fa-envelope"></i>
             <h6>Email</h6>
             <p>{{educationDetailModel.contactInformation.educationEmail}}</p>
           </div>
           <div class="info_item">
-            <i class="icon-globe"></i>
+            <i class="fa fa-globe"></i>
             <h6>Kurumsal Web Sitesi</h6>
             <p>
-              <a target="_blank" href="{{educationDetailModel.contactInformation.educationWebsite}}">Siteye Git</a>
+              <a target="_blank" rel="nofollow" href="{{educationDetailModel.contactInformation.educationWebsite}}">Siteye Git</a>
             </p>
+          </div>
+          <div class="info_item">
+            <i class="fa fa-hashtag"></i>
+            <h6>Sosyal Medya Hesapları</h6>
+            <div class="social">
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.twitterAccountUrl != '' " href="{{educationDetailModel.socialInformation.twitterAccountUrl}}" class="icon-button twitter"><i class="fa fa-twitter"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.facebookAccountUrl != '' " href="{{educationDetailModel.socialInformation.facebookAccountUrl}}" class="icon-button facebook"><i class="fa fa-facebook"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.youtubeAccountUrl != '' " href="{{educationDetailModel.socialInformation.youtubeAccountUrl}}" class="icon-button youtube"><i class="fa fa-youtube"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.instagramAccountUrl != '' " href="{{educationDetailModel.socialInformation.instagramAccountUrl}}" class="icon-button instagram"><i class="fa fa-instagram"></i><span></span></a>
+            </div>
           </div>
         </div>
         <div class="contact-form">
-          <h6>Hemen Sizi Arıyalım</h6>
+          <h6>Hemen Sizi Arayalım</h6>
           <p>Fiyat bilgileri, erken kayıt avantajları, randevu talepleri ve sorularınız için formu ücretsiz doldurun.
             Eğitim kurumu sizi hemen arasın.</p>
           <div class="contact-form-input" *ngIf="contactFormDiv">
@@ -181,48 +192,147 @@
 
           </div>
         </div>
-        <div class="social">
-          <div class="row">
-            <div class="col-3 p-0" *ngIf="educationDetailModel.socialInformation.instagramAccountUrl != '' ">
-              <a target="_blank" href="{{educationDetailModel.socialInformation.instagramAccountUrl}}">
-                <div class="social-item">
-                  <div class="social-item-icon">
-                    <img src="assets/img/saas/icon/instagram.png" />
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-3 p-0" *ngIf="educationDetailModel.socialInformation.twitterAccountUrl != '' ">
-              <a target="_blank" href="{{educationDetailModel.socialInformation.twitterAccountUrl}}">
-                <div class="social-item">
-                  <div class="social-item-icon">
-                    <img src="assets/img/saas/icon/twitter.png" />
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-3 p-0" *ngIf="educationDetailModel.socialInformation.youtubeAccountUrl != '' ">
-              <a target="_blank" href="{{educationDetailModel.socialInformation.youtubeAccountUrl}}">
-                <div class="social-item">
-                  <div class="social-item-icon">
-                    <img src="assets/img/saas/icon/youtube.png" />
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-3 p-0" *ngIf="educationDetailModel.socialInformation.facebookAccountUrl != '' ">
-              <a target="_blank" href="{{educationDetailModel.socialInformation.facebookAccountUrl}}">
-                <div class="social-item">
-                  <div class="social-item-icon">
-                    <img src="assets/img/saas/icon/facebook.png" />
-                  </div>
-                </div>
-              </a>
+      </div>
+    </div>
+  </div>
+</section>
+<nav class="bottomNav z-1 text-blue">
+  <button data-toggle="modal" data-target="#generalInformation" class="wave" nav-id="1">
+    <i class="ti-clipboard"></i>
+    <span>Genel Bilgiler</span>
+  </button>
+  <button class="ripple" data-toggle="modal" data-target="#contactInformation" nav-id="2">
+    <i class="ti-email"></i>
+    <span>İletişime Geç</span>
+  </button>
+  <button class="wave" nav-id="3">
+    <i class="icon-call-end"></i>
+    <span><a *ngIf="educationDetailModel" href="tel:0{{educationDetailModel.contactInformation.phoneOne}}">Hemen Ara</a></span>
+  </button>
+</nav>
+
+<!-- Modal -->
+<div class="modal" id="generalInformation" tabindex="-1" role="dialog" aria-labelledby="generalInformationLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Genel Bilgiler</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="educationDetailModel" class="job_info">
+          <div class="info_item">
+            <i class="fa fa-map-marker"></i>
+            <h6>İl / İlçe</h6>
+            <p>{{educationDetailModel.addressInformation.cityName}} /
+              {{educationDetailModel.addressInformation.districtName}}</p>
+          </div>
+          <div class="info_item">
+            <i class="fa fa-home"></i>
+            <h6>Adres</h6>
+            <p>{{educationDetailModel.addressInformation.address}}</p>
+          </div>
+          <div class="info_item">
+            <i class="fa fa-phone"></i>
+            <h6>Telefon</h6>
+            <p>0 {{educationDetailModel.contactInformation.phoneOne | mask: '000 000 00 00'}}</p>
+            <p>0 {{educationDetailModel.contactInformation.phoneTwo | mask: '000 000 00 00'}}</p>
+          </div>
+          <div class="info_item">
+            <i class="fa fa-envelope"></i>
+            <h6>Email</h6>
+            <p>{{educationDetailModel.contactInformation.educationEmail}}</p>
+          </div>
+          <div class="info_item">
+            <i class="fa fa-globe"></i>
+            <h6>Kurumsal Web Sitesi</h6>
+            <p>
+              <a target="_blank" rel="nofollow" href="{{educationDetailModel.contactInformation.educationWebsite}}">Siteye Git</a>
+            </p>
+          </div>
+          <div class="info_item">
+            <i class="fa fa-hashtag"></i>
+            <h6>Sosyal Medya Hesapları</h6>
+            <div class="social">
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.twitterAccountUrl != '' " href="{{educationDetailModel.socialInformation.twitterAccountUrl}}" class="icon-button twitter"><i class="fa fa-twitter"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.facebookAccountUrl != '' " href="{{educationDetailModel.socialInformation.facebookAccountUrl}}" class="icon-button facebook"><i class="fa fa-facebook"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.youtubeAccountUrl != '' " href="{{educationDetailModel.socialInformation.youtubeAccountUrl}}" class="icon-button youtube"><i class="fa fa-youtube"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.instagramAccountUrl != '' " href="{{educationDetailModel.socialInformation.instagramAccountUrl}}" class="icon-button instagram"><i class="fa fa-instagram"></i><span></span></a>
             </div>
           </div>
         </div>
+        
       </div>
 
     </div>
   </div>
-</section>
+</div>
+
+<div class="modal" id="contactInformation" tabindex="-1" role="dialog" aria-labelledby="generalInformationLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Hemen Sizi Arayalım</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="contact-form">
+          <p>Fiyat bilgileri, erken kayıt avantajları, randevu talepleri ve sorularınız için formu ücretsiz doldurun.
+            Eğitim kurumu sizi hemen arasın.</p>
+          <div class="contact-form-input" *ngIf="contactFormDiv">
+            <form [formGroup]="contactForm" (ngSubmit)="onContactFormSubmit()">
+              <div class="form-group text_box">
+                <label for="nameSurname">Ad Soyad</label>
+                <input type="text" formControlName="nameSurname" />
+                <span class="not-valid"
+                  *ngIf="submitted && contactForm.get('nameSurname').errors != null ? contactForm.get('nameSurname').errors.required:false">
+                  Lütfen Ad Soyad giriniz.
+                </span>
+              </div>
+              <div class="form-group text_box">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="text" formControlName="email" />
+                <span class="not-valid"
+                  *ngIf="submitted && contactForm.get('email').errors != null ? contactForm.get('email').errors.required:false">
+                  Lütfen Email adresi giriniz.
+                </span>
+                <span class="not-valid"
+                  *ngIf="submitted && contactForm.get('email').errors != null ? contactForm.get('email').errors.email:false">
+                  Lütfen geçerli Email adresi giriniz.
+                </span>
+              </div>
+              <div class="form-group text_box">
+                <label for="exampleInputEmail1">Telefon</label>
+                <input type="text" formControlName="phoneNumber" mask="(000) 000 00 00" [validation]="true" />
+                <span class="not-valid"
+                  *ngIf="submitted && contactForm.get('phoneNumber').errors != null ? contactForm.get('phoneNumber').errors.required:false">
+                  Lütfen Telefon numarası giriniz.
+                </span>
+                <span class="not-valid"
+                  *ngIf="submitted && contactForm.get('phoneNumber').errors != null ? contactForm.get('phoneNumber').errors['Mask error']:false">
+                  Lütfen geçerli bir Telefon numarası giriniz.
+                </span>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn_three sign_btn_transparent mt_c20">İletişime Geç</button>
+              </div>
+            </form>
+          </div>
+          <div class="contact-from-success" *ngIf="contactFormSuccessMessage">
+            <div class="box_alert media box_success">
+              <div class="icon"><i class="icon-check"></i></div>
+              <div class="media-body">
+                <h5>Bilgileriniz Gönderildi.</h5>
+                <p>En yakın zamanda dönüş yapılacaktır. Teşekkürler</p>
+              </div>
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

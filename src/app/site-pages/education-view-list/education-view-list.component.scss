@@ -1,4 +1,8 @@
 ::ng-deep {
+  .mat-expansion-panel-content{
+    max-height: 200px;
+    overflow-y: auto!important;
+  }
   .ngx-pagination {
     text-align: center;
     font-size: 1rem;
@@ -53,6 +57,7 @@
   }
 
   .ng-dropdown-panel.ng-select-bottom {
+    z-index: 10000;
     margin-top: 5px !important;
   }
 }

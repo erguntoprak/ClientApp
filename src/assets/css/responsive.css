@@ -1658,8 +1658,6 @@
   }
 }
 
-
-
 @media (max-width:991px) {
   .lg-pr {
     padding-right: 15px;
@@ -2165,6 +2163,7 @@
   }
 
   .header_area .navbar-brand, .menu_toggle {
+    padding: 0;
     transition: all 0.2s linear;
   }
 
@@ -2356,7 +2355,7 @@
   }
 
   .menu_one, .header_area.navbar_fixed .menu_one, .menu_two, .menu_six, .menu_seven {
-    padding: 15px 0px;
+    padding: 15px 0px!important;
   }
 
   .w_menu .nav-item .nav-link {
@@ -3547,6 +3546,114 @@
 }
 
 @media (max-width:768px) {
+  .blog-view-list .blog_content{
+    height: 160px;
+  }
+  .blog_content a h3 {
+    line-height: 20px;
+    font-size: 15px;
+  }
+  .entry_post_info {
+    font: 400 12px/17px "Poppins", sans-serif;
+  }
+  .blog_list_item_two .post_date span{
+    font-size: 10px;
+  }
+  .blog_list_item_two .post_date {
+    top: 2px;
+    left: 2px;
+  }
+  .blog_grid_info .blog_list_item .post_date {
+    padding: 0px 5px;
+}
+  .btn_three {
+    font: 500 15px "Poppins", sans-serif;
+  }
+  .blog_grid_info .blog_list_item .blog_content span{
+    font-size: 15px;
+  }
+  .blog_grid_info .blog_list_item .blog_content .blog_title{
+    line-height: 20px;
+    font-size: 15px;
+  }
+  .blog_grid_info .blog_list_item {
+    height: 240px;
+    margin-bottom: 30px;
+  }
+  .menu_one .container-fluid {
+    padding-left: 35px!important;
+    padding-right: 35px!important;
+}
+  .district_dropdown {
+    border: 2px solid #919191;
+    border-radius: 3px;
+  }
+  .category_dropdown{
+    border: 2px solid #919191;
+    border-radius: 3px;
+    margin-left: 10px;
+  }
+  .f_social_icon{
+margin-bottom: 10px;
+  }
+  .new_footer_top .footer_bg .footer_bg_one {
+    -webkit-animation: myfirst 6s linear infinite;
+    animation: myfirst 6s linear infinite;
+  }
+  .new_footer_top .footer_bg .footer_bg_two{
+    -webkit-animation: myfirst 8s linear infinite;
+    animation: myfirst 8s linear infinite;
+  }
+  .search-result-list {
+    border-left: none;
+  }
+  .search-result-list .search-box {
+    font-size: 16px;
+  }
+  .domain_form_inner .form-control-feedback{
+    width: 10%;
+    font-size: 17px;
+    margin-top: 12px;
+    margin-left: none;
+  }
+  .col-lg-4 .job_info{
+    display: none;
+  }
+  .job_info{
+    padding: 0;
+  }
+  .contact-form-input{
+    padding: 0;
+  }
+  .contact-form{
+    margin-top: 0;
+  }
+  .col-lg-4 .contact-form{
+    display: none;
+  }
+  .bottomNav{
+    display: flex;
+  }
+  .education_details_area{
+    padding: 8px 0;
+  }
+  .breadcrumb-area{
+    margin-top: 86px;
+    display: block;
+  }
+  .breadcrumb-area .breadcrumb .item{
+    line-height: 27px;
+    font-size: 16px;
+  }
+  .breadcrumb-area h1{
+    font-size: 18px;
+  }
+  .breadcrumb-area h1::before{
+    content: none;
+  }
+  .breadcrumb-area .breadcrumb{
+    padding-left: 0px;
+  }
   .menu > .nav-item.submenu.mega_menu.mega_menu_two .mega_menu_inner .dropdown-menu .nav-item .item .img img {
     max-width: 100%;
     width: 64px;
@@ -3562,6 +3669,9 @@
     height: 40px;
   }
 
+.footer-logo{
+  margin-bottom: 20px;
+}
   .select-box-homepage {
     margin-right: 0px;
     margin-left: 0px;
@@ -3574,6 +3684,10 @@
 
   .domain_form_inner .domain_select {
     width: 100%;
+    border: 3px solid #f8636b;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   .domain_form_inner button {
@@ -3693,7 +3807,7 @@
   }
 
   .sec_pad, .prototype_service_info {
-    padding: 70px 0px;
+    padding: 100px 0px;
   }
 
   .sec_title.mb_70 {
@@ -4318,10 +4432,20 @@
     }
 
   .domain_form_inner input {
-    width: 100%;
-    margin: 10px;
+    width: 90%;
+    padding: 10px 10px 10px 0px;
+  }
+  .domain_form_inner{
+    padding: 10px 10px 10px 10px;
+    border-left: none;
   }
 
+  .domain_form_inner .search-bar {
+    width: 100%;
+    display: flex;
+    border: 3px solid #f8636b;
+    border-radius: 3px;
+}
   .h_map_area .hosting_title br {
     display: none;
   }
@@ -4604,6 +4728,10 @@
 }
 
 @media (max-width:650px) {
+  .breadcrumb-area{
+    margin-top: 82px;
+    display: block;
+  }
   #education-scroll-bar {
     display: none;
   }
@@ -5113,6 +5241,10 @@
 }
 
 @media (max-width:576px) {
+  .app-logo {
+    width: 185px;
+    height: 34px;
+}
   .app_featured_area {
     padding-top: 135px;
   }
@@ -5783,7 +5915,6 @@
 
   .new_footer_area .footer_bottom p {
     text-align: center;
-    margin-bottom: 0 !important;
   }
 
   .seo_features_img .round_circle, .seo_features_img.seo_features_img_two .round_circle {
@@ -6166,10 +6297,6 @@
     line-height: 52px;
   }
 
-  .blog_grid_info .blog_list_item {
-    height: 365px;
-  }
-
   .tracking_pr_item .tracking_content {
     padding: 30px;
   }
@@ -6180,6 +6307,10 @@
 }
 
 @media (max-height:420px) {
+  .app-logo {
+    width: 185px;
+    height: 34px;
+}
   .navbar-collapse {
     max-height: 310px;
   }
@@ -6190,6 +6321,10 @@
 }
 
 @media (max-width:480px) {
+  .app-logo {
+    width: 185px;
+    height: 34px;
+}
   .feedback_area_three {
     height: auto;
   }
@@ -6331,6 +6466,10 @@
 }
 
 @media (max-width:450px) {
+  .app-logo {
+    width: 185px;
+    height: 34px;
+}
   .price_tab {
     max-width: 100%;
     border-radius: 3px;
@@ -6631,6 +6770,29 @@
 }
 
 @media (max-width:400px) {
+  .blog-view-list .blog_content{
+    height: 140px;
+  }
+  .entry_post_info {
+    font: 400 10px/15px "Poppins", sans-serif;
+  }
+  .blog_content a h3 {
+    line-height: 16px;
+    font-size: 13px;
+  }
+  .blog_grid_info .blog_list_item .blog_content .blog_title {
+    line-height: 16px;
+    font-size: 13px;
+  }
+  .blog_grid_info .blog_list_item .blog_content span {
+    font-size: 13px;
+}
+.btn_three {
+  font: 500 13px "Poppins", sans-serif;
+}
+.blog_grid_info .blog_list_item {
+  height: 225px;
+}
   .header_area_six .header_top {
     display: none;
   }
@@ -6642,4 +6804,14 @@
   .payment_content_two .payment_img .payment_icon.icon_one, .payment_content_two .payment_img .payment_icon.icon_two, .payment_content_two .payment_img .payment_icon.icon_three, .payment_content_two .payment_img .payment_icon.icon_four, .payment_content_two .payment_img .payment_icon.icon_five, .payment_content_two .payment_img .payment_icon.icon_six {
     display: none;
   }
+  .app-logo {
+    width: 185px;
+    height: 34px;
+}
+}
+@media (max-width:320px){
+  .app-logo {
+    width: 185px;
+    height: 34px;
+}
 }

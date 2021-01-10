@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-site-layout',
@@ -7,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class SiteLayoutComponent implements OnInit {
 
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
 
   }
   ngOnInit(): void {
 
   }
   onActivate(event) {
-    window.scroll(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scroll(0, 0);
+    }
   }
 }

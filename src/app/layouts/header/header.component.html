@@ -27,7 +27,7 @@
                 <li class="nav-item">
                   <ul class="dropdown-menu scroll">
                     <li *ngFor="let category of categories;let i=index" class="nav-item">
-                      <a routerLink="/egitim-kurumlari/{{category.seoUrl}}" class="item">
+                      <a routerLink="/egitim-kurumlari/{{category.seoUrl}}" class="item" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null">
                         <span class="img">
                           <img src="assets/img/egitim-kurumu-{{i}}.png" alt="{{category.name}}">
                         </span>
@@ -42,16 +42,16 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/bloglar">Blog</a>
+            <a class="nav-link" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null" routerLink="/bloglar">Blog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/iletisim">İletişim</a>
+            <a class="nav-link" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null" routerLink="/iletisim">İletişim</a>
           </li>
           <li *ngIf="isUser" class="nav-item">
             <a class="nav-link" routerLink="/panel">Panel</a>
           </li>
         </ul>
-        <a class="btn_get btn_hover" routerLink="/giris-yap">Giriş Yap veya Kaydol</a>
+        <a class="btn_get btn_hover" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null" routerLink="/giris-yap">Giriş Yap veya Kaydol</a>
       </div>
     </div>
   </nav>

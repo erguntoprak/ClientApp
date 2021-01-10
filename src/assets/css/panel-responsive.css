@@ -9,7 +9,7 @@ html, body {
     margin-bottom: 25px;
   }
   .sidemenu-area {
-    z-index: 10;
+    z-index: 1000;
     left: -100%;
     opacity: 0;
     visibility: hidden;
@@ -97,7 +97,7 @@ html, body {
   .main-content.hide-sidemenu-area {
     padding-left: 15px;
   }
-  .breadcrumb-area {
+  #panel-main-content .breadcrumb-area {
     margin-bottom: 25px;
     padding: 15px;
     display: block;
@@ -109,13 +109,13 @@ html, body {
             box-shadow: unset;
     background-color: transparent;
   }
-  .breadcrumb-area h1 {
+  #panel-main-content .breadcrumb-area h1 {
     padding-right: 0;
   }
-  .breadcrumb-area h1::before {
+  #panel-main-content .breadcrumb-area h1::before {
     display: none;
   }
-  .breadcrumb-area .breadcrumb {
+  #panel-main-content .breadcrumb-area .breadcrumb {
     display: none;
   }
   .stats-card-box {

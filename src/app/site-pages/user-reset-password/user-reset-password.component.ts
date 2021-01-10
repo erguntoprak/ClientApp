@@ -4,6 +4,8 @@ import { AcdcLoadingService } from 'acdc-loading';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MustMatch } from '../../_helpers/must-match.validator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SeoService } from 'src/app/_services/seo.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'se-user-reset-password',
@@ -18,10 +20,15 @@ export class UserResetPasswordComponent implements OnInit {
   errorList: string[] = [];
 
 
-  constructor(private baseService: BaseService, private formBuilder: FormBuilder, private acdcLoadingService: AcdcLoadingService, private route: ActivatedRoute, private router: Router) {
+  constructor(private baseService: BaseService, private formBuilder: FormBuilder, 
+    private acdcLoadingService: AcdcLoadingService, private route: ActivatedRoute, private router: Router, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    this.seoService.updateTitle("Şifremi Sıfırla - İzmir Eğitim Kurumları");
+    this.seoService.updateCanonicalUrl(environment.baseUrl + '/sifre-sifirla');
+    this.seoService.updateMeta('robots','index, follow');
+
     this.userResetPasswordForm = this.formBuilder.group({
       userId: [null, Validators.required],
       password: [null, [Validators.required, Validators.minLength(6)]],

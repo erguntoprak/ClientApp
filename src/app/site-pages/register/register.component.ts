@@ -6,6 +6,8 @@ import { RegisterModel } from '../../shared/models';
 import { MustMatch } from '../../_helpers/must-match.validator';
 import { ToastrService } from 'ngx-toastr';
 import { AcdcLoadingService } from 'acdc-loading';
+import { SeoService } from 'src/app/_services/seo.service';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -21,9 +23,14 @@ export class RegisterComponent implements OnInit {
   registerModel: RegisterModel;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private toastr: ToastrService, private acdcLoadingService: AcdcLoadingService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, 
+    private toastr: ToastrService, private acdcLoadingService: AcdcLoadingService, private seoService: SeoService) { }
 
   ngOnInit() {
+    this.seoService.updateTitle("Kayıt Ol - İzmir Eğitim Kurumları");
+    this.seoService.updateCanonicalUrl(environment.baseUrl + '/kayit-ol');
+    this.seoService.updateMeta('robots','index, follow');
+
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       surname: ['',Validators.required],

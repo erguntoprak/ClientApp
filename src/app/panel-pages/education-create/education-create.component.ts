@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { BaseService } from '../../shared/base.service';
 import { KeyValueModel, CategoryAttributeListModel, CategoryModel, AddressModel, CityModel, DistrictModel, ImageModel } from '../../shared/models';
@@ -10,6 +10,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import * as _ from 'lodash';
 import { ActionPermissionService } from 'src/app/_services/action-permission.service';
 import { environment } from 'src/environments/environment';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'se-education-create',
@@ -44,7 +45,10 @@ export class EducationCreateComponent implements OnInit, AfterViewInit {
   fileCount: number = 0;
   formData: FormData;
 
-  constructor(public actionPermissionService: ActionPermissionService, private formBuilder: FormBuilder, private baseService: BaseService, private router: Router, private toastr: ToastrService, private acdcLoadingService: AcdcLoadingService, private sanitizer: DomSanitizer) { }
+  constructor(public actionPermissionService: ActionPermissionService, private formBuilder: FormBuilder,
+     private baseService: BaseService, private router: Router, 
+     private toastr: ToastrService, private acdcLoadingService: AcdcLoadingService, 
+     private sanitizer: DomSanitizer, @Inject(PLATFORM_ID) private platformId: any) { }
 
   ngOnInit() {
     this.educationForm = this.formBuilder.group({
@@ -173,7 +177,9 @@ export class EducationCreateComponent implements OnInit, AfterViewInit {
   //steps
   nextStepOneClick() {
     if (this.educationForm.controls.generalInformation.status == 'VALID' && this.fileCount>0) {
-      window.scroll(0, 0);
+      if (isPlatformBrowser(this.platformId)) {
+        window.scroll(0, 0);
+      }
       this.nextStepOneControl = false;
       this.nextStepTwoControl = true;
     }
@@ -182,12 +188,16 @@ export class EducationCreateComponent implements OnInit, AfterViewInit {
     }
   }
   nextStepTwoClick() {
-    window.scroll(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scroll(0, 0);
+    }
     this.nextStepTwoControl = false;
     this.nextStepThreeControl = true;
   }
   previousStepTwoClick() {
-    window.scroll(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scroll(0, 0);
+    }
     this.nextStepOneControl = true;
     this.nextStepTwoControl = false;
   }
@@ -196,17 +206,23 @@ export class EducationCreateComponent implements OnInit, AfterViewInit {
       this.nextStepThreeValidation = true;
       return;
     }
-    window.scroll(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scroll(0, 0);
+    }
     this.nextStepThreeControl = false;
     this.nextStepFourControl = true;
   }
   previousStepThreeClick() {
-    window.scroll(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scroll(0, 0);
+    }
     this.nextStepTwoControl = true;
     this.nextStepThreeControl = false;
   }
   previousStepFourClick() {
-    window.scroll(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      window.scroll(0, 0);
+    }
     this.nextStepThreeControl = true;
     this.nextStepFourControl = false;
   }

@@ -1632,7 +1632,7 @@ Main Content CSS
     padding-left: 85px;
   }
 
-.breadcrumb-area {
+  #panel-main-content .breadcrumb-area {
   -webkit-box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, 0.05);
   box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, 0.05);
   background-color: #ffffff;
@@ -1648,7 +1648,7 @@ Main Content CSS
   margin-bottom: 30px;
 }
 
-  .breadcrumb-area h1 {
+#panel-main-content .breadcrumb-area h1 {
     margin-bottom: 0;
     position: relative;
     color: #2a2a2a;
@@ -1657,7 +1657,7 @@ Main Content CSS
     font-weight: 700;
   }
 
-    .breadcrumb-area h1::before {
+  #panel-main-content .breadcrumb-area h1::before {
       content: '';
       position: absolute;
       right: 0;
@@ -1669,7 +1669,7 @@ Main Content CSS
       background: #cecece;
     }
 
-  .breadcrumb-area .breadcrumb {
+    #panel-main-content .breadcrumb-area .breadcrumb {
     background-color: transparent;
     border-radius: 0;
     margin-bottom: 0;
@@ -1679,7 +1679,7 @@ Main Content CSS
     padding-top: 0;
   }
 
-    .breadcrumb-area .breadcrumb .item {
+  #panel-main-content .breadcrumb-area .breadcrumb .item {
       color: #606060;
       margin-right: 25px;
       position: relative;
@@ -1687,20 +1687,20 @@ Main Content CSS
       font-family: "Nunito", sans-serif;
     }
 
-      .breadcrumb-area .breadcrumb .item a {
+    #panel-main-content .breadcrumb-area .breadcrumb .item a {
         display: inline-block;
         color: #e1000a;
       }
 
-        .breadcrumb-area .breadcrumb .item a:hover {
+      #panel-main-content .breadcrumb-area .breadcrumb .item a:hover {
           color: #e1000a;
         }
 
-        .breadcrumb-area .breadcrumb .item a i {
+        #panel-main-content .breadcrumb-area .breadcrumb .item a i {
           font-size: 18px;
         }
 
-      .breadcrumb-area .breadcrumb .item::before {
+        #panel-main-content .breadcrumb-area .breadcrumb .item::before {
         content: "\e9fa";
         position: absolute;
         right: -21px;
@@ -1714,11 +1714,11 @@ Main Content CSS
         font-size: 18px;
       }
 
-      .breadcrumb-area .breadcrumb .item:last-child {
+      #panel-main-content .breadcrumb-area .breadcrumb .item:last-child {
         margin-right: 0;
       }
 
-        .breadcrumb-area .breadcrumb .item:last-child::before {
+      #panel-main-content .breadcrumb-area .breadcrumb .item:last-child::before {
           display: none;
         }
 

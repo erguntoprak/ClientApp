@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { CategoryModel, DistrictModel, AddressModel, CategoryAttributeListModel, FilterModel, EducationListModel, EducationFilterListModel } from '../../shared/models';
 import { forkJoin } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { SeoService } from 'src/app/_services/seo.service';
 
 declare var $: any;
 
@@ -32,16 +33,49 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
   selectedCategoryId: number;
   educationViewItemCount = 12;
   pageNumber: number = 1;
+  searchText: string = '';
 
-  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, private route: ActivatedRoute, private router: Router) {
+  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService,
+    private route: ActivatedRoute, private router: Router, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    this.seoService.updateTitle("İzmir Eğitim Kurumları - Özel Anaokul, Özel Eğitim Kursu, Okul Öncesi Eğitim'e ait birçok eğitim kurumunu sizin için listeledik");
+    this.seoService.updateMeta('robots','index, follow');
+    this.seoService.updateMeta('keywords','uzaktan eğitim, izmir, eğitim, özel, ders, anaokul, eğitim kursu, kurs, milli eğitim, güncel eğitim, online eğitim, özel eğitim');
+    this.seoService.updateMeta('description',"İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
+
+    //Facebook Meta Tag
+    this.seoService.updateMeta('og:title','İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('og:type','website');
+    this.seoService.updateMeta('og:url',environment.baseUrl);
+    this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.png');
+    this.seoService.updateMeta('og:site_name','İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('og:description', "İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
+    this.seoService.updateMeta('og:locale','tr_TR');
+    this.seoService.updateMeta('og:image:secure_url',environment.apiUrl + '/images/izmir-egitim-kurumlari.png');
+
+    //Twitter Meta Tag
+    this.seoService.updateMeta('twitter:title', 'İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('twitter:description',"İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
+    this.seoService.updateMeta('twitter:image',environment.apiUrl + '/images/izmir-egitim-kurumlari.png');
+    this.seoService.updateMeta('twitter:card','summary_large_image');
+    this.seoService.updateMeta('twitter:url',environment.baseUrl);
+
+
     this.acdcLoadingService.showLoading();
     this.route.params.subscribe(params => {
       this.selectedCategoryUrl = params['category'];
     });
+    this.route.params.subscribe(params => {
+      this.selectedDistrictUrls = [];
+      this.getAllCallMethod();
+    });
     this.route.queryParams.subscribe(params => {
+
+      if (params['q']) {
+        this.searchText = params['q'];
+      }
       if (params['ilce']) {
         this.selectedDistrictUrls = params['ilce'].split(',');
       }
@@ -49,10 +83,9 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
         this.selectedAttributeIds = params['ozellik'].split(',').map(d => +d);
       }
     });
-    this.getAllCallMethod();
+
   }
   ngAfterViewInit(): void {
-
     $(document).ready(function () {
 
       function sidebar_offcanvas() {
@@ -105,39 +138,29 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
   }
   onChangeCategory(categoryId, index) {
     this.selectedCategoryUrl = this.categories.find(d => d.id == categoryId).seoUrl;
-    const queryParams: any = {};
-    if (this.selectedDistrictUrls.length > 0) {
-      queryParams.ilce = this.selectedDistrictUrls.join(',');
-    }
-    this.router.navigate(["egitim-kurumlari", this.selectedCategoryUrl], { queryParams: queryParams});
+    this.router.navigate(["egitim-kurumlari", this.selectedCategoryUrl]);
     this.selectedCategoryIndex = index;
-    this.selectedAttributeIds = [];
-    this.baseService.getAll<CategoryAttributeListModel[]>("Attribute/GetAllAttributeByEducationCategoryId?categoryId=" + categoryId).subscribe(categoryAttributeList => {
-      this.categoryAttributeList = categoryAttributeList;
-      this.acdcLoadingService.hideLoading();
-    });
-    this.baseService.getAll<EducationFilterListModel[]>(`Education/GetAllEducationListByFilter?categoryId=${categoryId}`).subscribe(educationList => {
-      this.educationFilterList = educationList;
-      this.acdcLoadingService.hideLoading();
-    });
   }
   getAllCallMethod() {
     this.acdcLoadingService.showLoading();
     let categoryListObservable = this.baseService.getAll<CategoryModel[]>("Category/GetAllCategoryList");
     let districtListObservable = this.baseService.getAll<AddressModel>("Address/GetCityNameDistricts");
+    this.selectedAttributeIds = [];
+    this.selectedDistrictIds = [];
 
     forkJoin([categoryListObservable, districtListObservable]).subscribe(results => {
       this.categories = results[0];
       this.selectedCategoryIndex = this.categories.findIndex(d => d.seoUrl == this.selectedCategoryUrl);
+      let selectedCategory = this.categories.find(d => d.seoUrl == this.selectedCategoryUrl);
+      this.seoService.updateTitle(selectedCategory.name  +' kategorisinde ki birçok eğitim kurumunu sizin için listeledik - İzmir Eğitim Kurumları');
+      this.seoService.updateCanonicalUrl(environment.baseUrl +'/egitim-kurumlari/'+ this.selectedCategoryUrl);
 
-      if (this.selectedCategoryUrl != undefined) {
-        this.selectedCategoryId = this.categories.find(d => d.seoUrl == this.selectedCategoryUrl).id;
-        this.filterModel = { categoryId: this.selectedCategoryId };
-        this.baseService.getAll<CategoryAttributeListModel[]>("Attribute/GetAllAttributeByEducationCategoryId?categoryId=" + this.selectedCategoryId).subscribe(categoryAttributeList => {
-          this.categoryAttributeList = categoryAttributeList;
-          this.acdcLoadingService.hideLoading();
-        });
-      }
+      this.selectedCategoryId = selectedCategory.id;
+      this.baseService.getAll<CategoryAttributeListModel[]>("Attribute/GetAllAttributeByEducationCategoryId?categoryId=" + this.selectedCategoryId).subscribe(categoryAttributeList => {
+        this.categoryAttributeList = categoryAttributeList;
+        this.acdcLoadingService.hideLoading();
+      });
+
       this.districtList = results[1].districtListModel;
       this.selectedDistrictUrls.forEach(u => {
         let district = this.districtList.find(d => d.seoUrl == u);
@@ -146,8 +169,7 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
           this.selectedDistrictIds = [...this.selectedDistrictIds];
         }
       });
-
-      this.baseService.getAll<EducationFilterListModel[]>(`Education/GetAllEducationListByFilter?categoryId=${this.selectedCategoryId}`).subscribe(educationList => {
+      this.baseService.getAll<EducationFilterListModel[]>(`Education/GetAllEducationListByFilter?categoryId=${this.selectedCategoryId}&searchText=${this.searchText}`).subscribe(educationList => {
         this.educationFilterList = educationList;
         this.acdcLoadingService.hideLoading();
       });
