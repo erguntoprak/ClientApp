@@ -14,7 +14,8 @@
   <div class="container">
     <div class="breadcrumb_content text-center">
       <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">İzmir Eğitim Kurumları</h1>
-      <p class="f_400 w_color f_size_20 l_height26">Eğitim kurumlarını sizin için listeledik. Hemen incelemeye başlayın!</p>
+      <p class="f_400 w_color f_size_20 l_height26">Eğitim kurumlarını sizin için listeledik. Hemen incelemeye başlayın!
+      </p>
     </div>
   </div>
 </section>
@@ -43,7 +44,9 @@
                             </mat-panel-title>
                           </mat-expansion-panel-header>
                           <ul class="filter-categories__list">
-                            <li *ngFor="let category of categories;let i = index" [class.active]="selectedCategoryIndex === i" (click)="onChangeCategory(category.id,i)" class="filter-categories__item filter-categories__item--parent">
+                            <li *ngFor="let category of categories;let i = index"
+                              [class.active]="selectedCategoryIndex === i" (click)="onChangeCategory(category.id,i)"
+                              class="filter-categories__item filter-categories__item--parent">
                               {{category.name}}
                             </li>
                           </ul>
@@ -56,13 +59,10 @@
                               Bölge
                             </mat-panel-title>
                           </mat-expansion-panel-header>
-                          <ng-select [items]="districtList" [appendTo]="'body'"
-                                     bindLabel="name"
-                                     notFoundText="İlçe bulunamadı."
-                                     [multiple]="true"
-                                     placeholder="İlçe Seçiniz"
-                                     (change)="onChangeDistrict()"
-                                     bindValue="id" [searchable]="true" [(ngModel)]="selectedDistrictIds">
+                          <ng-select [items]="districtList" [appendTo]="'body'" bindLabel="name"
+                            notFoundText="İlçe bulunamadı." [multiple]="true" placeholder="İlçe Seçiniz"
+                            (change)="onChangeDistrict()" bindValue="id" [searchable]="false"
+                            [(ngModel)]="selectedDistrictIds">
                           </ng-select>
                         </mat-expansion-panel>
                       </div>
@@ -73,10 +73,13 @@
                               {{ categoryAttribute.categoryName }}
                             </mat-panel-title>
                           </mat-expansion-panel-header>
-                          <label *ngFor="let attribute of categoryAttribute.attributeListModel" class="filter-list__item">
+                          <label *ngFor="let attribute of categoryAttribute.attributeListModel"
+                            class="filter-list__item">
                             <span class="input-check filter-list__input">
                               <span class="input-check__body">
-                                <se-checkbox [id]="attribute.id" [existingAttributeIds]="selectedAttributeIds" (change)="onChange(attribute.id, $event.target.checked)" [text]="attribute.name"></se-checkbox>
+                                <se-checkbox [id]="attribute.id" [existingAttributeIds]="selectedAttributeIds"
+                                  (change)="onChange(attribute.id, $event.target.checked)" [text]="attribute.name">
+                                </se-checkbox>
                               </span>
                             </span>
                           </label>
@@ -94,8 +97,7 @@
               <div class="products-view">
                 <div class="products-view__options view-options view-options--offcanvas--mobile">
                   <div class="view-options__body">
-                    <button type="button"
-                            class="view-options__filters-button filters-button">
+                    <button type="button" class="view-options__filters-button filters-button">
                       <span class="filters-button__icon">
                         <i class="ti-filter"></i>
                       </span><span class="filters-button__title">Filtreler</span>
@@ -104,7 +106,8 @@
 
                     <div class="view-options__select">
                       <label for="view-option-limit">Göster:</label>
-                      <select id="view-option-limit" (change)="changeeducationViewItemCount($event)" [(ngModel)]="educationViewItemCount" class="form-control form-control-sm">
+                      <select id="view-option-limit" (change)="changeeducationViewItemCount($event)"
+                        [(ngModel)]="educationViewItemCount" class="form-control form-control-sm">
                         <option value="12">12</option>
                         <option value="24">24</option>
                         <option value="48">48</option>
@@ -112,26 +115,29 @@
                     </div>
                   </div>
                   <div class="view-options__body view-options__body--filters">
-                    <div *ngIf="selectedDistrictIds.length>0 || selectedAttributeIds.length>0" class="view-options__label">SEÇİLİ FİLTRELER</div>
+                    <div *ngIf="selectedDistrictIds.length>0 || selectedAttributeIds.length>0"
+                      class="view-options__label">SEÇİLİ FİLTRELER</div>
                     <div *ngIf="selectedDistrictIds.length>0 || selectedAttributeIds.length>0" class="applied-filters">
                       <ul class="applied-filters__list">
                         <ng-container *ngIf="districtList.length>0">
                           <li *ngFor="let districtId of selectedDistrictIds" class="applied-filters__item">
                             <label class="applied-filters__button applied-filters__button--filter">
-                              {{getSelectedDistrictName(districtId)}} <i (click)="removeSelectedDistrictId(districtId)" class="ti-close cursor-element"></i>
+                              {{getSelectedDistrictName(districtId)}} <i (click)="removeSelectedDistrictId(districtId)"
+                                class="ti-close cursor-element"></i>
                             </label>
                           </li>
                         </ng-container>
                         <ng-container *ngIf="categoryAttributeList.length>0">
                           <li *ngFor="let attributeId of selectedAttributeIds" class="applied-filters__item">
                             <label class="applied-filters__button applied-filters__button--filter">
-                              {{getSelectedAttributeName(attributeId)}} <i (click)="removeSelectedAttributeId(attributeId)" class="ti-close cursor-element"></i>
+                              {{getSelectedAttributeName(attributeId)}} <i
+                                (click)="removeSelectedAttributeId(attributeId)" class="ti-close cursor-element"></i>
                             </label>
                           </li>
                         </ng-container>
                         <li class="applied-filters__item">
                           <button type="button" (click)="removeAllFilters()"
-                                  class="applied-filters__button applied-filters__button--clear">
+                            class="applied-filters__button applied-filters__button--clear">
                             Tümünü Temizle
                           </button>
                         </li>
@@ -142,20 +148,29 @@
                     <div class="row">
                       <div class="col-lg-12 blog_grid_info">
                         <div class="row">
-                          <div class="col-sm-6 col-md-6 col-lg-4 col-12" *ngFor="let education of educationFilterList | educationListFilter:selectedDistrictIds:selectedAttributeIds | paginate: { itemsPerPage: educationViewItemCount, currentPage: pageNumber }" #filteredItems>
+                          <div class="col-sm-6 col-md-4 col-lg-4 col-6"
+                            *ngFor="let education of educationFilterList | educationListFilter:selectedDistrictIds:selectedAttributeIds | paginate: { itemsPerPage: educationViewItemCount, currentPage: pageNumber }"
+                            #filteredItems>
                             <div class="blog_list_item blog_list_item_two">
                               <a routerLink="/{{education.categorySeoUrl}}" class="post_date">
                                 <span>{{education.categoryName}}</span>
                               </a>
-                              <a [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]"><img class="img-fluid" src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg" alt="{{education.name}}" title="{{education.name}}"></a>
+                              <a
+                                [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]"><img
+                                  class="img-fluid" src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg"
+                                  alt="{{education.name}}" title="{{education.name}}"></a>
                               <div class="blog_content">
-                                <a [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]">
-                                  <h5 class="blog_title">{{education.name}}<img src="assets/img/tick.png" class="tick-image" /></h5>
+                                <a
+                                  [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]">
+                                  <h5 class="blog_title">{{education.name}}<img src="assets/img/tick.png"
+                                      class="tick-image" /></h5>
                                 </a>
                                 <span>{{education.districtName}}</span>
                               </div>
                               <div class="item-action">
-                                <a class="btn_three sign_btn_transparent mt_c20" [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]">Hemen İncele <i class="ti-angle-double-right"></i> </a>
+                                <a class="btn_three sign_btn_transparent mt_c20"
+                                  [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]">Hemen
+                                  İncele <i class="ti-angle-double-right"></i> </a>
                               </div>
                             </div>
                           </div>
@@ -177,7 +192,6 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>

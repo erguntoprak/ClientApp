@@ -17,7 +17,6 @@ declare var $: any;
   styleUrls: ['./education-detail.component.scss']
 })
 export class EducationDetailComponent implements OnInit, AfterViewInit {
-
   educationDetailModel: any;
   imageObject: Array<object> = [];
   contactForm: FormGroup;
@@ -36,6 +35,7 @@ export class EducationDetailComponent implements OnInit, AfterViewInit {
      private acdcLoadingService: AcdcLoadingService, private sanitizer: DomSanitizer, private seoService: SeoService) {
 
   }
+ 
   ngOnInit(): void {
     this.seoService.updateMeta('robots','index, follow');
 
@@ -44,9 +44,6 @@ export class EducationDetailComponent implements OnInit, AfterViewInit {
       {
         width: '100%',
         height: '600px',
-        imageAutoPlay:true,
-        imageAutoPlayInterval: 5000,
-        imageAutoPlayPauseOnHover: true,
         imageInfinityMove:true,
         previewFullscreen:true,
         previewCloseOnClick:true,
@@ -54,6 +51,8 @@ export class EducationDetailComponent implements OnInit, AfterViewInit {
         previewKeyboardNavigation:true,
         previewZoom:true,
         previewZoomMax:5,
+        imageSwipe: true,
+        previewSwipe:true,
         previewRotate:true,
         imageAnimation: NgxGalleryAnimation.Slide,
         previewAnimation :false

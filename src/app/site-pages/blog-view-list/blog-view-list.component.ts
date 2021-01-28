@@ -31,16 +31,16 @@ export class BlogViewListComponent implements OnInit {
     this.seoService.updateMeta('og:title', 'Eğitim Yazıları ve Blogları - İzmir Eğitim Kurumları');
     this.seoService.updateMeta('og:type', 'website');
     this.seoService.updateMeta('og:url', environment.baseUrl + '/bloglar');
-    this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.png');
+    this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
     this.seoService.updateMeta('og:site_name', 'İzmir Eğitim Kurumları');
     this.seoService.updateMeta('og:description', "İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
     this.seoService.updateMeta('og:locale', 'tr_TR');
-    this.seoService.updateMeta('og:image:secure_url', environment.apiUrl + '/images/izmir-egitim-kurumlari.png');
+    this.seoService.updateMeta('og:image:secure_url', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
 
     //Twitter Meta Tag
     this.seoService.updateMeta('twitter:title', 'Eğitim Yazıları ve Blogları - İzmir Eğitim Kurumları');
     this.seoService.updateMeta('twitter:description', "İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
-    this.seoService.updateMeta('twitter:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.png');
+    this.seoService.updateMeta('twitter:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
     this.seoService.updateMeta('twitter:card', 'summary_large_image');
     this.seoService.updateMeta('twitter:url', environment.baseUrl + '/bloglar');
 

@@ -317,7 +317,6 @@ export class EducationCreateComponent implements OnInit, AfterViewInit {
         'subscript',
         'superscript',
         'justifyFull',
-        'heading',
         'fontName'],
       [
         'customClasses',

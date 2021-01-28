@@ -423,9 +423,12 @@ a, .btn, button {
   }
 
 .btn_get {
-  font: 500 14px/47px "Poppins", sans-serif;
+  font-size: 15px;
+  line-height: 47px;
+  font-weight: 500;
   color: #fe4c55;
   border-radius: 4px;
+  letter-spacing: 1px;
   -webkit-box-shadow: 0px 2px 24px 0px rgba(0, 11, 40, 0.1);
   box-shadow: 0px 20px 24px 0px rgba(0, 11, 40, 0.1);
   padding: 0px 23px;
@@ -490,11 +493,12 @@ a, .btn, button {
   }
 
 .btn_three {
-  font: 500 18px "Poppins", sans-serif;
+  font-size: 16px; 
+  font-weight: 500;
   color: #fff;
   background: #7444fd;
   border-radius: 3px;
-  padding: 6px;
+  padding: 8px;
   -webkit-transition: all 0.1s linear;
   -o-transition: all 0.1s linear;
   transition: all 0.1s linear;
@@ -14155,10 +14159,6 @@ p {
     opacity: 0.70;
   }
 
-.blog_img {
-  background: #000022;
-}
-
   .blog_img img {
     max-width: 100%;
   }
@@ -26362,27 +26362,34 @@ a .h_head:hover {
     font-size: 20px;
     font-weight: 500;
   }
-
-    .breadcrumb-area h1::before {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%);
-      height: 16px;
-      width: 1px;
-      background: #cecece;
-    }
-
+  .mobile-breadcrumb-area{
+    display: none;
+    box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, 0.05);
+    background-color: #ffffff;
+    padding: 0px 25px 20px 25px;
+  }
+  .mobile-breadcrumb-area h1 {
+    margin-bottom: 0;
+    position: relative;
+    color: #2a2a2a;
+    padding-right: 12px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+ 
   .breadcrumb-area .breadcrumb {
     background-color: transparent;
     border-radius: 0;
     margin-bottom: 0;
-    padding-left: 12px;
+    padding-left: 0;
     padding-right: 0;
     padding-bottom: 0;
     padding-top: 0;
+  }
+  .breadcrumb-area .breadcrumb .item a:after{
+    content: "\F105";
+    font: normal normal normal 1rem FontAwesome;
+    margin-left: .5rem;
   }
 
     .breadcrumb-area .breadcrumb .item {
@@ -26557,7 +26564,7 @@ a .h_head:hover {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #fbfbfd;
+  background-color: #f2f2f2;
   z-index:5;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(3, 115, 156, 0.1);
   box-shadow: 0px 0px 10px 0px rgba(3, 115, 156, 0.1);
@@ -26578,7 +26585,7 @@ a .h_head:hover {
   text-align: center;
   padding: 8px;
   border: none;
-  background-color: #fbfbfd;
+  background-color: #f2f2f2;
   color: #000;
   font-size: 16px;
 }
@@ -26746,7 +26753,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
   color: #aaa;
 }
 
-
+.modal-open {
+  overflow: auto!important;
+}
+.modal-backdrop {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: transparent;
+}
 
 /*====================================================*/
 /*# sourceMappingURL=style.css.map */

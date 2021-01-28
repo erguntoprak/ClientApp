@@ -40,7 +40,7 @@
       </div>
       <div formArrayName="blogItems" class="col-md-12">
         <div class="form-row group-box" [formGroupName]="i" *ngFor="let item of getBlogItemControl(); let i = index;">
-          <div class="form-group col-md-12" *ngIf="item.value.imageName !=''">
+          <div class="form-group col-md-12" *ngIf="item.value.imageName != null">
             <div class="blog-image">
               <span class="remove-button" (click)="removeImage(i)"><i class="bx bxs-no-entry"></i></span>
               <img width="300" height="500" [src]="blogItemList[i]" alt="Alternate Text" />
@@ -57,8 +57,32 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-primary next-button float-right" type="submit">Kaydet</button>
       <button class="btn btn-primary previous-button float-right" (click)="addBlogItem()" type="button">Blok Ekle</button>
+      <div class="clearfix"></div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label>Meta Başlık</label>
+          <input formControlName="metaTitle" class="form-control" placeholder="İzmir Eğitim Kurumlarının büyük ayrıcalıklarından faydalanmaya başlayın." />
+          <span class="not-valid" *ngIf="submitted && blogUpdateForm.get('metaTitle').errors != null ? blogUpdateForm.get('metaTitle').errors.required:false">
+            Lütfen meta başlık giriniz.
+          </span>
+        </div>
+        <div class="form-group col-md-12">
+          <label>Meta Açıklama</label>
+          <textarea formControlName="metaDescription" class="form-control" placeholder="Aradığın eğitimle ilgili eğitim kurumunu bulmak hiç bu kadar kolay olmamıştı. Eğitim kurumlarının detayları artık bir tık uzağında. Sizin için İzmir'deki bütün eğitim kurumlarını listeledik."></textarea>
+          <span class="not-valid" *ngIf="submitted && blogUpdateForm.get('metaDescription').errors != null ? blogUpdateForm.get('metaDescription').errors.required:false">
+            Lütfen meta açıklama giriniz.
+          </span>
+        </div>
+        <div class="form-group col-md-12">
+          <label>Meta Anahtar Kelime</label>
+          <input formControlName="metaKeywords" class="form-control" placeholder="uzaktan eğitim, izmir, eğitim, özel, ders, anaokul, eğitim kursu, kurs, milli eğitim, güncel eğitim, online eğitim, özel eğitim" />
+          <span class="not-valid" *ngIf="submitted && blogUpdateForm.get('metaKeywords').errors != null ? blogUpdateForm.get('metaKeywords').errors.required:false">
+            Lütfen meta anahtar kelime giriniz.
+          </span>
+        </div>
+      </div>
+      <button class="btn btn-primary next-button float-right" type="submit">Kaydet</button>
     </form>
   </div>
 </div>

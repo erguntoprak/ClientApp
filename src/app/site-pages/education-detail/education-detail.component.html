@@ -1,20 +1,44 @@
 <section *ngIf="educationDetailModel" style="background: #fbfbfd;">
   <div class="container">
     <div class="breadcrumb-area">
+      <div class="row">
+        <div class="col-12">
+          <ol class="breadcrumb">
+            <li class="item"><a routerLink="/">Anasayfa</a></li>
+            <li class="item"><a
+                routerLink="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
+            </li>
+            <li class="item"><a
+                [queryParams]="{ilce: educationDetailModel.addressInformation.districSeoUrl}"
+                routerLink="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.addressInformation.districtName}}</a>
+            </li>
+            <li class="item">{{educationDetailModel.generalInformation.educationName}}
+            </li>
+          </ol>
+        </div>
+        <div class="col-12">
+          <h1>{{educationDetailModel.generalInformation.educationName}}<img src="assets/img/tick.png"
+              class="tick-image">
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-breadcrumb-area">
+      <div class="breadcrumb">
+        <ol>
+          <li class="item"><a routerLink="/">Anasayfa</a></li>
+          <li class="item"><a
+              routerLink="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
+          </li>
+          <li class="item"><a [queryParams]="{ilce: educationDetailModel.addressInformation.districSeoUrl}"
+              routerLink="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.addressInformation.districtName}}</a>
+          </li>
+          <li class="item active"><span>{{educationDetailModel.generalInformation.educationName}}</span>
+          </li>
+        </ol>
+      </div>
       <h1>{{educationDetailModel.generalInformation.educationName}}<img src="assets/img/tick.png" class="tick-image">
       </h1>
-      <ol class="breadcrumb">
-        <li class="item"><a routerLink="/">Anasayfa</a></li>
-        <li class="item"><i class="ti-control-forward"></i><a
-            routerLink="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
-        </li>
-        <li class="item"><i class="ti-control-forward"></i><a
-            [queryParams]="{ilce: educationDetailModel.addressInformation.districSeoUrl}"
-            routerLink="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.addressInformation.districtName}}</a>
-        </li>
-        <li class="item"><i class="ti-control-forward"></i>{{educationDetailModel.generalInformation.educationName}}
-        </li>
-      </ol>
     </div>
   </div>
 </section>
@@ -32,7 +56,8 @@
               Hakkında
             </h3>
             <hr />
-            <p oncopy="return false;" class="f_400 l_height32" [innerHTML]="educationDetailModel.generalInformation.description"></p>
+            <p oncopy="return false;" class="f_400 l_height32"
+              [innerHTML]="educationDetailModel.generalInformation.description"></p>
             <div class="f_widget social-widget text-right">
               <h3>Hemen Paylaş!</h3>
               <share-buttons [include]="['facebook','twitter','telegram','messenger','whatsapp','email']">
@@ -68,13 +93,14 @@
         <div *ngIf="educationDetailModel.socialInformation.youtubeVideoTwo != undefined" class="iframe-container">
           <youtube-player videoId="{{educationDetailModel.socialInformation.youtubeVideoTwo}}"></youtube-player>
         </div>
-        <div *ngIf="educationDetailModel.blogList.length>0" class="details_content" id="contact-information">
+        <div *ngIf="educationDetailModel.blogList.length>0" class="details_content" id="blog_list">
           <h3 class="f_p f_size_22 f_500 t_color3 mb_20">Blog</h3>
           <div class="row">
             <div class="col-lg-4 col-sm-6" *ngFor="let blog of educationDetailModel.blogList">
               <div class="blog_grid_item mb-30">
                 <div class="blog_img">
-                  <a routerLink="/blog/{{blog.seoUrl}}"><img [src]="blog.firstVisibleImageName" alt="blog.title" title="{{blog.title}}"></a>
+                  <a routerLink="/blog/{{blog.seoUrl}}"><img [src]="blog.firstVisibleImageName" alt="blog.title"
+                      title="{{blog.title}}"></a>
                 </div>
                 <div class="blog_content">
                   <div class="entry_post_info">
@@ -82,7 +108,7 @@
                     <span>{{blog.createTime}}</span>
                   </div>
                   <a routerLink="/blog/{{blog.seoUrl}}">
-                    <h4 class="f_p f_size_16 f_500 t_color mb_20">{{blog.title}}</h4>
+                    <h3 class="f_p f_size_16 f_500 t_color mb_20">{{blog.title}}</h3>
                   </a>
                 </div>
               </div>
@@ -122,17 +148,27 @@
             <i class="fa fa-globe"></i>
             <h6>Kurumsal Web Sitesi</h6>
             <p>
-              <a target="_blank" rel="nofollow" href="{{educationDetailModel.contactInformation.educationWebsite}}">Siteye Git</a>
+              <a target="_blank" rel="nofollow"
+                href="{{educationDetailModel.contactInformation.educationWebsite}}">Siteye Git</a>
             </p>
           </div>
           <div class="info_item">
             <i class="fa fa-hashtag"></i>
             <h6>Sosyal Medya Hesapları</h6>
             <div class="social">
-              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.twitterAccountUrl != '' " href="{{educationDetailModel.socialInformation.twitterAccountUrl}}" class="icon-button twitter"><i class="fa fa-twitter"></i><span></span></a>
-              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.facebookAccountUrl != '' " href="{{educationDetailModel.socialInformation.facebookAccountUrl}}" class="icon-button facebook"><i class="fa fa-facebook"></i><span></span></a>
-              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.youtubeAccountUrl != '' " href="{{educationDetailModel.socialInformation.youtubeAccountUrl}}" class="icon-button youtube"><i class="fa fa-youtube"></i><span></span></a>
-              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.instagramAccountUrl != '' " href="{{educationDetailModel.socialInformation.instagramAccountUrl}}" class="icon-button instagram"><i class="fa fa-instagram"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.twitterAccountUrl != '' "
+                href="{{educationDetailModel.socialInformation.twitterAccountUrl}}" class="icon-button twitter"><i
+                  class="fa fa-twitter"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.facebookAccountUrl != '' "
+                href="{{educationDetailModel.socialInformation.facebookAccountUrl}}" class="icon-button facebook"><i
+                  class="fa fa-facebook"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.youtubeAccountUrl != '' "
+                href="{{educationDetailModel.socialInformation.youtubeAccountUrl}}" class="icon-button youtube"><i
+                  class="fa fa-youtube"></i><span></span></a>
+              <a target="_blank" rel="nofollow"
+                *ngIf="educationDetailModel.socialInformation.instagramAccountUrl != '' "
+                href="{{educationDetailModel.socialInformation.instagramAccountUrl}}" class="icon-button instagram"><i
+                  class="fa fa-instagram"></i><span></span></a>
             </div>
           </div>
         </div>
@@ -207,7 +243,8 @@
   </button>
   <button class="wave" nav-id="3">
     <i class="icon-call-end"></i>
-    <span><a *ngIf="educationDetailModel" href="tel:0{{educationDetailModel.contactInformation.phoneOne}}">Hemen Ara</a></span>
+    <span><a *ngIf="educationDetailModel" href="tel:0{{educationDetailModel.contactInformation.phoneOne}}">Hemen
+        Ara</a></span>
   </button>
 </nav>
 
@@ -248,21 +285,31 @@
             <i class="fa fa-globe"></i>
             <h6>Kurumsal Web Sitesi</h6>
             <p>
-              <a target="_blank" rel="nofollow" href="{{educationDetailModel.contactInformation.educationWebsite}}">Siteye Git</a>
+              <a target="_blank" rel="nofollow"
+                href="{{educationDetailModel.contactInformation.educationWebsite}}">Siteye Git</a>
             </p>
           </div>
           <div class="info_item">
             <i class="fa fa-hashtag"></i>
             <h6>Sosyal Medya Hesapları</h6>
             <div class="social">
-              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.twitterAccountUrl != '' " href="{{educationDetailModel.socialInformation.twitterAccountUrl}}" class="icon-button twitter"><i class="fa fa-twitter"></i><span></span></a>
-              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.facebookAccountUrl != '' " href="{{educationDetailModel.socialInformation.facebookAccountUrl}}" class="icon-button facebook"><i class="fa fa-facebook"></i><span></span></a>
-              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.youtubeAccountUrl != '' " href="{{educationDetailModel.socialInformation.youtubeAccountUrl}}" class="icon-button youtube"><i class="fa fa-youtube"></i><span></span></a>
-              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.instagramAccountUrl != '' " href="{{educationDetailModel.socialInformation.instagramAccountUrl}}" class="icon-button instagram"><i class="fa fa-instagram"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.twitterAccountUrl != '' "
+                href="{{educationDetailModel.socialInformation.twitterAccountUrl}}" class="icon-button twitter"><i
+                  class="fa fa-twitter"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.facebookAccountUrl != '' "
+                href="{{educationDetailModel.socialInformation.facebookAccountUrl}}" class="icon-button facebook"><i
+                  class="fa fa-facebook"></i><span></span></a>
+              <a target="_blank" rel="nofollow" *ngIf="educationDetailModel.socialInformation.youtubeAccountUrl != '' "
+                href="{{educationDetailModel.socialInformation.youtubeAccountUrl}}" class="icon-button youtube"><i
+                  class="fa fa-youtube"></i><span></span></a>
+              <a target="_blank" rel="nofollow"
+                *ngIf="educationDetailModel.socialInformation.instagramAccountUrl != '' "
+                href="{{educationDetailModel.socialInformation.instagramAccountUrl}}" class="icon-button instagram"><i
+                  class="fa fa-instagram"></i><span></span></a>
             </div>
           </div>
         </div>
-        
+
       </div>
 
     </div>

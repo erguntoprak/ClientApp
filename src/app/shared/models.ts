@@ -158,6 +158,9 @@ export interface BlogDetailModel {
   author: string;
   firstVisibleImageName: string;
   createTime: string;
+  metaDescription: string;
+  metaKeywords: string;
+  metaTitle: string;
   blogItems: BlogItemModel[];
 }
 export interface BlogItemModel {

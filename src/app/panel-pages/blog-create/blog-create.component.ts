@@ -25,9 +25,12 @@ export class BlogCreateComponent implements OnInit {
   }
   ngOnInit(): void {
     this.blogInsertForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      firstVisibleImageName : ['',Validators.required],
-      blogItems: this.formBuilder.array([this.createBlogItem()])
+      title: [null, Validators.required],
+      firstVisibleImageName : [null, Validators.required],
+      blogItems: this.formBuilder.array([this.createBlogItem()]),
+      metaKeywords: [null, Validators.required],
+      metaDescription: [null, Validators.required],
+      metaTitle: [null, Validators.required]
     });
   }
   onInsertBlogSubmit() {
@@ -45,8 +48,8 @@ export class BlogCreateComponent implements OnInit {
 
   createBlogItem() {
     return this.formBuilder.group({
-      imageName: [''],
-      description: ['']
+      imageName: [null],
+      description: [null]
     });
   }
   addBlogItem(): void {
@@ -158,7 +161,6 @@ export class BlogCreateComponent implements OnInit {
         'subscript',
         'superscript',
         'justifyFull',
-        'heading',
         'fontName'],
       [
         'customClasses',

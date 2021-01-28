@@ -43,9 +43,12 @@ export class BlogEditComponent implements OnInit {
 
     this.blogUpdateForm = this.formBuilder.group({
       id:[-1,Validators.required],
-      title: ['', Validators.required],
-      firstVisibleImageName: ['', Validators.required],
-      blogItems: this.formBuilder.array([])
+      title: [null, Validators.required],
+      firstVisibleImageName: [null, Validators.required],
+      blogItems: this.formBuilder.array([]),
+      metaKeywords: [null, Validators.required],
+      metaDescription: [null, Validators.required],
+      metaTitle: [null, Validators.required]
     });
   }
   onUpdateBlogSubmit() {
@@ -66,8 +69,8 @@ export class BlogEditComponent implements OnInit {
   }
   createBlogItem() {
     return this.formBuilder.group({
-      imageName: [''],
-      description: ['']
+      imageName: [null],
+      description: [null]
     });
   }
   addBlogItem(): void {
@@ -106,7 +109,7 @@ export class BlogEditComponent implements OnInit {
   }
   removeImage(i) {
     (<FormGroup>(<FormArray>this.blogUpdateForm.controls.blogItems).controls[i]).patchValue({
-      imageName: ''
+      imageName: null
     });
   }
   editorConfig: AngularEditorConfig = {
@@ -150,7 +153,6 @@ export class BlogEditComponent implements OnInit {
         'subscript',
         'superscript',
         'justifyFull',
-        'heading',
         'fontName'],
       [
         'customClasses',

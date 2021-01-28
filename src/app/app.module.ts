@@ -1,5 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { Injectable, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,7 +10,15 @@ import { SiteLayoutModule } from './layouts/site-layout/site-layout.module';
 import { AuthInterceptorService } from './_services/auth-interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AcdcLoadingModule } from 'acdc-loading';
+import { HammerModule} from '@angular/platform-browser';
+import * as Hammer from '@egjs/hammerjs'; 
 
+@Injectable() 
+export class MyHammerConfig extends HammerGestureConfig { 
+  overrides = <any> { 
+    swipe: { direction: Hammer.DIRECTION_ALL }, 
+  }; 
+} 
 @NgModule({
   declarations: [
     AppComponent
@@ -18,6 +26,7 @@ import { AcdcLoadingModule } from 'acdc-loading';
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
+    HammerModule,
     AppRoutingModule,
     PanelLayoutModule,
     SiteLayoutModule,
@@ -31,6 +40,10 @@ import { AcdcLoadingModule } from 'acdc-loading';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
+    },
+    { 
+      provide: HAMMER_GESTURE_CONFIG, 
+      useClass: MyHammerConfig,
     }],
   bootstrap: [AppComponent]
 })

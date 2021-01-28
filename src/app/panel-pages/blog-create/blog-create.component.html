@@ -63,8 +63,32 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-primary next-button float-right" type="submit">Kaydet</button>
       <button class="btn btn-primary previous-button float-right" (click)="addBlogItem()" type="button">Blok Ekle</button>
+      <div class="clearfix"></div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label>Meta Başlık</label>
+          <input formControlName="metaTitle" class="form-control" placeholder="İzmir Eğitim Kurumlarının büyük ayrıcalıklarından faydalanmaya başlayın." />
+          <span class="not-valid" *ngIf="submitted && blogInsertForm.get('metaTitle').errors != null ? blogInsertForm.get('metaTitle').errors.required:false">
+            Lütfen meta başlık giriniz.
+          </span>
+        </div>
+        <div class="form-group col-md-12">
+          <label>Meta Açıklama</label>
+          <textarea formControlName="metaDescription" class="form-control" placeholder="Aradığın eğitimle ilgili eğitim kurumunu bulmak hiç bu kadar kolay olmamıştı. Eğitim kurumlarının detayları artık bir tık uzağında. Sizin için İzmir'deki bütün eğitim kurumlarını listeledik."></textarea>
+          <span class="not-valid" *ngIf="submitted && blogInsertForm.get('metaDescription').errors != null ? blogInsertForm.get('metaDescription').errors.required:false">
+            Lütfen meta açıklama giriniz.
+          </span>
+        </div>
+        <div class="form-group col-md-12">
+          <label>Meta Anahtar Kelime</label>
+          <input formControlName="metaKeywords" class="form-control" placeholder="uzaktan eğitim, izmir, eğitim, özel, ders, anaokul, eğitim kursu, kurs, milli eğitim, güncel eğitim, online eğitim, özel eğitim" />
+          <span class="not-valid" *ngIf="submitted && blogInsertForm.get('metaKeywords').errors != null ? blogInsertForm.get('metaKeywords').errors.required:false">
+            Lütfen meta anahtar kelime giriniz.
+          </span>
+        </div>
+      </div>
+      <button class="btn btn-primary next-button float-right" type="submit">Kaydet</button>
     </form>
   </div>
 </div>

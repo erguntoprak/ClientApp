@@ -45,17 +45,21 @@ export class AuthInterceptorService implements HttpInterceptor {
                 });
                 this.acdcLoadingService.hideLoading();
                 break;
-              case 404:      
-                this.router.navigateByUrl("/sayfa-bulunamadi",{ skipLocationChange: true });
+              case 404:
+                this.router.navigateByUrl("/sayfa-bulunamadi", { skipLocationChange: true });
                 this.acdcLoadingService.hideLoading();
                 break;
-              case 401:      
+              case 401:
                 localStorage.removeItem('currentUser');
                 this.router.navigateByUrl("/giris-yap");
                 this.acdcLoadingService.hideLoading();
                 break;
-              case 403:     
-                this.router.navigateByUrl("/giris-yap");
+              case 403:
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Başarısız!',
+                  text: error.error
+                });
                 this.acdcLoadingService.hideLoading();
                 break;
               case 500:
