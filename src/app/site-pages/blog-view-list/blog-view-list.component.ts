@@ -14,17 +14,20 @@ export class BlogViewListComponent implements OnInit {
 
   apiUrl = environment.apiUrl;
   blogListModel: BlogListModel;
-
-  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService,
+  targetValue:string = "_blank";
+  constructor(private baseService: BaseService,
     private route: ActivatedRoute, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      this.targetValue = "_self";
+    }
     this.seoService.updateTitle('Eğitim Yazıları ve Blogları - İzmir Eğitim Kurumları');
     this.seoService.updateCanonicalUrl(environment.baseUrl + '/bloglar');
 
     this.seoService.updateMeta('robots', 'index, follow');
-    this.seoService.updateMeta('keywords', 'uzaktan eğitim, izmir, eğitim, özel, ders, anaokul, eğitim kursu, kurs, milli eğitim, güncel eğitim, online eğitim, özel eğitim');
+    this.seoService.updateMeta('keywords', 'eğitim kurumlari');
     this.seoService.updateMeta('description', "İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
 
     //Facebook Meta Tag
@@ -46,18 +49,15 @@ export class BlogViewListComponent implements OnInit {
 
 
     this.route.params.subscribe(params => {
-      this.acdcLoadingService.showLoading();
       let userName = params['userName'];
       if (userName != undefined) {
         this.baseService.get<BlogListModel>("Blog/GetAllBlogListByUserName?userName=", userName).subscribe(data => {
           this.blogListModel = data;
-          this.acdcLoadingService.hideLoading();
         });
       }
       else {
         this.baseService.getAll<BlogListModel>("Blog/GetAllBlogViewList").subscribe(data => {
           this.blogListModel = data;
-          this.acdcLoadingService.hideLoading();
         });
       }
     });

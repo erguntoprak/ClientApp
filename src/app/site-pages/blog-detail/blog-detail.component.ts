@@ -15,14 +15,13 @@ export class BlogDetailComponent implements OnInit {
   apiUrl = environment.apiUrl;
   blogDetailModel: BlogDetailModel;
 
-  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService,
+  constructor(private baseService: BaseService,
     private route: ActivatedRoute, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
     this.seoService.updateMeta('robots', 'index, follow');
     this.route.params.subscribe(params => {
-      this.acdcLoadingService.showLoading();
       this.baseService.get<BlogDetailModel>("Blog/GetBlogDetailBySeoUrl?seoUrl=", params['name']).subscribe(data => {
         this.blogDetailModel = data;
         this.seoService.updateTitle(this.blogDetailModel.metaTitle + ' - İzmir Eğitim Kurumları');
@@ -46,7 +45,6 @@ export class BlogDetailComponent implements OnInit {
         this.seoService.updateMeta('twitter:image',  `${environment.apiUrl}/images/blog/${this.blogDetailModel.firstVisibleImageName}_300x180.jpg`);
         this.seoService.updateMeta('twitter:card', 'summary_large_image');
         this.seoService.updateMeta('twitter:url', environment.baseUrl + '/blog/' + params['name']);
-        this.acdcLoadingService.hideLoading();
       })
     });
   }

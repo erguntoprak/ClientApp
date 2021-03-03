@@ -1,15 +1,15 @@
-<section class="sec_pad blog-view-list" *ngIf="blogListModel">
+<section class="sec_pad blog-view-list">
   <div class="container">
     <div class="row">
       <div class="col-sm-6 col-md-6 col-lg-3 col-6" *ngFor='let blog of blogListModel'>
         <div class="blog_list_item">
-          <a routerLink="/blog/{{blog.seoUrl}}"><img class="img-fluid" src="{{apiUrl}}/images/blog/{{blog.firstVisibleImageName}}_300x180.jpg" alt="{{blog.title}}" title="{{blog.title}}"></a>
+          <a target="{{targetValue}}" href="/blog/{{blog.seoUrl}}"><img class="img-fluid" src="{{apiUrl}}/images/blog/{{blog.firstVisibleImageName}}_300x180.jpg" alt="{{blog.title}}" title="{{blog.title}}"></a>
           <div class="blog_content">
             <div class="entry_post_info">
-              <a routerLink="/bloglar/{{blog.userName}}">{{blog.userName}}</a>
+              <a target="{{targetValue}}" href="/bloglar/{{blog.userName}}">{{blog.userName}}</a>
               <span>{{blog.createTime}}</span>
             </div>
-            <a routerLink="/blog/{{blog.seoUrl}}">
+            <a target="{{targetValue}}" href="/blog/{{blog.seoUrl}}">
               <h3 class="f_p f_size_18 f_500 t_color mb_20">{{blog.title}}</h3>
             </a>
           </div>

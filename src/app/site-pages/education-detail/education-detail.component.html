@@ -1,12 +1,13 @@
-<section *ngIf="educationDetailModel" style="background: #fbfbfd;">
+<div *ngIf="educationDetailModel">
+<section style="background: #fbfbfd;">
   <div class="container">
     <div class="breadcrumb-area">
       <div class="row">
         <div class="col-12">
           <ol class="breadcrumb">
-            <li class="item"><a routerLink="/">Anasayfa</a></li>
+            <li class="item"><a href="/">Anasayfa</a></li>
             <li class="item"><a
-                routerLink="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
+              href="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
             </li>
             <li class="item"><a
                 [queryParams]="{ilce: educationDetailModel.addressInformation.districSeoUrl}"
@@ -26,9 +27,9 @@
     <div class="mobile-breadcrumb-area">
       <div class="breadcrumb">
         <ol>
-          <li class="item"><a routerLink="/">Anasayfa</a></li>
+          <li class="item"><a href="/">Anasayfa</a></li>
           <li class="item"><a
-              routerLink="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
+            href="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
           </li>
           <li class="item"><a [queryParams]="{ilce: educationDetailModel.addressInformation.districSeoUrl}"
               routerLink="/egitim-kurumlari/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.addressInformation.districtName}}</a>
@@ -42,7 +43,7 @@
     </div>
   </div>
 </section>
-<section class="education_details_area" *ngIf="educationDetailModel">
+<section class="education_details_area">
   <div class="container">
     <div class="row">
 
@@ -56,10 +57,10 @@
               Hakkında
             </h3>
             <hr />
-            <p oncopy="return false;" class="f_400 l_height32"
+            <p oncopy="return false;" class="f_400 l_height26"
               [innerHTML]="educationDetailModel.generalInformation.description"></p>
             <div class="f_widget social-widget text-right">
-              <h3>Hemen Paylaş!</h3>
+              <h3><strong>Hemen Paylaş!</strong></h3>
               <share-buttons [include]="['facebook','twitter','telegram','messenger','whatsapp','email']">
               </share-buttons>
             </div>
@@ -70,7 +71,7 @@
           <div class="mb_20" *ngFor="let attribute of educationDetailModel.categoryAttributeList">
             <h3 class="f_p f_size_22 f_500 t_color3 mb_20">{{attribute.categoryName}}</h3>
             <ul class="list-unstyled mb-0">
-              <li *ngFor="let attribute of attribute.attributeListModel"><i class="ti-check"></i>{{attribute.name}}</li>
+              <li *ngFor="let attribute of attribute.attributeListModel"><i class="fa fa-check"></i>{{attribute.name}}</li>
             </ul>
           </div>
         </div>
@@ -81,7 +82,7 @@
           <h3 class="f_p f_size_22 f_500 t_color3 mb-30">Sıkça Sorulan Sorular</h3>
           <div class="stratup_service_info">
             <div class="startup_service_item" *ngFor="let questionModel of educationDetailModel.questions">
-              <div class="icon icon_two"><i class="icon-question"></i></div>
+              <div class="icon icon_two"><img src="assets/img/question-icon.png"></div>
               <h3>{{questionModel.question}}</h3>
               <p>{{questionModel.answer}}</p>
             </div>
@@ -99,23 +100,23 @@
             <div class="col-lg-4 col-sm-6" *ngFor="let blog of educationDetailModel.blogList">
               <div class="blog_grid_item mb-30">
                 <div class="blog_img">
-                  <a routerLink="/blog/{{blog.seoUrl}}"><img [src]="blog.firstVisibleImageName" alt="blog.title"
+                  <a href="/blog/{{blog.seoUrl}}"><img [src]="blog.firstVisibleImageName" alt="blog.title"
                       title="{{blog.title}}"></a>
                 </div>
                 <div class="blog_content">
                   <div class="entry_post_info">
-                    <a routerLink="/bloglar/{{blog.userName}}">{{blog.userName}}</a>
+                    <a href="/bloglar/{{blog.userName}}">{{blog.userName}}</a>
                     <span>{{blog.createTime}}</span>
                   </div>
-                  <a routerLink="/blog/{{blog.seoUrl}}">
+                  <a href="/blog/{{blog.seoUrl}}">
                     <h3 class="f_p f_size_16 f_500 t_color mb_20">{{blog.title}}</h3>
                   </a>
                 </div>
               </div>
             </div>
             <div class="col-lg-12">
-              <a routerLink="/bloglar/{{educationDetailModel.blogList[0].userName}}" class="learn_btn_two">Diğer ilgili
-                bloglara göz at<i class="ti-arrow-right"></i></a>
+              <a href="/bloglar/{{educationDetailModel.blogList[0].userName}}" class="learn_btn_two">Diğer ilgili
+                bloglara göz at<i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
@@ -234,15 +235,15 @@
 </section>
 <nav class="bottomNav z-1 text-blue">
   <button data-toggle="modal" data-target="#generalInformation" class="wave" nav-id="1">
-    <i class="ti-clipboard"></i>
+    <i class="fa fa-bookmark"></i>
     <span>Genel Bilgiler</span>
   </button>
   <button class="ripple" data-toggle="modal" data-target="#contactInformation" nav-id="2">
-    <i class="ti-email"></i>
+    <i class="fa fa-envelope"></i>
     <span>İletişime Geç</span>
   </button>
   <button class="wave" nav-id="3">
-    <i class="icon-call-end"></i>
+    <i class="fa fa-phone"></i>
     <span><a *ngIf="educationDetailModel" href="tel:0{{educationDetailModel.contactInformation.phoneOne}}">Hemen
         Ara</a></span>
   </button>
@@ -316,7 +317,7 @@
   </div>
 </div>
 
-<div class="modal" id="contactInformation" tabindex="-1" role="dialog" aria-labelledby="generalInformationLabel"
+<div class="modal" id="contactInformation" tabindex="-1" role="dialog" aria-labelledby="contactInformationLabel"
   aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -382,4 +383,11 @@
       </div>
     </div>
   </div>
+</div>
+
+<div>
+  <a rel="nofollow" href="https://api.whatsapp.com/send?phone=90{{educationDetailModel.contactInformation.phoneTwo}}" class="whatsapp-chat" target="_blank">
+    <i class="fa fa-whatsapp"></i>
+    </a>
+</div>
 </div>

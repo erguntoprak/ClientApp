@@ -41,7 +41,6 @@ Table of Content:
 =====================================================================*/
 /*====================================================*/
 /*=== fonts ====*/
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900");
 /*===== color =====*/
 /*====================================================*/
 /*====================================================*/
@@ -203,7 +202,9 @@ a, .btn, button {
 .l_height28 {
   line-height: 28px;
 }
-
+.l_height26 {
+  line-height: 26px;
+}
 .f_p {
   font-family: "Poppins", sans-serif;
 }
@@ -7896,26 +7897,22 @@ a, .btn, button {
 
   .stratup_service_info .startup_service_item {
     position: relative;
-    padding-left: 75px;
+    padding-left: 65px;
   }
 
     .stratup_service_info .startup_service_item .icon {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       text-align: center;
       font-size: 24px;
       color: #fff;
-      background: #6fadfa;
-      line-height: 65px;
+      line-height: 50px;
       position: absolute;
-      left: 0;
-      top: -5px;
+      left: 10px;
+      top: -11px;
     }
 
-      .stratup_service_info .startup_service_item .icon.icon_two {
-        background: #f3af4e;
-      }
 
       .stratup_service_info .startup_service_item .icon.icon_three {
         background: #fa6fd1;
@@ -7926,11 +7923,12 @@ a, .btn, button {
       }
 
     .stratup_service_info .startup_service_item h3 {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
       font-family: "Poppins", sans-serif;
       color: #051441;
-      margin-bottom: 2px;
+      line-height: 21px;
+      margin-bottom: 0px;
     }
 
     .stratup_service_info .startup_service_item p {
@@ -7940,7 +7938,7 @@ a, .btn, button {
     }
 
     .stratup_service_info .startup_service_item + .startup_service_item {
-      margin-top: 40px;
+      margin-top: 20px;
     }
 
 /*============= stratup_service_area css =============*/
@@ -11692,7 +11690,7 @@ a, .btn, button {
   margin-top: 20px;
   border-radius: 6px;
   background-color: #fff;
-  padding: 40px 25px;
+  padding: 20px 5px 15px 15px;
 }
 
   .details_content .btn_three:hover {
@@ -14837,11 +14835,25 @@ p {
     padding-right: 0px;
     padding-bottom: 0px;
   }
-
+  .blog_list_item_two h1 {
+    font: 500 26px/32px Roboto,Helvetica Neue,sans-serif;
+  }
+  .blog_list_item_two h2 {
+    font: 500 22px/32px Roboto,Helvetica Neue,sans-serif;
+  }
+  .blog_content a h3{
+    font: 400 17px/20px Poppins,sans-serif;
+  }
+  .blog_area_two{
+    background: #fff!important;
+  }
     .blog_list_item_two .blog_content p {
-      font-size: 20px;
-      margin-bottom: 25px;
-      line-height: 32px;
+      font-size: 18px;
+      margin-bottom: 15px;
+      line-height: 26px;
+      letter-spacing: 0.02em;
+      color: rgba(41, 41, 41, 1);
+      font-weight: 400;
     }
 
     .blog_list_item_two .blog_content .post-info-bottom {
@@ -18186,16 +18198,6 @@ input[type="text"] {
     -o-transition: all 0.3s linear;
     transition: all 0.3s linear;
   }
-
-    .domain_form_inner button:before {
-      content: "\55";
-      font-family: eleganticons;
-      -webkit-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-      transform: rotate(-90deg);
-      display: inline-block;
-      margin-right: 10px;
-    }
 
 .domain_price {
   display: -webkit-inline-box;
@@ -25140,8 +25142,8 @@ a .h_head:hover {
 }
 
   .new_footer_area .footer_bottom {
-    padding-top: 5px;
-    padding-bottom: 50px;
+    padding-top: 10px;
+    border-bottom: 1px solid #e9ecf3;
   }
 
     .new_footer_area .footer_bottom p {
@@ -25258,7 +25260,7 @@ a .h_head:hover {
   display:block;
 }
 
-.ti-check {
+.fa-check {
   color: #1fc61a;
   font-weight: 800;
   font-size: 20px;
@@ -25269,14 +25271,6 @@ a .h_head:hover {
   padding-right: 0;
 }
 
-.list-unstyled li {
-  color: #141111;
-  font-size: 16px;
-  margin-bottom: 5px;
-  font-weight: 500;
-  display: inline-block;
-  width: 270px;
-}
 
 .contact-form {
   margin-top: 20px;
@@ -26242,6 +26236,7 @@ a .h_head:hover {
       border-radius: 3px;
       -webkit-transform: scale(1);
       transform: scale(1);
+      margin-right: 4px;
       vertical-align: middle;
       border: 1px solid #DFE3E7;
       -webkit-transition: all 0.2s ease;
@@ -26582,18 +26577,17 @@ a .h_head:hover {
   border-radius: 0;
   line-height: 25px;
   text-align: center;
-  text-align: center;
   padding: 8px;
   border: none;
-  background-color: #f2f2f2;
-  color: #000;
+  background-color: #fe4c55;
+  color: #fff;
   font-size: 16px;
 }
 .bottomNav > [nav-id] * {
   display: block;
 }
 .bottomNav span a {
-  color: #000;
+  color: #fff;
 }
 .bottomNav > [nav-id].active {
   color: inherit;
@@ -26746,7 +26740,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
   display: block;
   font-size: 21px;
   width: 4%;
-  margin-top: 3px;
   margin-left: 5px;
   text-align: center;
   pointer-events: none;
@@ -26765,6 +26758,60 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
   z-index: 1040;
   background-color: transparent;
 }
-
-/*====================================================*/
-/*# sourceMappingURL=style.css.map */
+.mat-typography{
+  background: #fbfbfd!important;
+}
+.table2{
+  color: #141111;
+  font-size: 16px;
+}
+.ul2{
+  color: #141111;
+  font-size: 16px;
+}
+.ol2{
+  color: #141111;
+  font-size: 16px;
+  list-style-type: upper-roman;
+}
+.table2 tr td{
+    background: #fff;
+    padding: 10px 5px!important;
+    border: 1px solid #efefef;
+}
+.details_content .list-unstyled li {
+  color: #141111;
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  display: inline-block;
+  width: 270px;
+}
+.whatsapp-chat{
+	position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 10px;
+    right: 10px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 40px;
+    box-shadow: 2px 2px 3px #999;
+    transition: all 0.2s linear;
+    box-shadow: 0px 2px 7px 0px rgb(12 0 46 / 10%);
+    z-index: 100;
+}
+.whatsapp-chat:hover{
+  color: #FFF;
+  transform: scale(1.1);
+}
+.whatsapp-chat i {
+  margin-top: 4.5px;
+  margin-left: 2px;
+}
+.social-widget h3{
+  margin-bottom: 0px;
+  margin-right: 8px;
+}

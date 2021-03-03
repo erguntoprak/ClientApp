@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseService } from 'src/app/shared/base.service';
 import { AuthService } from 'src/app/_services/auth.service';
 import { UserLoginModel, DashboardDataModel } from 'src/app/shared/models';
+import { SeoService } from 'src/app/_services/seo.service';
 
 @Component({
   selector: 'se-dashboard',
@@ -11,13 +12,14 @@ export class DashBoardComponent implements OnInit {
   userModel: UserLoginModel;
   dashboardDataModel: DashboardDataModel;
 
-  constructor(private baseService: BaseService, private authService: AuthService) {
+  constructor(private baseService: BaseService, private authService: AuthService, private seoService: SeoService) {
 
   }
 
   ngOnInit(): void {
+    this.seoService.updateTitle("İzmir Eğitim Kurumları - Panel");
     this.userModel = this.authService.currentUser.value;
-    this.baseService.get<DashboardDataModel>("Common/GetDashboardData?UserId=", this.userModel.userId).subscribe(dashboardDataModel => {
+    this.baseService.getAll<DashboardDataModel>("Common/GetDashboardData").subscribe(dashboardDataModel => {
       this.dashboardDataModel = dashboardDataModel;
     });
   }

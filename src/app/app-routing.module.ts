@@ -236,6 +236,26 @@ const routes: Routes = [
         data: { breadcrumb: 'Home' }
       },
       {
+        path: 'cerez-politikasi',
+        loadChildren: () => import('./site-pages/cookie-consent/cookie-consent.module').then(m => m.CookieConsentModule),
+        data: { breadcrumb: 'Home' }
+      },
+      {
+        path: 'kisisel-verilerin-korunmasi-kanunu',
+        loadChildren: () => import('./site-pages/kvkk/kvkk.module').then(m => m.KvkkModule),
+        data: { breadcrumb: 'Home' }
+      },
+      {
+        path: 'kullanici-sozlesmesi',
+        loadChildren: () => import('./site-pages/user-agreement/user-agreement.module').then(m => m.UserAgreementModule),
+        data: { breadcrumb: 'Home' }
+      },
+      {
+        path: 'ki̇si̇sel-veri̇leri̇n-islenmesi̇ne-ili̇ski̇n-aydınlatma-metni̇',
+        loadChildren: () => import('./site-pages/disclosure-text/disclosure-text.module').then(m => m.DisclosureTextModule),
+        data: { breadcrumb: 'Home' }
+      },
+      {
         path: 'sayfa-bulunamadi',
         loadChildren: () => import('./site-pages/not-found/not-found.module').then(m => m.NotFoundModule),
         data: { breadcrumb: 'Sayfa Bulunamadı' }

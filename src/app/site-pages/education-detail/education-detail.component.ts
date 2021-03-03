@@ -1,14 +1,14 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EducationContactFormInsertModel } from '../../shared/models';
 import { BaseService } from '../../shared/base.service';
 import { ActivatedRoute } from '@angular/router';
-import { AcdcLoadingService } from 'acdc-loading';
 import { DomSanitizer } from '@angular/platform-browser';
 import 'hammerjs';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation} from 'ngx-gallery-9';
 import { environment } from 'src/environments/environment';
 import { SeoService } from 'src/app/_services/seo.service';
+import { Subscription } from 'rxjs';
 
 declare var $: any;
 @Component({
@@ -16,7 +16,7 @@ declare var $: any;
   templateUrl: './education-detail.component.html',
   styleUrls: ['./education-detail.component.scss']
 })
-export class EducationDetailComponent implements OnInit, AfterViewInit {
+export class EducationDetailComponent implements OnInit, AfterViewInit, OnDestroy {
   educationDetailModel: any;
   imageObject: Array<object> = [];
   contactForm: FormGroup;
@@ -30,16 +30,15 @@ export class EducationDetailComponent implements OnInit, AfterViewInit {
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[] = [];
   @ViewChild('generalInformation') generalInformation: ElementRef;
-
+  subscription: Subscription;
   constructor(private formBuilder: FormBuilder, private baseService: BaseService, private route: ActivatedRoute,
-     private acdcLoadingService: AcdcLoadingService, private sanitizer: DomSanitizer, private seoService: SeoService) {
+     private sanitizer: DomSanitizer, private seoService: SeoService) {
 
   }
  
   ngOnInit(): void {
     this.seoService.updateMeta('robots','index, follow');
 
-    this.acdcLoadingService.showLoading();
     this.galleryOptions = [
       {
         width: '100%',
@@ -66,7 +65,7 @@ export class EducationDetailComponent implements OnInit, AfterViewInit {
         thumbnailsSwipe:true
     },
     ];
-    this.route.params.subscribe(params => {
+    this.subscription = this.route.params.subscribe(params => {
       this.baseService.get("Education/GetEducationDetailModelBySeoUrl?seoUrl=", params['name']).subscribe(data => {
 
         this.educationDetailModel = data;
@@ -111,7 +110,6 @@ export class EducationDetailComponent implements OnInit, AfterViewInit {
           });
         });
 
-        this.acdcLoadingService.hideLoading();
       })
     });
     this.contactForm = this.formBuilder.group({
@@ -122,6 +120,9 @@ export class EducationDetailComponent implements OnInit, AfterViewInit {
 
   }
   ngAfterViewInit(): void {
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
   onContactFormSubmit() {
     this.submitted = true;

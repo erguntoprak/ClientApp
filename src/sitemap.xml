@@ -1,51 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+	  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	  	  
+<!-- www.check-domains.com sitemap generator -->
 
 <url>
-  <loc>https://www.izmiregitimkurumlari.com/</loc>
-  <lastmod>2020-12-05T01:17:54+00:00</lastmod>
-  <changefreq>daily</changefreq>
-  <priority>1.0</priority>
+   <loc>https://www.izmiregitimkurumlari.com/</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>1.0000</priority>
 </url>
 <url>
-  <loc>https://www.izmiregitimkurumlari.com/egitim-kurumlari/ozel-anaokul</loc>
-  <lastmod>2020-12-05T01:17:54+00:00</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.9</priority>
+   <loc>https://www.izmiregitimkurumlari.com/egitim-kurumlari/ozel-anaokul</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.8000</priority>
 </url>
 <url>
-  <loc>https://www.izmiregitimkurumlari.com/egitim-kurumlari/ozel-ogretim-kursu</loc>
-  <lastmod>2020-12-05T01:17:54+00:00</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.9</priority>
+   <loc>https://www.izmiregitimkurumlari.com/egitim-kurumlari/ozel-ogretim-kursu</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.8000</priority>
 </url>
 <url>
-  <loc>https://www.izmiregitimkurumlari.com/iletisim</loc>
-  <lastmod>2020-12-05T01:17:54+00:00</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
+   <loc>https://www.izmiregitimkurumlari.com/bloglar</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.8000</priority>
 </url>
 <url>
-  <loc>https://www.izmiregitimkurumlari.com/bloglar</loc>
-  <lastmod>2020-12-05T01:17:54+00:00</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.9</priority>
+   <loc>https://www.izmiregitimkurumlari.com/iletisim</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.8000</priority>
 </url>
 <url>
-  <loc>https://www.izmiregitimkurumlari.com/giris-yap</loc>
-  <lastmod>2020-12-05T01:17:54+00:00</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
+   <loc>https://www.izmiregitimkurumlari.com/giris-yap</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.8000</priority>
 </url>
 <url>
-  <loc>https://www.izmiregitimkurumlari.com/kayit-ol</loc>
-  <lastmod>2020-12-05T01:17:54+00:00</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
+   <loc>https://www.izmiregitimkurumlari.com/egitim-kurumu/buca/ozel-anaokul/Izmir-egitim-kurumlari-anaokulu</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.8000</priority>
 </url>
-
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/blog/cocuk-egitiminde-aile-mi-cevre-mi-etkilidir</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/blog/anaokulu-ve-kreslerde-yurutulen-rehberlik-calismalari</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/blog/anaokulu-ve-kreslerin-onemi-ve-faydalari</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/blog/okul-oncesi-donem-cocuklarinin-okuma-aliskanligina-hazirlik-durumlari</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/blog/okul-oncesI-ogretmenlerInIn-cocuk-kavramina-IlIskIn-sahIp-olduklari-zIhInsel-Imgeler</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/blog/anaokulu-donemi-davranis-becerileri</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/blog/ozel-ogretim-kurslari</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/blog/egitimde-robotik-gelisme</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/blog/anaokullarinin-zihinsel-gelisime-etkisi</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/blog/anaokullarinin-cocuklara-faydalari-nelerdir</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/sifreyi-unuttum</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/kayit-ol</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://www.izmiregitimkurumlari.com/e-posta-onay-yeniden-gonder</loc>
+   <lastmod>2021-02-24T10:18:25+00:00</lastmod>
+   <changefreq>monthly</changefreq>
+   <priority>0.5120</priority>
+</url>
 </urlset>

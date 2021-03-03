@@ -4651,6 +4651,9 @@
 }
 
 @media (max-width:650px) {
+  .whatsapp-chat{
+    bottom: 70px;
+  }
   .education_list_area{
     padding: 0;
   }

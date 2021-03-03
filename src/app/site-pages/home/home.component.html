@@ -17,7 +17,7 @@
         <form [formGroup]="searchForm" (ngSubmit)="onSearchFormSubmit()">
           <div class="domain_form_inner">
             <div class="search-bar">
-              <i class="ti-search form-control-feedback"></i>
+              <i class="fa fa-search form-control-feedback"></i>
               <input type="text" formControlName="searchText" (focus)="focusFunction()" (focusout)="focusOutFunction()" placeholder="Aradığın eğitimi burada bulabilirsin">
             </div>
             <div class="domain_select">
@@ -29,7 +29,7 @@
                          bindValue="id" [searchable]="false" formControlName="categoryId">
               </ng-select>
             </div>
-            <button type="submit" class="hosting_btn">Ara</button>
+            <button type="submit" class="hosting_btn"><i class="fa fa-search"></i> Ara</button>
           </div>
         </form>
 
@@ -55,7 +55,7 @@
       <div class="col-lg-9 col-md-10 col-sm-12">
         <div class="row">
           <div *ngFor="let category of categories;let i=index" class="col-lg-2 col-md-3 col-sm-3 col-6">
-            <a routerLink="/egitim-kurumlari/{{category.seoUrl}}" class="s_integration_item">
+            <a href="/egitim-kurumlari/{{category.seoUrl}}" class="s_integration_item">
               <img src="assets/img/egitim-kurumu-{{i}}.png" alt="{{category.name}}" title="{{category.name}}">
               <h5>{{category.name}}</h5>
             </a>
@@ -100,18 +100,20 @@
         <div class="row">
           <div class="col-sm-6 col-md-6 col-lg-3 col-6" *ngFor='let education of educationList'>
             <div class="blog_list_item blog_list_item_two">
-              <a routerLink="/{{education.categorySeoUrl}}" class="post_date">
+              <a target="{{targetValue}}" href="egitim-kurumlari/{{education.categorySeoUrl}}" class="post_date">
                 <span>{{education.categoryName}}</span>
               </a>
-              <a [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]"><img class="img-fluid" src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg" alt="{{education.name}}" title="{{education.name}}"></a>
+              <a target="{{targetValue}}" href="/egitim-kurumu/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}"><img class="img-fluid" src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg" alt="{{education.name}}" title="{{education.name}}"></a>
               <div class="blog_content">
-                <a [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]">
+                <a target="{{targetValue}}" href="/egitim-kurumu/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
                   <h5 class="blog_title">{{education.name}}<img src="assets/img/tick.png" class="tick-image" /></h5>
                 </a>
                 <span>{{education.districtName}}</span>
               </div>
               <div class="item-action">
-                <a class="btn_three sign_btn_transparent mt_c20" [routerLink]="['/egitim-kurumu/',education.districtSeoUrl,education.categorySeoUrl,education.seoUrl]">Hemen İncele <i class="ti-angle-double-right"></i> </a>
+                <a class="btn_three sign_btn_transparent mt_c20" target="{{targetValue}}" href="/egitim-kurumu/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
+                  <i class="fa fa-angle-double-left"></i> 
+                  Hemen İncele <i class="fa fa-angle-double-right"></i> </a>
               </div>
             </div>
           </div>

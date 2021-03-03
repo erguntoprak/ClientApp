@@ -3,8 +3,8 @@
     "use strict";
 
     /*-------------------------------------------------------------------------------
-	  Navbar 
-	-------------------------------------------------------------------------------*/ 
+      Navbar 
+    -------------------------------------------------------------------------------*/
     function navbarFixed() {
         if ($('.header_area').length) {
             $(window).scroll(function () {
@@ -19,14 +19,14 @@
     };
     navbarFixed();
 
-  $(window).on("load", function () {
-    if ($('.mega_menu_two .scroll').length) {
-      $(".mega_menu_two .scroll").mCustomScrollbar({
-        mouseWheelPixels: 50,
-        scrollInertia: 0,
-      });
-    }
-  });
+    $(window).on("load", function () {
+        if ($('.mega_menu_two .scroll').length) {
+            $(".mega_menu_two .scroll").mCustomScrollbar({
+                mouseWheelPixels: 50,
+                scrollInertia: 0,
+            });
+        }
+    });
     function offcanvasActivator() {
         if ($('.bar_menu').length) {
             $('.bar_menu').on('click', function () {
@@ -46,22 +46,22 @@
         $(this).find('.dropdown-menu').first().stop(true, true).slideUp(500);
     });
 
-    
-   
-
-    
-    
-
-    
-  
 
 
-  
-   
+
+
+
+
+
+
+
+
+
+
 
     /*-------------------------------------------------------------------------------
-	  active dropdown
-	-------------------------------------------------------------------------------*/
+      active dropdown
+    -------------------------------------------------------------------------------*/
     function active_dropdown() {
         if ($(window).width() < 992) {
             $('.menu li.submenu > a').on('click', function (event) {
@@ -75,8 +75,8 @@
 
 
     /*-------------------------------------------------------------------------------
-	  hamberger menu
-	-------------------------------------------------------------------------------*/
+      hamberger menu
+    -------------------------------------------------------------------------------*/
     function hamberger_menu() {
         if ($('.burger_menu').length) {
             $('.burger_menu').on('click', function () {
@@ -88,6 +88,6 @@
             });
         }
     }
-  hamberger_menu();
+    hamberger_menu();
 
 })(jQuery)

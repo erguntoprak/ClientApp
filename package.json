@@ -12,6 +12,7 @@
     "dev:ssr": "ng run client-app:serve-ssr",
     "serve:ssr": "node dist/client-app/server/main.js",
     "build:ssr": "ng build --prod --configuration=production && ng run client-app:server:production",
+    "build-test:ssr": "ng build --prod --configuration=test && ng run client-app:server:production",
     "prerender": "ng run client-app:prerender"
   },
   "private": true,
@@ -39,6 +40,7 @@
     "@nguniversal/express-engine": "^9.0.2",
     "@types/lodash": "^4.14.149",
     "acdc-loading": "^1.2.3",
+    "cookieconsent": "^3.1.1",
     "domino": "^2.1.6",
     "express": "^4.15.2",
     "express-rate-limit": "^5.2.3",
@@ -48,6 +50,7 @@
     "localstorage-polyfill": "^1.0.1",
     "lodash": "^4.17.15",
     "ng2-search-filter": "^0.5.1",
+    "ngx-cookieconsent": "^2.2.3",
     "ngx-gallery-9": "^1.0.6",
     "ngx-mask": "^8.1.7",
     "ngx-pagination": "^5.0.0",

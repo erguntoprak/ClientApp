@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { AcdcLoadingService } from 'acdc-loading';
 import { Meta } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +10,29 @@ import { Meta } from '@angular/platform-browser';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private _router: Router, private acdcLoadingService: AcdcLoadingService,private metaTagService: Meta) {
+  constructor() {
 
   }
   ngOnInit() {
-    this._router.events.subscribe((route) => {
-      if (route instanceof NavigationStart) {
-        this.acdcLoadingService.showLoading();
-      }
-      if (route instanceof NavigationEnd) {
-        this.acdcLoadingService.hideLoading();
-      }
-    });
+    let cc = window as any;
+       cc.cookieconsent.initialise({
+         palette: {
+           popup: {
+             background: "#7444fd",
+             text:"#ffffff"
+           },
+           button: {
+             background: "#fe4c55",
+             text: "#ffffff",
+             border: "#fe4c55"
+           }
+         },
+         content: {
+           message: "Sizlere daha iyi bir hizmet sunabilmek için sitemizde çerezlerden faydalanıyoruz. Sitemizi kullanmaya devam ederek çerezleri kullanmamıza izin vermiş oluyorsunuz. Daha fazla bilgi için",
+           dismiss: "Anladım",
+           link: "Çerez Politikası",
+           href: environment.baseUrl + "/cerez-politikasi" 
+         }
+       });
   }
 }

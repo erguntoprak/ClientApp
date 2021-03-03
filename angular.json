@@ -23,31 +23,31 @@
               "src/favicon.ico",
               "src/assets",
               "src/sitemap.xml",
-              "src/robots.txt"
+              "src/robots.txt",
+              "src/ki̇si̇sel-veri̇leri̇n-islenmesi̇ne-ili̇ski̇n-aydınlatma-metni̇.pdf",
+              "src/kullanici-sozlesmesi.pdf"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/swiper/css/swiper.css",
               "src/assets/css/bootstrap.min.css",
-              "src/assets/vendors/themify-icon/themify-icons.css",
-              "src/assets/vendors/simple-line-icon/simple-line-icons.css",
-              "src/assets/vendors/elagent/style.css",
-              "src/assets/vendors/flaticon/flaticon.css",
               "src/assets/vendors/animation/animate.css",
               "src/assets/vendors/nice-select/nice-select.css",
               "src/assets/vendors/scroll/jquery.mCustomScrollbar.min.css",
               "src/assets/css/style.css",
               "src/assets/css/responsive.css",
-              "./node_modules/font-awesome/css/font-awesome.css"
+              "node_modules/font-awesome/css/font-awesome.css",
+              "src/assets/vendors/cookieconsent/cookieconsent.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "src/assets/vendors/nice-select/jquery.nice-select.min.js",
               "src/assets/js/bootstrap.min.js",
               "src/assets/vendors/scroll/jquery.mCustomScrollbar.concat.min.js",
-              "src/assets/js/main.js"
+              "src/assets/js/main.js",
+              "src/assets/vendors/cookieconsent/cookieconsent.min.js"
             ]
           },
           "configurations": {
@@ -56,6 +56,34 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "test": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.ts"
                 }
               ],
               "optimization": true,

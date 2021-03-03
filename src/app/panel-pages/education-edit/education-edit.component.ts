@@ -65,7 +65,6 @@ export class EducationEditComponent implements OnInit, AfterViewInit {
       ),
       attributes: this.formBuilder.array([]),
       images: this.formBuilder.array([]),
-      userId: new FormControl(),
       addressInformation: this.formBuilder.group(
         {
           address: ['', Validators.required],
@@ -104,8 +103,7 @@ export class EducationEditComponent implements OnInit, AfterViewInit {
           generalInformation: educationUpdateModel.generalInformation,
           addressInformation: educationUpdateModel.addressInformation,
           contactInformation: educationUpdateModel.contactInformation,
-          socialInformation: educationUpdateModel.socialInformation,
-          userId: educationUpdateModel.userId
+          socialInformation: educationUpdateModel.socialInformation
         });
         if (educationUpdateModel.socialInformation.mapCode != "") {
           this.iframeMapCode = this.sanitizer.bypassSecurityTrustHtml(educationUpdateModel.socialInformation.mapCode);
@@ -240,7 +238,7 @@ export class EducationEditComponent implements OnInit, AfterViewInit {
   }
   //steps
   nextStepOneClick() {
-    if (this.educationForm.controls.generalInformation.status == 'VALID' && this.urlImages.length > 0) {
+    if (this.educationForm.controls.generalInformation.status == 'VALID' && (this.urlImages.length > 0 || this.fileCount > 0)) {
       if (isPlatformBrowser(this.platformId)) {
         window.scroll(0, 0);
       }

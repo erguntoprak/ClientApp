@@ -116,8 +116,12 @@ export class BlogCreateComponent implements OnInit {
   }
   removeImage(i) {
     (<FormGroup>(<FormArray>this.blogInsertForm.controls.blogItems).controls[i]).patchValue({
-      imageName: ''
+      imageName: null
     });
+    (<HTMLInputElement>document.getElementById('image_file_'+i)).value = null;
+  }
+  resetFile(i) {
+    (<HTMLInputElement>document.getElementById('image_file_'+i)).value = null;
   }
 
   editorConfig: AngularEditorConfig = {

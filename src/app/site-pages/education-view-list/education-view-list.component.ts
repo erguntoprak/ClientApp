@@ -34,12 +34,15 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
   educationViewItemCount = 12;
   pageNumber: number = 1;
   searchText: string = '';
-
-  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService,
+  targetValue:string = "_blank";
+  constructor(private baseService: BaseService,
     private route: ActivatedRoute, private router: Router, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      this.targetValue = "_self";
+    }
     this.seoService.updateTitle("İzmir Eğitim Kurumları - Özel Anaokul, Özel Eğitim Kursu, Okul Öncesi Eğitim'e ait birçok eğitim kurumunu sizin için listeledik");
     this.seoService.updateMeta('robots','index, follow');
     this.seoService.updateMeta('keywords','uzaktan eğitim, izmir, eğitim, özel, ders, anaokul, eğitim kursu, kurs, milli eğitim, güncel eğitim, online eğitim, özel eğitim');
@@ -63,7 +66,6 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
     this.seoService.updateMeta('twitter:url',environment.baseUrl);
 
 
-    this.acdcLoadingService.showLoading();
     this.route.params.subscribe(params => {
       this.selectedCategoryUrl = params['category'];
     });
@@ -142,7 +144,6 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
     this.selectedCategoryIndex = index;
   }
   getAllCallMethod() {
-    this.acdcLoadingService.showLoading();
     let categoryListObservable = this.baseService.getAll<CategoryModel[]>("Category/GetAllCategoryList");
     let districtListObservable = this.baseService.getAll<AddressModel>("Address/GetCityNameDistricts");
     this.selectedAttributeIds = [];
@@ -158,7 +159,6 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
       this.selectedCategoryId = selectedCategory.id;
       this.baseService.getAll<CategoryAttributeListModel[]>("Attribute/GetAllAttributeByEducationCategoryId?categoryId=" + this.selectedCategoryId).subscribe(categoryAttributeList => {
         this.categoryAttributeList = categoryAttributeList;
-        this.acdcLoadingService.hideLoading();
       });
 
       this.districtList = results[1].districtListModel;
@@ -171,7 +171,6 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
       });
       this.baseService.getAll<EducationFilterListModel[]>(`Education/GetAllEducationListByFilter?categoryId=${this.selectedCategoryId}&searchText=${this.searchText}`).subscribe(educationList => {
         this.educationFilterList = educationList;
-        this.acdcLoadingService.hideLoading();
       });
     });
   }

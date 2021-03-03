@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CategoryModel, EducationListModel, DistrictModel, AddressModel, SearchResult, EducationSearchResult } from '../../shared/models';
 import { BaseService } from '../../shared/base.service';
@@ -9,7 +9,8 @@ declare var $: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   selectedCategoryUrl: string = '/ozel-anaokul';
   searchResult: SearchResult[] = [];
   educationSearchResult: EducationSearchResult[];
-
+  targetValue:string = "_blank";
   constructor(private formBuilder: FormBuilder, private baseService: BaseService, private seoService: SeoService, private router: Router) {
     this.searchForm = this.formBuilder.group({
       searchText: [null],
@@ -35,6 +36,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
   ngOnInit(): void {
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      this.targetValue = "_self";
+    }
     this.seoService.updateTitle("İzmir Eğitim Kurumları - Özel Anaokul, Özel Eğitim Kursu, Okul Öncesi Eğitim'e ait birçok bilgiyi bulabilirsin");
     this.seoService.updateCanonicalUrl(environment.baseUrl);
     this.seoService.updateMeta('robots','index, follow');

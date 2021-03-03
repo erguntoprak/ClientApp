@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   categories: CategoryModel[];
   isUser: boolean = false;
   isMobile:boolean = false;
+  targetValue:string = "_blank";
   constructor(private baseService: BaseService) {
 
   }
@@ -18,6 +19,7 @@ export class HeaderComponent implements OnInit {
 
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
       this.isMobile = true;
+      this.targetValue = "_self";
     }else{
       this.isMobile = false;
     }
