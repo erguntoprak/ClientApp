@@ -30,13 +30,19 @@ export class EducationDetailComponent implements OnInit, AfterViewInit, OnDestro
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[] = [];
   @ViewChild('generalInformation') generalInformation: ElementRef;
-  subscription: Subscription;
+  subscription: any;
+  preloadImageHeight = '450px';
   constructor(private formBuilder: FormBuilder, private baseService: BaseService, private route: ActivatedRoute,
      private sanitizer: DomSanitizer, private seoService: SeoService) {
 
   }
  
   ngOnInit(): void {
+
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      this.preloadImageHeight = '255px';
+    }
+
     this.seoService.updateMeta('robots','index, follow');
 
     this.galleryOptions = [
@@ -69,27 +75,26 @@ export class EducationDetailComponent implements OnInit, AfterViewInit, OnDestro
       this.baseService.get("Education/GetEducationDetailModelBySeoUrl?seoUrl=", params['name']).subscribe(data => {
 
         this.educationDetailModel = data;
-        this.seoService.updateTitle(this.educationDetailModel.generalInformation.educationName +' - İzmir Eğitim Kurumları');
-        this.seoService.updateCanonicalUrl(environment.baseUrl +'/egitim-kurumu/'+ this.educationDetailModel.addressInformation.districSeoUrl + '/' + this.educationDetailModel.generalInformation.categorySeoUrl + '/' + params['name']);
-        this.seoService.updateMeta("description", "İzmir ili " + this.educationDetailModel.addressInformation.districtName + " ilçesindeki " + this.educationDetailModel.generalInformation.categoryName + " - " + this.educationDetailModel.generalInformation.educationName +" hakkında, fotoğrafları, konumu ve eğitim kurumuna ait özellikleri incelemek için İzmir Eğitim Kurumları'nı faydalanabilirsin.");
-        this.seoService.updateMeta('keywords','izmir, ' + this.educationDetailModel.addressInformation.districtName + ', ' + this.educationDetailModel.generalInformation.categoryName);
+        this.seoService.updateTitle(`${this.educationDetailModel.addressInformation.districtName} ${this.educationDetailModel.generalInformation.educationName}`);
+        this.seoService.updateCanonicalUrl(environment.baseUrl +'/'+ this.educationDetailModel.addressInformation.districSeoUrl + '/' + this.educationDetailModel.generalInformation.categorySeoUrl + '/' + params['name']);
+        this.seoService.updateMeta("description", "İzmir " + this.educationDetailModel.addressInformation.districtName + " ilçesindeki " + this.educationDetailModel.generalInformation.categoryName + " - " + this.educationDetailModel.generalInformation.educationName +" hakkında, fotoğrafları, konumu, fiyatları incele");
         
         //Facebook Meta Tag
-        this.seoService.updateMeta('og:title', this.educationDetailModel.generalInformation.educationName);
+        this.seoService.updateMeta('og:title', `${this.educationDetailModel.addressInformation.districtName} ${this.educationDetailModel.generalInformation.educationName}`);
         this.seoService.updateMeta('og:type','website');
-        this.seoService.updateMeta('og:url', environment.baseUrl +'/egitim-kurumu/'+ this.educationDetailModel.addressInformation.districSeoUrl + '/' + this.educationDetailModel.generalInformation.categorySeoUrl + '/' + params['name']);
+        this.seoService.updateMeta('og:url', environment.baseUrl +'/'+ this.educationDetailModel.addressInformation.districSeoUrl + '/' + this.educationDetailModel.generalInformation.categorySeoUrl + '/' + params['name']);
         this.seoService.updateMeta('og:image', `${environment.apiUrl}/images/${this.educationDetailModel.images[0]}_1000x600.jpg`);
         this.seoService.updateMeta('og:site_name','İzmir Eğitim Kurumları');
-        this.seoService.updateMeta('og:description', "İzmir ili " + this.educationDetailModel.addressInformation.districtName + " ilçesindeki " + this.educationDetailModel.generalInformation.categoryName + " - " + this.educationDetailModel.generalInformation.educationName +" hakkında, fotoğrafları, konumu ve eğitim kurumuna ait özellikleri incelemek için İzmir Eğitim Kurumları'nı faydalanabilirsin.");
+        this.seoService.updateMeta('og:description', "İzmir " + this.educationDetailModel.addressInformation.districtName + " ilçesindeki " + this.educationDetailModel.generalInformation.categoryName + " - " + this.educationDetailModel.generalInformation.educationName +" hakkında, fotoğrafları, konumu, fiyatları incele");
         this.seoService.updateMeta('og:locale','tr_TR');
-        this.seoService.updateMeta('og:image:secure_url',environment.baseUrl +'/egitim-kurumu/'+ this.educationDetailModel.addressInformation.districSeoUrl + '/' + this.educationDetailModel.generalInformation.categorySeoUrl + '/' + params['name']);
+        this.seoService.updateMeta('og:image:secure_url',environment.baseUrl +'/'+ this.educationDetailModel.addressInformation.districSeoUrl + '/' + this.educationDetailModel.generalInformation.categorySeoUrl + '/' + params['name']);
     
         //Twitter Meta Tag
-        this.seoService.updateMeta('twitter:title', this.educationDetailModel.generalInformation.educationName);
-        this.seoService.updateMeta('twitter:description', "İzmir ili " + this.educationDetailModel.addressInformation.districtName + " ilçesindeki " + this.educationDetailModel.generalInformation.categoryName + " - " + this.educationDetailModel.generalInformation.educationName +" hakkında, fotoğrafları, konumu ve eğitim kurumuna ait özellikleri incelemek için İzmir Eğitim Kurumları'nı faydalanabilirsin.");
+        this.seoService.updateMeta('twitter:title', `${this.educationDetailModel.addressInformation.districtName} ${this.educationDetailModel.generalInformation.educationName}`);
+        this.seoService.updateMeta('twitter:description', "İzmir " + this.educationDetailModel.addressInformation.districtName + " ilçesindeki " + this.educationDetailModel.generalInformation.categoryName + " - " + this.educationDetailModel.generalInformation.educationName +" hakkında, fotoğrafları, konumu, fiyatları incele");
         this.seoService.updateMeta('twitter:image', `${environment.apiUrl}/images/${this.educationDetailModel.images[0]}_1000x600.jpg`);
         this.seoService.updateMeta('twitter:card','summary_large_image');
-        this.seoService.updateMeta('twitter:url',environment.baseUrl +'/egitim-kurumu/'+ this.educationDetailModel.addressInformation.districSeoUrl + '/' + this.educationDetailModel.generalInformation.categorySeoUrl + '/' + params['name']);
+        this.seoService.updateMeta('twitter:url',environment.baseUrl +'/'+ this.educationDetailModel.addressInformation.districSeoUrl + '/' + this.educationDetailModel.generalInformation.categorySeoUrl + '/' + params['name']);
 
         if (this.educationDetailModel.socialInformation.mapCode != '') {
           this.educationDetailModel.socialInformation.mapCode = this.sanitizer.bypassSecurityTrustHtml(this.educationDetailModel.socialInformation.mapCode);

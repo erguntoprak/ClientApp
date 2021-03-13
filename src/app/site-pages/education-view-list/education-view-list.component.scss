@@ -3,6 +3,10 @@
     max-height: 200px;
     overflow-y: auto!important;
   }
+  .mat-expansion-panel-header-title{
+    color: #484848;
+    letter-spacing: 0.02em;
+  }
   .ngx-pagination {
     text-align: center;
     font-size: 1rem;

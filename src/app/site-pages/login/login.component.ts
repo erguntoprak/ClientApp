@@ -25,6 +25,25 @@ export class LoginComponent implements OnInit {
     this.seoService.updateTitle("Giriş Yap - İzmir Eğitim Kurumları");
     this.seoService.updateCanonicalUrl(environment.baseUrl + '/giris-yap');
     this.seoService.updateMeta('robots','index, follow');
+    this.seoService.updateMeta('description', "Giriş yaparak İzmir Eğitim Kurumları'nın büyük ayrıcalıklarından faydalanmaya başlayın");
+
+     //Facebook Meta Tag
+     this.seoService.updateMeta('og:title', 'Giriş Yap - İzmir Eğitim Kurumları');
+     this.seoService.updateMeta('og:type', 'website');
+     this.seoService.updateMeta('og:url', environment.baseUrl + '/giris-yap');
+     this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+     this.seoService.updateMeta('og:site_name', 'İzmir Eğitim Kurumları');
+     this.seoService.updateMeta('og:description', "Giriş yaparak İzmir Eğitim Kurumları'nın büyük ayrıcalıklarından faydalanmaya başlayın");
+     this.seoService.updateMeta('og:locale', 'tr_TR');
+     this.seoService.updateMeta('og:image:secure_url', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+ 
+     //Twitter Meta Tag
+     this.seoService.updateMeta('twitter:title', 'Giriş Yap - İzmir Eğitim Kurumları');
+     this.seoService.updateMeta('twitter:description', "Giriş yaparak İzmir Eğitim Kurumları'nın büyük ayrıcalıklarından faydalanmaya başlayın");
+     this.seoService.updateMeta('twitter:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+     this.seoService.updateMeta('twitter:card', 'summary_large_image');
+     this.seoService.updateMeta('twitter:url', environment.baseUrl + '/giris-yap');
+
     this.acdcLoadingService.hideLoading();
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],

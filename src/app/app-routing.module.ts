@@ -212,7 +212,7 @@ const routes: Routes = [
         data: { breadcrumb: 'Home' }
       },
       {
-        path: 'egitim-kurumu/:district/:category/:name',
+        path: ':district/:category/:name',
         loadChildren: () => import('./site-pages/education-detail/education-detail.module').then(m => m.EducationDetailModule)
       },
       {
@@ -231,7 +231,7 @@ const routes: Routes = [
         data: { breadcrumb: 'Home' }
       },
       {
-        path: 'egitim-kurumlari/:category',
+        path: ':district/:category',
         loadChildren: () => import('./site-pages/education-view-list/education-view-list.module').then(m => m.EducationViewListModule),
         data: { breadcrumb: 'Home' }
       },

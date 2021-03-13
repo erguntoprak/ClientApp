@@ -24,6 +24,7 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateMeta('robots','index, follow');
     this.seoService.updateTitle("İletişim - İzmir Eğitim Kurumları");
+    this.seoService.updateMeta('description', "İzmir Eğitim Kurumları ile hemen iletişime geç");
     this.seoService.updateCanonicalUrl(environment.baseUrl + '/iletisim');
 
     //Facebook Meta Tag
@@ -32,13 +33,13 @@ export class ContactComponent implements OnInit {
     this.seoService.updateMeta('og:url',environment.baseUrl + '/iletisim');
     this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
     this.seoService.updateMeta('og:site_name','İzmir Eğitim Kurumları');
-    this.seoService.updateMeta('og:description', "İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
+    this.seoService.updateMeta('og:description', "İzmir Eğitim Kurumları ile hemen iletişime geç");
     this.seoService.updateMeta('og:locale','tr_TR');
     this.seoService.updateMeta('og:image:secure_url',environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
 
     //Twitter Meta Tag
     this.seoService.updateMeta('twitter:title', 'İletişim - İzmir Eğitim Kurumları');
-    this.seoService.updateMeta('twitter:description',"İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
+    this.seoService.updateMeta('twitter:description',"İzmir Eğitim Kurumları ile hemen iletişime geç");
     this.seoService.updateMeta('twitter:image',environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
     this.seoService.updateMeta('twitter:card','summary_large_image');
     this.seoService.updateMeta('twitter:url',environment.baseUrl + '/iletisim');

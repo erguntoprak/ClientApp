@@ -1,6 +1,5 @@
-import { Component, OnInit, AfterViewInit, ViewChildren } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChildren, OnDestroy } from '@angular/core';
 import { BaseService } from '../../shared/base.service';
-import { AcdcLoadingService } from 'acdc-loading';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { CategoryModel, DistrictModel, AddressModel, CategoryAttributeListModel, FilterModel, EducationListModel, EducationFilterListModel } from '../../shared/models';
 import { forkJoin } from 'rxjs';
@@ -15,7 +14,7 @@ declare var $: any;
   templateUrl: './education-view-list.component.html',
   styleUrls: ['./education-view-list.component.scss']
 })
-export class EducationViewListComponent implements OnInit, AfterViewInit {
+export class EducationViewListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   apiUrl = environment.apiUrl;
   @ViewChildren('filteredItems') filteredItems;
@@ -23,63 +22,59 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
   districtList: DistrictModel[] = [];
   categoryAttributeList: CategoryAttributeListModel[] = [];
   filterModel: FilterModel;
-  educationFilterList: EducationFilterListModel[] = [];
-  educationFilterTempList: EducationFilterListModel[] = [];
+  educationFilterList: EducationFilterListModel[];
   selectedCategoryIndex: number = null;
   selectedCategoryUrl: string;
-  selectedDistrictUrls: string[] = [];
-  selectedDistrictIds: number[] = [];
-  selectedAttributeIds: number[] = [];
   selectedCategoryId: number;
+  selectedCategoryName: string;
+
+  selectedDistrictIndex: number = null;
+  selectedDistrictUrl: string;
+  selectedDistrictId: number;
+  selectedDistrictName: string;
+
+  selectedAttributeIds: number[] = [];
   educationViewItemCount = 12;
   pageNumber: number = 1;
   searchText: string = '';
-  targetValue:string = "_blank";
+  targetValue: string = "_blank";
+  subscription: any;
+  subscriptionTwo: any;
+  pageLoad: boolean = false;
+  preloadImageHeight = '162px';
+
   constructor(private baseService: BaseService,
     private route: ActivatedRoute, private router: Router, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       this.targetValue = "_self";
+      this.preloadImageHeight = '100.55px';
     }
-    this.seoService.updateTitle("İzmir Eğitim Kurumları - Özel Anaokul, Özel Eğitim Kursu, Okul Öncesi Eğitim'e ait birçok eğitim kurumunu sizin için listeledik");
-    this.seoService.updateMeta('robots','index, follow');
-    this.seoService.updateMeta('keywords','uzaktan eğitim, izmir, eğitim, özel, ders, anaokul, eğitim kursu, kurs, milli eğitim, güncel eğitim, online eğitim, özel eğitim');
-    this.seoService.updateMeta('description',"İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
+    this.seoService.updateMeta('robots', 'index, follow');
 
     //Facebook Meta Tag
-    this.seoService.updateMeta('og:title','İzmir Eğitim Kurumları');
-    this.seoService.updateMeta('og:type','website');
-    this.seoService.updateMeta('og:url',environment.baseUrl);
+    this.seoService.updateMeta('og:type', 'website');
     this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
-    this.seoService.updateMeta('og:site_name','İzmir Eğitim Kurumları');
-    this.seoService.updateMeta('og:description', "İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
-    this.seoService.updateMeta('og:locale','tr_TR');
-    this.seoService.updateMeta('og:image:secure_url',environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+    this.seoService.updateMeta('og:site_name', 'İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('og:locale', 'tr_TR');
+    this.seoService.updateMeta('og:image:secure_url', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
 
     //Twitter Meta Tag
-    this.seoService.updateMeta('twitter:title', 'İzmir Eğitim Kurumları');
-    this.seoService.updateMeta('twitter:description',"İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
-    this.seoService.updateMeta('twitter:image',environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
-    this.seoService.updateMeta('twitter:card','summary_large_image');
-    this.seoService.updateMeta('twitter:url',environment.baseUrl);
+    this.seoService.updateMeta('twitter:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+    this.seoService.updateMeta('twitter:card', 'summary_large_image');
 
 
-    this.route.params.subscribe(params => {
+    this.subscription = this.route.params.subscribe(params => {
       this.selectedCategoryUrl = params['category'];
-    });
-    this.route.params.subscribe(params => {
-      this.selectedDistrictUrls = [];
+      this.selectedDistrictUrl = params['district'];
       this.getAllCallMethod();
     });
-    this.route.queryParams.subscribe(params => {
 
+    this.route.queryParams.subscribe(params => {
       if (params['q']) {
         this.searchText = params['q'];
-      }
-      if (params['ilce']) {
-        this.selectedDistrictUrls = params['ilce'].split(',');
       }
       if (params['ozellik']) {
         this.selectedAttributeIds = params['ozellik'].split(',').map(d => +d);
@@ -136,59 +131,51 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
       };
       sidebar_offcanvas();
     });
-
   }
-  onChangeCategory(categoryId, index) {
-    this.selectedCategoryUrl = this.categories.find(d => d.id == categoryId).seoUrl;
-    this.router.navigate(["egitim-kurumlari", this.selectedCategoryUrl]);
-    this.selectedCategoryIndex = index;
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    this.subscriptionTwo.unsubscribe();
   }
   getAllCallMethod() {
     let categoryListObservable = this.baseService.getAll<CategoryModel[]>("Category/GetAllCategoryList");
     let districtListObservable = this.baseService.getAll<AddressModel>("Address/GetCityNameDistricts");
     this.selectedAttributeIds = [];
-    this.selectedDistrictIds = [];
 
-    forkJoin([categoryListObservable, districtListObservable]).subscribe(results => {
+    this.subscriptionTwo = forkJoin([categoryListObservable, districtListObservable]).subscribe(results => {
       this.categories = results[0];
       this.selectedCategoryIndex = this.categories.findIndex(d => d.seoUrl == this.selectedCategoryUrl);
       let selectedCategory = this.categories.find(d => d.seoUrl == this.selectedCategoryUrl);
-      this.seoService.updateTitle(selectedCategory.name  +' kategorisinde ki birçok eğitim kurumunu sizin için listeledik - İzmir Eğitim Kurumları');
-      this.seoService.updateCanonicalUrl(environment.baseUrl +'/egitim-kurumlari/'+ this.selectedCategoryUrl);
-
       this.selectedCategoryId = selectedCategory.id;
+      this.selectedCategoryName = selectedCategory.name;
       this.baseService.getAll<CategoryAttributeListModel[]>("Attribute/GetAllAttributeByEducationCategoryId?categoryId=" + this.selectedCategoryId).subscribe(categoryAttributeList => {
         this.categoryAttributeList = categoryAttributeList;
       });
 
       this.districtList = results[1].districtListModel;
-      this.selectedDistrictUrls.forEach(u => {
-        let district = this.districtList.find(d => d.seoUrl == u);
-        if (district != undefined) {
-          this.selectedDistrictIds.push(district.id);
-          this.selectedDistrictIds = [...this.selectedDistrictIds];
-        }
-      });
-      this.baseService.getAll<EducationFilterListModel[]>(`Education/GetAllEducationListByFilter?categoryId=${this.selectedCategoryId}&searchText=${this.searchText}`).subscribe(educationList => {
+      this.selectedDistrictIndex = this.districtList.findIndex(d => d.seoUrl == this.selectedDistrictUrl);
+      let selectedDistrict = this.districtList.find(d => d.seoUrl == this.selectedDistrictUrl);
+      this.selectedDistrictId = selectedDistrict.id;
+      this.selectedDistrictName = selectedDistrict.name;
+      this.baseService.getAll<EducationFilterListModel[]>(`Education/GetAllEducationListByFilter?categoryId=${this.selectedCategoryId}&districtId=${this.selectedDistrictId}&searchText=${this.searchText}`).subscribe(educationList => {
         this.educationFilterList = educationList;
+        this.pageLoad = true;
       });
+
+      this.seoService.updateMeta('og:title', `${selectedDistrict.name} ${selectedCategory.name} Listesi, Fiyatları, İndirimleri`);
+      this.seoService.updateMeta('og:url', environment.baseUrl + '/' + this.selectedDistrictUrl + '/' + this.selectedCategoryUrl);
+      this.seoService.updateMeta('twitter:title', `${selectedDistrict.name} ${selectedCategory.name} Listesi, Fiyatları, İndirimleri`);
+      this.seoService.updateMeta('twitter:url', environment.baseUrl + '/' + this.selectedDistrictUrl + '/' + this.selectedCategoryUrl);
+
+
+      this.seoService.updateTitle(`${selectedDistrict.name} ${selectedCategory.name} Listesi, Fiyatları, İndirimleri`);
+      this.seoService.updateCanonicalUrl(environment.baseUrl + '/' + this.selectedDistrictUrl + '/' + this.selectedCategoryUrl);
+
+      this.seoService.updateMeta('description', `İzmir ${selectedDistrict.name} ${selectedCategory.name} fiyatlarına, fotoğraf galerileri, olanaklarına, iletişim ve konum bilgilerine ulaşmak için listelerimizi hemen inceleyin!`);
+      this.seoService.updateMeta('og:description', `İzmir ${selectedDistrict.name} ${selectedCategory.name} fiyatlarına, fotoğraf galerileri, olanaklarına, iletişim ve konum bilgilerine ulaşmak için listelerimizi hemen inceleyin!`);
+      this.seoService.updateMeta('twitter:description', `İzmir ${selectedDistrict.name} ${selectedCategory.name} fiyatlarına, fotoğraf galerileri, olanaklarına, iletişim ve konum bilgilerine ulaşmak için listelerimizi hemen inceleyin!`);
     });
   }
 
-  getSelectedDistrictName(districtId: number) {
-    return this.districtList.find(d => d.id == districtId).name;
-  }
-  removeSelectedDistrictId(districtId: number) {
-    const index: number = this.selectedDistrictIds.indexOf(districtId);
-    if (index !== -1) {
-      this.selectedDistrictIds.splice(index, 1);
-      this.selectedDistrictIds = [...this.selectedDistrictIds];
-      this.navigateFilterUrl();
-    }
-  }
-  onChangeDistrict() {
-    this.navigateFilterUrl();
-  }
   //Checkbox change checked type
   onChange(id: number, isChecked: boolean) {
     if (isChecked) {
@@ -203,10 +190,12 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
     }
     this.navigateFilterUrl();
   }
+
   changeeducationViewItemCount(event) {
     this.pageNumber = 1;
     this.educationViewItemCount = +event.target.value;;
   }
+
   getSelectedAttributeName(attributeId: number) {
     let attributeName: string;
     this.categoryAttributeList.forEach(attributeList => {
@@ -217,6 +206,7 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
     });
     return attributeName;
   }
+
   removeSelectedAttributeId(attributeId: number) {
     const index: number = this.selectedAttributeIds.indexOf(attributeId);
     if (index !== -1) {
@@ -225,18 +215,19 @@ export class EducationViewListComponent implements OnInit, AfterViewInit {
     }
     this.navigateFilterUrl();
   }
-
+  removeSearchText() {
+    this.searchText = '';
+  }
   removeAllFilters() {
     this.selectedAttributeIds = [];
-    this.selectedDistrictIds = [];
+    this.searchText = '';
     this.navigateFilterUrl();
   }
   navigateFilterUrl() {
-
-    this.selectedDistrictUrls = this.districtList.filter(d => this.selectedDistrictIds.includes(d.id)).map(d => d.seoUrl);
     const queryParams: any = {};
-    if (this.selectedDistrictUrls.length > 0) {
-      queryParams.ilce = this.selectedDistrictUrls.join(',');
+
+    if (this.searchText != '') {
+      queryParams.q = this.searchText;
     }
     if (this.selectedAttributeIds.length > 0) {
       queryParams.ozellik = this.selectedAttributeIds.join(',');

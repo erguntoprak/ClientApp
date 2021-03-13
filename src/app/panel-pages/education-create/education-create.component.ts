@@ -11,6 +11,7 @@ import * as _ from 'lodash';
 import { ActionPermissionService } from 'src/app/_services/action-permission.service';
 import { environment } from 'src/environments/environment';
 import { isPlatformBrowser } from '@angular/common';
+import { SeoService } from 'src/app/_services/seo.service';
 
 @Component({
   selector: 'se-education-create',
@@ -48,9 +49,11 @@ export class EducationCreateComponent implements OnInit, AfterViewInit {
   constructor(public actionPermissionService: ActionPermissionService, private formBuilder: FormBuilder,
      private baseService: BaseService, private router: Router, 
      private toastr: ToastrService, private acdcLoadingService: AcdcLoadingService, 
-     private sanitizer: DomSanitizer, @Inject(PLATFORM_ID) private platformId: any) { }
+     private sanitizer: DomSanitizer, @Inject(PLATFORM_ID) private platformId: any, private seoService: SeoService) { }
 
   ngOnInit() {
+    this.seoService.updateMeta('robots', 'noindex, nofollow');
+    this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.educationForm = this.formBuilder.group({
       generalInformation: this.formBuilder.group(
         {

@@ -102,7 +102,6 @@ export interface AttributeListModel {
 }
 export interface SearchResult {
   text: string;
-  url: string;
   districtUrl: string;
 }
 export interface EducationSearchResult {

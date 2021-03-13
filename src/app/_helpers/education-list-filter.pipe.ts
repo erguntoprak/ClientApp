@@ -12,7 +12,7 @@ export class EducationListFilterPipe implements PipeTransform {
       return items;
     }
     if (args[0].length > 0) {
-      items = items.filter(d => args[0].includes(d.districtId));
+      items = items.filter(d => d.name.toLowerCase().includes(args[0].toLowerCase()));
     }
     if (args[1].length > 0) {
       items = items.filter(d => args[1].every(v => d.attributeIds.includes(v)));

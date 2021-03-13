@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from '../../_helpers/input-error-state-matcher';
 import { UserModel } from 'src/app/shared/models';
+import { SeoService } from 'src/app/_services/seo.service';
 
 
 @Component({
@@ -18,10 +19,14 @@ export class UserEditComponent implements OnInit {
   errorList = [];
   matcher = new MyErrorStateMatcher();
 
-  constructor(private formBuilder: FormBuilder, private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private baseService: BaseService, 
+    private acdcLoadingService: AcdcLoadingService, private route: ActivatedRoute, 
+    private toastr: ToastrService, private router: Router, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    this.seoService.updateMeta('robots', 'noindex, nofollow');
+    this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.acdcLoadingService.showLoading();
     this.userUpdateForm = this.formBuilder.group({
       userId: [null, Validators.required],

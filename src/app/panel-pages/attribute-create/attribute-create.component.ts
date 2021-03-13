@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MyErrorStateMatcher } from '../../_helpers/input-error-state-matcher';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AttributeCategoryModel } from '../../shared/models';
+import { SeoService } from 'src/app/_services/seo.service';
 
 
 @Component({
@@ -18,10 +19,14 @@ export class AttributeCreateComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   attributeInsertForm: FormGroup;
   attributeCategoryList: AttributeCategoryModel[];
-  constructor(private formBuilder: FormBuilder, private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, private toastr: ToastrService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private baseService: BaseService,
+     private acdcLoadingService: AcdcLoadingService, private toastr: ToastrService,
+     private router: Router, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    this.seoService.updateMeta('robots', 'noindex, nofollow');
+    this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.attributeInsertForm = this.formBuilder.group({
       name: [null, Validators.required],
       attributeCategoryId:[null,Validators.required]

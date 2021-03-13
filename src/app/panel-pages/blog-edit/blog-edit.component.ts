@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
+import { SeoService } from 'src/app/_services/seo.service';
 
 @Component({
   selector: 'se-blog-edit',
@@ -23,10 +24,14 @@ export class BlogEditComponent implements OnInit {
 
 
 
-  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router, private toastr: ToastrService) {
+  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, 
+    private route: ActivatedRoute, private formBuilder: FormBuilder, 
+    private router: Router, private toastr: ToastrService, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    this.seoService.updateMeta('robots', 'noindex, nofollow');
+    this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.route.params.subscribe(params => {
       this.acdcLoadingService.showLoading();
       this.baseService.get<BlogUpdateModel>("Blog/GetBlogUpdateBySeoUrl?seoUrl=", params['name']).subscribe(blogUpdateModel => {

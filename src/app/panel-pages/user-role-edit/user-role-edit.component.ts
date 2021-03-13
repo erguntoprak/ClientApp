@@ -4,6 +4,7 @@ import { RoleModel } from '../../shared/models';
 import { AcdcLoadingService } from 'acdc-loading';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { SeoService } from 'src/app/_services/seo.service';
 
 
 @Component({
@@ -16,10 +17,14 @@ export class UserRoleEditComponent implements OnInit {
   userId: string;
   selectedRoles: string[] = [];
 
-  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router) {
+  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, 
+    private route: ActivatedRoute, private toastr: ToastrService, 
+    private router: Router, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    this.seoService.updateMeta('robots', 'noindex, nofollow');
+    this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.acdcLoadingService.showLoading();
     this.baseService.getAll<RoleModel[]>("Account/GetAllRoleList").subscribe(roleList => {
       this.roleList = roleList;

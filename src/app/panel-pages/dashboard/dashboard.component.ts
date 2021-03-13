@@ -17,7 +17,8 @@ export class DashBoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.seoService.updateTitle("İzmir Eğitim Kurumları - Panel");
+    this.seoService.updateMeta('robots', 'noindex, nofollow');
+    this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.userModel = this.authService.currentUser.value;
     this.baseService.getAll<DashboardDataModel>("Common/GetDashboardData").subscribe(dashboardDataModel => {
       this.dashboardDataModel = dashboardDataModel;

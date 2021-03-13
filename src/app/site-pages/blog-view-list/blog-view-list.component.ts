@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BaseService } from '../../shared/base.service';
 import { AcdcLoadingService } from 'acdc-loading';
 import { ActivatedRoute } from '@angular/router';
@@ -10,11 +10,13 @@ import { SeoService } from 'src/app/_services/seo.service';
   selector: 'se-blog-view-list',
   templateUrl: './blog-view-list.component.html'
 })
-export class BlogViewListComponent implements OnInit {
+export class BlogViewListComponent implements OnInit, OnDestroy {
 
   apiUrl = environment.apiUrl;
   blogListModel: BlogListModel;
   targetValue:string = "_blank";
+  subscription: any;
+
   constructor(private baseService: BaseService,
     private route: ActivatedRoute, private seoService: SeoService) {
 
@@ -23,32 +25,31 @@ export class BlogViewListComponent implements OnInit {
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
       this.targetValue = "_self";
     }
-    this.seoService.updateTitle('Eğitim Yazıları ve Blogları - İzmir Eğitim Kurumları');
+    this.seoService.updateTitle('Eğitimle İlgili Bloglar - İzmir Eğitim Kurumları');
     this.seoService.updateCanonicalUrl(environment.baseUrl + '/bloglar');
 
     this.seoService.updateMeta('robots', 'index, follow');
-    this.seoService.updateMeta('keywords', 'eğitim kurumlari');
-    this.seoService.updateMeta('description', "İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
+    this.seoService.updateMeta('description', "İzmir buca, bornova, karşıyaka, konak, bayraklı, çiğli, balçova, gaziemir, kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursları");
 
     //Facebook Meta Tag
-    this.seoService.updateMeta('og:title', 'Eğitim Yazıları ve Blogları - İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('og:title', 'Eğitimle İlgili Bloglar - İzmir Eğitim Kurumları');
     this.seoService.updateMeta('og:type', 'website');
     this.seoService.updateMeta('og:url', environment.baseUrl + '/bloglar');
     this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
     this.seoService.updateMeta('og:site_name', 'İzmir Eğitim Kurumları');
-    this.seoService.updateMeta('og:description', "İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
+    this.seoService.updateMeta('og:description', "İzmir buca, bornova, karşıyaka, konak, bayraklı, çiğli, balçova, gaziemir, kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursları");
     this.seoService.updateMeta('og:locale', 'tr_TR');
     this.seoService.updateMeta('og:image:secure_url', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
 
     //Twitter Meta Tag
-    this.seoService.updateMeta('twitter:title', 'Eğitim Yazıları ve Blogları - İzmir Eğitim Kurumları');
-    this.seoService.updateMeta('twitter:description', "İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
+    this.seoService.updateMeta('twitter:title', 'Eğitimle İlgili Bloglar - İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('twitter:description', "İzmir buca, bornova, karşıyaka, konak, bayraklı, çiğli, balçova, gaziemir, kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursları");
     this.seoService.updateMeta('twitter:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
     this.seoService.updateMeta('twitter:card', 'summary_large_image');
     this.seoService.updateMeta('twitter:url', environment.baseUrl + '/bloglar');
 
 
-    this.route.params.subscribe(params => {
+    this.subscription = this.route.params.subscribe(params => {
       let userName = params['userName'];
       if (userName != undefined) {
         this.baseService.get<BlogListModel>("Blog/GetAllBlogListByUserName?userName=", userName).subscribe(data => {
@@ -61,5 +62,9 @@ export class BlogViewListComponent implements OnInit {
         });
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

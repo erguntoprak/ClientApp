@@ -4651,6 +4651,10 @@
 }
 
 @media (max-width:650px) {
+  .breadcrumb_content p {
+   font-size: 16px;
+   line-height: 20px;
+  }
   .whatsapp-chat{
     bottom: 70px;
   }
@@ -4781,7 +4785,7 @@ margin-bottom: 10px;
     display: flex;
   }
   .education_details_area{
-    padding: 8px 0;
+    padding: 10px 0;
   }
   .breadcrumb-area{
     display: none;
@@ -5562,8 +5566,8 @@ margin-bottom: 10px;
   }
 
   .breadcrumb_content h1 {
-    font-size: 28px;
-    line-height: 32px;
+    font-size: 22px;
+    line-height: 7px;
   }
 
   .portfolio_filter {
@@ -5774,7 +5778,7 @@ margin-bottom: 10px;
   }
 
   .breadcrumb_area {
-    padding: 110px 0px 50px;
+    padding: 40px 0px 10px
   }
 
   .shop_grid_area .row, .shop_list_area .row {

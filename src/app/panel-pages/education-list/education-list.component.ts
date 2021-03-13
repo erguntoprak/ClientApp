@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { AcdcLoadingService } from 'acdc-loading';
 import { environment } from 'src/environments/environment';
 import * as _ from 'lodash';
+import { SeoService } from 'src/app/_services/seo.service';
 @Component({
   selector: 'se-education-list',
   templateUrl: './education-list.component.html'
@@ -15,10 +16,13 @@ export class EducationListComponent implements OnInit {
   educationList: EducationListModel[];
   errorList = [];
 
-  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService) {
+  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, 
+    private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    this.seoService.updateMeta('robots', 'noindex, nofollow');
+    this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.acdcLoadingService.showLoading();
     this.baseService.getAll<EducationListModel[]>("Education/GetAllEducationListByUserId").subscribe(educationList => {
       this.educationList = educationList;

@@ -8,6 +8,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { NgxGalleryModule } from 'ngx-gallery-9';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
     ShareButtonsModule,
     ShareIconsModule,
     NgxMaskModule.forRoot(options),
+    NgxSkeletonLoaderModule,
     RouterModule.forChild(routes)]
 })
 export class EducationDetailModule { }

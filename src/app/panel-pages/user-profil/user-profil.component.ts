@@ -6,6 +6,7 @@ import { UserModel } from 'src/app/shared/models';
 import { AuthService } from 'src/app/_services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from 'src/app/_helpers/input-error-state-matcher';
+import { SeoService } from 'src/app/_services/seo.service';
 
 @Component({
   selector: 'se-user-profil',
@@ -17,7 +18,9 @@ export class UserProfilComponent implements OnInit {
   errorList = [];
   matcher = new MyErrorStateMatcher();
 
-  constructor(private formBuilder: FormBuilder, private baseService: BaseService,private authService: AuthService, private acdcLoadingService: AcdcLoadingService, private toastr: ToastrService) { }
+  constructor(private formBuilder: FormBuilder, private baseService: BaseService, 
+    private authService: AuthService, private acdcLoadingService: AcdcLoadingService, 
+    private toastr: ToastrService, private seoService: SeoService) { }
 
   ngOnInit() {
     this.userUpdateForm = this.formBuilder.group({
@@ -31,6 +34,8 @@ export class UserProfilComponent implements OnInit {
     this.getUserDetail();
   }
   getUserDetail() {
+    this.seoService.updateMeta('robots', 'noindex, nofollow');
+    this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.acdcLoadingService.showLoading();
     this.baseService.get<UserModel>("Account/GetUserByEmail?email=",this.authService.currentUser.value.email).subscribe(userModel => {
       this.userUpdateForm.patchValue(userModel);

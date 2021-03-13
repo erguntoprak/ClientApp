@@ -1,10 +1,12 @@
-import { Component, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewEncapsulation, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CategoryModel, EducationListModel, DistrictModel, AddressModel, SearchResult, EducationSearchResult } from '../../shared/models';
 import { BaseService } from '../../shared/base.service';
 import { environment } from 'src/environments/environment';
 import { SeoService } from 'src/app/_services/seo.service';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
+import { forkJoin } from 'rxjs';
 declare var $: any;
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ declare var $: any;
   styleUrls: ['./home.component.scss'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   apiUrl = environment.apiUrl;
   searchForm: FormGroup;
@@ -25,42 +27,45 @@ export class HomeComponent implements OnInit, AfterViewInit {
   isSearchResult: boolean = false;
   selectedDistrictId: number;
   selectedSearchFormCategoryName: string = "Özel Anaokul";
-  selectedCategoryUrl: string = '/ozel-anaokul';
+  selectedCategoryUrl: string = 'kres-ve-anaokulu';
   searchResult: SearchResult[] = [];
   educationSearchResult: EducationSearchResult[];
-  targetValue:string = "_blank";
-  constructor(private formBuilder: FormBuilder, private baseService: BaseService, private seoService: SeoService, private router: Router) {
+  targetValue: string = "_blank";
+  preloadImageHeight = '162px';
+  subscription: any;
+
+  constructor(private formBuilder: FormBuilder, private baseService: BaseService, private seoService: SeoService, private router: Router, @Inject(PLATFORM_ID) private platformId: any) {
     this.searchForm = this.formBuilder.group({
       searchText: [null],
       categoryId: [1]
     });
   }
   ngOnInit(): void {
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       this.targetValue = "_self";
+      this.preloadImageHeight = '100.55px';
     }
-    this.seoService.updateTitle("İzmir Eğitim Kurumları - Özel Anaokul, Özel Eğitim Kursu, Okul Öncesi Eğitim'e ait birçok bilgiyi bulabilirsin");
-    this.seoService.updateCanonicalUrl(environment.baseUrl);
-    this.seoService.updateMeta('robots','index, follow');
-    this.seoService.updateMeta('keywords','uzaktan eğitim, izmir, eğitim, özel, ders, anaokul, eğitim kursu, kurs, milli eğitim, güncel eğitim, online eğitim, özel eğitim');
-    this.seoService.updateMeta('description',"İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
-    
+    this.seoService.updateTitle("İzmir Eğitim Kurumları - Anaokulu, Kreş, Özel Öğretim Kursu");
+    this.seoService.updateCanonicalUrl(environment.baseUrl + '/');
+    this.seoService.updateMeta('robots', 'index, follow');
+    this.seoService.updateMeta('description', "İzmir kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursu, fiyatları, okullar, özel öğretim kurumları, erken kayıt, kayıt ücreti");
+
     //Facebook Meta Tag
-    this.seoService.updateMeta('og:title','İzmir Eğitim Kurumları');
-    this.seoService.updateMeta('og:type','website');
-    this.seoService.updateMeta('og:url',environment.baseUrl);
+    this.seoService.updateMeta('og:title', 'İzmir Eğitim Kurumları - Anaokulu, Kreş, Özel Öğretim Kursu');
+    this.seoService.updateMeta('og:type', 'website');
+    this.seoService.updateMeta('og:url', environment.baseUrl);
     this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
-    this.seoService.updateMeta('og:site_name','İzmir Eğitim Kurumları');
-    this.seoService.updateMeta('og:description', "İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
-    this.seoService.updateMeta('og:locale','tr_TR');
-    this.seoService.updateMeta('og:image:secure_url',environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+    this.seoService.updateMeta('og:site_name', 'İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('og:description', "İzmir kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursu, fiyatları, okullar, özel öğretim kurumları, erken kayıt, kayıt ücreti");
+    this.seoService.updateMeta('og:locale', 'tr_TR');
+    this.seoService.updateMeta('og:image:secure_url', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
 
     //Twitter Meta Tag
-    this.seoService.updateMeta('twitter:title', 'İzmir Eğitim Kurumları');
-    this.seoService.updateMeta('twitter:description',"İzmir'de bulunan özel anaokul, okul öncesi eğitim, özel öğretim kursu gibi birçok eğitim kurumunu İzmir Eğitim Kurumları ayrıcalıklarıyla bulabilirsin.");
-    this.seoService.updateMeta('twitter:image',environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
-    this.seoService.updateMeta('twitter:card','summary_large_image');
-    this.seoService.updateMeta('twitter:url',environment.baseUrl);
+    this.seoService.updateMeta('twitter:title', 'İzmir Eğitim Kurumları - Anaokulu, Kreş, Özel Öğretim Kursu');
+    this.seoService.updateMeta('twitter:description', "İzmir kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursu, fiyatları, okullar, özel öğretim kurumları, erken kayıt, kayıt ücreti");
+    this.seoService.updateMeta('twitter:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+    this.seoService.updateMeta('twitter:card', 'summary_large_image');
+    this.seoService.updateMeta('twitter:url', environment.baseUrl);
 
     this.getAllCallMethod();
   }
@@ -73,7 +78,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       if (this.categories.length > 0) {
         let category = this.categories.find(d => d.id == value);
         this.selectedSearchFormCategoryName = category.name;
-        this.selectedCategoryUrl = '/' + category.seoUrl;
+        this.selectedCategoryUrl = category.seoUrl;
       }
     });
     this.categoryHomePage.valueChanges.subscribe(value => {
@@ -86,6 +91,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       else {
         this.selectedDistrictId = this.district.value;
       }
+      this.educationList = undefined;
       this.baseService.getAll<EducationListModel[]>(`Education/GetAllEducationListByCategoryIdAndDistrictId?categoryId=${value}&districtId=${this.selectedDistrictId}`).subscribe(educationList => {
         this.educationList = educationList;
       });
@@ -111,10 +117,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
   onSearchFormSubmit() {
     console.log(this.searchForm.get('searchText').value);
     if (this.searchForm.get('searchText').value == '' || this.searchForm.get('searchText').value == null) {
-      this.router.navigate(['/egitim-kurumlari/' + this.selectedCategoryUrl]);
+      if (isPlatformBrowser(this.platformId)) {
+        window.location.href = `${environment.baseUrl}/buca/${this.selectedCategoryUrl}`;
+      }
     }
     else {
-      this.router.navigate(['/egitim-kurumlari/' + this.selectedCategoryUrl], { queryParams: { q: this.searchForm.get('searchText').value } });
+      if (isPlatformBrowser(this.platformId)) {
+      window.location.href = `${environment.baseUrl}/buca/${this.selectedCategoryUrl}?q=${this.searchForm.get('searchText').value}`;
+      }
     }
   }
   focusFunction() {
@@ -126,18 +136,22 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }, 300);
   }
   getAllCallMethod() {
-    this.baseService.getAll<CategoryModel[]>("Category/GetAllCategoryList").subscribe(categories => {
-      this.categories = categories;
-    });
-    this.baseService.getAll<EducationListModel[]>("Education/GetAllEducationListByRandomCategoryId").subscribe(educationList => {
-      this.educationList = educationList;
-    });
-    this.baseService.getAll<AddressModel>("Address/GetCityNameDistricts").subscribe(addressModel => {
-      this.districtList = addressModel.districtListModel;
+    let categoryListObservable = this.baseService.getAll<CategoryModel[]>("Category/GetAllCategoryList");
+    let districtListObservable = this.baseService.getAll<AddressModel>("Address/GetCityNameDistricts");
+    let educationListObservable = this.baseService.getAll<EducationListModel[]>("Education/GetAllEducationListByRandomCategoryId");
+
+
+    this.subscription = forkJoin([educationListObservable, categoryListObservable, districtListObservable]).subscribe(results => {
+      this.educationList = results[0];
+      this.categories =  results[1];
+      this.districtList = results[2].districtListModel;
       this.districtList.forEach(d => {
-        this.searchResult.push({ text: d.name, url: 'egitim-kurumlari', districtUrl: d.seoUrl });
+        this.searchResult.push({ text: d.name, districtUrl: d.seoUrl });
       });
     });
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

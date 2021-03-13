@@ -25,7 +25,26 @@ export class UserForgotPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateTitle("Şifremi Unuttum - İzmir Eğitim Kurumları");
     this.seoService.updateCanonicalUrl(environment.baseUrl + '/sifreyi-unuttum');
-    this.seoService.updateMeta('robots','index, follow');
+    this.seoService.updateMeta('robots','noindex, follow');
+
+    this.seoService.updateMeta('description', "İzmir Eğitim Kurumları - Şifremi Unuttum");
+
+    //Facebook Meta Tag
+    this.seoService.updateMeta('og:title','Şifremi Unuttum - İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('og:type','website');
+    this.seoService.updateMeta('og:url',environment.baseUrl + '/sifreyi-unuttum');
+    this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+    this.seoService.updateMeta('og:site_name','İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('og:description', "İzmir Eğitim Kurumları - Şifremi Unuttum");
+    this.seoService.updateMeta('og:locale','tr_TR');
+    this.seoService.updateMeta('og:image:secure_url',environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+
+    //Twitter Meta Tag
+    this.seoService.updateMeta('twitter:title', 'Şifremi Unuttum - İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('twitter:description',"İzmir Eğitim Kurumları - Şifremi Unuttum");
+    this.seoService.updateMeta('twitter:image',environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+    this.seoService.updateMeta('twitter:card','summary_large_image');
+    this.seoService.updateMeta('twitter:url',environment.baseUrl + '/sifreyi-unuttum');
 
     this.userForgotPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]]

@@ -8,6 +8,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { EducationListFilterPipe } from '../../_helpers/education-list-filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination'; 
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 
@@ -25,10 +26,10 @@ const routes: Routes = [
   ],
   imports: [SharedModule, RouterModule.forChild(routes), ReactiveFormsModule,
     FormsModule,
-    NgSelectModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSkeletonLoaderModule
   ],
   exports: [
     EducationViewListComponent

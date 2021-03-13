@@ -6,6 +6,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import * as _ from 'lodash';
+import { SeoService } from 'src/app/_services/seo.service';
 
 @Component({
   selector: 'se-blog-create',
@@ -20,10 +21,14 @@ export class BlogCreateComponent implements OnInit {
   imageUploadErrorMessage:string;
 
 
-  constructor(private baseService: BaseService, private formBuilder: FormBuilder, private acdcLoadingService: AcdcLoadingService, private router: Router, private toastr: ToastrService) {
+  constructor(private baseService: BaseService, private formBuilder: FormBuilder, 
+    private acdcLoadingService: AcdcLoadingService, private router: Router, 
+    private toastr: ToastrService, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    this.seoService.updateMeta('robots', 'noindex, nofollow');
+    this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.blogInsertForm = this.formBuilder.group({
       title: [null, Validators.required],
       firstVisibleImageName : [null, Validators.required],

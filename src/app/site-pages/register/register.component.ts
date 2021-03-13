@@ -31,6 +31,23 @@ export class RegisterComponent implements OnInit {
     this.seoService.updateCanonicalUrl(environment.baseUrl + '/kayit-ol');
     this.seoService.updateMeta('robots','index, follow');
 
+    //Facebook Meta Tag
+    this.seoService.updateMeta('og:title', 'Kayıt Ol - İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('og:type', 'website');
+    this.seoService.updateMeta('og:url', environment.baseUrl + '/kayit-ol');
+    this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+    this.seoService.updateMeta('og:site_name', 'İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('og:description', "Kayıt olarak İzmir Eğitim Kurumları'nın büyük ayrıcalıklarından faydalanmaya başlayın");
+    this.seoService.updateMeta('og:locale', 'tr_TR');
+    this.seoService.updateMeta('og:image:secure_url', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+
+    //Twitter Meta Tag
+    this.seoService.updateMeta('twitter:title', 'Kayıt Ol - İzmir Eğitim Kurumları');
+    this.seoService.updateMeta('twitter:description', "Kayıt olarak İzmir Eğitim Kurumları'nın büyük ayrıcalıklarından faydalanmaya başlayın");
+    this.seoService.updateMeta('twitter:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
+    this.seoService.updateMeta('twitter:card', 'summary_large_image');
+    this.seoService.updateMeta('twitter:url', environment.baseUrl + '/kayit-ol');
+
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       surname: ['',Validators.required],

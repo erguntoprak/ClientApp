@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
+import { SeoService } from 'src/app/_services/seo.service';
 
 @Component({
   selector: 'se-blog-operation-list',
@@ -22,10 +23,13 @@ export class BlogOperationListComponent implements OnInit {
   displayedColumns: string[] = ['title', 'createTime', 'isActive', 'actions'];
   dataSource;
 
-  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, private toastr: ToastrService) {
+  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, 
+    private toastr: ToastrService, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    this.seoService.updateMeta('robots', 'noindex, nofollow');
+    this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.acdcLoadingService.showLoading();
     this.getAllBlogList();
   }

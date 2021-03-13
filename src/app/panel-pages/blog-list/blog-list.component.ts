@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import * as _ from 'lodash';
 import { AcdcLoadingService } from 'acdc-loading';
 import { environment } from 'src/environments/environment';
+import { SeoService } from 'src/app/_services/seo.service';
 
 @Component({
   selector: 'se-blog-list',
@@ -16,10 +17,12 @@ export class BlogListComponent implements OnInit {
   errorList = [];
   apiUrl = environment.apiUrl;
 
-  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService) {
+  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, private seoService: SeoService) {
 
   }
   ngOnInit(): void {
+    this.seoService.updateMeta('robots', 'noindex, nofollow');
+    this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.acdcLoadingService.showLoading();
     this.baseService.getAll<BlogListModel[]>("Blog/GetAllBlogListByUserId").subscribe(blogList => {
       this.blogList = blogList;

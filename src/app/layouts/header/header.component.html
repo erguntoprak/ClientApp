@@ -27,7 +27,7 @@
                 <li class="nav-item">
                   <ul class="dropdown-menu scroll">
                     <li *ngFor="let category of categories;let i=index" class="nav-item">
-                      <a target="{{targetValue}}" href="/egitim-kurumlari/{{category.seoUrl}}" class="item" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null">
+                      <a target="{{targetValue}}" href="/buca/{{category.seoUrl}}" class="item" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null">
                         <span class="img">
                           <img src="assets/img/egitim-kurumu-{{i}}.png" alt="{{category.name}}">
                         </span>
@@ -48,7 +48,7 @@
             <a class="nav-link" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null" href="/iletisim">İletişim</a>
           </li>
           <li *ngIf="isUser" class="nav-item">
-            <a class="nav-link" href="/panel">Panel</a>
+            <a rel="nofollow" class="nav-link" href="/panel">Panel</a>
           </li>
         </ul>
         <a class="btn_get btn_hover" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null" href="/giris-yap">Giriş Yap veya Kaydol</a>

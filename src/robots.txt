@@ -1,3 +1,3 @@
 User-agent: *
-Disallow:
+Disallow: /panel/
 Sitemap: https://www.izmiregitimkurumlari.com/sitemap.xml

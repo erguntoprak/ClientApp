@@ -6,8 +6,10 @@
     <div class="bubble b_four"></div>
     <div class="bubble b_five"></div>
     <div class="bubble b_six"></div>
-    <div class="triangle b_seven" data-parallax='{"x": 20, "y": 150}'><img src="assets/img/seo/triangle_one.png" alt=""></div>
-    <div class="triangle b_eight" data-parallax='{"x": 120, "y": -10}'><img src="assets/img/seo/triangle_two.png" alt=""></div>
+    <div class="triangle b_seven" data-parallax='{"x": 20, "y": 150}'><img src="assets/img/seo/triangle_one.png" alt="">
+    </div>
+    <div class="triangle b_eight" data-parallax='{"x": 120, "y": -10}'><img src="assets/img/seo/triangle_two.png"
+        alt=""></div>
     <div class="triangle b_nine"><img src="assets/img/seo/triangle_three.png" alt=""></div>
   </div>
   <div class="banner_top">
@@ -18,15 +20,12 @@
           <div class="domain_form_inner">
             <div class="search-bar">
               <i class="fa fa-search form-control-feedback"></i>
-              <input type="text" formControlName="searchText" (focus)="focusFunction()" (focusout)="focusOutFunction()" placeholder="Aradığın eğitimi burada bulabilirsin">
+              <input type="text" formControlName="searchText" (focus)="focusFunction()" (focusout)="focusOutFunction()"
+                placeholder="Aradığın eğitimi burada bulabilirsin">
             </div>
             <div class="domain_select">
-              <ng-select [items]="categories"
-                         bindLabel="name"
-                         [clearable]="false"
-                         notFoundText ="Kategori bulunamadı."
-                         placeholder="Eğitim Türü Seçiniz"
-                         bindValue="id" [searchable]="false" formControlName="categoryId">
+              <ng-select [items]="categories" bindLabel="name" [clearable]="false" notFoundText="Kategori bulunamadı."
+                placeholder="Eğitim Türü Seçiniz" bindValue="id" [searchable]="false" formControlName="categoryId">
               </ng-select>
             </div>
             <button type="submit" class="hosting_btn"><i class="fa fa-search"></i> Ara</button>
@@ -35,9 +34,12 @@
 
         <div *ngIf="isSearchResult" class="search-result-list">
           <ul class="search-box">
-            <li *ngFor="let result of searchResult |filter: (searchForm.get('searchText').value | lowercase)" class="search-item"><a routerLink="/{{result.url + selectedCategoryUrl}}" [queryParams]="{ ilce: result.districtUrl }" queryParamsHandling="merge" >{{result.text}} {{selectedSearchFormCategoryName}}</a></li>
+            <li *ngFor="let result of searchResult |filter: (searchForm.get('searchText').value | lowercase)"
+              class="search-item"><a href="/{{result.districtUrl}}/{{selectedCategoryUrl}}">{{result.text}}
+                {{selectedSearchFormCategoryName}}</a></li>
             <ng-container *ngIf="searchForm.get('searchText').value != ''">
-              <li *ngFor="let result of educationSearchResult |filter: (searchForm.get('searchText').value | lowercase)" class="search-item"><a routerLink="egitim-kurumu/{{result.seoUrl}}">{{result.name}}</a></li>
+              <li *ngFor="let result of educationSearchResult |filter: (searchForm.get('searchText').value | lowercase)"
+                class="search-item"><a href="{{result.seoUrl}}">{{result.name}}</a></li>
             </ng-container>
           </ul>
         </div>
@@ -48,22 +50,21 @@
 <section class="support_integration_area">
   <div class="container">
     <div class="sec_title text-center mb_70 wow fadeInUp" data-wow-delay="0.3s">
-      <h2 class="f_p f_size_30 l_height50 f_600 t_color3">İzmir Eğitim Kurumları</h2>
-      <p class="f_400 f_size_16 mb-0">Aradığın eğitimle ilgili eğitim kurumunu bulmak hiç bu kadar kolay olmamıştı. Eğitim kurumlarının detayları artık bir tık uzağında..<br> Sizin için İzmir'deki bütün eğitim kurumlarını listeledik.</p>
+      <h1 class="f_p f_size_30 l_height50 f_600 t_color3">İzmir Eğitim Kurumları</h1>
+      <p class="f_400 f_size_16 mb-0">Aradığın eğitimle ilgili eğitim kurumunu bulmak hiç bu kadar kolay olmamıştı.
+        Eğitim kurumlarının detayları artık bir tık uzağında..<br> Sizin için İzmir'deki bütün eğitim kurumlarını
+        listeledik.</p>
     </div>
     <div class="row flex-row-reverse">
-      <div class="col-lg-9 col-md-10 col-sm-12">
+      <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="row">
           <div *ngFor="let category of categories;let i=index" class="col-lg-2 col-md-3 col-sm-3 col-6">
-            <a href="/egitim-kurumlari/{{category.seoUrl}}" class="s_integration_item">
+            <a href="/buca/{{category.seoUrl}}" class="s_integration_item">
               <img src="assets/img/egitim-kurumu-{{i}}.png" alt="{{category.name}}" title="{{category.name}}">
               <h5>{{category.name}}</h5>
             </a>
           </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-2 col-sm-12">
-        <img class="integration_img" src="assets/img/new-home/tree.png" alt="">
       </div>
     </div>
   </div>
@@ -77,19 +78,13 @@
       <div class="col-md-6">
         <div class="row">
           <div class="district_dropdown">
-            <ng-select [items]="districtList"
-                       bindLabel="name"
-                       notFoundText ="İlçe bulunamadı."
-                       placeholder="İlçe Seçiniz"
-                       bindValue="id" [searchable]="false" [formControl]="district">
+            <ng-select [items]="districtList" bindLabel="name" notFoundText="İlçe bulunamadı."
+              placeholder="İlçe Seçiniz" bindValue="id" [searchable]="false" [formControl]="district">
             </ng-select>
           </div>
           <div class="category_dropdown">
-            <ng-select [items]="categories"
-                       bindLabel="name"
-                       notFoundText ="Kategori bulunamadı."
-                       placeholder="Eğitim Türü Seçiniz"
-                       bindValue="id" [searchable]="false" [formControl]="categoryHomePage">
+            <ng-select [items]="categories" bindLabel="name" notFoundText="Kategori bulunamadı."
+              placeholder="Eğitim Türü Seçiniz" bindValue="id" [searchable]="false" [formControl]="categoryHomePage">
             </ng-select>
           </div>
         </div>
@@ -98,25 +93,97 @@
     <div class="row">
       <div class="col-lg-12 blog_grid_info">
         <div class="row">
+          <ng-container *ngIf="educationList == undefined">
+            <div class="col-sm-6 col-md-6 col-lg-3 col-6"
+              *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
+              <div class="blog_list_item blog_list_item_two">
+                <ngx-skeleton-loader [theme]="{ width: '100%', 'border-radius': '3px', height: preloadImageHeight }">
+                </ngx-skeleton-loader>
+                <div class="blog_content">
+                  <ngx-skeleton-loader [theme]="{ width: '100%', 'border-radius': '0px', height: '10px' }">
+                  </ngx-skeleton-loader>
+                  <ngx-skeleton-loader [theme]="{ width: '80%', 'border-radius': '0px', height: '10px' }">
+                  </ngx-skeleton-loader>
+                  <ngx-skeleton-loader [theme]="{ width: '40%', 'border-radius': '0px', height: '10px' }">
+                  </ngx-skeleton-loader>
+                </div>
+                <div class="item-action">
+
+                </div>
+              </div>
+            </div>
+          </ng-container>
           <div class="col-sm-6 col-md-6 col-lg-3 col-6" *ngFor='let education of educationList'>
             <div class="blog_list_item blog_list_item_two">
-              <a target="{{targetValue}}" href="egitim-kurumlari/{{education.categorySeoUrl}}" class="post_date">
+              <a target="{{targetValue}}" href="/buca/{{education.categorySeoUrl}}" class="post_date">
                 <span>{{education.categoryName}}</span>
               </a>
-              <a target="{{targetValue}}" href="/egitim-kurumu/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}"><img class="img-fluid" src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg" alt="{{education.name}}" title="{{education.name}}"></a>
+              <a target="{{targetValue}}"
+                href="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}"><img
+                  class="img-fluid" src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg" alt="{{education.name}}"
+                  title="{{education.name}}"></a>
               <div class="blog_content">
-                <a target="{{targetValue}}" href="/egitim-kurumu/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
+                <a target="{{targetValue}}"
+                  href="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
                   <h5 class="blog_title">{{education.name}}<img src="assets/img/tick.png" class="tick-image" /></h5>
                 </a>
                 <span>{{education.districtName}}</span>
               </div>
               <div class="item-action">
-                <a class="btn_three sign_btn_transparent mt_c20" target="{{targetValue}}" href="/egitim-kurumu/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
-                  <i class="fa fa-angle-double-left"></i> 
+                <a class="btn_three sign_btn_transparent mt_c20" target="{{targetValue}}"
+                  href="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
+                  <i class="fa fa-angle-double-left"></i>
                   Hemen İncele <i class="fa fa-angle-double-right"></i> </a>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="payment_service_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-12">
+        <div class="service-content wow fadeInRight">
+          <h2 class="f_p w_color f_700">İzmir Eğitim Kurumları</h2>
+          <p class="f_p w_color l_height26">
+            İzmir Eğitim Kurumları İzmir özelinde eğitim kurumlarının tanıtımını
+            ve reklamını yapan bir web sitesidir. Sürekli yeni özellikler eklenerek, büyüme yolunda hızla ilerleyen bir
+            web sitesidir. Bu doğrultuda size izmiregitimkurumlari.com'a ait hedefler, amaçlar ve ayrıcalıklardan
+            bahsetmek istiyoruz.
+          </p>
+          <p class="f_p w_color l_height26">
+            İzmir Eğitim Kurumları olarak İzmir'deki eğitim kurumlarını bir çatı altında toplamayı hedefliyoruz. Bu
+            hedefimizde pilot eğitim kurumları olarak Kreşler ve Anaokulları, Özel Öğretim Kursları, Yabancı Dil
+            Kursları,
+            Özel Okullar, İlkokul Kolejleri, Ortaokul Kolejleri, Lise Kolejlerini seçtik.
+          </p>
+          <p class="f_p w_color l_height26">
+            Amacımız İzmir ilinde herhangi bir eğitim kurumu(Kreş ve Anaokulu, Özel Öğretim Kursu, Yabancı Dil
+            Kursu,
+            Özel Okul, İlkokul Koleji, Ortaokul Koleji, Lise Koleji vb.) arandığında tek adres olup, eğitim kurumu arayan velilere ve öğrencilere
+            eğitim kurumlarını sunmaktır.
+          </p>
+          <p class="f_p w_color l_height26">
+            İzmir Eğitim Kurumları'nın size sağladığı ayrıcalıklar;<br>
+            i. &nbsp;&nbsp;Eğitim kurumuna ait görselleri gösterilmesi <br>
+            ii. &nbsp;Eğitim kurumuna ait detaylı açıklama yazısının gösterilmesi <br>
+            iii. Eğitim kurumuna ait olanakların gösterilmesi <br>
+            iv.  Eğitim kurumuna ait youtube tanıtım videolarının gösterilmesi <br>
+            v. &nbsp;Eğitim kurumuna ait sorular ve cevaplarının gösterilmesi <br>
+            vi.  Eğitim kurumuna ait adres bilgisinin gösterilmesi <br>
+            vii.Eğitim kurumuna ait iletişim bilgilerinin gösterilmesi <br>
+            vii.Eğitim kurumuna ait kurumsal web sitesinin gösterilmesi <br>
+            ix. Eğitim kurumuna ait sosyal medya hesaplarının gösterilmesi <br>
+            x. &nbsp;Her eğitim kurumuna ait özel iletişim formu gösterilmesi <br>
+            xi.  izmiregitimkurumlari.com üzerinde blog yazma imkanı, bu sayede velileri ve öğrencileri istediğiniz bir konu hakkında bilgilendirebilir ve eğitim kurumunuza yönlendirebilirsiniz. <br>
+            xii.Eğitim kurumuna ait detaylı açıklama yazısının gösterilmesi <br>
+          </p>
+          <p class="f_p w_color l_height26">
+            Daha birçok özellik ve yeni gelecek özelliklerle <strong>İzmir Eğitim Kurumları'nın büyük ayrıcalıklarından 3 ay ücretsiz</strong> şekilde faydalanabilirsiniz. 
+          </p>
         </div>
       </div>
     </div>
