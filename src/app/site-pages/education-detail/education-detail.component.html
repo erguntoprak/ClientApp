@@ -233,7 +233,7 @@
               </ul>
             </div>
           </div>
-          <div *ngIf="educationDetailModel.socialInformation.youtubeVideoOne != undefined" class="iframe-container">
+          <div *ngIf="educationDetailModel.socialInformation.youtubeVideoOne" class="iframe-container">
             <youtube-player videoId="{{educationDetailModel.socialInformation.youtubeVideoOne}}"></youtube-player>
           </div>
           <div *ngIf="educationDetailModel.questions.length>0" class="details_content" id="frequently-asked-questions">
@@ -249,7 +249,7 @@
           <div class="iframe-container" *ngIf="educationDetailModel.socialInformation.mapCode != ''"
             [innerHTML]="educationDetailModel.socialInformation.mapCode">
           </div>
-          <div *ngIf="educationDetailModel.socialInformation.youtubeVideoTwo != undefined" class="iframe-container">
+          <div *ngIf="educationDetailModel.socialInformation.youtubeVideoTwo" class="iframe-container">
             <youtube-player videoId="{{educationDetailModel.socialInformation.youtubeVideoTwo}}"></youtube-player>
           </div>
           <div *ngIf="educationDetailModel.blogList.length>0" class="details_content" id="blog_list">
@@ -258,7 +258,7 @@
               <div class="col-lg-4 col-sm-6" *ngFor="let blog of educationDetailModel.blogList">
                 <div class="blog_grid_item mb-30">
                   <div class="blog_img">
-                    <a href="/blog/{{blog.seoUrl}}"><img [src]="blog.firstVisibleImageName" alt="blog.title"
+                    <a href="/blog/{{blog.seoUrl}}"><img src="{{blog.firstVisibleImageName}}" alt="{{blog.title}}"
                         title="{{blog.title}}"></a>
                   </div>
                   <div class="blog_content">

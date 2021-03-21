@@ -99,8 +99,12 @@ export class EducationDetailComponent implements OnInit, AfterViewInit, OnDestro
         if (this.educationDetailModel.socialInformation.mapCode != '') {
           this.educationDetailModel.socialInformation.mapCode = this.sanitizer.bypassSecurityTrustHtml(this.educationDetailModel.socialInformation.mapCode);
         }
-        this.educationDetailModel.socialInformation.youtubeVideoOne = this.educationDetailModel.socialInformation.youtubeVideoOne.split("watch?v=")[1];
-        this.educationDetailModel.socialInformation.youtubeVideoTwo = this.educationDetailModel.socialInformation.youtubeVideoTwo.split("watch?v=")[1]
+        if(this.educationDetailModel.socialInformation.youtubeVideoOne){
+          this.educationDetailModel.socialInformation.youtubeVideoOne = this.educationDetailModel.socialInformation.youtubeVideoOne.split("watch?v=")[1];
+        }
+        if(this.educationDetailModel.socialInformation.youtubeVideoTwo){
+          this.educationDetailModel.socialInformation.youtubeVideoTwo = this.educationDetailModel.socialInformation.youtubeVideoTwo.split("watch?v=")[1]
+        }
         this.educationDetailModel.blogList.map(blog => {
           blog.firstVisibleImageName = `${environment.apiUrl}/images/blog/${blog.firstVisibleImageName}_300x180.jpg`
         });
