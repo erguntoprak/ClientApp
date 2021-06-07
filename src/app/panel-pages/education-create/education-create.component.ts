@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AcdcLoadingService } from 'acdc-loading';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import * as _ from 'lodash';
+import * as _ from 'lodash-es';
 import { ActionPermissionService } from 'src/app/_services/action-permission.service';
 import { environment } from 'src/environments/environment';
 import { isPlatformBrowser } from '@angular/common';

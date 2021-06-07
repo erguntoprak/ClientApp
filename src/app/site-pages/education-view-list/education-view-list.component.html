@@ -85,11 +85,11 @@
         <div class="container">
           <div class="block-split__row row">
             <div class="block-split__item block-split__item-sidebar col-lg-3 col-sm-12">
-              <div class="sidebar sidebar--offcanvas--mobile">
+              <div class="sidebar sidebar--offcanvas--mobile" [ngClass]="sidebar ? 'sidebar--open':''">
                 <div class="sidebar__backdrop"></div>
                 <div class="sidebar__body">
                   <div class="sidebar__header">
-                    <div class="sidebar__title">Filtreler</div><button class="sidebar__close" type="button">
+                    <div class="sidebar__title">Filtreler</div><button class="sidebar__close" (click)="closeSidebar()" type="button">
                       <i class="fa fa-times"></i>
                     </button>
                   </div>
@@ -120,7 +120,7 @@
                                 [class.active]="selectedCategoryIndex === i"
                                 class="filter-categories__item filter-categories__item--parent">
                                 <a
-                                  href="/{{selectedDistrictUrl}}/{{category.seoUrl}}{{searchText == '' ? '' : ('?q='+searchText) }}">{{category.name}}</a>
+                                routerLink="/{{selectedDistrictUrl}}/{{category.seoUrl}}{{searchText == '' ? '' : ('?q='+searchText) }}">{{category.name}}</a>
                               </li>
                             </ul>
                           </mat-expansion-panel>
@@ -137,7 +137,7 @@
                                 [class.active]="selectedDistrictIndex === i"
                                 class="filter-categories__item filter-categories__item--parent">
                                 <a
-                                  href="/{{district.seoUrl}}/{{selectedCategoryUrl}}{{searchText == '' ? '' : ('?q='+searchText) }}">{{district.name}}</a>
+                                routerLink="/{{district.seoUrl}}/{{selectedCategoryUrl}}{{searchText == '' ? '' : ('?q='+searchText) }}">{{district.name}}</a>
                               </li>
                             </ul>
                           </mat-expansion-panel>
@@ -173,7 +173,7 @@
                 <div class="products-view">
                   <div class="products-view__options view-options view-options--offcanvas--mobile">
                     <div class="view-options__body">
-                      <button type="button" class="view-options__filters-button filters-button">
+                      <button (click)="openSidebar()" type="button" class="view-options__filters-button filters-button">
                         <span class="filters-button__icon">
                           <i class="fa fa-filter"></i>
                         </span><span class="filters-button__title">Filtreler</span>
@@ -219,7 +219,7 @@
                       <div class="row">
                         <div class="col-lg-12 blog_grid_info">
                           <div class="row">
-                            <ng-container *ngIf="educationFilterList == undefined">
+                            <!-- <ng-container *ngIf="educationFilterList">
                               <div class="col-sm-6 col-md-4 col-lg-4 col-6"
                                 *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
                                 <div class="blog_list_item blog_list_item_two">
@@ -242,29 +242,29 @@
                                   </div>
                                 </div>
                               </div>
-                            </ng-container>
+                            </ng-container> -->
                             <div class="col-sm-6 col-md-4 col-lg-4 col-6"
                               *ngFor="let education of educationFilterList | educationListFilter:searchText:selectedAttributeIds | paginate: { itemsPerPage: educationViewItemCount, currentPage: pageNumber }"
                               #filteredItems>
-                              <div class="blog_list_item blog_list_item_two">
-                                <a target="{{targetValue}}" href="/buca/{{education.categorySeoUrl}}" class="post_date">
+                              <div class="blog_list_item blog_list_item_two" lazy-load-images>
+                                <a routerLink="/buca/{{education.categorySeoUrl}}" class="post_date">
                                   <span>{{education.categoryName}}</span>
                                 </a>
-                                <a target="{{targetValue}}"
-                                  href="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}"><img
-                                    class="img-fluid" src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg"
+                                <a
+                                routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}"><img
+                                    class="img-fluid" attr.data-src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg"
                                     alt="{{education.name}}" title="{{education.name}}"></a>
                                 <div class="blog_content">
-                                  <a target="{{targetValue}}"
-                                    href="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
-                                    <h5 class="blog_title">{{education.name}}<img src="assets/img/tick.png"
+                                  <a
+                                  routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
+                                    <h5 class="blog_title">{{education.name}}<img [attr.data-src]="'assets/img/tick.png'"
                                         class="tick-image" /></h5>
                                   </a>
                                   <span>{{education.districtName}}</span>
                                 </div>
                                 <div class="item-action">
-                                  <a class="btn_three sign_btn_transparent mt_c20" target="{{targetValue}}"
-                                    href="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
+                                  <a class="btn_three sign_btn_transparent mt_c20"
+                                  routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
                                     <i class="fa fa-angle-double-left"></i> Hemen
                                     İncele <i class="fa fa-angle-double-right"></i> </a>
                                 </div>
@@ -591,4 +591,54 @@
       </div>
     </div>
   </section>
+  <footer class="new_footer_area bg_color">
+    <div class="new_footer_top">
+      <div class="footer_bg" lazy-load-images>
+        <div class="footer_bg_one">
+          <img [attr.data-src]="'assets/img/seo/car.png'" alt="car">
+        </div>
+        <div class="footer_bg_two">
+          <img [attr.data-src]="'assets/img/seo/bike.png'" alt="bike">
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 col-sm-6">
+            <p class="mb-0 f_400">© İzmir Eğitim Kurumları 2021 Tüm hakları saklıdır.</p>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="f_social_icon text-center">
+              <a target="_blank" rel="nofollow" href="https://www.facebook.com/izmiregitimkurumlari"
+                class="fa fa-facebook"></a>
+              <a target="_blank" rel="nofollow" href="https://twitter.com/IzmEKurumlari" class="fa fa-twitter"></a>
+              <a target="_blank" rel="nofollow" href="https://www.instagram.com/izmiregitimkurumlari_"
+                class="fa fa-instagram"></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-5 text-right" lazy-load-images>
+            <p><a routerLink="/"><img [attr.data-src]="'assets/img/izmir-egitim-kurumlari.png'" alt="logo"
+                  class="app-logo footer-logo"></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-12 col-md-6 col-sm-12">
+            <ul class="list-unstyled f_menu text-right">
+              <li><a routerLink="/cerez-politikasi">Çerez Politikası</a></li>
+              <li><a routerLink="/kisisel-verilerin-korunmasi-kanunu">Kişisel Verilerin Korunması</a></li>
+              <li><a routerLink="/kullanici-sozlesmesi">Kullanıcı Sözleşmesi</a></li>
+              <li><a routerLink="/ki̇si̇sel-veri̇leri̇n-islenmesi̇ne-ili̇ski̇n-aydınlatma-metni̇">Ki̇şi̇sel Veri̇leri̇n
+                  İşlenmesi̇ne İli̇şki̇n Aydınlatma
+                  Metni̇</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>

@@ -7835,7 +7835,9 @@ a, .btn, button {
   .payment_service_area .service-content p {
     font-size: 18px;
   }
-
+  .payment_service_area .service-content ul {
+    font-size: 18px;
+  }
 .pay_icon {
   background: url("../img/home9/icon_shape_two.png") no-repeat scroll center 0;
   width: 110px;
@@ -14165,9 +14167,6 @@ p {
   }
 
 .blog_content {
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(12, 0, 46, 0.06);
-  box-shadow: 0px 2px 4px 0px rgba(12, 0, 46, 0.06);
-  padding: 30px 47px 42px 50px;
   position: relative;
 }
 
@@ -14391,13 +14390,14 @@ p {
 
 /*=========== blog sidebar css ===========*/
 .widget_title {
-  margin-bottom: 35px;
+  margin-bottom: 12px;
+  margin-top: 15px;
 }
 
   .widget_title .border_bottom {
-    width: 180px;
-    height: 1px;
-    background: #677294;
+    width: 269px;
+    height: 1.5px;
+    background: #fe4c55;
     display: block;
   }
 
@@ -14845,7 +14845,7 @@ p {
     font: 500 22px/32px Roboto,Helvetica Neue,sans-serif;
   }
   .blog_content a h3{
-    font: 400 17px/20px Poppins,sans-serif;
+    font: 400 16px/22px Poppins,sans-serif;
   }
   .blog_area_two{
     background: #fff!important;
@@ -15074,12 +15074,6 @@ p {
     line-height: 25px;
     font-size: 18px;
     margin-bottom: 0px;
-  }
-  .blog_grid_info .blog_list_item .blog_content span {
-    margin-top:5px;
-    font-size:18px;
-    color:#677294;
-    margin-bottom:15px;
   }
 .blog_grid_info .blog_list_item:hover .sign_btn_transparent {
   background: #fe4c55;
@@ -25231,13 +25225,12 @@ a .h_head:hover {
   .new_footer_top .footer_bg {
     position: absolute;
     bottom: 0;
-    background: url("../img/seo/footer_bg.png") no-repeat scroll center 0;
     width: 100%;
+    background: url("../img/seo/footer_bg.png") no-repeat scroll center 0;
     height: 266px;
   }
 
     .new_footer_top .footer_bg .footer_bg_one {
-      background: url("../img/seo/car.png") no-repeat center center;
       width: 70px;
       height: 50px;
       position: absolute;
@@ -25248,7 +25241,6 @@ a .h_head:hover {
     }
 
     .new_footer_top .footer_bg .footer_bg_two {
-      background: url("../img/seo/bike.png") no-repeat center center;
       width: 50px;
       height: 52px;
       bottom: 0;
@@ -25350,9 +25342,6 @@ a .h_head:hover {
   background-color: transparent !important;
 }
 
-.blog_area_two .container {
-  max-width: 750px;
-}
 
 @-moz-keyframes myfirst {
   0% {
@@ -26817,4 +26806,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
 .social-widget h3{
   margin-bottom: 0px;
   margin-right: 8px;
+}
+.blog_area_two .blog_grid_info .blog_list_item{
+  margin-bottom: 20px!important;
+  height: 265px!important;
+}
+.widget_title span{
+  font: 500 20px/22px Roboto,Helvetica Neue,sans-serif;
+}
+.blog_area_two .blog_grid_info .blog_list_item .blog_content .blog_title{
+  line-height: 22px!important;
+  font-size: 16px!important;
 }

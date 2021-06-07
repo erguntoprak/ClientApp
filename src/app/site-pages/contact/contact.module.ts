@@ -5,6 +5,7 @@ import { BaseService } from '../../shared/base.service';
 import { ContactComponent } from './contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
   declarations: [
     ContactComponent
   ],
-  imports: [SharedModule, RouterModule.forChild(routes), ReactiveFormsModule, NgxMaskModule.forRoot(options)
+  imports: [SharedModule, RouterModule.forChild(routes), ReactiveFormsModule, NgxMaskModule.forRoot(options), LazyLoadImagesModule
 ],
   exports: [
     ContactComponent

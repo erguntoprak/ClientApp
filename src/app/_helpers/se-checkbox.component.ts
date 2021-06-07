@@ -2,7 +2,7 @@ import { Component, Input, forwardRef, OnInit, SimpleChanges } from '@angular/co
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseControlValueAccessor } from './base-control-value-accessor';
 import { v4 as uuid } from 'uuid';
-import * as _ from 'lodash';
+import * as _ from 'lodash-es';
 @Component({
   selector: 'se-checkbox',
   template:

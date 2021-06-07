@@ -10,6 +10,7 @@ import { existsSync } from 'fs';
 import * as rateLimit from 'express-rate-limit';
 import 'localstorage-polyfill'
 
+
 const domino = require('domino');
 const fs = require('fs');
 const path = require('path');
@@ -47,7 +48,7 @@ export function app() {
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
-    bootstrap: AppServerModule,
+    bootstrap: AppServerModule
   }));
 
   server.set('view engine', 'html');

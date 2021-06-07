@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BaseService } from '../../shared/base.service';
 import { ActivatedRoute } from '@angular/router';
-import { BlogDetailModel } from '../../shared/models';
+import { BlogDetailModel, BlogListModel, EducationListModel } from '../../shared/models';
 import { environment } from 'src/environments/environment';
 import { SeoService } from 'src/app/_services/seo.service';
+import { makeStateKey } from '@angular/platform-browser';
 
 @Component({
   selector: 'se-blog-detail',
@@ -14,6 +15,10 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
   apiUrl = environment.apiUrl;
   blogDetailModel: BlogDetailModel;
   subscription: any;
+  educationList: EducationListModel[];
+  blogListModel: BlogListModel[];
+
+
 
   constructor(private baseService: BaseService,
     private route: ActivatedRoute, private seoService: SeoService) {
@@ -22,7 +27,22 @@ export class BlogDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.seoService.updateMeta('robots', 'index, follow');
     this.subscription = this.route.params.subscribe(params => {
-      this.baseService.get<BlogDetailModel>("Blog/GetBlogDetailBySeoUrl?seoUrl=", params['name']).subscribe(data => {
+      const dataKey = makeStateKey(params['name']);
+      const getAllEducationListByRandomCategoryIdDataKey = makeStateKey("GetAllEducationListByRandomCategoryIdCount5");
+      const $dataSource = this.baseService.get("Blog/GetBlogDetailBySeoUrl?seoUrl=", params['name']);
+      let $educationListObservable = this.baseService.getAll<EducationListModel[]>("Education/GetAllEducationListByRandomCategoryId?count=5");
+
+      this.baseService.getCachedObservable<EducationListModel[]>($educationListObservable,getAllEducationListByRandomCategoryIdDataKey).subscribe(data=>{
+        this.educationList = data;
+      });
+
+      const blogViewListDataKey = makeStateKey("blogviewlistcount5");
+      const $blogViewListObservable = this.baseService.getAll<BlogListModel[]>("Blog/GetAllBlogViewList?count=5");
+      this.baseService.getCachedObservable($blogViewListObservable,blogViewListDataKey).subscribe(data => {
+        this.blogListModel = data;
+      });
+
+      this.baseService.getCachedObservable<any>($dataSource, dataKey).subscribe(data => {
         this.blogDetailModel = data;
         this.seoService.updateTitle(this.blogDetailModel.metaTitle);
         this.seoService.updateCanonicalUrl(environment.baseUrl + '/blog/' + params['name']);

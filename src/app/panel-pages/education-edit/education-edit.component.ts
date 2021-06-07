@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AcdcLoadingService } from 'acdc-loading';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import * as _ from 'lodash';
+import * as _ from 'lodash-es';
 import { environment } from 'src/environments/environment';
 import { isPlatformBrowser } from '@angular/common';
 import { SeoService } from 'src/app/_services/seo.service';

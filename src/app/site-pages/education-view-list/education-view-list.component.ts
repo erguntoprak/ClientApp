@@ -1,23 +1,23 @@
-import { Component, OnInit, AfterViewInit, ViewChildren, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChildren, OnDestroy, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
 import { BaseService } from '../../shared/base.service';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
-import { CategoryModel, DistrictModel, AddressModel, CategoryAttributeListModel, FilterModel, EducationListModel, EducationFilterListModel } from '../../shared/models';
-import { forkJoin } from 'rxjs';
+import { CategoryModel, DistrictModel, AddressModel, CategoryAttributeListModel, FilterModel, EducationFilterListModel } from '../../shared/models';
+import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SeoService } from 'src/app/_services/seo.service';
-
-declare var $: any;
-
+import { DOCUMENT } from '@angular/common';
+import { makeStateKey } from '@angular/platform-browser';
 
 @Component({
   selector: 'se-education-view-list',
   templateUrl: './education-view-list.component.html',
   styleUrls: ['./education-view-list.component.scss']
 })
-export class EducationViewListComponent implements OnInit, AfterViewInit, OnDestroy {
+export class EducationViewListComponent implements OnInit, OnDestroy {
 
   apiUrl = environment.apiUrl;
   @ViewChildren('filteredItems') filteredItems;
+
   categories: CategoryModel[] = [];
   districtList: DistrictModel[] = [];
   categoryAttributeList: CategoryAttributeListModel[] = [];
@@ -37,19 +37,23 @@ export class EducationViewListComponent implements OnInit, AfterViewInit, OnDest
   educationViewItemCount = 12;
   pageNumber: number = 1;
   searchText: string = '';
-  targetValue: string = "_blank";
-  subscription: any;
-  subscriptionTwo: any;
   pageLoad: boolean = false;
   preloadImageHeight = '162px';
+  sidebar = false;
+  subscriptionOne: Subscription;
+  subscriptionTwo: Subscription;
+  subscriptionThree: Subscription;
+
 
   constructor(private baseService: BaseService,
-    private route: ActivatedRoute, private router: Router, private seoService: SeoService) {
-
+    private route: ActivatedRoute, private router: Router, private seoService: SeoService,
+    @Inject(DOCUMENT) private _document) {
+  }
+  ngOnDestroy(): void {
+    this.subscriptionOne.unsubscribe();
   }
   ngOnInit(): void {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      this.targetValue = "_self";
       this.preloadImageHeight = '100.55px';
     }
     this.seoService.updateMeta('robots', 'index, follow');
@@ -66,10 +70,16 @@ export class EducationViewListComponent implements OnInit, AfterViewInit, OnDest
     this.seoService.updateMeta('twitter:card', 'summary_large_image');
 
 
-    this.subscription = this.route.params.subscribe(params => {
+    this.subscriptionOne = this.route.params.subscribe(params => {
       this.selectedCategoryUrl = params['category'];
       this.selectedDistrictUrl = params['district'];
-      this.getAllCallMethod();
+      this.getAllCallMethod().then(result => {
+        if (!result) {
+          this.router.navigateByUrl("/sayfa-bulunamadi", { skipLocationChange: true });
+        }
+        else{
+        }
+      })
     });
 
     this.route.queryParams.subscribe(params => {
@@ -82,98 +92,74 @@ export class EducationViewListComponent implements OnInit, AfterViewInit, OnDest
     });
 
   }
-  ngAfterViewInit(): void {
-    $(document).ready(function () {
-
-      function sidebar_offcanvas() {
-        const body = $('body');
-        const sidebar = $('.sidebar');
-        const offcanvas = sidebar.hasClass('sidebar--offcanvas--mobile') ? 'mobile' : 'always';
-        const media = matchMedia('(max-width: 991px)');
-
-        const open = function () {
-          if (offcanvas === 'mobile' && !media.matches) {
-            return;
-          }
-
-          const bodyWidth = body.width();
-          body.css('overflow', 'hidden');
-          body.css('paddingRight', (body.width() - bodyWidth) + 'px');
-
-          sidebar.addClass('sidebar--open');
-        };
-        const close = function () {
-          body.css('overflow', 'auto');
-          body.css('paddingRight', '');
-
-          sidebar.removeClass('sidebar--open');
-        };
-        const onMediaChange = function () {
-          if (offcanvas === 'mobile') {
-            if (!media.matches && sidebar.hasClass('sidebar--open')) {
-              close();
-            }
-          }
-        };
-
-        if (media.addEventListener) {
-          media.addEventListener('change', onMediaChange);
-        } else {
-          media.addListener(onMediaChange);
-        }
-
-        $('.filters-button').on('click', function () {
-          open();
-        });
-        $('.sidebar__backdrop, .sidebar__close').on('click', function () {
-          close();
-        });
-      };
-      sidebar_offcanvas();
-    });
+  openSidebar() {
+    this.sidebar = true;
+    this._document.body.style.overflowY = 'hidden';
   }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.subscriptionTwo.unsubscribe();
+  closeSidebar() {
+    this.sidebar = false;
+    this._document.body.style.overflowY = 'auto';
   }
-  getAllCallMethod() {
-    let categoryListObservable = this.baseService.getAll<CategoryModel[]>("Category/GetAllCategoryList");
-    let districtListObservable = this.baseService.getAll<AddressModel>("Address/GetCityNameDistricts");
+
+  public async getAllCallMethod() {
+    let $categoryListObservable = this.baseService.getAll<CategoryModel[]>("Category/GetAllCategoryList");
+    let $districtListObservable = this.baseService.getAll<AddressModel>("Address/GetCityNameDistricts");
+    const getAllCategoryListDataKey = makeStateKey("GetAllCategoryList");
+    const getCityNameDistrictsDataKey = makeStateKey("GetCityNameDistricts");
     this.selectedAttributeIds = [];
 
-    this.subscriptionTwo = forkJoin([categoryListObservable, districtListObservable]).subscribe(results => {
-      this.categories = results[0];
-      this.selectedCategoryIndex = this.categories.findIndex(d => d.seoUrl == this.selectedCategoryUrl);
-      let selectedCategory = this.categories.find(d => d.seoUrl == this.selectedCategoryUrl);
-      this.selectedCategoryId = selectedCategory.id;
-      this.selectedCategoryName = selectedCategory.name;
-      this.baseService.getAll<CategoryAttributeListModel[]>("Attribute/GetAllAttributeByEducationCategoryId?categoryId=" + this.selectedCategoryId).subscribe(categoryAttributeList => {
-        this.categoryAttributeList = categoryAttributeList;
-      });
-
-      this.districtList = results[1].districtListModel;
-      this.selectedDistrictIndex = this.districtList.findIndex(d => d.seoUrl == this.selectedDistrictUrl);
-      let selectedDistrict = this.districtList.find(d => d.seoUrl == this.selectedDistrictUrl);
-      this.selectedDistrictId = selectedDistrict.id;
-      this.selectedDistrictName = selectedDistrict.name;
-      this.baseService.getAll<EducationFilterListModel[]>(`Education/GetAllEducationListByFilter?categoryId=${this.selectedCategoryId}&districtId=${this.selectedDistrictId}&searchText=${this.searchText}`).subscribe(educationList => {
-        this.educationFilterList = educationList;
-        this.pageLoad = true;
-      });
-
-      this.seoService.updateMeta('og:title', `${selectedDistrict.name} ${selectedCategory.name} Listesi, Fiyatları, İndirimleri`);
-      this.seoService.updateMeta('og:url', environment.baseUrl + '/' + this.selectedDistrictUrl + '/' + this.selectedCategoryUrl);
-      this.seoService.updateMeta('twitter:title', `${selectedDistrict.name} ${selectedCategory.name} Listesi, Fiyatları, İndirimleri`);
-      this.seoService.updateMeta('twitter:url', environment.baseUrl + '/' + this.selectedDistrictUrl + '/' + this.selectedCategoryUrl);
+    this.categories = await this.baseService.getCachedPromise<CategoryModel[]>($categoryListObservable, getAllCategoryListDataKey);
+    this.districtList = (await this.baseService.getCachedPromise<AddressModel>($districtListObservable, getCityNameDistrictsDataKey)).districtListModel;
 
 
-      this.seoService.updateTitle(`${selectedDistrict.name} ${selectedCategory.name} Listesi, Fiyatları, İndirimleri`);
-      this.seoService.updateCanonicalUrl(environment.baseUrl + '/' + this.selectedDistrictUrl + '/' + this.selectedCategoryUrl);
+    this.selectedCategoryIndex = this.categories.findIndex(d => d.seoUrl == this.selectedCategoryUrl);
+    if (this.selectedCategoryIndex == -1) {
+      return false;
+    }
+    let selectedCategory = this.categories.find(d => d.seoUrl == this.selectedCategoryUrl);
+    this.selectedCategoryId = selectedCategory.id;
+    this.selectedCategoryName = selectedCategory.name;
 
-      this.seoService.updateMeta('description', `İzmir ${selectedDistrict.name} ${selectedCategory.name} fiyatlarına, fotoğraf galerileri, olanaklarına, iletişim ve konum bilgilerine ulaşmak için listelerimizi hemen inceleyin!`);
-      this.seoService.updateMeta('og:description', `İzmir ${selectedDistrict.name} ${selectedCategory.name} fiyatlarına, fotoğraf galerileri, olanaklarına, iletişim ve konum bilgilerine ulaşmak için listelerimizi hemen inceleyin!`);
-      this.seoService.updateMeta('twitter:description', `İzmir ${selectedDistrict.name} ${selectedCategory.name} fiyatlarına, fotoğraf galerileri, olanaklarına, iletişim ve konum bilgilerine ulaşmak için listelerimizi hemen inceleyin!`);
+    let attributeByEducationCategoryId = this.baseService.getAll<CategoryAttributeListModel[]>("Attribute/GetAllAttributeByEducationCategoryId?categoryId=" + this.selectedCategoryId);
+    // const getAllAttributeByEducationCategoryIdDateKey = makeStateKey(`GetAllAttributeByEducationCategoryId_${selectedCategory.id}`);
+
+    attributeByEducationCategoryId.subscribe(categoryAttributeList=>{
+      this.categoryAttributeList = categoryAttributeList;
     });
+    // this.subscriptionTwo = this.baseService.getCachedObservable<CategoryAttributeListModel[]>($attributeByEducationCategoryId, getAllAttributeByEducationCategoryIdDateKey).
+    //   subscribe(categoryAttributeList => {
+    //     this.categoryAttributeList = categoryAttributeList;
+    //   });
+
+    this.selectedDistrictIndex = this.districtList.findIndex(d => d.seoUrl == this.selectedDistrictUrl);
+    if (this.selectedDistrictIndex == -1) {
+      return false;
+    }
+    let selectedDistrict = this.districtList.find(d => d.seoUrl == this.selectedDistrictUrl);
+    this.selectedDistrictId = selectedDistrict.id;
+    this.selectedDistrictName = selectedDistrict.name;
+
+    let educationListByFilter = this.baseService.getAll<EducationFilterListModel[]>(`Education/GetAllEducationListByFilter?categoryId=${this.selectedCategoryId}&districtId=${this.selectedDistrictId}&searchText=${this.searchText}`);
+    // const getAllEducationListByFilterDateKey = makeStateKey(`GetAllEducationListByFilter_${this.selectedCategoryId}_${this.selectedDistrictId}`);
+
+    educationListByFilter.subscribe(educationList=>{
+      this.educationFilterList = educationList;
+        this.pageLoad = true;
+    });
+    this.seoService.updateMeta('og:title', `${selectedDistrict.name} ${selectedCategory.name} Listesi, Fiyatları, İndirimleri`);
+    this.seoService.updateMeta('og:url', environment.baseUrl + '/' + this.selectedDistrictUrl + '/' + this.selectedCategoryUrl);
+    this.seoService.updateMeta('twitter:title', `${selectedDistrict.name} ${selectedCategory.name} Listesi, Fiyatları, İndirimleri`);
+    this.seoService.updateMeta('twitter:url', environment.baseUrl + '/' + this.selectedDistrictUrl + '/' + this.selectedCategoryUrl);
+
+
+    this.seoService.updateTitle(`${selectedDistrict.name} ${selectedCategory.name} Listesi, Fiyatları, İndirimleri`);
+    this.seoService.updateCanonicalUrl(environment.baseUrl + '/' + this.selectedDistrictUrl + '/' + this.selectedCategoryUrl);
+
+    this.seoService.updateMeta('description', `İzmir ${selectedDistrict.name} ${selectedCategory.name} fiyatlarına, fotoğraf galerileri, olanaklarına, iletişim ve konum bilgilerine ulaşmak için listelerimizi hemen inceleyin!`);
+    this.seoService.updateMeta('og:description', `İzmir ${selectedDistrict.name} ${selectedCategory.name} fiyatlarına, fotoğraf galerileri, olanaklarına, iletişim ve konum bilgilerine ulaşmak için listelerimizi hemen inceleyin!`);
+    this.seoService.updateMeta('twitter:description', `İzmir ${selectedDistrict.name} ${selectedCategory.name} fiyatlarına, fotoğraf galerileri, olanaklarına, iletişim ve konum bilgilerine ulaşmak için listelerimizi hemen inceleyin!`);
+
+    return true;
   }
 
   //Checkbox change checked type

@@ -1,14 +1,15 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EducationContactFormInsertModel } from '../../shared/models';
 import { BaseService } from '../../shared/base.service';
 import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, makeStateKey, TransferState } from '@angular/platform-browser';
 import 'hammerjs';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation} from 'ngx-gallery-9';
 import { environment } from 'src/environments/environment';
 import { SeoService } from 'src/app/_services/seo.service';
 import { Subscription } from 'rxjs';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 declare var $: any;
 @Component({
@@ -28,21 +29,20 @@ export class EducationDetailComponent implements OnInit, AfterViewInit, OnDestro
   lat: number = 51.673858;
   lng: number = 7.815982;
   galleryOptions: NgxGalleryOptions[];
+  color = '';
   galleryImages: NgxGalleryImage[] = [];
+  environment:any;
   @ViewChild('generalInformation') generalInformation: ElementRef;
   subscription: any;
-  preloadImageHeight = '450px';
+  youtubeOneId: any;
+  youtubeTwoId: any;
+  mapCode:any;
   constructor(private formBuilder: FormBuilder, private baseService: BaseService, private route: ActivatedRoute,
-     private sanitizer: DomSanitizer, private seoService: SeoService) {
-
+     private sanitizer: DomSanitizer, private seoService: SeoService, private state: TransferState, @Inject(PLATFORM_ID) private platformId: any) {
+    this.environment = environment;
   }
  
   ngOnInit(): void {
-
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-      this.preloadImageHeight = '255px';
-    }
-
     this.seoService.updateMeta('robots','index, follow');
 
     this.galleryOptions = [
@@ -72,8 +72,10 @@ export class EducationDetailComponent implements OnInit, AfterViewInit, OnDestro
     },
     ];
     this.subscription = this.route.params.subscribe(params => {
-      this.baseService.get("Education/GetEducationDetailModelBySeoUrl?seoUrl=", params['name']).subscribe(data => {
-
+      const dataKey = makeStateKey(params['name']);
+      const $dataSource = this.baseService.get("Education/GetEducationDetailModelBySeoUrl?seoUrl=", params['name']);
+      this.baseService.getCachedObservable<any>($dataSource, dataKey)
+      .subscribe(data => {
         this.educationDetailModel = data;
         this.seoService.updateTitle(`${this.educationDetailModel.addressInformation.districtName} ${this.educationDetailModel.generalInformation.educationName}`);
         this.seoService.updateCanonicalUrl(environment.baseUrl +'/'+ this.educationDetailModel.addressInformation.districSeoUrl + '/' + this.educationDetailModel.generalInformation.categorySeoUrl + '/' + params['name']);
@@ -96,19 +98,11 @@ export class EducationDetailComponent implements OnInit, AfterViewInit, OnDestro
         this.seoService.updateMeta('twitter:card','summary_large_image');
         this.seoService.updateMeta('twitter:url',environment.baseUrl +'/'+ this.educationDetailModel.addressInformation.districSeoUrl + '/' + this.educationDetailModel.generalInformation.categorySeoUrl + '/' + params['name']);
 
-        if (this.educationDetailModel.socialInformation.mapCode != '') {
-          this.educationDetailModel.socialInformation.mapCode = this.sanitizer.bypassSecurityTrustHtml(this.educationDetailModel.socialInformation.mapCode);
+        if (this.educationDetailModel.socialInformation.mapCode != '' || this.educationDetailModel.socialInformation.mapCode) {
+          this.mapCode = this.sanitizer.bypassSecurityTrustHtml(this.educationDetailModel.socialInformation.mapCode);
         }
-        if(this.educationDetailModel.socialInformation.youtubeVideoOne){
-          this.educationDetailModel.socialInformation.youtubeVideoOne = this.educationDetailModel.socialInformation.youtubeVideoOne.split("watch?v=")[1];
-        }
-        if(this.educationDetailModel.socialInformation.youtubeVideoTwo){
-          this.educationDetailModel.socialInformation.youtubeVideoTwo = this.educationDetailModel.socialInformation.youtubeVideoTwo.split("watch?v=")[1]
-        }
-        this.educationDetailModel.blogList.map(blog => {
-          blog.firstVisibleImageName = `${environment.apiUrl}/images/blog/${blog.firstVisibleImageName}_300x180.jpg`
-        });
-
+        this.youtubeOneId = this.educationDetailModel.socialInformation.youtubeVideoOne.split('watch?v=')[1];
+        this.youtubeTwoId = this.educationDetailModel.socialInformation.youtubeVideoTwo.split('watch?v=')[1];
         this.educationDetailModel.images.forEach(image => {
           this.galleryImages.push({
             small: `${environment.apiUrl}/images/${image}_1000x600.jpg`,

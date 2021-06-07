@@ -16,7 +16,9 @@ import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { AcdcLoadingService } from 'acdc-loading';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(private authService: AuthService, private router: Router, private acdcLoadingService: AcdcLoadingService) { }

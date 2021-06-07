@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { SeoService } from 'src/app/_services/seo.service';
 import { environment } from 'src/environments/environment';
+import {RESPONSE} from '@nguniversal/express-engine/tokens';
+import {Response} from 'express';
 
 @Component({
   selector: 'se-not-found',
@@ -8,11 +10,15 @@ import { environment } from 'src/environments/environment';
 })
 export class NotFoundComponent implements OnInit {
 
-
-  constructor(private seoService: SeoService) {
-
+  private response: Response;
+  constructor(private seoService: SeoService,
+  @Optional() @Inject(RESPONSE) response: Response) {
+    this.response = response;
   }
   ngOnInit(): void {
+    if (this.response) {
+      this.response.status(404);
+    }
     this.seoService.updateMeta('robots', 'noindex, follow');
     this.seoService.updateTitle("Sayfa Bulunamadı - İzmir Eğitim Kurumları");
     this.seoService.updateCanonicalUrl(environment.baseUrl + '/sayfa-bulunamadi');

@@ -33,7 +33,7 @@
 
         <div class="col-lg-8 lg-pr">
           <div id="images">
-            <ngx-skeleton-loader [theme]="{ width: '100%', 'border-radius': '3px', height: preloadImageHeight }">
+            <ngx-skeleton-loader [theme]="{ width: '100%', 'border-radius': '3px', height: '255px' }">
             </ngx-skeleton-loader>
           </div>
           <div class="details_content" id="education-about" style="margin-top: -5px;">
@@ -157,7 +157,7 @@
 </div>
 
 <div *ngIf="educationDetailModel">
-  <section style="background: #fbfbfd;">
+  <section [style.background]="color">
     <div class="container">
       <div class="breadcrumb-area">
         <div class="row">
@@ -165,7 +165,7 @@
             <ol class="breadcrumb">
               <li class="item"><a href="/">Anasayfa</a></li>
               <li class="item"><a
-                  href="/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
+                routerLink="/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
               </li>
               <li class="item"><a [queryParams]="{ilce: educationDetailModel.addressInformation.districSeoUrl}"
                   routerLink="/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.addressInformation.districtName}}</a>
@@ -186,7 +186,7 @@
           <ol>
             <li class="item"><a href="/">Anasayfa</a></li>
             <li class="item"><a
-                href="/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
+              routerLink="/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
             </li>
             <li class="item"><a [queryParams]="{ilce: educationDetailModel.addressInformation.districSeoUrl}"
                 routerLink="/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.addressInformation.districtName}}</a>
@@ -233,8 +233,8 @@
               </ul>
             </div>
           </div>
-          <div *ngIf="educationDetailModel.socialInformation.youtubeVideoOne" class="iframe-container">
-            <youtube-player videoId="{{educationDetailModel.socialInformation.youtubeVideoOne}}"></youtube-player>
+          <div *ngIf="youtubeOneId" class="iframe-container">
+            <youtube-player videoId="{{youtubeOneId}}"></youtube-player>
           </div>
           <div *ngIf="educationDetailModel.questions.length>0" class="details_content" id="frequently-asked-questions">
             <h3 class="f_p f_size_22 f_500 t_color3 mb-30">Sıkça Sorulan Sorular</h3>
@@ -246,11 +246,11 @@
               </div>
             </div>
           </div>
-          <div class="iframe-container" *ngIf="educationDetailModel.socialInformation.mapCode != ''"
-            [innerHTML]="educationDetailModel.socialInformation.mapCode">
+          <div class="iframe-container" *ngIf="mapCode"
+            [innerHTML]="mapCode">
           </div>
-          <div *ngIf="educationDetailModel.socialInformation.youtubeVideoTwo" class="iframe-container">
-            <youtube-player videoId="{{educationDetailModel.socialInformation.youtubeVideoTwo}}"></youtube-player>
+          <div *ngIf="youtubeTwoId" class="iframe-container">
+            <youtube-player videoId="{{youtubeTwoId}}"></youtube-player>
           </div>
           <div *ngIf="educationDetailModel.blogList.length>0" class="details_content" id="blog_list">
             <h3 class="f_p f_size_22 f_500 t_color3 mb_20">Blog</h3>
@@ -258,22 +258,22 @@
               <div class="col-lg-4 col-sm-6" *ngFor="let blog of educationDetailModel.blogList">
                 <div class="blog_grid_item mb-30">
                   <div class="blog_img">
-                    <a href="/blog/{{blog.seoUrl}}"><img src="{{blog.firstVisibleImageName}}" alt="{{blog.title}}"
+                    <a routerLink="/blog/{{blog.seoUrl}}"><img src="{{environment.apiUrl}}/images/blog/{{blog.firstVisibleImageName}}_300x180.jpg" alt="{{blog.title}}"
                         title="{{blog.title}}"></a>
                   </div>
                   <div class="blog_content">
                     <div class="entry_post_info">
-                      <a href="/bloglar/{{blog.userName}}">{{blog.userName}}</a>
+                      <a routerLink="/bloglar/{{blog.userName}}">{{blog.userName}}</a>
                       <span>{{blog.createTime}}</span>
                     </div>
-                    <a href="/blog/{{blog.seoUrl}}">
+                    <a routerLink="/blog/{{blog.seoUrl}}">
                       <h3 class="f_p f_size_16 f_500 t_color mb_20">{{blog.title}}</h3>
                     </a>
                   </div>
                 </div>
               </div>
               <div class="col-lg-12">
-                <a href="/bloglar/{{educationDetailModel.blogList[0].userName}}" class="learn_btn_two">Diğer ilgili
+                <a routerLink="/bloglar/{{educationDetailModel.blogList[0].userName}}" class="learn_btn_two">Diğer ilgili
                   bloglara göz at<i class="fa fa-arrow-right"></i></a>
               </div>
             </div>
@@ -555,4 +555,54 @@
       <i class="fa fa-whatsapp"></i>
     </a>
   </div>
+  <footer class="new_footer_area bg_color">
+    <div class="new_footer_top">
+      <div class="footer_bg" lazy-load-images>
+        <div class="footer_bg_one">
+          <img [attr.data-src]="'assets/img/seo/car.png'" alt="car">
+        </div>
+        <div class="footer_bg_two">
+          <img [attr.data-src]="'assets/img/seo/bike.png'" alt="bike">
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 col-sm-6">
+            <p class="mb-0 f_400">© İzmir Eğitim Kurumları 2021 Tüm hakları saklıdır.</p>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="f_social_icon text-center">
+              <a target="_blank" rel="nofollow" href="https://www.facebook.com/izmiregitimkurumlari"
+                class="fa fa-facebook"></a>
+              <a target="_blank" rel="nofollow" href="https://twitter.com/IzmEKurumlari" class="fa fa-twitter"></a>
+              <a target="_blank" rel="nofollow" href="https://www.instagram.com/izmiregitimkurumlari_"
+                class="fa fa-instagram"></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-5 text-right" lazy-load-images>
+            <p><a routerLink="/"><img [attr.data-src]="'assets/img/izmir-egitim-kurumlari.png'" alt="logo"
+                  class="app-logo footer-logo"></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-12 col-md-6 col-sm-12">
+            <ul class="list-unstyled f_menu text-right">
+              <li><a routerLink="/cerez-politikasi">Çerez Politikası</a></li>
+              <li><a routerLink="/kisisel-verilerin-korunmasi-kanunu">Kişisel Verilerin Korunması</a></li>
+              <li><a routerLink="/kullanici-sozlesmesi">Kullanıcı Sözleşmesi</a></li>
+              <li><a routerLink="/ki̇si̇sel-veri̇leri̇n-islenmesi̇ne-ili̇ski̇n-aydınlatma-metni̇">Ki̇şi̇sel Veri̇leri̇n
+                  İşlenmesi̇ne İli̇şki̇n Aydınlatma
+                  Metni̇</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>

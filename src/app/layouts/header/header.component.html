@@ -1,7 +1,7 @@
 <header class="header_area">
   <nav class="navbar navbar-expand-lg menu_one">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/"><img class="app-logo" src="assets/img/izmir-egitim-kurumlari.png" alt="logo"></a>
+      <a class="navbar-brand" routerLink="/"><img class="app-logo" src="assets/img/izmir-egitim-kurumlari.png" alt="logo"></a>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="menu_toggle">
           <span class="hamburger">
@@ -27,7 +27,7 @@
                 <li class="nav-item">
                   <ul class="dropdown-menu scroll">
                     <li *ngFor="let category of categories;let i=index" class="nav-item">
-                      <a target="{{targetValue}}" href="/buca/{{category.seoUrl}}" class="item">
+                      <a routerLink="/buca/{{category.seoUrl}}" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null" class="item">
                         <span class="img">
                           <img src="assets/img/egitim-kurumu-{{i}}.png" alt="{{category.name}}">
                         </span>
@@ -42,16 +42,16 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/bloglar">Blog</a>
+            <a class="nav-link" routerLink="/bloglar" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null">Blog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/iletisim">İletişim</a>
+            <a class="nav-link" routerLink="/iletisim" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null">İletişim</a>
           </li>
           <li *ngIf="isUser" class="nav-item">
             <a rel="nofollow" class="nav-link" href="/panel">Panel</a>
           </li>
         </ul>
-        <a class="btn_get btn_hover" href="/giris-yap">Giriş Yap veya Kaydol</a>
+        <a class="btn_get btn_hover" routerLink="/giris-yap" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null">Giriş Yap veya Kaydol</a>
       </div>
     </div>
   </nav>

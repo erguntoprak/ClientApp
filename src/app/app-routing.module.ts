@@ -262,7 +262,7 @@ const routes: Routes = [
       },
       {
         path: "**",
-        loadChildren: () => import('./site-pages/home/home.module').then(m => m.HomeModule)
+        loadChildren: () => import('./site-pages/not-found/not-found.module').then(m => m.NotFoundModule)
       }
     ]
   },
@@ -275,9 +275,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})],
+  imports: [RouterModule.forRoot(routes,
+    {
+      enableTracing: false,
+      initialNavigation: 'enabled'
+    },
+  ),],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

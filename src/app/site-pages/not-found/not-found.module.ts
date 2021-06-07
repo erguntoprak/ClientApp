@@ -3,6 +3,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { BaseService } from '../../shared/base.service';
 import { NotFoundComponent } from './not-found.component';
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
   declarations: [
     NotFoundComponent
   ],
-  imports: [SharedModule, RouterModule.forChild(routes)
+  imports: [SharedModule, RouterModule.forChild(routes), LazyLoadImagesModule
 ],
   exports: [
     NotFoundComponent

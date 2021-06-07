@@ -4,7 +4,7 @@ import { EducationListModel } from '../../shared/models';
 import Swal from 'sweetalert2';
 import { AcdcLoadingService } from 'acdc-loading';
 import { environment } from 'src/environments/environment';
-import * as _ from 'lodash';
+import * as _ from 'lodash-es';
 import { SeoService } from 'src/app/_services/seo.service';
 @Component({
   selector: 'se-education-list',

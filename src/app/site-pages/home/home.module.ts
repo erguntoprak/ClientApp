@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   declarations: [
     HomeComponent
   ],
-  imports: [SharedModule, ReactiveFormsModule, RouterModule.forChild(routes), NgSelectModule, Ng2SearchPipeModule, NgxSkeletonLoaderModule]
+  imports: [SharedModule, ReactiveFormsModule, RouterModule.forChild(routes), NgSelectModule, Ng2SearchPipeModule, NgxSkeletonLoaderModule,
+    LazyLoadImagesModule]
 })
 export class HomeModule { }

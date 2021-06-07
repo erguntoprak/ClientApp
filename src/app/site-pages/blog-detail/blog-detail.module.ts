@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { BaseService } from '../../shared/base.service';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 const routes: Routes = [
   {
     path: '',
@@ -17,7 +19,9 @@ const routes: Routes = [
   ],
   imports: [SharedModule, RouterModule.forChild(routes),
     ShareButtonsModule,
-    ShareIconsModule
+    ShareIconsModule,
+    NgxSkeletonLoaderModule,
+    LazyLoadImagesModule
   ],
   exports: [
     BlogDetailComponent

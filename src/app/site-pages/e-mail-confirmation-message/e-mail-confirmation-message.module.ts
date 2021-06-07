@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BaseService } from '../../shared/base.service';
 import { EmailConfirmationMessageComponent } from './e-mail-confirmation-message.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 const routes: Routes = [
   {
     path: '',
@@ -14,7 +15,7 @@ const routes: Routes = [
   declarations: [
     EmailConfirmationMessageComponent
   ],
-  imports: [SharedModule, RouterModule.forChild(routes), ReactiveFormsModule],
+  imports: [SharedModule, RouterModule.forChild(routes), ReactiveFormsModule, LazyLoadImagesModule],
   exports: [
     EmailConfirmationMessageComponent
   ],

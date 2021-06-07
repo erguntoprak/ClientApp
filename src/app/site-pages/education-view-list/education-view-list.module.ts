@@ -9,6 +9,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { EducationListFilterPipe } from '../../_helpers/education-list-filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination'; 
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 
 
 
@@ -29,7 +30,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatExpansionModule,
     NgxPaginationModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    LazyLoadImagesModule
   ],
   exports: [
     EducationViewListComponent

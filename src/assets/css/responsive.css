@@ -4693,8 +4693,8 @@
     height: 160px;
   }
   .blog_content a h3 {
-    line-height: 20px;
-    font-size: 15px;
+    line-height: 22px;
+    font-size: 16px;
   }
   .entry_post_info {
     font: 400 12px/17px "Poppins", sans-serif;
@@ -4704,7 +4704,7 @@
   }
   #blog_list .blog_content a h3 {
     line-height: 22px;
-    font-size: 18px;
+    font-size: 16px;
   }
   .blog_list_item_two .post_date span{
     font-size: 10px;
@@ -4718,9 +4718,6 @@
 }
   .btn_three {
     font: 500 15px "Poppins", sans-serif;
-  }
-  .blog_grid_info .blog_list_item .blog_content span{
-    font-size: 15px;
   }
   .blog_grid_info .blog_list_item .blog_content .blog_title{
     line-height: 20px;
@@ -6888,16 +6885,13 @@ margin-bottom: 10px;
     font: 400 10px/15px "Poppins", sans-serif;
   }
   .blog_content a h3 {
-    line-height: 16px;
-    font-size: 13px;
+    line-height: 22px;
+    font-size: 16px;
   }
   .blog_grid_info .blog_list_item .blog_content .blog_title {
     line-height: 16px;
     font-size: 13px;
   }
-  .blog_grid_info .blog_list_item .blog_content span {
-    font-size: 13px;
-}
 .btn_three {
   font: 500 13px "Poppins", sans-serif;
 }

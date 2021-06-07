@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import * as _ from 'lodash';
+import * as _ from 'lodash-es';
 import { SeoService } from 'src/app/_services/seo.service';
 
 @Component({

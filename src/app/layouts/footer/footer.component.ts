@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  targetValue:string = "_blank";
   ngOnInit(): void {
     
   }

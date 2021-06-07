@@ -5,8 +5,8 @@ import { BaseService } from '../../shared/base.service';
 import { environment } from 'src/environments/environment';
 import { SeoService } from 'src/app/_services/seo.service';
 import { Router } from '@angular/router';
-import { isPlatformBrowser } from '@angular/common';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
+import { makeStateKey } from '@angular/platform-browser';
 declare var $: any;
 @Component({
   selector: 'app-home',
@@ -30,11 +30,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   selectedCategoryUrl: string = 'kres-ve-anaokulu';
   searchResult: SearchResult[] = [];
   educationSearchResult: EducationSearchResult[];
-  targetValue: string = "_blank";
   preloadImageHeight = '162px';
-  subscription: any;
+  subscriptionOne: Subscription;
+  subscriptionTwo: Subscription;
+  subscriptionThree: Subscription;
+  subscriptionFour: Subscription;
+  imageSrc1="https://images.dog.ceo/breeds/poodle-toy/n02113624_5584.jpg"
 
-  constructor(private formBuilder: FormBuilder, private baseService: BaseService, private seoService: SeoService, private router: Router, @Inject(PLATFORM_ID) private platformId: any) {
+
+  constructor(private formBuilder: FormBuilder, private baseService: BaseService, private seoService: SeoService, private router: Router) {
     this.searchForm = this.formBuilder.group({
       searchText: [null],
       categoryId: [1]
@@ -42,7 +46,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   ngOnInit(): void {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      this.targetValue = "_self";
       this.preloadImageHeight = '100.55px';
     }
     this.seoService.updateTitle("İzmir Eğitim Kurumları - Anaokulu, Kreş, Özel Öğretim Kursu");
@@ -91,8 +94,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       else {
         this.selectedDistrictId = this.district.value;
       }
-      this.educationList = undefined;
-      this.baseService.getAll<EducationListModel[]>(`Education/GetAllEducationListByCategoryIdAndDistrictId?categoryId=${value}&districtId=${this.selectedDistrictId}`).subscribe(educationList => {
+      this.baseService.getAll<EducationListModel[]>(`Education/GetAllEducationListByCategoryIdAndDistrictId?categoryId=${value}&districtId=${this.selectedDistrictId}&count=20`).subscribe(educationList => {
         this.educationList = educationList;
       });
     });
@@ -105,26 +107,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       } else {
         this.selectedCategoryId = this.categoryHomePage.value;
       }
-      this.baseService.getAll<EducationListModel[]>(`Education/GetAllEducationListByCategoryIdAndDistrictId?categoryId=${this.selectedCategoryId}&districtId=${value}`).subscribe(educationList => {
+      this.baseService.getAll<EducationListModel[]>(`Education/GetAllEducationListByCategoryIdAndDistrictId?categoryId=${this.selectedCategoryId}&districtId=${value}&count=20`).subscribe(educationList => {
         this.educationList = educationList;
       });
-    });
-    this.baseService.getAll<EducationSearchResult[]>("Education/GetAllSearchEducationList").subscribe(searchList => {
-      this.educationSearchResult = searchList;
     });
   }
 
   onSearchFormSubmit() {
-    console.log(this.searchForm.get('searchText').value);
     if (this.searchForm.get('searchText').value == '' || this.searchForm.get('searchText').value == null) {
-      if (isPlatformBrowser(this.platformId)) {
-        window.location.href = `${environment.baseUrl}/buca/${this.selectedCategoryUrl}`;
-      }
+      this.router.navigate([`/buca/${this.selectedCategoryUrl}`]);
     }
     else {
-      if (isPlatformBrowser(this.platformId)) {
-      window.location.href = `${environment.baseUrl}/buca/${this.selectedCategoryUrl}?q=${this.searchForm.get('searchText').value}`;
-      }
+      this.router.navigate([`/buca/${this.selectedCategoryUrl}`], { queryParams: { q: this.searchForm.get('searchText').value } });
     }
   }
   focusFunction() {
@@ -136,22 +130,37 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }, 300);
   }
   getAllCallMethod() {
-    let categoryListObservable = this.baseService.getAll<CategoryModel[]>("Category/GetAllCategoryList");
-    let districtListObservable = this.baseService.getAll<AddressModel>("Address/GetCityNameDistricts");
-    let educationListObservable = this.baseService.getAll<EducationListModel[]>("Education/GetAllEducationListByRandomCategoryId");
+    let $categoryListObservable = this.baseService.getAll<CategoryModel[]>("Category/GetAllCategoryList");
+    let $districtListObservable = this.baseService.getAll<AddressModel>("Address/GetCityNameDistricts");
+    let $educationListObservable = this.baseService.getAll<EducationListModel[]>("Education/GetAllEducationListByRandomCategoryId?count=20");
+    let $educationSearchListObservable = this.baseService.getAll<EducationSearchResult[]>("Education/GetAllSearchEducationList");
 
+    const getAllCategoryListDataKey = makeStateKey("GetAllCategoryList");
+    const getCityNameDistrictsDataKey = makeStateKey("GetCityNameDistricts");
+    const getAllEducationListByRandomCategoryIdDataKey = makeStateKey("GetAllEducationListByRandomCategoryId");
+    const GetAllSearchEducationListDataKey = makeStateKey("GetAllSearchEducationList");
 
-    this.subscription = forkJoin([educationListObservable, categoryListObservable, districtListObservable]).subscribe(results => {
-      this.educationList = results[0];
-      this.categories =  results[1];
-      this.districtList = results[2].districtListModel;
+    this.subscriptionOne = this.baseService.getCachedObservable<CategoryModel[]>($categoryListObservable,getAllCategoryListDataKey).subscribe(data=>{
+      this.categories = data;
+    });
+    this.subscriptionTwo = this.baseService.getCachedObservable<AddressModel>($districtListObservable,getCityNameDistrictsDataKey).subscribe(data=>{
+      this.districtList = data.districtListModel;
       this.districtList.forEach(d => {
         this.searchResult.push({ text: d.name, districtUrl: d.seoUrl });
       });
     });
+    this.subscriptionThree = this.baseService.getCachedObservable<EducationListModel[]>($educationListObservable,getAllEducationListByRandomCategoryIdDataKey).subscribe(data=>{
+      this.educationList = data;
+    });
+    this.subscriptionFour = this.baseService.getCachedObservable<EducationSearchResult[]>($educationSearchListObservable,GetAllSearchEducationListDataKey).subscribe(searchList => {
+      this.educationSearchResult = searchList;
+    });
   }
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptionOne.unsubscribe();
+    this.subscriptionTwo.unsubscribe();
+    this.subscriptionThree.unsubscribe();
+    this.subscriptionFour.unsubscribe();
   }
 
 }

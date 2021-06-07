@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BlogListModel } from '../../shared/models';
 import { environment } from 'src/environments/environment';
 import { SeoService } from 'src/app/_services/seo.service';
+import { makeStateKey } from '@angular/platform-browser';
 
 @Component({
   selector: 'se-blog-view-list',
@@ -13,8 +14,7 @@ import { SeoService } from 'src/app/_services/seo.service';
 export class BlogViewListComponent implements OnInit, OnDestroy {
 
   apiUrl = environment.apiUrl;
-  blogListModel: BlogListModel;
-  targetValue:string = "_blank";
+  blogListModel: BlogListModel[];
   subscription: any;
 
   constructor(private baseService: BaseService,
@@ -22,9 +22,7 @@ export class BlogViewListComponent implements OnInit, OnDestroy {
 
   }
   ngOnInit(): void {
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-      this.targetValue = "_self";
-    }
+    
     this.seoService.updateTitle('Eğitimle İlgili Bloglar - İzmir Eğitim Kurumları');
     this.seoService.updateCanonicalUrl(environment.baseUrl + '/bloglar');
 
@@ -52,12 +50,16 @@ export class BlogViewListComponent implements OnInit, OnDestroy {
     this.subscription = this.route.params.subscribe(params => {
       let userName = params['userName'];
       if (userName != undefined) {
-        this.baseService.get<BlogListModel>("Blog/GetAllBlogListByUserName?userName=", userName).subscribe(data => {
+        const userNameDataKey = makeStateKey(`user_${params['userName']}`);
+        const $blogListByUserNameObservable = this.baseService.get<BlogListModel[]>("Blog/GetAllBlogListByUserName?userName=", userName);
+        this.baseService.getCachedObservable($blogListByUserNameObservable,userNameDataKey).subscribe(data => {
           this.blogListModel = data;
         });
       }
       else {
-        this.baseService.getAll<BlogListModel>("Blog/GetAllBlogViewList").subscribe(data => {
+        const blogViewListDataKey = makeStateKey("blogviewlist");
+        const $blogViewListObservable = this.baseService.getAll<BlogListModel[]>("Blog/GetAllBlogViewList");
+        this.baseService.getCachedObservable($blogViewListObservable,blogViewListDataKey).subscribe(data => {
           this.blogListModel = data;
         });
       }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseService } from '../../shared/base.service';
 import { BlogListModel } from '../../shared/models';
 import Swal from 'sweetalert2';
-import * as _ from 'lodash';
+import * as _ from 'lodash-es';
 import { AcdcLoadingService } from 'acdc-loading';
 import { environment } from 'src/environments/environment';
 import { SeoService } from 'src/app/_services/seo.service';
