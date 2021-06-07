@@ -165,17 +165,17 @@
             <ol class="breadcrumb">
               <li class="item"><a href="/">Anasayfa</a></li>
               <li class="item"><a
-                routerLink="/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
+                routerLink="/{{educationDetailModel.addressInformation.districSeoUrl}}/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
               </li>
-              <li class="item"><a [queryParams]="{ilce: educationDetailModel.addressInformation.districSeoUrl}"
-                  routerLink="/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.addressInformation.districtName}}</a>
+              <li class="item"><a 
+                routerLink="/{{educationDetailModel.addressInformation.districSeoUrl}}/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.addressInformation.districtName}}</a>
               </li>
               <li class="item">{{educationDetailModel.generalInformation.educationName}}
               </li>
             </ol>
           </div>
           <div class="col-12">
-            <h1>{{educationDetailModel.generalInformation.educationName}}<img src="assets/img/tick.png"
+            <h1>{{educationDetailModel.generalInformation.educationName}}<img alt="tick" src="assets/img/tick.png"
                 class="tick-image">
             </h1>
           </div>

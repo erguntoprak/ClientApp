@@ -70,21 +70,5 @@ export class BaseService {
       }
     }
   }
-  public getCachedPromise<T>($dataSource: Observable<any>, dataKey: StateKey<any>) {
-    if (isPlatformServer(this.platformId)) {
-      return $dataSource.toPromise();
-    } else {
-      const savedValue = this.state.get<T>(dataKey, null);
-      if (savedValue) {
-        return new Promise<T>((resolve) => {
-          resolve(savedValue);
-        });
-      }
-      else {
-        return $dataSource.toPromise();
-      }
-    }
-  }
-
 
 }

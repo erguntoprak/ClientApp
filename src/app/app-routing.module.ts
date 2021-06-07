@@ -278,6 +278,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes,
     {
       enableTracing: false,
+      scrollPositionRestoration: 'enabled',
       initialNavigation: 'enabled'
     },
   ),],

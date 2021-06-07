@@ -120,7 +120,8 @@
                                 [class.active]="selectedCategoryIndex === i"
                                 class="filter-categories__item filter-categories__item--parent">
                                 <a
-                                routerLink="/{{selectedDistrictUrl}}/{{category.seoUrl}}{{searchText == '' ? '' : ('?q='+searchText) }}">{{category.name}}</a>
+                                [routerLink]="'/'+selectedDistrictUrl+'/'+category.seoUrl" [queryParams]="searchText == '' ? {}:{q:searchText}"
+                                >{{category.name}}</a>
                               </li>
                             </ul>
                           </mat-expansion-panel>
@@ -137,7 +138,7 @@
                                 [class.active]="selectedDistrictIndex === i"
                                 class="filter-categories__item filter-categories__item--parent">
                                 <a
-                                routerLink="/{{district.seoUrl}}/{{selectedCategoryUrl}}{{searchText == '' ? '' : ('?q='+searchText) }}">{{district.name}}</a>
+                                [routerLink]="'/'+district.seoUrl+'/'+selectedCategoryUrl" [queryParams]="searchText == '' ? {}:{q:searchText}">{{district.name}}</a>
                               </li>
                             </ul>
                           </mat-expansion-panel>
@@ -257,7 +258,7 @@
                                 <div class="blog_content">
                                   <a
                                   routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
-                                    <h5 class="blog_title">{{education.name}}<img [attr.data-src]="'assets/img/tick.png'"
+                                    <h5 class="blog_title">{{education.name}}<img alt="tick" [attr.data-src]="'assets/img/tick.png'"
                                         class="tick-image" /></h5>
                                   </a>
                                   <span>{{education.districtName}}</span>

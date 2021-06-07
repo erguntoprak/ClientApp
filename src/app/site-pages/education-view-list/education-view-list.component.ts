@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SeoService } from 'src/app/_services/seo.service';
 import { DOCUMENT } from '@angular/common';
-import { makeStateKey } from '@angular/platform-browser';
+import { makeStateKey, TransferState } from '@angular/platform-browser';
 
 @Component({
   selector: 'se-education-view-list',
@@ -45,7 +45,7 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
   subscriptionThree: Subscription;
 
 
-  constructor(private baseService: BaseService,
+  constructor(private baseService: BaseService,private state: TransferState,
     private route: ActivatedRoute, private router: Router, private seoService: SeoService,
     @Inject(DOCUMENT) private _document) {
   }
@@ -102,15 +102,29 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
   }
 
   public async getAllCallMethod() {
-    let $categoryListObservable = this.baseService.getAll<CategoryModel[]>("Category/GetAllCategoryList");
-    let $districtListObservable = this.baseService.getAll<AddressModel>("Address/GetCityNameDistricts");
+    let $categoryListObservable = this.baseService.getAll<any>("Category/GetAllCategoryList");
+    let $districtListObservable = this.baseService.getAll<any>("Address/GetCityNameDistricts");
     const getAllCategoryListDataKey = makeStateKey("GetAllCategoryList");
     const getCityNameDistrictsDataKey = makeStateKey("GetCityNameDistricts");
     this.selectedAttributeIds = [];
 
-    this.categories = await this.baseService.getCachedPromise<CategoryModel[]>($categoryListObservable, getAllCategoryListDataKey);
-    this.districtList = (await this.baseService.getCachedPromise<AddressModel>($districtListObservable, getCityNameDistrictsDataKey)).districtListModel;
+    const getAllCategoryListDataValue = this.state.get<any>(getAllCategoryListDataKey, null);
+    if(getAllCategoryListDataValue){
+      this.categories = getAllCategoryListDataValue;
+    }else{
+      let categoryList = await $categoryListObservable.toPromise();
+      this.categories = categoryList;
+      this.state.set(getAllCategoryListDataKey, categoryList);
+    }
 
+    const getCityNameDistrictsDataValue = this.state.get<any>(getCityNameDistrictsDataKey, null);
+    if(getCityNameDistrictsDataValue){
+      this.districtList = getCityNameDistrictsDataValue;
+    }else{
+      let districtList = (await $districtListObservable.toPromise()).districtListModel;
+      this.districtList = districtList;
+      this.state.set(getCityNameDistrictsDataKey, districtList);
+    }
 
     this.selectedCategoryIndex = this.categories.findIndex(d => d.seoUrl == this.selectedCategoryUrl);
     if (this.selectedCategoryIndex == -1) {
@@ -120,16 +134,14 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
     this.selectedCategoryId = selectedCategory.id;
     this.selectedCategoryName = selectedCategory.name;
 
-    let attributeByEducationCategoryId = this.baseService.getAll<CategoryAttributeListModel[]>("Attribute/GetAllAttributeByEducationCategoryId?categoryId=" + this.selectedCategoryId);
-    // const getAllAttributeByEducationCategoryIdDateKey = makeStateKey(`GetAllAttributeByEducationCategoryId_${selectedCategory.id}`);
+    let $attributeByEducationCategoryId = this.baseService.getAll<CategoryAttributeListModel[]>("Attribute/GetAllAttributeByEducationCategoryId?categoryId=" + this.selectedCategoryId);
+    const getAllAttributeByEducationCategoryIdDateKey = makeStateKey(`GetAllAttributeByEducationCategoryId_${selectedCategory.id}`);
 
-    attributeByEducationCategoryId.subscribe(categoryAttributeList=>{
-      this.categoryAttributeList = categoryAttributeList;
-    });
-    // this.subscriptionTwo = this.baseService.getCachedObservable<CategoryAttributeListModel[]>($attributeByEducationCategoryId, getAllAttributeByEducationCategoryIdDateKey).
-    //   subscribe(categoryAttributeList => {
-    //     this.categoryAttributeList = categoryAttributeList;
-    //   });
+    
+    this.subscriptionTwo = this.baseService.getCachedObservable<CategoryAttributeListModel[]>($attributeByEducationCategoryId, getAllAttributeByEducationCategoryIdDateKey).
+      subscribe(categoryAttributeList => {
+        this.categoryAttributeList = categoryAttributeList;
+      });
 
     this.selectedDistrictIndex = this.districtList.findIndex(d => d.seoUrl == this.selectedDistrictUrl);
     if (this.selectedDistrictIndex == -1) {
@@ -139,13 +151,16 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
     this.selectedDistrictId = selectedDistrict.id;
     this.selectedDistrictName = selectedDistrict.name;
 
-    let educationListByFilter = this.baseService.getAll<EducationFilterListModel[]>(`Education/GetAllEducationListByFilter?categoryId=${this.selectedCategoryId}&districtId=${this.selectedDistrictId}&searchText=${this.searchText}`);
-    // const getAllEducationListByFilterDateKey = makeStateKey(`GetAllEducationListByFilter_${this.selectedCategoryId}_${this.selectedDistrictId}`);
+    let $educationListByFilter = this.baseService.getAll<EducationFilterListModel[]>(`Education/GetAllEducationListByFilter?categoryId=${this.selectedCategoryId}&districtId=${this.selectedDistrictId}&searchText=${this.searchText}`);
+    const getAllEducationListByFilterDateKey = makeStateKey(`GetAllEducationListByFilter_${this.selectedCategoryId}_${this.selectedDistrictId}`);
 
-    educationListByFilter.subscribe(educationList=>{
+
+    this.subscriptionThree = this.baseService.getCachedObservable<EducationFilterListModel[]>($educationListByFilter, getAllEducationListByFilterDateKey).
+    subscribe(educationList => {
       this.educationFilterList = educationList;
         this.pageLoad = true;
     });
+
     this.seoService.updateMeta('og:title', `${selectedDistrict.name} ${selectedCategory.name} Listesi, Fiyatları, İndirimleri`);
     this.seoService.updateMeta('og:url', environment.baseUrl + '/' + this.selectedDistrictUrl + '/' + this.selectedCategoryUrl);
     this.seoService.updateMeta('twitter:title', `${selectedDistrict.name} ${selectedCategory.name} Listesi, Fiyatları, İndirimleri`);
@@ -179,7 +194,7 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
 
   changeeducationViewItemCount(event) {
     this.pageNumber = 1;
-    this.educationViewItemCount = +event.target.value;;
+    this.educationViewItemCount = +event.target.value;
   }
 
   getSelectedAttributeName(attributeId: number) {
@@ -203,6 +218,7 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
   }
   removeSearchText() {
     this.searchText = '';
+    this.navigateFilterUrl();
   }
   removeAllFilters() {
     this.selectedAttributeIds = [];
