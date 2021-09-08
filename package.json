@@ -13,7 +13,11 @@
     "serve:ssr": "node dist/client-app/server/main.js",
     "build:ssr": "ng build --prod --configuration=production && ng run client-app:server:production",
     "build-test:ssr": "ng build --prod --configuration=test && ng run client-app:server:production",
-    "prerender": "ng run client-app:prerender"
+    "prerender": "ng run client-app:prerender",
+    "unused-css": "ngx-unused-css",
+    "prebuild": "node ./prebuild.ts",
+    "postbuild": "node ./postbuild.js",
+    "update-angular": "ng update @angular/cli @angular/core --allow-dirty"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +48,7 @@
     "@nguniversal/express-engine": "^11.2.1",
     "@schematics/angular": "^11.2.5",
     "acdc-loading": "^1.2.3",
+    "compression": "^1.7.4",
     "cookieconsent": "^3.1.1",
     "domino": "^2.1.6",
     "express": "^4.15.2",
@@ -74,9 +79,11 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^12.1.1",
     "@angular/cli": "^11.2.5",
     "@angular/compiler-cli": "^11.2.6",
     "@angular/language-service": "^11.2.6",
+    "@fullhuman/postcss-purgecss": "^4.0.3",
     "@nguniversal/builders": "^11.2.1",
     "@types/express": "^4.17.0",
     "@types/jasmine": "~3.5.0",
@@ -92,8 +99,15 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "ngx-unused-css": "^3.0.0",
+    "postcss-scss": "^4.0.0",
     "protractor": "~5.4.3",
+    "purgecss": "^4.0.3",
+    "purgecss-webpack-plugin": "^4.0.3",
     "source-map-explorer": "^2.5.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recommended": "^5.0.0",
+    "tailwindcss": "^2.2.7",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "^4.1.5"

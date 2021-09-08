@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   subscriptionTwo: Subscription;
   subscriptionThree: Subscription;
   subscriptionFour: Subscription;
-  imageSrc1="https://images.dog.ceo/breeds/poodle-toy/n02113624_5584.jpg"
 
 
   constructor(private formBuilder: FormBuilder, private baseService: BaseService, private seoService: SeoService, private router: Router) {
@@ -48,29 +47,29 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       this.preloadImageHeight = '100.55px';
     }
-    this.seoService.updateTitle("İzmir Eğitim Kurumları - Anaokulu, Kreş, Özel Öğretim Kursu");
+    this.getAllCallMethod();
+    this.seoService.updateTitle("İzmir Eğitim Kurumları - Anaokulları, Kreşler, Dil Kursları, Kolejler");
     this.seoService.updateCanonicalUrl(environment.baseUrl + '/');
     this.seoService.updateMeta('robots', 'index, follow');
-    this.seoService.updateMeta('description', "İzmir kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursu, fiyatları, okullar, özel öğretim kurumları, erken kayıt, kayıt ücreti");
+    this.seoService.updateMeta('description', "İzmir bölgesindeki tüm anaokulu, okul öncesi, kreş, kolej ve dil kursları tek tıkla elinizin altında.");
 
     //Facebook Meta Tag
-    this.seoService.updateMeta('og:title', 'İzmir Eğitim Kurumları - Anaokulu, Kreş, Özel Öğretim Kursu');
+    this.seoService.updateMeta('og:title', 'İzmir Eğitim Kurumları - Anaokulları, Kreşler, Dil Kursları, Kolejler');
     this.seoService.updateMeta('og:type', 'website');
     this.seoService.updateMeta('og:url', environment.baseUrl);
     this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
     this.seoService.updateMeta('og:site_name', 'İzmir Eğitim Kurumları');
-    this.seoService.updateMeta('og:description', "İzmir kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursu, fiyatları, okullar, özel öğretim kurumları, erken kayıt, kayıt ücreti");
+    this.seoService.updateMeta('og:description', "İzmir bölgesindeki tüm anaokulu, okul öncesi, kreş, kolej ve dil kursları tek tıkla elinizin altında.");
     this.seoService.updateMeta('og:locale', 'tr_TR');
     this.seoService.updateMeta('og:image:secure_url', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
 
     //Twitter Meta Tag
-    this.seoService.updateMeta('twitter:title', 'İzmir Eğitim Kurumları - Anaokulu, Kreş, Özel Öğretim Kursu');
-    this.seoService.updateMeta('twitter:description', "İzmir kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursu, fiyatları, okullar, özel öğretim kurumları, erken kayıt, kayıt ücreti");
+    this.seoService.updateMeta('twitter:title', 'İzmir Eğitim Kurumları - Anaokulları, Kreşler, Dil Kursları, Kolejler');
+    this.seoService.updateMeta('twitter:description', "İzmir bölgesindeki tüm anaokulu, okul öncesi, kreş, kolej ve dil kursları tek tıkla elinizin altında.");
     this.seoService.updateMeta('twitter:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
     this.seoService.updateMeta('twitter:card', 'summary_large_image');
     this.seoService.updateMeta('twitter:url', environment.baseUrl);
 
-    this.getAllCallMethod();
   }
   ngAfterViewInit(): void {
     this.searchForm.get('categoryId').valueChanges.subscribe(value => {

@@ -186,16 +186,16 @@
           <ol>
             <li class="item"><a href="/">Anasayfa</a></li>
             <li class="item"><a
-              routerLink="/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
+              routerLink="/{{educationDetailModel.addressInformation.districSeoUrl}}/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.generalInformation.categoryName}}</a>
             </li>
-            <li class="item"><a [queryParams]="{ilce: educationDetailModel.addressInformation.districSeoUrl}"
-                routerLink="/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.addressInformation.districtName}}</a>
+            <li class="item"><a 
+              routerLink="/{{educationDetailModel.addressInformation.districSeoUrl}}/{{educationDetailModel.generalInformation.categorySeoUrl}}">{{educationDetailModel.addressInformation.districtName}}</a>
             </li>
             <li class="item active"><span>{{educationDetailModel.generalInformation.educationName}}</span>
             </li>
           </ol>
         </div>
-        <h1>{{educationDetailModel.generalInformation.educationName}}<img src="assets/img/tick.png" class="tick-image">
+        <h1>{{educationDetailModel.generalInformation.educationName}}<img alt="tick" src="assets/img/tick.png" class="tick-image">
         </h1>
       </div>
     </div>
@@ -236,7 +236,7 @@
           <div *ngIf="youtubeOneId" class="iframe-container">
             <youtube-player videoId="{{youtubeOneId}}"></youtube-player>
           </div>
-          <div *ngIf="educationDetailModel.questions.length>0" class="details_content" id="frequently-asked-questions">
+          <div *ngIf="educationDetailModel.questions.length>1" class="details_content" id="frequently-asked-questions">
             <h3 class="f_p f_size_22 f_500 t_color3 mb-30">Sıkça Sorulan Sorular</h3>
             <div class="stratup_service_info">
               <div class="startup_service_item" *ngFor="let questionModel of educationDetailModel.questions">

@@ -14,6 +14,7 @@ import 'localstorage-polyfill'
 const domino = require('domino');
 const fs = require('fs');
 const path = require('path');
+const compression = require('compression');
 
 const template = fs
   .readFileSync(path.join(join(process.cwd(), 'dist/client-app/browser'), 'index.html'))
@@ -36,6 +37,7 @@ global["sessionStorage"] = localStorage;
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
   const server = express();
+  server.use(compression({ level: 6 }));
   const distFolder = join(process.cwd(), 'dist/client-app/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 

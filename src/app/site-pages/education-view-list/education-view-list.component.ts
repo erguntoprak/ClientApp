@@ -5,7 +5,7 @@ import { CategoryModel, DistrictModel, AddressModel, CategoryAttributeListModel,
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SeoService } from 'src/app/_services/seo.service';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 
 @Component({
@@ -35,7 +35,7 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
 
   selectedAttributeIds: number[] = [];
   educationViewItemCount = 12;
-  pageNumber: number = 1;
+  pageNumber: number;
   searchText: string = '';
   pageLoad: boolean = false;
   preloadImageHeight = '162px';
@@ -47,7 +47,7 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
 
   constructor(private baseService: BaseService,private state: TransferState,
     private route: ActivatedRoute, private router: Router, private seoService: SeoService,
-    @Inject(DOCUMENT) private _document) {
+    @Inject(DOCUMENT) private _document,@Inject(PLATFORM_ID) private platformId: any) {
   }
   ngOnDestroy(): void {
     this.subscriptionOne.unsubscribe();
@@ -83,6 +83,9 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
     });
 
     this.route.queryParams.subscribe(params => {
+      if(params['page']){
+        this.pageNumber = params['page'];
+      }
       if (params['q']) {
         this.searchText = params['q'];
       }
@@ -91,6 +94,17 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
       }
     });
 
+  }
+  pageChanged(newPage: number) {
+    if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+    this.pageNumber = newPage;
+    this.navigateFilterUrl();
   }
   openSidebar() {
     this.sidebar = true;
@@ -119,10 +133,10 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
 
     const getCityNameDistrictsDataValue = this.state.get<any>(getCityNameDistrictsDataKey, null);
     if(getCityNameDistrictsDataValue){
-      this.districtList = getCityNameDistrictsDataValue;
+      this.districtList = getCityNameDistrictsDataValue.districtListModel;
     }else{
-      let districtList = (await $districtListObservable.toPromise()).districtListModel;
-      this.districtList = districtList;
+      let districtList = await $districtListObservable.toPromise();
+      this.districtList = districtList.districtListModel;
       this.state.set(getCityNameDistrictsDataKey, districtList);
     }
 
@@ -230,6 +244,9 @@ export class EducationViewListComponent implements OnInit, OnDestroy {
 
     if (this.searchText != '') {
       queryParams.q = this.searchText;
+    }
+    if(this.pageNumber){
+      queryParams.page = this.pageNumber;
     }
     if (this.selectedAttributeIds.length > 0) {
       queryParams.ozellik = this.selectedAttributeIds.join(',');
