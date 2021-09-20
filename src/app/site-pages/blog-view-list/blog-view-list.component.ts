@@ -24,7 +24,7 @@ export class BlogViewListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     
     this.seoService.updateTitle('Eğitimle İlgili Bloglar - İzmir Eğitim Kurumları');
-    this.seoService.updateCanonicalUrl(environment.baseUrl + '/bloglar');
+    this.seoService.updateCanonicalUrl(environment.baseUrl + '/blog');
 
     this.seoService.updateMeta('robots', 'index, follow');
     this.seoService.updateMeta('description', "İzmir buca, bornova, karşıyaka, konak, bayraklı, çiğli, balçova, gaziemir, kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursları");
@@ -32,7 +32,7 @@ export class BlogViewListComponent implements OnInit, OnDestroy {
     //Facebook Meta Tag
     this.seoService.updateMeta('og:title', 'Eğitimle İlgili Bloglar - İzmir Eğitim Kurumları');
     this.seoService.updateMeta('og:type', 'website');
-    this.seoService.updateMeta('og:url', environment.baseUrl + '/bloglar');
+    this.seoService.updateMeta('og:url', environment.baseUrl + '/blog');
     this.seoService.updateMeta('og:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
     this.seoService.updateMeta('og:site_name', 'İzmir Eğitim Kurumları');
     this.seoService.updateMeta('og:description', "İzmir buca, bornova, karşıyaka, konak, bayraklı, çiğli, balçova, gaziemir, kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursları");
@@ -44,7 +44,7 @@ export class BlogViewListComponent implements OnInit, OnDestroy {
     this.seoService.updateMeta('twitter:description', "İzmir buca, bornova, karşıyaka, konak, bayraklı, çiğli, balçova, gaziemir, kreş, anaokulu, özel öğretim kursu, ilkokul, ortaokul, lise, yabancı dil kursları");
     this.seoService.updateMeta('twitter:image', environment.apiUrl + '/images/izmir-egitim-kurumlari.jpg');
     this.seoService.updateMeta('twitter:card', 'summary_large_image');
-    this.seoService.updateMeta('twitter:url', environment.baseUrl + '/bloglar');
+    this.seoService.updateMeta('twitter:url', environment.baseUrl + '/blog');
 
 
     this.subscription = this.route.params.subscribe(params => {

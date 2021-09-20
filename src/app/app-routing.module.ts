@@ -221,12 +221,12 @@ const routes: Routes = [
         data: { breadcrumb: 'Home' }
       },
       {
-        path: 'bloglar/:userName',
+        path: 'blog-egitim-kurumu/:userName',
         loadChildren: () => import('./site-pages/blog-view-list/blog-view-list.module').then(m => m.BlogViewListModule),
         data: { breadcrumb: 'Home' }
       },
       {
-        path: 'bloglar',
+        path: 'blog',
         loadChildren: () => import('./site-pages/blog-view-list/blog-view-list.module').then(m => m.BlogViewListModule),
         data: { breadcrumb: 'Home' }
       },

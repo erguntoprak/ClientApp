@@ -1,59 +1,1617 @@
-<header class="header_area">
-  <nav class="navbar navbar-expand-lg menu_one">
-    <div class="container-fluid">
-      <a class="navbar-brand" routerLink="/"><img class="app-logo" src="assets/img/izmir-egitim-kurumlari.png" alt="logo"></a>
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="menu_toggle">
-          <span class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-          <span class="hamburger-cross">
-            <span></span>
-            <span></span>
-          </span>
-        </span>
-      </button>
+<div class="animsition">
+    <div class="header-top">
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml_40 menu">
-          <li class="nav-item dropdown submenu mega_menu mega_menu_two">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Eğitimler
-            </a>
-            <div class="mega_menu_inner">
-              <ul class="dropdown-menu">
-                <li class="nav-item">
-                  <ul class="dropdown-menu scroll">
-                    <li *ngFor="let category of categories;let i=index" class="nav-item">
-                      <a routerLink="/buca/{{category.seoUrl}}" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null" class="item">
-                        <span class="img">
-                          <img src="assets/img/egitim-kurumu-{{i}}.png" alt="{{category.name}}">
-                        </span>
-                        <span class="text">
-                          {{category.name}}
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
+        <header class="cd-main-header grey-2-section">
+            <a class="cd-logo" routerLink="/"><img class="app-logo" src="assets/img/izmir-egitim-kurumlari.png" alt="izmir-egitim-kurumlari-logo"></a>
+
+            <ul class="cd-header-buttons">
+                <li><a class="cd-nav-trigger" href="#cd-primary-nav"><span></span></a></li>
+            </ul>
+            <!-- cd-header-buttons -->
+        </header>
+
+        <nav class="cd-nav">
+            <ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
+                <li class="has-children">
+                    <a>Eğitimler Kurumları ve Kurslar</a>
+
+                    <ul class="cd-secondary-nav is-hidden">
+                        <li class="go-back">
+                            <a>Geri</a>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Buca</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/buca/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Buca Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/buca/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Buca Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/buca/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Buca Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/buca/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Buca İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/buca/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Buca Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/buca/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Buca Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Bornova</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/bornova/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Bornova Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/bornova/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Bornova Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/bornova/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Bornova Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/bornova/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Bornova İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/bornova/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Bornova Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/bornova/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Bornova Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Karşıyaka</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/karsiyaka/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Karşıyaka Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/karsiyaka/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Karşıyaka Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/karsiyaka/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Karşıyaka Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/karsiyaka/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Karşıyaka İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/karsiyaka/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Karşıyaka Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/karsiyaka/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Karşıyaka Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Konak</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/konak/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Konak Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/konak/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Konak Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/konak/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Konak Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/konak/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Konak İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/konak/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Konak Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/konak/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Konak Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Gaziemir</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/gaziemir/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Gaziemir Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/gaziemir/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Gaziemir Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/gaziemir/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Gaziemir Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/gaziemir/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Gaziemir İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/gaziemir/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Gaziemir Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/gaziemir/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Gaziemir Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Balçova</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/balcova/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Balçova Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/balcova/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Balçova Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/balcova/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Balçova Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/balcova/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Balçova İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/balcova/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Balçova Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/balcova/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Balçova Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Bayraklı</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/bayrakli/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Bayraklı Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/bayrakli/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Bayraklı Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/bayrakli/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Bayraklı Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/bayrakli/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Bayraklı İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/bayrakli/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Bayraklı Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/bayrakli/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Bayraklı Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Çiğli</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/cigli/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Çiğli Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/cigli/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Çiğli Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/cigli/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Çiğli Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/cigli/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Çiğli İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/cigli/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Çiğli Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/cigli/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Çiğli Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Karabağlar</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/karabaglar/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Karabağlar Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/karabaglar/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Karabağlar Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/karabaglar/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Karabağlar Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/karabaglar/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Karabağlar İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/karabaglar/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Karabağlar Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/karabaglar/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Karabağlar Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Güzelbahçe</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/guzelbahce/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Güzelbahçe Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/guzelbahce/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Güzelbahçe Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/guzelbahce/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Güzelbahçe Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/guzelbahce/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Güzelbahçe İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/guzelbahce/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Güzelbahçe Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/guzelbahce/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Güzelbahçe Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Narlıdere</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/narlidere/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Narlıdere Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/narlidere/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Narlıdere Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/narlidere/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Narlıdere Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/narlidere/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Narlıdere İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/narlidere/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Narlıdere Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/narlidere/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Narlıdere Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Aliağa</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/aliaga/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Aliağa Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/aliaga/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Aliağa Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/aliaga/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Aliağa Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/aliaga/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Aliağa İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/aliaga/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Aliağa Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/aliaga/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Aliağa Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Bayındır</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/bayindir/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Bayındır Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/bayindir/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Bayındır Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/bayindir/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Bayındır Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/bayindir/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Bayındır İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/bayindir/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Bayındır Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/bayindir/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Bayındır Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Bergama</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/bergama/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Bergama Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/bergama/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Bergama Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/bergama/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Bergama Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/bergama/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Bergama İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/bergama/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Bergama Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/bergama/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Bergama Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Beydağ</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/beydag/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Beydağ Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/beydag/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Beydağ Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/beydag/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Beydağ Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/beydag/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Beydağ İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/beydag/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Beydağ Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/beydag/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Beydağ Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Çeşme</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/cesme/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Çeşme Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/cesme/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Çeşme Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/cesme/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Çeşme Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/cesme/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Çeşme İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/cesme/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Çeşme Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/cesme/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Çeşme Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Dikili</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/dikili/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Dikili Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/dikili/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Dikili Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/dikili/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Dikili Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/dikili/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Dikili İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/dikili/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Dikili Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/dikili/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Dikili Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Foça</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/foca/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Foça Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/foca/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Foça Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/foca/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Foça Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/foca/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Foça İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/foca/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Foça Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/foca/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Foça Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Karaburun</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/karaburun/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Karaburun Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/karaburun/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Karaburun Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/karaburun/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Karaburun Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/karaburun/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Karaburun İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/karaburun/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Karaburun Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/karaburun/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Karaburun Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Kemalpaşa</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/kemalpasa/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Kemalpaşa Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/kemalpasa/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Kemalpaşa Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/kemalpasa/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Kemalpaşa Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/kemalpasa/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Kemalpaşa İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/kemalpasa/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Kemalpaşa Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/kemalpasa/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Kemalpaşa Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Kınık</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/kinik/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Kınık Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/kinik/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Kınık Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/kinik/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Kınık Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/kinik/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Kınık İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/kinik/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Kınık Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/kinik/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Kınık Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Kiraz</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/kiraz/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Kiraz Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/kiraz/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Kiraz Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/kiraz/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Kiraz Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/kiraz/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Kiraz İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/kiraz/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Kiraz Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/kiraz/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Kiraz Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Bornova</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Menderes</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/menderes/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Menderes Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/menderes/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Menderes Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/menderes/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Menderes Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/menderes/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Menderes İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/menderes/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Menderes Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/menderes/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Menderes Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Menemen</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/menemen/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Menemen Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/menemen/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Menemen Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/menemen/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Menemen Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/menemen/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Menemen İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/menemen/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Menemen Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/menemen/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Menemen Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Bornova</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/odemis/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Ödemiş Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/odemis/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Ödemiş Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/odemis/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Ödemiş Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/odemis/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Ödemiş İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/odemis/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Ödemiş Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/odemis/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Ödemiş Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Seferihisar</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/seferihisar/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Seferihisar Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/seferihisar/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Seferihisar Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/seferihisar/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Seferihisar Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/seferihisar/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Seferihisar İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/seferihisar/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Seferihisar Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/seferihisar/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Seferihisar Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Selçuk</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/selcuk/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Selçuk Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/selcuk/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Selçuk Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/selcuk/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Selçuk Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/selcuk/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Selçuk İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/selcuk/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Selçuk Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/selcuk/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Selçuk Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Tire</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/tire/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Tire Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/tire/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Tire Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/tire/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Tire Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/tire/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Tire İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/tire/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Tire Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/tire/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Tire Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Torbalı</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/torbali/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Torbalı Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/torbali/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Torbalı Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/torbali/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Torbalı Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/torbali/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Torbalı İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/torbali/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Torbalı Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/torbali/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Torbalı Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <a id="district">Urla</a>
+
+                            <ul class="cd-nav-icons is-hidden">
+                                <li class="go-back back-button">
+                                    <a>Geri</a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-1 animsition-link" routerLink="/urla/kres-ve-anaokulu">
+                                        <h3>Kreş ve Anaokulu</h3>
+                                        <p>Urla Kreşler ve Anaokulları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-2 animsition-link" routerLink="/urla/yabanci-dil-kursu">
+                                        <h3>Yabancı Dil Kursu</h3>
+                                        <p>Urla Yabancı Dil Kursları</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-3 animsition-link" routerLink="/urla/ozel-ogretim-kursu">
+                                        <h3>Özel Öğretim Kursu</h3>
+                                        <p>Urla Özel Öğretim Kursları</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="cd-nav-item item-4 animsition-link" routerLink="/urla/ilkokul-koleji">
+                                        <h3>İlkokul Koleji</h3>
+                                        <p>Urla İlkokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-5 animsition-link" routerLink="/urla/ortaokul-koleji">
+                                        <h3>Ortaokul Koleji</h3>
+                                        <p>Urla Ortaokul Kolejleri</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="cd-nav-item item-6 animsition-link" routerLink="/urla/lise-koleji">
+                                        <h3>Lise Koleji</h3>
+                                        <p>Urla Lise Kolejleri</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+
+                    </ul>
                 </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/bloglar" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/iletisim" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null">İletişim</a>
-          </li>
-          <li *ngIf="isUser" class="nav-item">
-            <a rel="nofollow" class="nav-link" href="/panel">Panel</a>
-          </li>
-        </ul>
-        <a class="btn_get btn_hover" routerLink="/giris-yap" [attr.data-toggle]="isMobile ? 'collapse' : null" [attr.data-target]="isMobile ? '#navbarSupportedContent':null">Giriş Yap veya Kaydol</a>
-      </div>
-    </div>
-  </nav>
-</header>
 
+                <li>
+                    <a routerLink="/blog" class="animsition-link">Blog</a>
+                </li>
+                <li>
+                    <a routerLink="/iletisim" class="animsition-link">İletişim</a>
+                </li>
+                <li>
+                    <a *ngIf="isUser" routerLink="/panel" class="animsition-link">Panel</a>
+                </li>
+                <li>
+                    <span>
+            <a class="btn_get btn_hover" routerLink="/giris-yap">Giriş Yap veya Kaydol</a>
+
+          </span>
+                </li>
+
+
+            </ul>
+        </nav>
+    </div>
+
+    <main class="cd-main-content">
+
+
+
+
+
+    </main>
+
+
+
+</div>

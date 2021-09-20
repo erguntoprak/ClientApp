@@ -57,10 +57,6 @@ Table of Content:
 
 /*====================================================*/
 
-html {
-    scroll-behavior: smooth;
-}
-
 a {
     text-decoration: none;
 }
@@ -451,11 +447,13 @@ button:focus {
 }
 
 .btn_get {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 47px;
-    font-weight: 500;
-    color: #fe4c55;
+    font-weight: 600;
+    color: #fff!important;
+    background-color: #fe4c55!important;
     border-radius: 4px;
+    margin-top: 10px;
     letter-spacing: 1px;
     -webkit-box-shadow: 0px 2px 24px 0px rgba(0, 11, 40, 0.1);
     box-shadow: 0px 20px 24px 0px rgba(0, 11, 40, 0.1);
@@ -473,8 +471,8 @@ button:focus {
 }
 
 .btn_get:hover {
-    color: #fff;
-    background: #fe4c55;
+    background: #fff;
+    color: #fe4c55;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -3647,17 +3645,6 @@ button:focus {
     z-index: 0;
 }
 
-.software_banner_area:before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    background: url("../img/home5/shap_tecture.png") no-repeat scroll center 0/cover;
-}
-
 
 /*=============== saas banner area ================*/
 
@@ -3685,14 +3672,6 @@ button:focus {
 
 
 /*============= app_banner_area css ===========*/
-
-.app_banner_area {
-    background: url(../img/home7/banner.png) no-repeat scroll center 100%;
-    padding-top: 230px;
-    padding-bottom: 210px;
-    overflow: hidden;
-    background-size: cover;
-}
 
 .app_banner_area .app_img .app_screen {
     position: absolute;
@@ -4219,18 +4198,6 @@ button:focus {
     z-index: 0;
 }
 
-.new_startup_banner_area:before {
-    content: "";
-    background: url("../img/new/startup_banner_bg.png") no-repeat scroll center bottom;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    z-index: -1;
-    top: 0;
-}
-
 .new_startup_banner_area .new_startup_img {
     padding-right: 70px;
     position: relative;
@@ -4297,17 +4264,6 @@ button:focus {
     overflow: hidden;
 }
 
-.startup_banner_area_three:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background: url("../img/new/startup_shap.png") no-repeat scroll center bottom/cover;
-    z-index: -1;
-}
-
 .startup_content_three h2 {
     font-size: 50px;
     color: #051441;
@@ -4369,16 +4325,6 @@ button:focus {
     position: relative;
     overflow: hidden;
     z-index: 1;
-}
-
-.digital_banner_area .digital_banner_shap {
-    position: absolute;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: url("../img/new/digital_img.png") no-repeat scroll right 0;
-    top: 0;
-    z-index: -1;
 }
 
 .digital_banner_area .round_shap {
@@ -6692,18 +6638,6 @@ button:focus {
     float: left;
 }
 
-.payment_features_img:before {
-    content: "";
-    background: url(../img/new/shape_bg.png) no-repeat scroll center left;
-    position: absolute;
-    left: -65px;
-    top: -20px;
-    right: -32px;
-    height: 100%;
-    background-size: cover;
-    z-index: -1;
-}
-
 .payment_features_img img {
     margin-left: -50px;
 }
@@ -6831,21 +6765,6 @@ button:focus {
     position: relative;
 }
 
-.perfect_solution_area .perfect_solution_right .bg_img {
-    background: url("../img/new/solution_01.jpg") no-repeat scroll center 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 130%;
-    background-size: cover;
-}
-
-.perfect_solution_area .perfect_solution_right .bg_img.bg_two {
-    background: url("../img/new/solution_02.jpg") no-repeat scroll center 0;
-}
-
 
 /*=========== startup_fuatures_area css ==========*/
 
@@ -6912,17 +6831,6 @@ button:focus {
     padding-top: 40px;
     padding-bottom: 64px;
     z-index: 1;
-}
-
-.startup_tab_img:before {
-    content: "";
-    height: 100%;
-    background: url("../img/new/tab_shape_bg.png") no-repeat scroll center 0/contain;
-    top: 0px;
-    right: -55px;
-    left: -55px;
-    position: absolute;
-    z-index: -1;
 }
 
 .startup_tab_img .web_img {
@@ -7994,15 +7902,6 @@ button:focus {
 
 /*============ payment_service_area css ==============*/
 
-.payment_service_area {
-    padding-top: 225px;
-    padding-bottom: 150px;
-    position: relative;
-    z-index: 2;
-    background: url("../img/home9/shape_two.png") no-repeat scroll center 0;
-    background-size: cover;
-}
-
 .payment_service_area .image_shape {
     position: absolute;
     width: 100%;
@@ -8014,7 +7913,8 @@ button:focus {
 
 .payment_service_area .service-content h2 {
     font-size: 26px;
-    margin-bottom: 25px;
+    margin: 50px 0px 10px 0px;
+    color: #fe4c55;
 }
 
 .payment_service_area .service-content p {
@@ -8023,15 +7923,6 @@ button:focus {
 
 .payment_service_area .service-content ul {
     font-size: 18px;
-}
-
-.pay_icon {
-    background: url("../img/home9/icon_shape_two.png") no-repeat scroll center 0;
-    width: 110px;
-    height: 103px;
-    text-align: center;
-    line-height: 95px;
-    margin-bottom: 34px;
 }
 
 .payment_service_item {
@@ -8064,17 +7955,6 @@ button:focus {
     position: relative;
     padding-top: 20px;
     z-index: 1;
-}
-
-.stratup_service_img .shape {
-    position: absolute;
-    left: -37px;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: url(../img/new/new_shape.png) no-repeat scroll left 0;
-    z-index: -1;
-    background-size: contain;
 }
 
 .stratup_service_img .phone_img {
@@ -8593,17 +8473,6 @@ button:focus {
     overflow: hidden;
 }
 
-.s_subscribe_area:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: url("../img/saas/map.png") no-repeat scroll center 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
 .s_subscribe_area .mchimp-errmessage,
 .s_subscribe_area .mchimp-sucmessage {
     text-align: center;
@@ -8925,16 +8794,6 @@ button:focus {
     overflow: hidden;
 }
 
-.call_action_area:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background: url("../img/home2/action_bg.png") no-repeat scroll center 0;
-}
-
 .call_action_area .action_one {
     left: -240px;
     bottom: 0;
@@ -9113,17 +8972,6 @@ button:focus {
     z-index: -1;
 }
 
-.action_area_three .curved {
-    position: absolute;
-    width: 100%;
-    height: 100px;
-    left: 0;
-    z-index: -1;
-    background: url("../img/home4/action_shap.png") no-repeat scroll center top;
-    top: 0;
-    background-size: contain;
-}
-
 .action_area_three .action_content h2 {
     color: #fff;
 }
@@ -9163,17 +9011,6 @@ button:focus {
     padding: 120px 0px 90px;
     position: relative;
     z-index: 1;
-}
-
-.payment_priceing_area:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: url("../img/new/price_bg.png") no-repeat scroll center;
-    position: absolute;
-    z-index: -1;
 }
 
 .payment_priceing_area .payment_price_info {
@@ -10361,17 +10198,6 @@ button:focus {
     z-index: 1;
 }
 
-.feedback_area_two:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: url("../img/new/feedback_shap.png") no-repeat scroll center 0;
-    position: absolute;
-    z-index: -1;
-}
-
 .feedback_area_two .sec_title {
     padding-left: 162px;
 }
@@ -10813,15 +10639,6 @@ button:focus {
     position: relative;
 }
 
-.payment_clients_area .clients_bg_shape_top {
-    position: absolute;
-    width: 100%;
-    height: 85px;
-    top: -82px;
-    left: 0;
-    background: url("../img/home9/triangle_top.png") no-repeat;
-}
-
 .payment_clients_area .clients_bg_shape_right {
     width: 1600px;
     height: 1253px;
@@ -10965,16 +10782,6 @@ button:focus {
 .payment_action_area {
     padding: 225px 0px 145px;
     position: relative;
-}
-
-.payment_action_area .clients_bg_shape_bottom {
-    position: absolute;
-    width: 100%;
-    height: 85px;
-    top: 0px;
-    left: 0;
-    background: url("../img/home9/triangle_bottom.png") no-repeat;
-    background-size: contain;
 }
 
 .payment_action_content .pay_icon {
@@ -11199,16 +11006,6 @@ button:focus {
     position: relative;
 }
 
-.stratup_testimonial_info:before {
-    content: "";
-    background: url("../img/new/testimonial_bg.png") no-repeat scroll center 0/contain;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-}
-
 .testimonial_slider_four {
     padding: 0px 70px;
 }
@@ -11256,10 +11053,6 @@ button:focus {
     position: relative;
 }
 
-.testimonial_area_five .stratup_testimonial_info:before {
-    background: url("../img/new/testimonial_bg_two.png") no-repeat scroll center 0/contain;
-}
-
 .testimonial_area_five .testimonial_title h6 {
     color: #26c4e5;
 }
@@ -11281,42 +11074,10 @@ button:focus {
     position: relative;
 }
 
-.video_leaf {
-    position: absolute;
-    left: 85px;
-    top: -80px;
-    background: url("../img/new/leaf.png") no-repeat scroll;
-    z-index: -2;
-}
-
 .cup {
     position: absolute;
     right: 98px;
     bottom: 40px;
-}
-
-.video_info {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    border-radius: 4px;
-    background: -webkit-linear-gradient(40deg, rgba(58, 43, 220, 0.9) 0%, rgba(23, 199, 189, 0.9) 100%), url("../img/new/video_bg.jpg") no-repeat;
-    background: -o-linear-gradient(40deg, rgba(58, 43, 220, 0.9) 0%, rgba(23, 199, 189, 0.9) 100%), url("../img/new/video_bg.jpg") no-repeat;
-    background: linear-gradient(50deg, rgba(58, 43, 220, 0.9) 0%, rgba(23, 199, 189, 0.9) 100%), url("../img/new/video_bg.jpg") no-repeat;
-    background-size: cover;
-    -webkit-box-shadow: 0px 50px 70px 0px rgba(0, 11, 40, 0.24);
-    box-shadow: 0px 50px 70px 0px rgba(0, 11, 40, 0.24);
-    height: 450px;
-    max-width: 770px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
 }
 
 .video_info h2 {
@@ -13413,15 +13174,6 @@ button:focus {
     color: #fff;
 }
 
-.seo_subscribe_area .overlay_img {
-    background: url("../img/seo/cloud_bg.png") no-repeat scroll center 0/cover;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
 .seo_subscribe_area .cloud_img {
     position: absolute;
     right: 0;
@@ -13502,22 +13254,6 @@ button:focus {
 
 
 /*================= error_area css ==================*/
-
-.error_area {
-    background: -moz-linear-gradient(180deg, rgba(94, 44, 237, 0.93) 0%, rgba(164, 133, 253, 0.9) 100%), url("../img/error_bg.png") no-repeat scroll center 100%;
-    background: -webkit-linear-gradient(180deg, rgba(94, 44, 237, 0.93) 0%, rgba(164, 133, 253, 0.9) 100%), url("../img/error_bg.png") no-repeat scroll center 100%;
-    background: -ms-linear-gradient(180deg, rgba(94, 44, 237, 0.93) 0%, rgba(164, 133, 253, 0.9) 100%), url("../img/error_bg.png") no-repeat scroll center 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-    height: 100vh;
-    min-height: 650px;
-}
 
 .error_shap {
     position: absolute;
@@ -13655,14 +13391,6 @@ button:focus {
     text-align: center;
     position: relative;
     z-index: 1;
-}
-
-.download_parallax_bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: url("../img/new/case/parallax.png") no-repeat scroll center center;
-    z-index: -1;
 }
 
 .download_content .download_btn {
@@ -15363,8 +15091,7 @@ p {
 .blog_title {
     font-size: 24px;
     line-height: 28px;
-    letter-spacing: 0.05em;
-    font-family: "Poppins", sans-serif;
+    letter-spacing: 0.04em;
     margin-bottom: 15px;
     color: #212529;
 }
@@ -17915,16 +17642,6 @@ input[type="text"] {
     position: relative;
 }
 
-.ms-section.section_8 .split_banner {
-    background: url("../img/new/home-split/mobile_bg.jpg") no-repeat center top;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 .height {
     height: 100%;
 }
@@ -18324,15 +18041,6 @@ input[type="text"] {
     color: #fff;
 }
 
-.split_banner .contact_bg {
-    position: absolute;
-    top: 0;
-    background: url("../img/new/home-split/contact.png");
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-}
-
 .split_banner .app_img {
     margin-left: 118px;
 }
@@ -18586,16 +18294,6 @@ input[type="text"] {
     background: #fffafa;
     position: relative;
     z-index: 1;
-}
-
-.map_bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("../img/hosting/map.png") no-repeat scroll center 0/cover;
-    z-index: -1;
 }
 
 .domain_box_info {
@@ -19137,11 +18835,6 @@ a .h_head:hover {
     margin-bottom: 0;
 }
 
-.h_map {
-    background: url("../img/hosting/region_map.png") no-repeat scroll center top;
-    height: 595px;
-}
-
 .h_map ul {
     height: 100%;
     margin-bottom: 0;
@@ -19393,17 +19086,6 @@ a .h_head:hover {
     position: absolute;
     bottom: 0;
     left: 0;
-}
-
-.pos_footer_area:after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: url(../img/pos/wave_two.png) no-repeat scroll center bottom;
-    position: absolute;
-    left: 0;
-    top: -100%;
-    z-index: -1;
 }
 
 .pos_footer_area .f_widget.company_widget p {
@@ -20136,11 +19818,6 @@ a .h_head:hover {
 
 /*=========== erp_analytics_area css ============*/
 
-.erp_analytics_area {
-    background: url("../img/erp-home/background.png") no-repeat scroll center 0/cover;
-    padding: 100px 0px 220px;
-}
-
 .erp_analytics_item {
     padding: 0px 50px;
 }
@@ -20298,16 +19975,6 @@ a .h_head:hover {
     background: #fafafd;
     position: relative;
     z-index: 1;
-}
-
-.erp_call_action_area:before {
-    content: "";
-    position: absolute;
-    background: url("../img/erp-home/shape.png") no-repeat scroll center bottom/cover;
-    width: 100%;
-    left: 0;
-    height: 100%;
-    z-index: -1;
 }
 
 .erp_call_action_area:after {
@@ -20669,16 +20336,6 @@ a .h_head:hover {
     display: inline-block;
     width: calc(84% / 3);
     position: relative;
-}
-
-.ticket_item:before {
-    content: "";
-    width: 100%;
-    height: 10px;
-    background: url("../img/pos/shape_bg.png") no-repeat scroll center bottom/cover;
-    position: absolute;
-    bottom: -10px;
-    left: 0;
 }
 
 .ticket_item:after {
@@ -22897,18 +22554,6 @@ a .h_head:hover {
     z-index: 2;
 }
 
-.analytices_list_area:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 560px;
-    z-index: -1;
-    left: 0;
-    background: url("../img/home-software/down_bg.png") no-repeat scroll;
-    bottom: 0;
-    background-size: cover;
-}
-
 .analytices_list_area .macbook_a {
     position: absolute;
     right: 0;
@@ -24049,17 +23694,6 @@ a .h_head:hover {
     margin-bottom: 30px;
 }
 
-.event_price_item:before {
-    content: "";
-    background: url("../img/home-event/price_shap.png") no-repeat scroll center bottom;
-    position: absolute;
-    bottom: -22px;
-    left: 0;
-    height: 22px;
-    width: 100%;
-    background-size: cover;
-}
-
 .event_price_item .p_head {
     border: 0px;
 }
@@ -24132,10 +23766,6 @@ a .h_head:hover {
 
 .event_fact_area {
     background: #fdfaf6;
-}
-
-.event_fact_area .seo_fact_info:before {
-    background: url("../img/home-event/dot.png") no-repeat center center;
 }
 
 .event_fact_area .seo_fact_info .seo_fact_item {
@@ -24453,11 +24083,6 @@ a .h_head:hover {
     font-size: 14px;
     margin-bottom: 0;
     margin-top: 20px;
-}
-
-.tracking_getting_area {
-    text-align: center;
-    background: url("../img/home-tracking/cta_pattern_bg.jpg") no-repeat scroll center 0/cover;
 }
 
 .tracking_getting_area h2 {
@@ -24884,11 +24509,6 @@ a .h_head:hover {
 .clients_feedback_item .feedback_body a {
     font-size: 14px;
     color: #fff;
-}
-
-.chat_get_started_area {
-    background: url("../img/home-chat/get_started_bg.png") no-repeat scroll left bottom;
-    height: 384px;
 }
 
 .chat_get_started_content h2 {
@@ -25683,16 +25303,6 @@ a .h_head:hover {
     position: relative;
 }
 
-.footer_nine_area .footer_shap {
-    position: absolute;
-    background: url("../img/home9/footer.png") no-repeat scroll center;
-    left: 0;
-    width: 100%;
-    background-size: cover;
-    top: 0px;
-    height: 100%;
-}
-
 .footer_nine_top {
     padding-bottom: 170px;
     position: relative;
@@ -25804,14 +25414,6 @@ a .h_head:hover {
     display: inline-block;
     background: #18295c;
     left: -15px;
-}
-
-.footer_nine_bottom .flag_selector .flag-icon.flag-icon-us {
-    background-image: url(../img/home9/flag.png);
-}
-
-.footer_nine_bottom .flag_selector .flag-icon.flag-icon-mx {
-    background-image: url(../img/home9/flag.png);
 }
 
 .footer_nine_bottom .flag_selector .dropdown-menu {
@@ -26096,11 +25698,6 @@ a .h_head:hover {
     background-color: transparent !important;
 }
 
-.ng-image-slider-lightbox .lightbox-wrapper .close {
-    background-image: url("../img/close.png") !important;
-    background-color: transparent !important;
-}
-
 @-moz-keyframes myfirst {
     0% {
         left: -25%;
@@ -26222,7 +25819,7 @@ a .h_head:hover {
         position: fixed;
         top: 0;
         bottom: 0;
-        z-index: 3000;
+        z-index: 99999;
         background: #fff;
         width: 300px;
         transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -27223,7 +26820,7 @@ button:not(:disabled) {
     text-align: center;
     width: 100%;
     height: 100%;
-    font-size: 1.2em;
+    font-size: 1.4em;
     min-width: 2em;
 }
 
@@ -27581,8 +27178,8 @@ button:not(:disabled) {
 
 .whatsapp-chat {
     position: fixed;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     bottom: 10px;
     right: 10px;
     background-color: #25d366;
@@ -30650,5 +30247,307 @@ td.mat-footer-cell {
 }
 
 .mat-simple-snackbar-action {
-    color: #ff4081
+    color: #ff4081;
+}
+
+.back-button {
+    width: 0px;
+    position: absolute;
+    left: 30px;
+}
+
+
+/** Colors variables */
+
+
+/** share button variables */
+
+
+/** share buttons colors */
+
+.sb-group,
+.sb-button {
+    display: inline-flex;
+    align-items: flex-start;
+}
+
+.sb-group {
+    flex-wrap: wrap;
+}
+
+.sb-button {
+    margin: var(--sb-margin);
+}
+
+
+
+.sb-wrapper {
+    font-size: inherit;
+    cursor: pointer;
+    position: relative;
+    outline: 0;
+    min-width: 4.125em;
+    height: 2.5em;
+    border: none;
+    border-radius: 1px;
+    padding: 0;
+    line-height: 2.571em;
+    background-color: transparent;
+    -webkit-print-color-adjust: exact;
+}
+
+.sb-wrapper .sb-icon,
+.sb-wrapper .sb-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.sb-wrapper .sb-content {
+    flex: 1;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.sb-wrapper .sb-text {
+    flex: 1;
+    height: 100%;
+    white-space: nowrap;
+    padding: 0 0.7em;
+}
+
+.sb-wrapper .sb-icon {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    font-size: 1.2em;
+    min-width: 2em;
+}
+
+.sb-wrapper .sb-text {
+    font-weight: bold;
+}
+
+.sb-default .sb-wrapper {
+    color: white;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: var(--button-color) !important;
+}
+
+.sb-default .sb-wrapper.sb-facebook {
+    background-color: #4267b2;
+}
+
+.sb-default .sb-wrapper.sb-twitter {
+    background-color: #00acee;
+}
+
+.sb-default .sb-wrapper.sb-google {
+    background-color: #db4437;
+}
+
+.sb-default .sb-wrapper.sb-mix {
+    background-color: #ff8226;
+}
+
+.sb-default .sb-wrapper.sb-line {
+    background-color: #00b900;
+}
+
+.sb-default .sb-wrapper.sb-linkedin {
+    background-color: #006fa6;
+}
+
+.sb-default .sb-wrapper.sb-pinterest {
+    background-color: #bd081c;
+}
+
+.sb-default .sb-wrapper.sb-reddit {
+    background-color: #ff4006;
+}
+
+.sb-default .sb-wrapper.sb-tumblr {
+    background-color: #36465d;
+}
+
+.sb-default .sb-wrapper.sb-whatsapp {
+    background-color: #25d366;
+}
+
+.sb-default .sb-wrapper.sb-messenger {
+    background-color: #0080ff;
+}
+
+.sb-default .sb-wrapper.sb-telegram {
+    background-color: #08c;
+}
+
+.sb-default .sb-wrapper.sb-xing {
+    background-color: #006567;
+}
+
+.sb-default .sb-wrapper.sb-sms {
+    background-color: #20c16c;
+}
+
+.sb-default .sb-wrapper.sb-email {
+    background-color: #ff961c;
+}
+
+.sb-default .sb-wrapper.sb-vk {
+    background-color: #4c75a3;
+}
+
+.sb-default .sb-wrapper.sb-copy {
+    background-color: #607d8b;
+}
+
+.sb-default .sb-wrapper.sb-print {
+    background-color: #765aa2;
+}
+
+.sb-default .sb-wrapper.sb-expand {
+    background-color: #ff6651;
+}
+
+.sb-default .sb-wrapper.sb-show-icon.sb-show-text .sb-text {
+    filter: none;
+    padding-right: 1em;
+    padding-left: 0;
+}
+
+.icon-button {
+    background-color: white;
+    border-radius: 2.6rem;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.3rem;
+    height: 2.6rem;
+    line-height: 2.6rem;
+    margin: 0 5px;
+    position: relative;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 2.6rem;
+}
+
+
+/* Circle */
+
+.icon-button span {
+    border-radius: 0;
+    display: block;
+    height: 0;
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 0;
+}
+
+.icon-button:hover span {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 2.6rem;
+    margin: -1.3rem;
+}
+
+
+/* Icons */
+
+.icon-button i {
+    background: none;
+    color: white;
+    height: 2.6rem;
+    left: 0;
+    line-height: 2.6rem;
+    position: absolute;
+    top: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 2.6rem;
+    z-index: 10;
+}
+
+.twitter span {
+    background-color: #4099ff;
+}
+
+.facebook span {
+    background-color: #3B5998;
+}
+
+.google-plus span {
+    background-color: #db5a3c;
+}
+
+.tumblr span {
+    background-color: #34526f;
+}
+
+.instagram span {
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+}
+
+.youtube span {
+    background-color: #bb0000;
+}
+
+.pinterest span {
+    background-color: #cb2027;
+}
+
+.icon-button .fa-twitter {
+    color: #4099ff!important;
+}
+
+.icon-button .fa-facebook {
+    color: #3B5998!important;
+}
+
+.icon-button .fa-tumblr {
+    color: #34526f!important;
+}
+
+.icon-button .icon-google-plus {
+    color: #db5a3c!important;
+}
+
+.icon-button .fa-instagram {
+    color: #cc2366!important;
+}
+
+.icon-button .fa-youtube {
+    color: #bb0000!important;
+}
+
+.icon-button .fa-pinterest {
+    color: #cb2027!important;
+}
+
+.icon-button:hover .fa-twitter,
+.icon-button:hover .fa-facebook,
+.icon-button:hover .icon-google-plus,
+.icon-button:hover .fa-tumblr,
+.icon-button:hover .fa-instagram,
+.icon-button:hover .fa-youtube,
+.icon-button:hover .fa-pinterest {
+    color: white!important;
 }

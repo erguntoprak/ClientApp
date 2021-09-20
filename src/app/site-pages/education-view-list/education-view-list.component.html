@@ -1,157 +1,146 @@
 <div *ngIf="selectedDistrictName && selectedCategoryName">
-  <section class="breadcrumb_area" style="background-image: url('assets/img/breadcrumb/education-view-list-image-1.jpg');
+    <section class="breadcrumb_area" style="background-image: url('assets/img/breadcrumb/education-view-list-image-1.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
   ">
-    <div class="container">
-      <div class="breadcrumb_content">
-        <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">{{selectedDistrictName}}
-          <ng-container [ngSwitch]="selectedCategoryName">
-            <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
-              Kreşler ve Anaokulları
-            </ng-container>
-            <ng-container *ngSwitchCase="'Lise Koleji'">
-              Lise Kolejleri
-            </ng-container>
-            <ng-container *ngSwitchCase="'Ortaokul Koleji'">
-              Ortaokul Kolejleri
-            </ng-container>
-            <ng-container *ngSwitchCase="'İlkokul Koleji'">
-              İlkokul Kolejleri
-            </ng-container>
-            <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
-              Yabancı Dil Kursları
-            </ng-container>
-            <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
-              Özel Öğretim Kursları
-            </ng-container>
-          </ng-container>
-        </h1>
-        <p class="f_400 w_color f_size_20 l_height26"> {{selectedDistrictName}} ilçesinde {{selectedCategoryName |
-          lowercase}} düzeyinde tüm
-          <ng-container [ngSwitch]="selectedCategoryName">
-            <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
-              kreşler ve anaokullarını
-            </ng-container>
-            <ng-container *ngSwitchCase="'Lise Koleji'">
-              lise kolejlerini
-            </ng-container>
-            <ng-container *ngSwitchCase="'Ortaokul Koleji'">
-              ortaokul kolejlerini
-            </ng-container>
-            <ng-container *ngSwitchCase="'İlkokul Koleji'">
-              ilkokul kolejlerini
-            </ng-container>
-            <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
-              yabancı dil kurslarını
-            </ng-container>
-            <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
-              özel öğretim kurslarını
-            </ng-container>
-          </ng-container>
-          bir arada toplayarak size sunduğu en uygun {{selectedCategoryName | lowercase}} fiyatları, fotoğraf galerileri
-          veya görselleri, olanakları, imkanları, hizmetleri, iletişim ve konum bilgileri
-          hakkında detaylı bilgileri hemen keşfedin! İzmir Eğitim Kurumları sizin için {{selectedDistrictName}}
-          ilçesinde bulunan
-          <ng-container [ngSwitch]="selectedCategoryName">
-            <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
-              kreşler ve anaokullarını
-            </ng-container>
-            <ng-container *ngSwitchCase="'Lise Koleji'">
-              lise kolejlerini
-            </ng-container>
-            <ng-container *ngSwitchCase="'Ortaokul Koleji'">
-              ortaokul kolejlerini
-            </ng-container>
-            <ng-container *ngSwitchCase="'İlkokul Koleji'">
-              ilkokul kolejlerini
-            </ng-container>
-            <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
-              yabancı dil kurslarını
-            </ng-container>
-            <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
-              özel öğretim kurslarını
-            </ng-container>
-          </ng-container>
-          listeledi.
-        </p>
-      </div>
-    </div>
-  </section>
-  <section class="education_list_area">
-    <div class="site__body">
-      <div class="block-split block-split--has-sidebar">
         <div class="container">
-          <div class="block-split__row row">
-            <div class="block-split__item block-split__item-sidebar col-lg-3 col-sm-12">
-              <div class="sidebar sidebar--offcanvas--mobile" [ngClass]="sidebar ? 'sidebar--open':''">
-                <div class="sidebar__backdrop"></div>
-                <div class="sidebar__body">
-                  <div class="sidebar__header">
-                    <div class="sidebar__title">Filtreler</div><button class="sidebar__close" (click)="closeSidebar()" type="button">
+            <div class="breadcrumb_content">
+                <h1 class="f_p f_700 f_size_50 w_color l_height50 mb_20">{{selectedDistrictName}}
+                    <ng-container [ngSwitch]="selectedCategoryName">
+                        <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
+                            Kreşler ve Anaokulları
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Lise Koleji'">
+                            Lise Kolejleri
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                            Ortaokul Kolejleri
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                            İlkokul Kolejleri
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
+                            Yabancı Dil Kursları
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
+                            Özel Öğretim Kursları
+                        </ng-container>
+                    </ng-container>
+                </h1>
+                <p class="f_400 w_color f_size_20 l_height26"> {{selectedDistrictName}} ilçesinde {{selectedCategoryName | lowercase}} düzeyinde tüm
+                    <ng-container [ngSwitch]="selectedCategoryName">
+                        <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
+                            kreşler ve anaokullarını
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Lise Koleji'">
+                            lise kolejlerini
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                            ortaokul kolejlerini
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                            ilkokul kolejlerini
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
+                            yabancı dil kurslarını
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
+                            özel öğretim kurslarını
+                        </ng-container>
+                    </ng-container>
+                    bir arada toplayarak size sunduğu en uygun {{selectedCategoryName | lowercase}} fiyatları, fotoğraf galerileri veya görselleri, olanakları, imkanları, hizmetleri, iletişim ve konum bilgileri hakkında detaylı bilgileri hemen keşfedin! İzmir Eğitim Kurumları
+                    sizin için {{selectedDistrictName}} ilçesinde bulunan
+                    <ng-container [ngSwitch]="selectedCategoryName">
+                        <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
+                            kreşler ve anaokullarını
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Lise Koleji'">
+                            lise kolejlerini
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                            ortaokul kolejlerini
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                            ilkokul kolejlerini
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
+                            yabancı dil kurslarını
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
+                            özel öğretim kurslarını
+                        </ng-container>
+                    </ng-container>
+                    listeledi.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="education_list_area">
+        <div class="site__body">
+            <div class="block-split block-split--has-sidebar">
+                <div class="container">
+                    <div class="block-split__row row">
+                        <div class="block-split__item block-split__item-sidebar col-lg-3 col-sm-12">
+                            <div class="sidebar sidebar--offcanvas--mobile" [ngClass]="sidebar ? 'sidebar--open':''">
+                                <div class="sidebar__backdrop"></div>
+                                <div class="sidebar__body">
+                                    <div class="sidebar__header">
+                                        <div class="sidebar__title">Filtreler</div><button class="sidebar__close" (click)="closeSidebar()" type="button">
                       <i class="fa fa-times"></i>
                     </button>
-                  </div>
-                  <div class="sidebar__content">
-                    <div class="widget widget-filters widget-filters--offcanvas--mobile">
-                      <div class="widget-filters__list">
-                        <div class="widget-filters__item">
-                          <mat-expansion-panel [expanded]="true">
-                            <mat-expansion-panel-header>
-                              <mat-panel-title>
-                                <strong>Aranacak Kelime</strong>
-                              </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <div class="form-group text_box">
-                              <input type="text" [(ngModel)]="searchText" />
-                            </div>
-                          </mat-expansion-panel>
-                        </div>
-                        <div class="widget-filters__item">
-                          <mat-expansion-panel [expanded]="true">
-                            <mat-expansion-panel-header>
-                              <mat-panel-title>
-                                <strong>Eğitim Türü</strong>
-                              </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <ul class="filter-categories__list">
-                              <li *ngFor="let category of categories;let i = index"
-                                [class.active]="selectedCategoryIndex === i"
-                                class="filter-categories__item filter-categories__item--parent">
-                                <a
-                                [routerLink]="'/'+selectedDistrictUrl+'/'+category.seoUrl" [queryParams]="searchText == '' ? {}:{q:searchText}"
-                                >{{category.name}}</a>
-                              </li>
-                            </ul>
-                          </mat-expansion-panel>
-                        </div>
-                        <div class="widget-filters__item">
-                          <mat-expansion-panel [expanded]="true">
-                            <mat-expansion-panel-header>
-                              <mat-panel-title>
-                                <strong>İlçe</strong>
-                              </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <ul class="filter-categories__list">
-                              <li *ngFor="let district of districtList;let i = index"
-                                [class.active]="selectedDistrictIndex === i"
-                                class="filter-categories__item filter-categories__item--parent">
-                                <a
-                                [routerLink]="'/'+district.seoUrl+'/'+selectedCategoryUrl" [queryParams]="searchText == '' ? {}:{q:searchText}">{{district.name}}</a>
-                              </li>
-                            </ul>
-                          </mat-expansion-panel>
-                        </div>
-                        <div *ngFor="let categoryAttribute of categoryAttributeList" class="widget-filters__item">
-                          <mat-expansion-panel [expanded]="true">
-                            <mat-expansion-panel-header>
-                              <mat-panel-title>
-                                <strong>{{ categoryAttribute.categoryName }}</strong>
-                              </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <label *ngFor="let attribute of categoryAttribute.attributeListModel"
-                              class="filter-list__item">
+                                    </div>
+                                    <div class="sidebar__content">
+                                        <div class="widget widget-filters widget-filters--offcanvas--mobile">
+                                            <div class="widget-filters__list">
+                                                <div class="widget-filters__item">
+                                                    <mat-expansion-panel [expanded]="true">
+                                                        <mat-expansion-panel-header>
+                                                            <mat-panel-title>
+                                                                <strong>Aranacak Kelime</strong>
+                                                            </mat-panel-title>
+                                                        </mat-expansion-panel-header>
+                                                        <div class="form-group text_box">
+                                                            <input type="text" [(ngModel)]="searchText" />
+                                                        </div>
+                                                    </mat-expansion-panel>
+                                                </div>
+                                                <div class="widget-filters__item">
+                                                    <mat-expansion-panel [expanded]="true">
+                                                        <mat-expansion-panel-header>
+                                                            <mat-panel-title>
+                                                                <strong>Eğitim Türü</strong>
+                                                            </mat-panel-title>
+                                                        </mat-expansion-panel-header>
+                                                        <ul class="filter-categories__list">
+                                                            <li *ngFor="let category of categories;let i = index" [class.active]="selectedCategoryIndex === i" class="filter-categories__item filter-categories__item--parent">
+                                                                <a [routerLink]="'/'+selectedDistrictUrl+'/'+category.seoUrl" [queryParams]="searchText == '' ? {}:{q:searchText}">{{category.name}}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </mat-expansion-panel>
+                                                </div>
+                                                <div class="widget-filters__item">
+                                                    <mat-expansion-panel [expanded]="true">
+                                                        <mat-expansion-panel-header>
+                                                            <mat-panel-title>
+                                                                <strong>İlçe</strong>
+                                                            </mat-panel-title>
+                                                        </mat-expansion-panel-header>
+                                                        <ul class="filter-categories__list">
+                                                            <li *ngFor="let district of districtList;let i = index" [class.active]="selectedDistrictIndex === i" class="filter-categories__item filter-categories__item--parent">
+                                                                <a [routerLink]="'/'+district.seoUrl+'/'+selectedCategoryUrl" [queryParams]="searchText == '' ? {}:{q:searchText}">{{district.name}}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </mat-expansion-panel>
+                                                </div>
+                                                <div *ngFor="let categoryAttribute of categoryAttributeList" class="widget-filters__item">
+                                                    <mat-expansion-panel [expanded]="true">
+                                                        <mat-expansion-panel-header>
+                                                            <mat-panel-title>
+                                                                <strong>{{ categoryAttribute.categoryName }}</strong>
+                                                            </mat-panel-title>
+                                                        </mat-expansion-panel-header>
+                                                        <label *ngFor="let attribute of categoryAttribute.attributeListModel" class="filter-list__item">
                               <span class="input-check filter-list__input">
                                 <span class="input-check__body">
                                   <se-checkbox [id]="attribute.id" [existingAttributeIds]="selectedAttributeIds"
@@ -160,67 +149,65 @@
                                 </span>
                               </span>
                             </label>
-                          </mat-expansion-panel>
-                        </div>
-                      </div>
-                    </div>
+                                                    </mat-expansion-panel>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="block-split__item block-split__item-content col-lg-9 col-sm-12">
-              <div class="block">
-                <div class="products-view">
-                  <div class="products-view__options view-options view-options--offcanvas--mobile">
-                    <div class="view-options__body">
-                      <button (click)="openSidebar()" type="button" class="view-options__filters-button filters-button">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-split__item block-split__item-content col-lg-9 col-sm-12">
+                            <div class="block">
+                                <div class="products-view">
+                                    <div class="products-view__options view-options view-options--offcanvas--mobile">
+                                        <div class="view-options__body">
+                                            <button (click)="openSidebar()" type="button" class="view-options__filters-button filters-button">
                         <span class="filters-button__icon">
                           <i class="fa fa-filter"></i>
                         </span><span class="filters-button__title">Filtreler</span>
                       </button>
-                      <div class="view-options__spring"></div>
+                                            <div class="view-options__spring"></div>
 
-                      <div class="view-options__select">
-                        <label for="view-option-limit">Göster:</label>
-                        <select id="view-option-limit" (change)="changeeducationViewItemCount($event)"
-                          [(ngModel)]="educationViewItemCount" class="form-control form-control-sm">
+                                            <div class="view-options__select">
+                                                <label for="view-option-limit">Göster:</label>
+                                                <select id="view-option-limit" (change)="changeeducationViewItemCount($event)" [(ngModel)]="educationViewItemCount" class="form-control form-control-sm">
                           <option value="12">12</option>
                           <option value="24">24</option>
                           <option value="48">48</option>
                         </select>
-                      </div>
-                    </div>
-                    <div class="view-options__body view-options__body--filters">
-                      <div *ngIf="selectedAttributeIds.length>0 || searchText != ''" class="view-options__label">SEÇİLİ
-                        FİLTRELER</div>
-                      <div *ngIf="selectedAttributeIds.length>0 || searchText != ''" class="applied-filters">
-                        <ul class="applied-filters__list">
-                          <li *ngIf="searchText != ''" class="applied-filters__item">
-                            <label class="applied-filters__button applied-filters__button--filter">
+                                            </div>
+                                        </div>
+                                        <div class="view-options__body view-options__body--filters">
+                                            <div *ngIf="selectedAttributeIds.length>0 || searchText != ''" class="view-options__label">SEÇİLİ FİLTRELER
+                                            </div>
+                                            <div *ngIf="selectedAttributeIds.length>0 || searchText != ''" class="applied-filters">
+                                                <ul class="applied-filters__list">
+                                                    <li *ngIf="searchText != ''" class="applied-filters__item">
+                                                        <label class="applied-filters__button applied-filters__button--filter">
                               {{searchText}} <i (click)="removeSearchText()" class="fa fa-times cursor-element"></i>
                             </label>
-                          </li>
-                          <li *ngFor="let attributeId of selectedAttributeIds" class="applied-filters__item">
-                            <label class="applied-filters__button applied-filters__button--filter">
+                                                    </li>
+                                                    <li *ngFor="let attributeId of selectedAttributeIds" class="applied-filters__item">
+                                                        <label class="applied-filters__button applied-filters__button--filter">
                               {{getSelectedAttributeName(attributeId)}} <i
                                 (click)="removeSelectedAttributeId(attributeId)" class="fa fa-times cursor-element"></i>
                             </label>
-                          </li>
-                          <li class="applied-filters__item">
-                            <button type="button" (click)="removeAllFilters()"
-                              class="applied-filters__button applied-filters__button--clear">
+                                                    </li>
+                                                    <li class="applied-filters__item">
+                                                        <button type="button" (click)="removeAllFilters()" class="applied-filters__button applied-filters__button--clear">
                               Tümünü Temizle
                             </button>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-lg-12 blog_grid_info">
-                          <div class="row">
-                            <!-- <ng-container *ngIf="educationFilterList">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-lg-12 blog_grid_info">
+                                                    <div class="row">
+                                                        <!-- <ng-container *ngIf="educationFilterList">
                               <div class="col-sm-6 col-md-4 col-lg-4 col-6"
                                 *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
                                 <div class="blog_list_item blog_list_item_two">
@@ -244,402 +231,289 @@
                                 </div>
                               </div>
                             </ng-container> -->
-                            <div class="col-sm-6 col-md-4 col-lg-4 col-6"
-                              *ngFor="let education of educationFilterList | educationListFilter:searchText:selectedAttributeIds | paginate: { itemsPerPage: educationViewItemCount, currentPage: pageNumber }"
-                              #filteredItems>
-                              <div class="blog_list_item blog_list_item_two" lazy-load-images>
-                                <a routerLink="/buca/{{education.categorySeoUrl}}" class="post_date">
-                                  <span>{{education.categoryName}}</span>
-                                </a>
-                                <a
-                                routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}"><img
-                                    class="img-fluid" attr.data-src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg"
-                                    alt="{{education.name}}" title="{{education.name}}"></a>
-                                <div class="blog_content">
-                                  <a
-                                  routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
-                                    <h5 class="blog_title">{{education.name}}<img alt="tick" [attr.data-src]="'assets/img/tick.png'"
-                                        class="tick-image" /></h5>
-                                  </a>
-                                  <span>{{education.districtName}}</span>
+                                                        <div class="col-sm-6 col-md-4 col-lg-4 col-6" *ngFor="let education of educationFilterList | educationListFilter:searchText:selectedAttributeIds | paginate: { itemsPerPage: educationViewItemCount, currentPage: pageNumber }" #filteredItems>
+                                                            <div class="blog_list_item blog_list_item_two" lazy-load-images>
+                                                                <a routerLink="/buca/{{education.categorySeoUrl}}" class="post_date">
+                                                                    <span>{{education.categoryName}}</span>
+                                                                </a>
+                                                                <a routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}"><img class="img-fluid" attr.data-src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg" alt="{{education.name}}" title="{{education.name}}"></a>
+                                                                <div class="blog_content">
+                                                                    <a routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
+                                                                        <h5 class="blog_title">{{education.name}}<img alt="tick" [attr.data-src]="'assets/img/tick.png'" class="tick-image" /></h5>
+                                                                    </a>
+                                                                    <span>{{education.districtName}}</span>
+                                                                </div>
+                                                                <div class="item-action">
+                                                                    <a class="btn_three sign_btn_transparent mt_c20" routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
+                                                                        <i class="fa fa-angle-double-left"></i> Hemen İncele <i class="fa fa-angle-double-right"></i> </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div *ngIf="(educationFilterList | educationListFilter:searchText:selectedAttributeIds).length < 1 && pageLoad" class="col-12">
+                                                            <p class="f_400 f_size_16 mb-0">
+                                                                Eğitim kurumu bulunamadı.
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <pagination-controls (pageChange)="pageChanged($event)" maxSize="5" autoHide="true" responsive="true" previousLabel="Geri" nextLabel="İleri">
+                                                            </pagination-controls>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="item-action">
-                                  <a class="btn_three sign_btn_transparent mt_c20"
-                                  routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
-                                    <i class="fa fa-angle-double-left"></i> Hemen
-                                    İncele <i class="fa fa-angle-double-right"></i> </a>
-                                </div>
-                              </div>
                             </div>
-                            <div
-                              *ngIf="(educationFilterList | educationListFilter:searchText:selectedAttributeIds).length < 1 && pageLoad"
-                              class="col-12">
-                              <p class="f_400 f_size_16 mb-0">
-                                Eğitim kurumu bulunamadı.
-                              </p>
-                            </div>
-                            <div class="col-12">
-                              <pagination-controls (pageChange)="pageChanged($event)" maxSize="5" autoHide="true"
-                                responsive="true" previousLabel="Geri" nextLabel="İleri">
-                              </pagination-controls>
-                            </div>
-                          </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <section class="payment_service_area">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-12">
-          <div class="service-content wow fadeInRight">
-            <h2 class="f_p w_color f_700">İzmir {{selectedDistrictName}}
-              <ng-container [ngSwitch]="selectedCategoryName">
-                <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
-                  Kreşler ve Anaokulları
-                </ng-container>
-                <ng-container *ngSwitchCase="'Lise Koleji'">
-                  Lise Kolejleri
-                </ng-container>
-                <ng-container *ngSwitchCase="'Ortaokul Koleji'">
-                  Ortaokul Kolejleri
-                </ng-container>
-                <ng-container *ngSwitchCase="'İlkokul Koleji'">
-                  İlkokul Kolejleri
-                </ng-container>
-                <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
-                  Yabancı Dil Kursları
-                </ng-container>
-                <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
-                  Özel Öğretim Kursları
-                </ng-container>
-              </ng-container>
-            </h2>
-            <ng-container [ngSwitch]="selectedCategoryName">
-              <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
-                <p class="f_p w_color l_height26">
-                  Anaokulları ve kreşlerdeki eğitim, eğitim hayatının ilk adımıdır ve çocukların büyüme süreci için çok
-                  önemlidir. Özgüven, girişimciler ve sosyal bireyler geliştirmenin yolu okul öncesi eğitimden geçer.
-                  Bunun yanında, özellikle çalışan kadınlarımıza büyük bir destek işlevi gören kreşler de sosyal yaşam
-                  açısından giderek artan bir değer kazanmaktadır. Bazen birbirine karıştırılan kreş ve anaokulu
-                  programları birbirinden farklı olmakla beraber birbirlerinin devamı niteliğindedir.
-                </p>
-                <p class="f_p w_color l_height26">
-                  Kreş eğitimi; 0-36 arasındaki çocuklara hitap etmektedir. Kreşler birer eğitim kurumu değildir, sosyal
-                  kurumlardır. Çocuklar için geliştirici oyunlar oynamak ve çocukları fiziksel, sosyal açıdan
-                  geliştirmek
-                  amaçlanmaktadır. Anaokulu eğitimi ise; 36-72 ay arası çocukların bireysel gelişim özelliklerine uygun,
-                  çocukları sosyal ve
-                  psikolojik olarak destekleyen, ilkokula hazırlanan eğitimdir. Bu eğitimin ilk yılı olduğu için
-                  çocukların öğrenme yetenekleri üzerinde olumlu bir etkisi vardır.
-                </p>
-                <p class="f_p w_color l_height26">
-                  Okul öncesi çağda bilişsel, duygusal ve psikomotor gelişim ile ilgili hedef düzeyine ulaşmış bir
-                  çocuk;
-                  araştırmayı seven, fikir ve düşüncelerini ifade edebilen, sosyal ilişkilere değer veren, paylaşmayı
-                  bilen ve mesleğine duyarlı bir birey olarak toplumda bir yere sahip olacak ve topluma faydalı bir
-                  birey
-                  haline gelecektir. Anaokulu eğitim planına göre okullarda gelişim danışmanlığı hizmeti almış
-                  olursunuz.
-                  Danışmanlık hizmetleri koruma, önleme ve kriz müdahale hizmetlerini içerir. Çocukların en iyi şekilde
-                  düzeyde rehberlik hizmetlerinden yararlanabilmesi için onların hayatındaki tüm bireylerin (ebeveynler,
-                  öğretmenler, okul yöneticileri, okul personeli, akrabalar ve çocukla temas halindeki diğer bireyler)
-                  çocuğun hayatına dahil edilmesi gerekir. Okul süresince bireysel veya grup halinde rehberlik
-                  faaliyetleri düzenlenmelidir. Kişisel rehberlik hizmetinde amaç, çocuğun kişisel ve sosyal gelişimine
-                  destek olmak ve duygusal sorunlarını çözmesine yardımcı olmaktır. Anaokulu ve kreş döneminde çocuklara
-                  sunulan rehberlik hizmetlerinin amacı, sorunlarını çocuk adına çözmek değil, ona destek vererek kendi
-                  sorunlarını çözmesine yardımcı olmaktır.
-                </p>
-              </ng-container>
-              <ng-container *ngSwitchCase="'Lise Koleji'">
-                <p class="f_p w_color l_height26">
-                  İzmir Türkiye'nin en gelişmiş 3 büyük şehrinden biridir. İzmir diğer birçok ile göre eğitim öğretim
-                  seviyesi
-                  daha yüksek olduğu için veliler de böyle bir ortamda çocuklarını
-                  en iyi okula gönderme ve en iyi eğitimi aldırma istiyor. Peki çocuklarımızın
-                  geleceğini güvenle emanet edeceğimiz İzmir'deki kolejler hangileri? Sizler için bir kolej listesi
-                  oluşturduk.
-                </p>
-                <p class="f_p w_color l_height26">
-                  İzmir {{selectedDistrictName}} kolejleri özel eğitim sisteminin temel yapıtaşlarıdır. Anaokul,
-                  ilkokul,
-                  ortaokul, lise
-                  seviyesinde hizmetler veren, imkanları tarafından diğer okullardan çok daha gelişmiş okullardır.
-                  Hatta okul kimliğinin ötesinde pek çoğunun kampüsleri olduğunu söyleyebiliriz.
-                </p>
-                <p class="f_p w_color l_height26">
-                  İlkokuldan itibaren dil eğitimini sağlayan bu okullardan mezun olan öğrenciler İngilizce başta olmak
-                  üzere yabancı dili daha iyi anlayıp daha akıcı konuşabiliyor. Ayrıca okulların bilgisayar,
-                  laboratuvar,
-                  sosyal imkan bakımınından donanımlı olmasından dolayı diğer okullara göre daha donanmlı öğrenci
-                  yetiştirdiğini söyleyebiliriz.
-                </p>
-                <p class="f_p w_color l_height26">
-                  Diğer okullara nazaran daha farklı imkanlar üzerinden eğitim faaliyetlerinin sunulması sonucunda
-                  kolej fiyatları, diğer okullara harcanan fiyata göre daha pahalıdır.
-                </p>
-                <p class="f_p w_color l_height26">
-                  Çocuğunuz için önemli bir adım, üniversiteye girişin anahtarı iyi bir lise kolej,iyi bir eğitim ve iyi
-                  bir sosyal yaşamdan geçmektedir. Bu yüzden okul seçimi sanıldığından çok daha zor bir hal almaktadır.
-                  Okulun bulunduğu konum, sınıfların kaç kişilik olduğu,yeterli öğretmen kadrosuna sahip olup olmadığı,
-                  geçmiş yıllarda yükseköğretim sınavlarındaki başarı ortalaması, yemekhane kalitesi,ulaşım süresi veya
-                  sorunu olup olmaması,eğitim veren öğretmenlerin başarısı, gibi etkenler okul seçerken göz önünde
-                  bulundurulması gereken etkenlerdir. Bunların yanında bu hizmetlerin yıllık ücretinin ortalama fiyatı
-                  da
-                  önem arz etmektedir.
-                </p>
-              </ng-container>
-              <ng-container *ngSwitchCase="'Ortaokul Koleji'">
-                <p class="f_p w_color l_height26">
-                  İzmir Türkiye'nin en gelişmiş 3 büyük şehrinden biridir. İzmir diğer birçok ile göre eğitim öğretim
-                  seviyesi daha yüksek olduğu için veliler de böyle bir ortamda çocuklarını
-                  en iyi okula gönderme ve en iyi eğitimi aldırma istiyor. Peki çocuklarımızın
-                  geleceğini güvenle emanet edeceğimiz İzmir'deki kolejler hangileri? Sizler için bir kolej listesi
-                  oluşturduk.
-                </p>
-                <p class="f_p w_color l_height26">
-                  Ortaokul, 5.sınıftan 8.sınıfa kadar toplamda dört yılı kapsamaktadır. Ülkemizde LGS (Lise Giriş
-                  Sınavı)
-                  için ortaokul müfredatı temel alınmakta olduğu için ortaokul seçimi çocuğunuz için hayati bir önem arz
-                  etmektedir.
-                  Çocuğun, çevresine ve topluma faydalı bir birey olabilmesi, kazanacağı özgüvene bağlıdır. Ortaokul
-                  yıllarından itibaren, artık tek başına faaliyetlerde bulunmaya başlayan çocuğu; bu noktada
-                  destekleyen,
-                  bütünlük hissini kazandırmaya çalışan, problemler karşısında çözüm odaklı düşünmeyi sağlayacak bir
-                  ortaokul eğitimi ve bunu verecek güçlü bir eğitim kadrosu tercihlerde ilk sırayı almaktadır.
-                </p>
-                <p class="f_p w_color l_height26">
-                  İzmir {{selectedDistrictName}} kolejleri özel eğitim sisteminin temel yapıtaşlarıdır. Anaokul,
-                  ilkokul,
-                  ortaokul, lise
-                  seviyesinde hizmetler veren, imkanları tarafından diğer okullardan çok daha gelişmiş okullardır.
-                  Hatta okul kimliğinin ötesinde pek çoğunun kampüsleri olduğunu söyleyebiliriz.
-                </p>
-                <p class="f_p w_color l_height26">
-                  İlkokuldan itibaren dil eğitimini sağlayan bu okullardan mezun olan öğrenciler İngilizce başta olmak
-                  üzere yabancı dili daha iyi anlayıp daha akıcı konuşabiliyor. Ayrıca okulların bilgisayar,
-                  laboratuvar,
-                  sosyal imkan bakımınından donanımlı olmasından dolayı diğer okullara göre daha donanmlı öğrenci
-                  yetiştirdiğini söyleyebiliriz.
-                </p>
-                <p class="f_p w_color l_height26">
-                  Diğer okullara nazaran daha farklı imkanlar üzerinden eğitim faaliyetlerinin sunulması sonucunda
-                  kolej fiyatları, diğer okullara harcanan fiyata göre daha pahalıdır.
-                </p>
-              </ng-container>
-              <ng-container *ngSwitchCase="'İlkokul Koleji'">
-                <p class="f_p w_color l_height26">
-                  12 yıllık zorunlu eğitimin ilk 4 yıllık basamağını temsil eden ilkokul eğitimi, çocuğunuzun öğrenim
-                  hayatının en önemli dönemlerinden biridir. Özel İlkokul, çocuğunuzun okumayı öğrendiği ve en temel
-                  bilgileri
-                  alarak, hayata hazırlanmak için gerekli altyapıyı oluşturacağı eğitim yuvasıdır.
-                </p>
-                <p class="f_p w_color l_height26">
-                  İzmir Türkiye'nin en gelişmiş 3 büyük şehrinden biridir. İzmir diğer birçok ile göre eğitim öğretim
-                  seviyesi
-                  daha yüksek olduğu için veliler de böyle bir ortamda çocuklarını
-                  en iyi okula gönderme ve en iyi eğitimi aldırma istiyor. Peki çocuklarımızın
-                  geleceğini güvenle emanet edeceğimiz İzmir'deki kolejler hangileri? Sizler için bir kolej listesi
-                  oluşturduk.
-                </p>
-                <p class="f_p w_color l_height26">
-                  İzmir {{selectedDistrictName}} kolejleri özel eğitim sisteminin temel yapıtaşlarıdır. Anaokul,
-                  ilkokul,
-                  ortaokul, lise
-                  seviyesinde hizmetler veren, imkanları tarafından diğer okullardan çok daha gelişmiş okullardır.
-                  Hatta okul kimliğinin ötesinde pek çoğunun kampüsleri olduğunu söyleyebiliriz.
-                </p>
-                <p class="f_p w_color l_height26">
-                  İlkokuldan itibaren dil eğitimini sağlayan bu okullardan mezun olan öğrenciler İngilizce başta olmak
-                  üzere yabancı dili daha iyi anlayıp daha akıcı konuşabiliyor. Ayrıca okulların bilgisayar,
-                  laboratuvar,
-                  sosyal imkan bakımınından donanımlı olmasından dolayı diğer okullara göre daha donanmlı öğrenci
-                  yetiştirdiğini söyleyebiliriz.
-                </p>
-                <p class="f_p w_color l_height26">
-                  Diğer okullara nazaran daha farklı imkanlar üzerinden eğitim faaliyetlerinin sunulması sonucunda
-                  kolej fiyatları, diğer okullara harcanan fiyata göre daha pahalıdır.
-                </p>
-              </ng-container>
-              <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
-                <p class="f_p w_color l_height26">
-                  Yabancı dil bilmek insana çok şey katmaktadır.Yabancı
-                  dilin iyi bir şekilde öğrenilebilmesi için mutlaka eğitim alınması gerekmektedir. Eğitim almadan başka
-                  bir
-                  dili öğrenmek son derece zordur. Bu amaçla verilen yabancı dil eğitimleri kişilerin öğrenmek
-                  istedikleri
-                  dilleri detaylı bir şekilde insanlara aktarmaktadır. Günümüzde en popüler yabancı dil kursları;
-                  İngilizce kursları,
-                  Yunanca kursları, Fransızca kursları, Rusça kursları, Çince kursları, İspanyolca kursları, İtalyanca
-                  kursları ve Arapça kursları'dır. Bu kurslar arasında en çok
-                  öğrenilen
-                  dil kurs ise, ortak dil olarak kabul edilen İngilizce'dir. İngilizcesi iyi olmayan ya da İngilizceyi
-                  hiç
-                  bilmeyen kişiler, iş hayatlarında çok fazla zorluk çekmektedir. Bu yüzden yabancı bir dil öğrenmek
-                  kariyer açısından çok önemlidir.
-                  İzmir Eğitim Kurumları İzmir'deki yabancı dil kurslarını sizi için listeledi.
-                </p>
-                <p class="f_p w_color l_height26">
-                  Yabancı dil eğitimi, kişinin kendi bildiği dil dışındaki dil seçenekleri arasından birini öğrenmesi
-                  için
-                  verilmektedir. Öğrenilmek istenen dil ne kadar iyi seviyede öğrenilirse; kişiler de bu dile o kadar
-                  hakim olacaktır. En çok öğrenmek istenilen dil, İngilizce'dir. İngilizce dil eğitimini almak isteyen
-                  çok
-                  sayıda kişi bulunmaktadır. Yabancı dil denilince ilk akla gelen de, İngilizce'dir. Tabi bu dilin
-                  dışında
-                  öğrenilmek istenen başka diller de vardır. Arapça, İtalyanca, Rusça, Portekizce, İspanyolca ve
-                  Fransızca
-                  dilleri de yabancı diller kapsamında öğrenilebilmektedir.
-                  Yaş büyüdükçe dil öğrenmesi zorlaşmaktadır. Bu nedenle yabancı dil ne kadar erken öğrenilirse o kadar
-                  iyidir. Hiç vakit kaybetmeden dil eğitimi almanız gereklidir. Hangi dili öğrenmek istediğinize,
-                  kendiniz
-                  karar verebilirsiniz. En çok ihtiyaç duyulan dilin İngilizce olduğunu unutmadan bir karar vermenizde
-                  fayda vardır. Yabancı dil öğrenen kişilerin özgüven düzeylerinin yükseldiğini söylemek mümkündür.
-                  Farklı
-                  bir dil bilmek, insana kişisel yönden avantaj sağlamaktadır.
-                  Okullarda verilen yabancı dil eğitimi yetersiz olmaktadır. Bu yüzden yabancı dil kursları dil öğrenme
-                  açısından çok önemlidir.
-                </p>
-                <p class="f_p w_color l_height26">
-                  İzmir {{selectedDistrictName}} yabancı dil kursları kapsamında İngilizce kursu, Almanca kursu,
-                  Fransızca
-                  kursu başta
-                  olmak üzere Rusça, İspanyolca, Farsça, İtalyanca, Arapça ve Flemenkçe dil eğitimleri vermektedir.
-                  İzmir İngilizce kursu dil programı öğrenciler tarafından her zaman yoğun ilgiyle karşılaşmaktadır. Tüm
-                  dünyada en çok konuşulan yabancı dil arasında yer alan İngilizce iş ve okul hayatı başta olmak üzere
-                  yaşantımızda büyük bir öneme sahiptir. Ülkemizde ek olarak İngilizce konuşabilen insanların iş bulma
-                  ve
-                  araştırma olanakları geniş olduğu için her zaman tercih edilesi olmuştur.
-                </p>
-              </ng-container>
-              <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
-                <p class="f_p w_color l_height26">
-                  Dershane adıyla hizmet veren kurumlar artık Özel Öğretim Kursları olarak hizmet vermeye
-                  başlamıştır. Bu hizmetlere belli başlı standartların getirilmesiyle birlikte bu kursların öğrencilere
-                  faydaları da standartlarla birlikte artış göstermiştir.
-                </p>
-                <p class="f_p w_color l_height26">
-                  Yönetmelikler, özel eğitim kurslarını "okul dışı eğitim ortamı" olarak yorumlamaktadır. Bu derslerin
-                  müfredatı yönetmeliklerle belirlenir. Özel bir öğretim kursu sadece üç konuda öğretilebilir.
-                  Yönetmelikler hangi binaların, hangi sınıfların ve hangi öğretmenlerin derslerinin verileceğini
-                  belirler. Her kurs, yönetmelikte belirtilen çerçeve planı uygulamalıdır. Örneğin, her sınıfa bir branş
-                  öğretmeni tarafından öğretilmelidir. Bakanlık, tüzüklerdeki standartlara göre denetimler de yapacak.
-                  Özel öğretim kurumlarının müfredatı için net bir çerçeve yoktur.
-                </p>
-                <p class="f_p w_color l_height26">
-                  İzmir {{selectedDistrictName}} Özel Öğretim Kursları öğrencilere birçok faydası bulunmaktadır.
-                  Öğrencinin test çözme becerisini alışkanlık haline getirir. Öğrenciye rekabet duygusu kazandırır.
-                  Öğrenciye sınav sistemi hakkında bilgi verir. Öğrencinin var olan bilgilerine , yenilerini ekler.
-                  Öğrenciyi olumlu yönde motive eder. Bu yüzden Özel Öğretim
-                  Kursları özellikle üniversiteye hazırlanan öğrenciler içi büyük önem taşımaktadır.
-                </p>
-              </ng-container>
-            </ng-container>
-            <p class="f_p w_color l_height26">
-              İzmir {{selectedDistrictName}} ilçesinde yaşayanlar için oldukça geniş seçenek sunabilen İzmir
-              {{selectedDistrictName}} <ng-container [ngSwitch]="selectedCategoryName">
-                <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
-                  Kreşler ve Anaokulları
-                </ng-container>
-                <ng-container *ngSwitchCase="'Lise Koleji'">
-                  Lise Kolejleri
-                </ng-container>
-                <ng-container *ngSwitchCase="'Ortaokul Koleji'">
-                  Ortaokul Kolejleri
-                </ng-container>
-                <ng-container *ngSwitchCase="'İlkokul Koleji'">
-                  İlkokul Kolejleri
-                </ng-container>
-                <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
-                  Yabancı Dil Kursları
-                </ng-container>
-                <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
-                  Özel Öğretim Kursları
-                </ng-container>
-              </ng-container> listemiz, siz
-              velilerin ve öğrencilerin en uygun buca <ng-container [ngSwitch]="selectedCategoryName">
-                <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
-                  kreşler ve anaokullarını
-                </ng-container>
-                <ng-container *ngSwitchCase="'Lise Koleji'">
-                  lise kolejlerini
-                </ng-container>
-                <ng-container *ngSwitchCase="'Ortaokul Koleji'">
-                  ortaokul kolejlerini
-                </ng-container>
-                <ng-container *ngSwitchCase="'İlkokul Koleji'">
-                  ilkokul kolejlerini
-                </ng-container>
-                <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
-                  yabancı dil kurslarını
-                </ng-container>
-                <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
-                  özel öğretim kurslarını
-                </ng-container>
-              </ng-container> kolayca bulup iletişime geçebilmeniz için
-              listelenmiştir.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="new_footer_area bg_color">
-    <div class="new_footer_top">
-      <div class="footer_bg" lazy-load-images>
-        <div class="footer_bg_one">
-          <img [attr.data-src]="'assets/img/seo/car.png'" alt="car">
-        </div>
-        <div class="footer_bg_two">
-          <img [attr.data-src]="'assets/img/seo/bike.png'" alt="bike">
-        </div>
-      </div>
-    </div>
-    <div class="footer_bottom">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-4 col-sm-6">
-            <p class="mb-0 f_400">© İzmir Eğitim Kurumları 2021 Tüm hakları saklıdır.</p>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <div class="f_social_icon text-center">
-              <a target="_blank" rel="nofollow" href="https://www.facebook.com/izmiregitimkurumlari"
-                class="fa fa-facebook"></a>
-              <a target="_blank" rel="nofollow" href="https://twitter.com/IzmEKurumlari" class="fa fa-twitter"></a>
-              <a target="_blank" rel="nofollow" href="https://www.instagram.com/izmiregitimkurumlari_"
-                class="fa fa-instagram"></a>
+    </section>
+    <section class="payment_service_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="service-content wow fadeInRight">
+                        <h2 class="f_p  f_700">İzmir {{selectedDistrictName}}
+                            <ng-container [ngSwitch]="selectedCategoryName">
+                                <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
+                                    Kreşler ve Anaokulları
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Lise Koleji'">
+                                    Lise Kolejleri
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                                    Ortaokul Kolejleri
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                                    İlkokul Kolejleri
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
+                                    Yabancı Dil Kursları
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
+                                    Özel Öğretim Kursları
+                                </ng-container>
+                            </ng-container>
+                        </h2>
+                        <ng-container [ngSwitch]="selectedCategoryName">
+                            <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
+                                <p class="f_p l_height26">
+                                    Anaokulları ve kreşlerdeki eğitim, eğitim hayatının ilk adımıdır ve çocukların büyüme süreci için çok önemlidir. Özgüven, girişimciler ve sosyal bireyler geliştirmenin yolu okul öncesi eğitimden geçer. Bunun yanında, özellikle çalışan kadınlarımıza büyük
+                                    bir destek işlevi gören kreşler de sosyal yaşam açısından giderek artan bir değer kazanmaktadır. Bazen birbirine karıştırılan kreş ve anaokulu programları birbirinden farklı olmakla beraber birbirlerinin devamı niteliğindedir.
+                                </p>
+                                <p class="f_p l_height26">
+                                    Kreş eğitimi; 0-36 arasındaki çocuklara hitap etmektedir. Kreşler birer eğitim kurumu değildir, sosyal kurumlardır. Çocuklar için geliştirici oyunlar oynamak ve çocukları fiziksel, sosyal açıdan geliştirmek amaçlanmaktadır. Anaokulu eğitimi ise; 36-72
+                                    ay arası çocukların bireysel gelişim özelliklerine uygun, çocukları sosyal ve psikolojik olarak destekleyen, ilkokula hazırlanan eğitimdir. Bu eğitimin ilk yılı olduğu için çocukların öğrenme yetenekleri üzerinde olumlu
+                                    bir etkisi vardır.
+                                </p>
+                                <p class="f_p l_height26">
+                                    Okul öncesi çağda bilişsel, duygusal ve psikomotor gelişim ile ilgili hedef düzeyine ulaşmış bir çocuk; araştırmayı seven, fikir ve düşüncelerini ifade edebilen, sosyal ilişkilere değer veren, paylaşmayı bilen ve mesleğine duyarlı bir birey olarak toplumda
+                                    bir yere sahip olacak ve topluma faydalı bir birey haline gelecektir. Anaokulu eğitim planına göre okullarda gelişim danışmanlığı hizmeti almış olursunuz. Danışmanlık hizmetleri koruma, önleme ve kriz müdahale hizmetlerini
+                                    içerir. Çocukların en iyi şekilde düzeyde rehberlik hizmetlerinden yararlanabilmesi için onların hayatındaki tüm bireylerin (ebeveynler, öğretmenler, okul yöneticileri, okul personeli, akrabalar ve çocukla temas halindeki
+                                    diğer bireyler) çocuğun hayatına dahil edilmesi gerekir. Okul süresince bireysel veya grup halinde rehberlik faaliyetleri düzenlenmelidir. Kişisel rehberlik hizmetinde amaç, çocuğun kişisel ve sosyal gelişimine destek
+                                    olmak ve duygusal sorunlarını çözmesine yardımcı olmaktır. Anaokulu ve kreş döneminde çocuklara sunulan rehberlik hizmetlerinin amacı, sorunlarını çocuk adına çözmek değil, ona destek vererek kendi sorunlarını çözmesine
+                                    yardımcı olmaktır.
+                                </p>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'Lise Koleji'">
+                                <p class="f_p l_height26">
+                                    İzmir Türkiye'nin en gelişmiş 3 büyük şehrinden biridir. İzmir diğer birçok ile göre eğitim öğretim seviyesi daha yüksek olduğu için veliler de böyle bir ortamda çocuklarını en iyi okula gönderme ve en iyi eğitimi aldırma istiyor. Peki çocuklarımızın
+                                    geleceğini güvenle emanet edeceğimiz İzmir'deki kolejler hangileri? Sizler için bir kolej listesi oluşturduk.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} kolejleri özel eğitim sisteminin temel yapıtaşlarıdır. Anaokul, ilkokul, ortaokul, lise seviyesinde hizmetler veren, imkanları tarafından diğer okullardan çok daha gelişmiş okullardır. Hatta okul kimliğinin ötesinde pek
+                                    çoğunun kampüsleri olduğunu söyleyebiliriz.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İlkokuldan itibaren dil eğitimini sağlayan bu okullardan mezun olan öğrenciler İngilizce başta olmak üzere yabancı dili daha iyi anlayıp daha akıcı konuşabiliyor. Ayrıca okulların bilgisayar, laboratuvar, sosyal imkan bakımınından donanımlı olmasından
+                                    dolayı diğer okullara göre daha donanmlı öğrenci yetiştirdiğini söyleyebiliriz.
+                                </p>
+                                <p class="f_p l_height26">
+                                    Diğer okullara nazaran daha farklı imkanlar üzerinden eğitim faaliyetlerinin sunulması sonucunda kolej fiyatları, diğer okullara harcanan fiyata göre daha pahalıdır.
+                                </p>
+                                <p class="f_p l_height26">
+                                    Çocuğunuz için önemli bir adım, üniversiteye girişin anahtarı iyi bir lise kolej,iyi bir eğitim ve iyi bir sosyal yaşamdan geçmektedir. Bu yüzden okul seçimi sanıldığından çok daha zor bir hal almaktadır. Okulun bulunduğu konum, sınıfların kaç kişilik
+                                    olduğu,yeterli öğretmen kadrosuna sahip olup olmadığı, geçmiş yıllarda yükseköğretim sınavlarındaki başarı ortalaması, yemekhane kalitesi,ulaşım süresi veya sorunu olup olmaması,eğitim veren öğretmenlerin başarısı,
+                                    gibi etkenler okul seçerken göz önünde bulundurulması gereken etkenlerdir. Bunların yanında bu hizmetlerin yıllık ücretinin ortalama fiyatı da önem arz etmektedir.
+                                </p>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                                <p class="f_p l_height26">
+                                    İzmir Türkiye'nin en gelişmiş 3 büyük şehrinden biridir. İzmir diğer birçok ile göre eğitim öğretim seviyesi daha yüksek olduğu için veliler de böyle bir ortamda çocuklarını en iyi okula gönderme ve en iyi eğitimi aldırma istiyor. Peki çocuklarımızın
+                                    geleceğini güvenle emanet edeceğimiz İzmir'deki kolejler hangileri? Sizler için bir kolej listesi oluşturduk.
+                                </p>
+                                <p class="f_p l_height26">
+                                    Ortaokul, 5.sınıftan 8.sınıfa kadar toplamda dört yılı kapsamaktadır. Ülkemizde LGS (Lise Giriş Sınavı) için ortaokul müfredatı temel alınmakta olduğu için ortaokul seçimi çocuğunuz için hayati bir önem arz etmektedir. Çocuğun, çevresine ve topluma faydalı
+                                    bir birey olabilmesi, kazanacağı özgüvene bağlıdır. Ortaokul yıllarından itibaren, artık tek başına faaliyetlerde bulunmaya başlayan çocuğu; bu noktada destekleyen, bütünlük hissini kazandırmaya çalışan, problemler
+                                    karşısında çözüm odaklı düşünmeyi sağlayacak bir ortaokul eğitimi ve bunu verecek güçlü bir eğitim kadrosu tercihlerde ilk sırayı almaktadır.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} kolejleri özel eğitim sisteminin temel yapıtaşlarıdır. Anaokul, ilkokul, ortaokul, lise seviyesinde hizmetler veren, imkanları tarafından diğer okullardan çok daha gelişmiş okullardır. Hatta okul kimliğinin ötesinde pek
+                                    çoğunun kampüsleri olduğunu söyleyebiliriz.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İlkokuldan itibaren dil eğitimini sağlayan bu okullardan mezun olan öğrenciler İngilizce başta olmak üzere yabancı dili daha iyi anlayıp daha akıcı konuşabiliyor. Ayrıca okulların bilgisayar, laboratuvar, sosyal imkan bakımınından donanımlı olmasından
+                                    dolayı diğer okullara göre daha donanmlı öğrenci yetiştirdiğini söyleyebiliriz.
+                                </p>
+                                <p class="f_p l_height26">
+                                    Diğer okullara nazaran daha farklı imkanlar üzerinden eğitim faaliyetlerinin sunulması sonucunda kolej fiyatları, diğer okullara harcanan fiyata göre daha pahalıdır.
+                                </p>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                                <p class="f_p l_height26">
+                                    12 yıllık zorunlu eğitimin ilk 4 yıllık basamağını temsil eden ilkokul eğitimi, çocuğunuzun öğrenim hayatının en önemli dönemlerinden biridir. Özel İlkokul, çocuğunuzun okumayı öğrendiği ve en temel bilgileri alarak, hayata hazırlanmak için gerekli altyapıyı
+                                    oluşturacağı eğitim yuvasıdır.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir Türkiye'nin en gelişmiş 3 büyük şehrinden biridir. İzmir diğer birçok ile göre eğitim öğretim seviyesi daha yüksek olduğu için veliler de böyle bir ortamda çocuklarını en iyi okula gönderme ve en iyi eğitimi aldırma istiyor. Peki çocuklarımızın
+                                    geleceğini güvenle emanet edeceğimiz İzmir'deki kolejler hangileri? Sizler için bir kolej listesi oluşturduk.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} kolejleri özel eğitim sisteminin temel yapıtaşlarıdır. Anaokul, ilkokul, ortaokul, lise seviyesinde hizmetler veren, imkanları tarafından diğer okullardan çok daha gelişmiş okullardır. Hatta okul kimliğinin ötesinde pek
+                                    çoğunun kampüsleri olduğunu söyleyebiliriz.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İlkokuldan itibaren dil eğitimini sağlayan bu okullardan mezun olan öğrenciler İngilizce başta olmak üzere yabancı dili daha iyi anlayıp daha akıcı konuşabiliyor. Ayrıca okulların bilgisayar, laboratuvar, sosyal imkan bakımınından donanımlı olmasından
+                                    dolayı diğer okullara göre daha donanmlı öğrenci yetiştirdiğini söyleyebiliriz.
+                                </p>
+                                <p class="f_p l_height26">
+                                    Diğer okullara nazaran daha farklı imkanlar üzerinden eğitim faaliyetlerinin sunulması sonucunda kolej fiyatları, diğer okullara harcanan fiyata göre daha pahalıdır.
+                                </p>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
+                                <p class="f_p l_height26">
+                                    Yabancı dil bilmek insana çok şey katmaktadır.Yabancı dilin iyi bir şekilde öğrenilebilmesi için mutlaka eğitim alınması gerekmektedir. Eğitim almadan başka bir dili öğrenmek son derece zordur. Bu amaçla verilen yabancı dil eğitimleri kişilerin öğrenmek
+                                    istedikleri dilleri detaylı bir şekilde insanlara aktarmaktadır. Günümüzde en popüler yabancı dil kursları; İngilizce kursları, Yunanca kursları, Fransızca kursları, Rusça kursları, Çince kursları, İspanyolca kursları,
+                                    İtalyanca kursları ve Arapça kursları'dır. Bu kurslar arasında en çok öğrenilen dil kurs ise, ortak dil olarak kabul edilen İngilizce'dir. İngilizcesi iyi olmayan ya da İngilizceyi hiç bilmeyen kişiler, iş hayatlarında
+                                    çok fazla zorluk çekmektedir. Bu yüzden yabancı bir dil öğrenmek kariyer açısından çok önemlidir. İzmir Eğitim Kurumları İzmir'deki yabancı dil kurslarını sizi için listeledi.
+                                </p>
+                                <p class="f_p l_height26">
+                                    Yabancı dil eğitimi, kişinin kendi bildiği dil dışındaki dil seçenekleri arasından birini öğrenmesi için verilmektedir. Öğrenilmek istenen dil ne kadar iyi seviyede öğrenilirse; kişiler de bu dile o kadar hakim olacaktır. En çok öğrenmek istenilen dil,
+                                    İngilizce'dir. İngilizce dil eğitimini almak isteyen çok sayıda kişi bulunmaktadır. Yabancı dil denilince ilk akla gelen de, İngilizce'dir. Tabi bu dilin dışında öğrenilmek istenen başka diller de vardır. Arapça, İtalyanca,
+                                    Rusça, Portekizce, İspanyolca ve Fransızca dilleri de yabancı diller kapsamında öğrenilebilmektedir. Yaş büyüdükçe dil öğrenmesi zorlaşmaktadır. Bu nedenle yabancı dil ne kadar erken öğrenilirse o kadar iyidir. Hiç
+                                    vakit kaybetmeden dil eğitimi almanız gereklidir. Hangi dili öğrenmek istediğinize, kendiniz karar verebilirsiniz. En çok ihtiyaç duyulan dilin İngilizce olduğunu unutmadan bir karar vermenizde fayda vardır. Yabancı
+                                    dil öğrenen kişilerin özgüven düzeylerinin yükseldiğini söylemek mümkündür. Farklı bir dil bilmek, insana kişisel yönden avantaj sağlamaktadır. Okullarda verilen yabancı dil eğitimi yetersiz olmaktadır. Bu yüzden yabancı
+                                    dil kursları dil öğrenme açısından çok önemlidir.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} yabancı dil kursları kapsamında İngilizce kursu, Almanca kursu, Fransızca kursu başta olmak üzere Rusça, İspanyolca, Farsça, İtalyanca, Arapça ve Flemenkçe dil eğitimleri vermektedir. İzmir İngilizce kursu dil programı öğrenciler
+                                    tarafından her zaman yoğun ilgiyle karşılaşmaktadır. Tüm dünyada en çok konuşulan yabancı dil arasında yer alan İngilizce iş ve okul hayatı başta olmak üzere yaşantımızda büyük bir öneme sahiptir. Ülkemizde ek olarak
+                                    İngilizce konuşabilen insanların iş bulma ve araştırma olanakları geniş olduğu için her zaman tercih edilesi olmuştur.
+                                </p>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
+                                <p class="f_p l_height26">
+                                    Dershane adıyla hizmet veren kurumlar artık Özel Öğretim Kursları olarak hizmet vermeye başlamıştır. Bu hizmetlere belli başlı standartların getirilmesiyle birlikte bu kursların öğrencilere faydaları da standartlarla birlikte artış göstermiştir.
+                                </p>
+                                <p class="f_p l_height26">
+                                    Yönetmelikler, özel eğitim kurslarını "okul dışı eğitim ortamı" olarak yorumlamaktadır. Bu derslerin müfredatı yönetmeliklerle belirlenir. Özel bir öğretim kursu sadece üç konuda öğretilebilir. Yönetmelikler hangi binaların, hangi sınıfların ve hangi
+                                    öğretmenlerin derslerinin verileceğini belirler. Her kurs, yönetmelikte belirtilen çerçeve planı uygulamalıdır. Örneğin, her sınıfa bir branş öğretmeni tarafından öğretilmelidir. Bakanlık, tüzüklerdeki standartlara
+                                    göre denetimler de yapacak. Özel öğretim kurumlarının müfredatı için net bir çerçeve yoktur.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} Özel Öğretim Kursları öğrencilere birçok faydası bulunmaktadır. Öğrencinin test çözme becerisini alışkanlık haline getirir. Öğrenciye rekabet duygusu kazandırır. Öğrenciye sınav sistemi hakkında bilgi verir. Öğrencinin var
+                                    olan bilgilerine , yenilerini ekler. Öğrenciyi olumlu yönde motive eder. Bu yüzden Özel Öğretim Kursları özellikle üniversiteye hazırlanan öğrenciler içi büyük önem taşımaktadır.
+                                </p>
+                            </ng-container>
+                        </ng-container>
+                        <p class="f_p l_height26">
+                            İzmir {{selectedDistrictName}} ilçesinde yaşayanlar için oldukça geniş seçenek sunabilen İzmir {{selectedDistrictName}}
+                            <ng-container [ngSwitch]="selectedCategoryName">
+                                <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
+                                    Kreşler ve Anaokulları
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Lise Koleji'">
+                                    Lise Kolejleri
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                                    Ortaokul Kolejleri
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                                    İlkokul Kolejleri
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
+                                    Yabancı Dil Kursları
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
+                                    Özel Öğretim Kursları
+                                </ng-container>
+                            </ng-container> listemiz, siz velilerin ve öğrencilerin en uygun buca
+                            <ng-container [ngSwitch]="selectedCategoryName">
+                                <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
+                                    kreşler ve anaokullarını
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Lise Koleji'">
+                                    lise kolejlerini
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                                    ortaokul kolejlerini
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                                    ilkokul kolejlerini
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
+                                    yabancı dil kurslarını
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
+                                    özel öğretim kurslarını
+                                </ng-container>
+                            </ng-container> kolayca bulup iletişime geçebilmeniz için listelenmiştir.
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-lg-4 col-sm-5 text-right" lazy-load-images>
-            <p><a routerLink="/"><img [attr.data-src]="'assets/img/izmir-egitim-kurumlari.png'" alt="logo"
-                  class="app-logo footer-logo"></a></p>
-          </div>
         </div>
-      </div>
-    </div>
-    <div class="footer_bottom">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-12 col-md-6 col-sm-12">
-            <ul class="list-unstyled f_menu text-right">
-              <li><a routerLink="/cerez-politikasi">Çerez Politikası</a></li>
-              <li><a routerLink="/kisisel-verilerin-korunmasi-kanunu">Kişisel Verilerin Korunması</a></li>
-              <li><a routerLink="/kullanici-sozlesmesi">Kullanıcı Sözleşmesi</a></li>
-              <li><a routerLink="/ki̇si̇sel-veri̇leri̇n-islenmesi̇ne-ili̇ski̇n-aydınlatma-metni̇">Ki̇şi̇sel Veri̇leri̇n
+    </section>
+    <footer class="new_footer_area bg_color">
+        <div class="new_footer_top">
+            <div class="footer_bg" lazy-load-images>
+                <div class="footer_bg_one">
+                    <img [attr.data-src]="'assets/img/seo/car.png'" alt="car">
+                </div>
+                <div class="footer_bg_two">
+                    <img [attr.data-src]="'assets/img/seo/bike.png'" alt="bike">
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-sm-6">
+                        <p class="mb-0 f_400">© İzmir Eğitim Kurumları 2021 Tüm hakları saklıdır.</p>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="f_social_icon text-center">
+                            <a target="_blank" rel="nofollow" href="https://www.facebook.com/izmiregitimkurumlari" class="fa fa-facebook"></a>
+                            <a target="_blank" rel="nofollow" href="https://twitter.com/IzmEKurumlari" class="fa fa-twitter"></a>
+                            <a target="_blank" rel="nofollow" href="https://www.instagram.com/izmiregitimkurumlari_" class="fa fa-instagram"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-5 text-right" lazy-load-images>
+                        <p>
+                            <a routerLink="/"><img [attr.data-src]="'assets/img/izmir-egitim-kurumlari.png'" alt="logo" class="app-logo footer-logo"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 col-md-6 col-sm-12">
+                        <ul class="list-unstyled f_menu text-right">
+                            <li><a routerLink="/cerez-politikasi">Çerez Politikası</a></li>
+                            <li><a routerLink="/kisisel-verilerin-korunmasi-kanunu">Kişisel Verilerin Korunması</a></li>
+                            <li><a routerLink="/kullanici-sozlesmesi">Kullanıcı Sözleşmesi</a></li>
+                            <li><a routerLink="/ki̇si̇sel-veri̇leri̇n-islenmesi̇ne-ili̇ski̇n-aydınlatma-metni̇">Ki̇şi̇sel Veri̇leri̇n
                   İşlenmesi̇ne İli̇şki̇n Aydınlatma
                   Metni̇</a></li>
-            </ul>
-          </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 </div>

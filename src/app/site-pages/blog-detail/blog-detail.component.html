@@ -1,121 +1,111 @@
 <div *ngIf="blogDetailModel">
-  <section class="blog_area_two sec_pad">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-9 blog_single_info" lazy-load-images>
-          <div oncopy="return false;" class="blog_list_item blog_list_item_two"
-            *ngFor="let blogItem of blogDetailModel.blogItems; let i = index; ">
-            <img class="img-fluid" *ngIf="blogItem.imageName != null"
-              attr.data-src="{{apiUrl}}/images/blog/{{blogItem.imageName}}_1000x600.jpg" alt="{{blogDetailModel.title}}"
-              title="{{blogDetailModel.title}}">
-            <h1 *ngIf="i==0" class="f_p f_size_30 l_height45 f_500 t_color mt_30 mb-0">{{blogDetailModel.title}}</h1>
-            <span *ngIf="i==0">{{blogDetailModel.author}} - {{blogDetailModel.createTime}}</span>
-            <div *ngIf="blogItem.description != ''" class="blog_content">
-              <p [innerHTML]="blogItem.description"></p>
-            </div>
-          </div>
-          <div class="f_widget social-widget text-right">
-            <h3><strong>Hemen Paylaş!</strong></h3>
-            <share-buttons [include]="['facebook','twitter','telegram','messenger','whatsapp','email']">
-            </share-buttons>
-          </div>
-        </div>
-        <div class="col-lg-3 blog_grid_info">
-          <div class="widget_title">
-            <span class="f_p f_size_20 t_color3">Son Eklenen Blog Yazıları</span>
-          </div>
-          <div class="row" lazy-load-images>
-            <div class="col-sm-6 col-md-6 col-lg-12 col-6" *ngFor='let blog of blogListModel'>
-              <div class="blog_list_item">
-                <a routerLink="/blog/{{blog.seoUrl}}"><img class="img-fluid"
-                    attr.data-src="{{apiUrl}}/images/blog/{{blog.firstVisibleImageName}}_300x180.jpg"
-                    alt="{{blog.title}}" title="{{blog.title}}"></a>
-                <div class="blog_content">
-                  <div class="entry_post_info">
-                    <a routerLink="/bloglar/{{blog.userName}}">{{blog.userName}}</a>
-                    <span>{{blog.createTime}}</span>
-                  </div>
-                  <a routerLink="/blog/{{blog.seoUrl}}">
-                    <h3 class="f_p f_size_18 f_500 t_color mb_20">{{blog.title}}</h3>
-                  </a>
+    <section class="blog_area_two sec_pad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 blog_single_info" lazy-load-images>
+                    <div oncopy="return false;" class="blog_list_item blog_list_item_two" *ngFor="let blogItem of blogDetailModel.blogItems; let i = index; ">
+                        <img class="img-fluid" *ngIf="blogItem.imageName != null" attr.data-src="{{apiUrl}}/images/blog/{{blogItem.imageName}}_1000x600.jpg" alt="{{blogDetailModel.title}}" title="{{blogDetailModel.title}}">
+                        <h1 *ngIf="i==0" class="f_p f_size_30 l_height45 f_500 t_color mt_30 mb-0">{{blogDetailModel.title}}</h1>
+                        <span *ngIf="i==0">{{blogDetailModel.author}} - {{blogDetailModel.createTime}}</span>
+                        <div *ngIf="blogItem.description != ''" class="blog_content">
+                            <p [innerHTML]="blogItem.description"></p>
+                        </div>
+                    </div>
+                    <div class="f_widget social-widget text-right">
+                        <share-buttons [showText]="true" [include]="['facebook','twitter','telegram','messenger','whatsapp']">
+                        </share-buttons>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="widget_title">
-            <span class="f_p f_size_20 t_color3">Bölgenizdeki Bazı Eğitim Kurumları</span>
-          </div>
-          <div class="row" lazy-load-images>
-            <div class="col-sm-6 col-md-6 col-lg-12 col-6" *ngFor='let education of educationList'>
-              <div class="blog_list_item blog_list_item_two" lazy-load-images>
-                <a routerLink="/buca/{{education.categorySeoUrl}}" class="post_date">
-                  <span>{{education.categoryName}}</span>
-                </a>
-                <a routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}"><img
-                    class="img-fluid" attr.data-src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg"
-                    alt="{{education.name}}" title="{{education.name}}"></a>
-                <div class="blog_content">
-                  <a routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
-                    <h3 class="blog_title">{{education.name}}<img alt="tick" [attr.data-src]="'assets/img/tick.png'"
-                        class="tick-image" /></h3>
-                  </a>
-                  <span>{{education.districtName}}</span>
+                <div class="col-lg-3 blog_grid_info">
+                    <div class="widget_title">
+                        <span class="f_p f_size_20 t_color3">Son Eklenen Blog Yazıları</span>
+                    </div>
+                    <div class="row" lazy-load-images>
+                        <div class="col-sm-6 col-md-6 col-lg-12 col-6" *ngFor='let blog of blogListModel'>
+                            <div class="blog_list_item">
+                                <a routerLink="/blog/{{blog.seoUrl}}"><img class="img-fluid" attr.data-src="{{apiUrl}}/images/blog/{{blog.firstVisibleImageName}}_300x180.jpg" alt="{{blog.title}}" title="{{blog.title}}"></a>
+                                <div class="blog_content">
+                                    <div class="entry_post_info">
+                                        <a routerLink="/blog-egitim-kurumu/{{blog.userName}}">{{blog.userName}}</a>
+                                        <span>{{blog.createTime}}</span>
+                                    </div>
+                                    <a routerLink="/blog/{{blog.seoUrl}}">
+                                        <h3 class="f_p f_size_18 f_500 t_color mb_20">{{blog.title}}</h3>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget_title">
+                        <span class="f_p f_size_20 t_color3">Bölgenizdeki Bazı Eğitim Kurumları</span>
+                    </div>
+                    <div class="row" lazy-load-images>
+                        <div class="col-sm-6 col-md-6 col-lg-12 col-6" *ngFor='let education of educationList'>
+                            <div class="blog_list_item blog_list_item_two" lazy-load-images>
+                                <a routerLink="/buca/{{education.categorySeoUrl}}" class="post_date">
+                                    <span>{{education.categoryName}}</span>
+                                </a>
+                                <a routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}"><img class="img-fluid" attr.data-src="{{apiUrl}}/images/{{education.imageUrl}}_300x180.jpg" alt="{{education.name}}" title="{{education.name}}"></a>
+                                <div class="blog_content">
+                                    <a routerLink="/{{education.districtSeoUrl}}/{{education.categorySeoUrl}}/{{education.seoUrl}}">
+                                        <h3 class="blog_title">{{education.name}}<img alt="tick" [attr.data-src]="'assets/img/tick.png'" class="tick-image" /></h3>
+                                    </a>
+                                    <span>{{education.districtName}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-      </div>
-    </div>
-</div>
-</section>
-<footer class="new_footer_area bg_color">
-  <div class="new_footer_top">
-    <div class="footer_bg" lazy-load-images>
-      <div class="footer_bg_one">
-        <img [attr.data-src]="'assets/img/seo/car.png'" alt="car">
-      </div>
-      <div class="footer_bg_two">
-        <img [attr.data-src]="'assets/img/seo/bike.png'" alt="bike">
-      </div>
-    </div>
-  </div>
-  <div class="footer_bottom">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-4 col-sm-6">
-          <p class="mb-0 f_400">© İzmir Eğitim Kurumları 2021 Tüm hakları saklıdır.</p>
         </div>
-        <div class="col-lg-4 col-sm-6">
-          <div class="f_social_icon text-center">
-            <a target="_blank" rel="nofollow" href="https://www.facebook.com/izmiregitimkurumlari"
-              class="fa fa-facebook"></a>
-            <a target="_blank" rel="nofollow" href="https://twitter.com/IzmEKurumlari" class="fa fa-twitter"></a>
-            <a target="_blank" rel="nofollow" href="https://www.instagram.com/izmiregitimkurumlari_"
-              class="fa fa-instagram"></a>
-          </div>
+    </section>
+    <footer class="new_footer_area bg_color">
+        <div class="new_footer_top">
+            <div class="footer_bg" lazy-load-images>
+                <div class="footer_bg_one">
+                    <img [attr.data-src]="'assets/img/seo/car.png'" alt="car">
+                </div>
+                <div class="footer_bg_two">
+                    <img [attr.data-src]="'assets/img/seo/bike.png'" alt="bike">
+                </div>
+            </div>
         </div>
-        <div class="col-lg-4 col-sm-5 text-right" lazy-load-images>
-          <p><a routerLink="/"><img [attr.data-src]="'assets/img/izmir-egitim-kurumlari.png'" alt="logo"
-                class="app-logo footer-logo"></a></p>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-sm-6">
+                        <p class="mb-0 f_400">© İzmir Eğitim Kurumları 2021 Tüm hakları saklıdır.</p>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="f_social_icon text-center">
+                            <a target="_blank" rel="nofollow" href="https://www.facebook.com/izmiregitimkurumlari" class="fa fa-facebook"></a>
+                            <a target="_blank" rel="nofollow" href="https://twitter.com/IzmEKurumlari" class="fa fa-twitter"></a>
+                            <a target="_blank" rel="nofollow" href="https://www.instagram.com/izmiregitimkurumlari_" class="fa fa-instagram"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-5 text-right" lazy-load-images>
+                        <p>
+                            <a routerLink="/"><img [attr.data-src]="'assets/img/izmir-egitim-kurumlari.png'" alt="logo" class="app-logo footer-logo"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="footer_bottom">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-12 col-md-6 col-sm-12">
-          <ul class="list-unstyled f_menu text-right">
-            <li><a routerLink="/cerez-politikasi">Çerez Politikası</a></li>
-            <li><a routerLink="/kisisel-verilerin-korunmasi-kanunu">Kişisel Verilerin Korunması</a></li>
-            <li><a routerLink="/kullanici-sozlesmesi">Kullanıcı Sözleşmesi</a></li>
-            <li><a routerLink="/ki̇si̇sel-veri̇leri̇n-islenmesi̇ne-ili̇ski̇n-aydınlatma-metni̇">Ki̇şi̇sel Veri̇leri̇n
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 col-md-6 col-sm-12">
+                        <ul class="list-unstyled f_menu text-right">
+                            <li><a routerLink="/cerez-politikasi">Çerez Politikası</a></li>
+                            <li><a routerLink="/kisisel-verilerin-korunmasi-kanunu">Kişisel Verilerin Korunması</a></li>
+                            <li><a routerLink="/kullanici-sozlesmesi">Kullanıcı Sözleşmesi</a></li>
+                            <li><a routerLink="/ki̇si̇sel-veri̇leri̇n-islenmesi̇ne-ili̇ski̇n-aydınlatma-metni̇">Ki̇şi̇sel Veri̇leri̇n
                 İşlenmesi̇ne İli̇şki̇n Aydınlatma
                 Metni̇</a></li>
-          </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</footer>
+    </footer>
 </div>
