@@ -12,6 +12,7 @@ export class PanelAsideComponent implements OnInit {
   navigationModelList: NavigationModel[];
   isUser:boolean;
   isAdmin:boolean;
+  isEditor:boolean;
   constructor(private authService:AuthService) {
 
   }
@@ -19,6 +20,7 @@ export class PanelAsideComponent implements OnInit {
   ngOnInit(): void {
     this.isUser = this.authService.currentUser.value.roles.includes("User");
     this.isAdmin = this.authService.currentUser.value.roles.includes("Admin");
+    this.isEditor = this.authService.currentUser.value.roles.includes("Editor");
     this.navigationModelList = [
       {
         title: 'GENEL',
@@ -49,7 +51,17 @@ export class PanelAsideComponent implements OnInit {
         { name: 'Özellik Kategori İşlemleri', routeUrl: '/panel/ozellik-kategori-listesi', icon: 'bx bx-grid-alt', key: 'category-list', isVisible: this.isAdmin },
         { name: 'Özellik İşlemleri', routeUrl: '/panel/ozellik-listesi', icon: 'bx bx-grid-alt', key: 'attribute-list', isVisible: this.isAdmin },
         { name: 'Eğitim Kurumu İşlemleri', routeUrl: '/panel/egitim-islemleri', icon: 'bx bx-grid-alt', key: 'education-operation-list', isVisible: this.isAdmin },
-        { name: 'Blog İşlemleri', routeUrl: '/panel/blog-islemleri', icon: 'bx bx-grid-alt', key: 'blog-operation-list', isVisible: this.isAdmin }
+        { name: 'Blog İşlemleri', routeUrl: '/panel/blog-islemleri', icon: 'bx bx-grid-alt', key: 'blog-operation-list', isVisible: this.isAdmin },
+        { name: 'Role İşlemleri', routeUrl: '/panel/role-listesi', icon: 'bx bx-grid-alt', key: 'blog-operation-list', isVisible: this.isAdmin }
+      ]
+      },
+      {
+        title: 'EDİTÖR İŞLEMLERİ',
+        key:'editor',
+        isVisible:this.isEditor,
+        navigationItems: [
+        { name: 'Eğitim Kurumu İşlemleri', routeUrl: '/panel/egitim-islemleri', icon: 'bx bx-grid-alt', key: 'education-operation-list', isVisible: this.isEditor },
+        { name: 'Blog İşlemleri', routeUrl: '/panel/blog-islemleri', icon: 'bx bx-grid-alt', key: 'blog-operation-list', isVisible: this.isEditor }
       ]
       }
     ]

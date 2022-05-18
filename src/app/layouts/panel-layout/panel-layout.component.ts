@@ -13,7 +13,8 @@ export class PanelLayoutComponent implements OnInit,AfterViewInit {
   }
   ngAfterViewInit(): void {
     let scripts = ["assets/js/panel-vendors.min.js", "assets/js/panel-custom.js"];
-    let cssFiles = ["assets/css/panel-vendors.min.css", "assets/css/panel-style.css", "assets/css/panel-responsive.css","https://fonts.googleapis.com/icon?family=Material+Icons"];
+    let cssFiles = ["assets/css/panel-vendors.min.css", "assets/css/panel-style.css", "assets/css/panel-responsive.css",
+    "https://fonts.googleapis.com/icon?family=Material+Icons"];
     this.lazyLoadService.loadScripts(scripts);
     this.lazyLoadService.loadCss(cssFiles); 
   }

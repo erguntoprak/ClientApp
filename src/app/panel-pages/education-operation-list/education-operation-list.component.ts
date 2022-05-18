@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { SeoService } from 'src/app/_services/seo.service';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'se-education-operation-list',
@@ -17,6 +18,7 @@ export class EducationOperationListComponent implements OnInit {
 
   educationList: EducationListModel[];
   errorList = [];
+  isAdmin:boolean;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -25,10 +27,11 @@ export class EducationOperationListComponent implements OnInit {
   dataSource;
 
   constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, 
-    private toastr: ToastrService, private seoService: SeoService) {
+    private toastr: ToastrService, private seoService: SeoService, private authService:AuthService) {
 
   }
   ngOnInit(): void {
+    this.isAdmin = this.authService.currentUser.value.roles.includes("Admin");
     this.seoService.updateMeta('robots', 'noindex, nofollow');
     this.seoService.updateTitle("Panel - İzmir Eğitim Kurumları");
     this.acdcLoadingService.showLoading();

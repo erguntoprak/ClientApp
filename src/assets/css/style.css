@@ -26926,7 +26926,7 @@ button:not(:disabled) {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: #f2f2f2;
+    background-color: #fe4c55;
     z-index: 5;
     -webkit-box-shadow: 0px 0px 10px 0px rgba(3, 115, 156, 0.1);
     box-shadow: 0px 0px 10px 0px rgba(3, 115, 156, 0.1);
@@ -26968,6 +26968,17 @@ button:not(:disabled) {
 .bottomNav>[nav-id]>i {
     font-size: 25px;
     text-align: center;
+    color: #fff;
+}
+
+.bottomNav>[nav-id]>a>i {
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+}
+
+.bottomNav>[nav-id]>a>span {
+    color: #fff;
 }
 
 .bottomNav.no-label>button {
@@ -30279,8 +30290,6 @@ td.mat-footer-cell {
     margin: var(--sb-margin);
 }
 
-
-
 .sb-wrapper {
     font-size: inherit;
     cursor: pointer;
@@ -30550,4 +30559,8 @@ td.mat-footer-cell {
 .icon-button:hover .fa-youtube,
 .icon-button:hover .fa-pinterest {
     color: white!important;
+}
+
+.modal-title {
+    font-size: 25px;
 }

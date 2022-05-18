@@ -19,7 +19,7 @@ const routes: Routes = [
         path: '',
         loadChildren: () => import('./panel-pages/dashboard/dashboard.module').then(m => m.DashBoardModule),
         canLoad: [AuthGuard],
-        data: {roles:[Roles.Admin,Roles.User]}
+        data: {roles:[Roles.Admin,Roles.User, Roles.Editor]}
       },
       {
         path: 'egitim-ekle',
@@ -31,19 +31,19 @@ const routes: Routes = [
         path: 'egitim-duzenle/:name',
         loadChildren: () => import('./panel-pages/education-edit/education-edit.module').then(m => m.EducationEditModule),
         canLoad: [AuthGuard],
-        data: {roles:[Roles.Admin,Roles.User]}
+        data: {roles:[Roles.Admin,Roles.User,Roles.Editor]}
       },
       {
         path: 'egitimler',
         loadChildren: () => import('./panel-pages/education-list/education-list.module').then(m => m.EducationListModule),
         canLoad: [AuthGuard],
-        data: {roles:[Roles.Admin,Roles.User]}
+        data: {roles:[Roles.Admin,Roles.User,Roles.Editor]}
       },
       {
         path: 'egitim-iletisim-formlari/:name',
         loadChildren: () => import('./panel-pages/education-contact-from-list/education-contact-from-list.module').then(m => m.EducationContactFormListModule),
         canLoad: [AuthGuard],
-        data: {roles:[Roles.Admin,Roles.User]}
+        data: {roles:[Roles.Admin,Roles.User,Roles.Editor]}
       },
       {
         path: 'blog-ekle',
@@ -55,13 +55,13 @@ const routes: Routes = [
         path: 'blog-listesi',
         loadChildren: () => import('./panel-pages/blog-list/blog-list.module').then(m => m.BlogListModule),
         canLoad: [AuthGuard],
-        data: {roles:[Roles.Admin,Roles.User]}
+        data: {roles:[Roles.Admin,Roles.User,Roles.Editor]}
       },
       {
         path: 'blog-duzenle/:name',
         loadChildren: () => import('./panel-pages/blog-edit/blog-edit.module').then(m => m.BlogEditModule),
         canLoad: [AuthGuard],
-        data: {roles:[Roles.Admin,Roles.User]}
+        data: {roles:[Roles.Admin,Roles.User,Roles.Editor]}
       },
       {
         path: 'kullanici-listesi',
@@ -157,11 +157,23 @@ const routes: Routes = [
         path: 'egitim-islemleri',
         loadChildren: () => import('./panel-pages/education-operation-list/education-operation-list.module').then(m => m.EducationOperationListModule),
         canLoad: [AuthGuard],
-        data: {roles:[Roles.Admin]}
+        data: {roles:[Roles.Admin,Roles.Editor]}
       },
       {
         path: 'blog-islemleri',
         loadChildren: () => import('./panel-pages/blog-operation-list/blog-operation-list.module').then(m => m.BlogOperationListModule),
+        canLoad: [AuthGuard],
+        data: {roles:[Roles.Admin,Roles.Editor]}
+      },
+      {
+        path: 'role-ekle',
+        loadChildren: () => import('./panel-pages/role-create/role-create.module').then(m => m.RoleCreateModule),
+        canLoad: [AuthGuard],
+        data: {roles:[Roles.Admin]}
+      },
+      {
+        path: 'role-listesi',
+        loadChildren: () => import('./panel-pages/role-list/role-list.module').then(m => m.RoleListModule),
         canLoad: [AuthGuard],
         data: {roles:[Roles.Admin]}
       }

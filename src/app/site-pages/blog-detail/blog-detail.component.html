@@ -5,7 +5,8 @@
                 <div class="col-lg-9 blog_single_info" lazy-load-images>
                     <div oncopy="return false;" class="blog_list_item blog_list_item_two" *ngFor="let blogItem of blogDetailModel.blogItems; let i = index; ">
                         <img class="img-fluid" *ngIf="blogItem.imageName != null" attr.data-src="{{apiUrl}}/images/blog/{{blogItem.imageName}}_1000x600.jpg" alt="{{blogDetailModel.title}}" title="{{blogDetailModel.title}}">
-                        <h1 *ngIf="i==0" class="f_p f_size_30 l_height45 f_500 t_color mt_30 mb-0">{{blogDetailModel.title}}</h1>
+                        <h1 *ngIf="i==0" class="f_p f_size_30 l_height45 f_500 t_color mt_30 mb-0">
+                            {{blogDetailModel.title}}</h1>
                         <span *ngIf="i==0">{{blogDetailModel.author}} - {{blogDetailModel.createTime}}</span>
                         <div *ngIf="blogItem.description != ''" class="blog_content">
                             <p [innerHTML]="blogItem.description"></p>
@@ -36,6 +37,7 @@
                             </div>
                         </div>
                     </div>
+                   
                     <div class="widget_title">
                         <span class="f_p f_size_20 t_color3">Bölgenizdeki Bazı Eğitim Kurumları</span>
                     </div>
@@ -99,9 +101,10 @@
                             <li><a routerLink="/cerez-politikasi">Çerez Politikası</a></li>
                             <li><a routerLink="/kisisel-verilerin-korunmasi-kanunu">Kişisel Verilerin Korunması</a></li>
                             <li><a routerLink="/kullanici-sozlesmesi">Kullanıcı Sözleşmesi</a></li>
-                            <li><a routerLink="/ki̇si̇sel-veri̇leri̇n-islenmesi̇ne-ili̇ski̇n-aydınlatma-metni̇">Ki̇şi̇sel Veri̇leri̇n
-                İşlenmesi̇ne İli̇şki̇n Aydınlatma
-                Metni̇</a></li>
+                            <li><a routerLink="/ki̇si̇sel-veri̇leri̇n-islenmesi̇ne-ili̇ski̇n-aydınlatma-metni̇">Ki̇şi̇sel
+                                    Veri̇leri̇n
+                                    İşlenmesi̇ne İli̇şki̇n Aydınlatma
+                                    Metni̇</a></li>
                         </ul>
                     </div>
                 </div>

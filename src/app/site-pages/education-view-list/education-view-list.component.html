@@ -11,13 +11,13 @@
                         <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
                             Kreşler ve Anaokulları
                         </ng-container>
-                        <ng-container *ngSwitchCase="'Lise Koleji'">
+                        <ng-container *ngSwitchCase="'Lise'">
                             Lise Kolejleri
                         </ng-container>
-                        <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                        <ng-container *ngSwitchCase="'Ortaokul'">
                             Ortaokul Kolejleri
                         </ng-container>
-                        <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                        <ng-container *ngSwitchCase="'İlkokul'">
                             İlkokul Kolejleri
                         </ng-container>
                         <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
@@ -26,6 +26,12 @@
                         <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
                             Özel Öğretim Kursları
                         </ng-container>
+                        <ng-container *ngSwitchCase="'Sürücü Kursu'">
+                            Sürücü Kursları
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Sanat Merkezi'">
+                            Sanat Merkezleri
+                        </ng-container>
                     </ng-container>
                 </h1>
                 <p class="f_400 w_color f_size_20 l_height26"> {{selectedDistrictName}} ilçesinde {{selectedCategoryName | lowercase}} düzeyinde tüm
@@ -33,20 +39,26 @@
                         <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
                             kreşler ve anaokullarını
                         </ng-container>
-                        <ng-container *ngSwitchCase="'Lise Koleji'">
+                        <ng-container *ngSwitchCase="'Lise'">
                             lise kolejlerini
                         </ng-container>
-                        <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                        <ng-container *ngSwitchCase="'Ortaokul'">
                             ortaokul kolejlerini
                         </ng-container>
-                        <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                        <ng-container *ngSwitchCase="'İlkokul'">
                             ilkokul kolejlerini
                         </ng-container>
                         <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
                             yabancı dil kurslarını
                         </ng-container>
                         <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
-                            özel öğretim kurslarını
+                            özel eğitim kurslarını, kişisel gelişim kurslarını, özel eğitim ve rehabilitasyon merkezlerini, kurs merkezlerini ve etüt merkezlerini
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Sürücü Kursu'">
+                            sürücü kurslarını
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Sanat Merkezi'">
+                            sanat merkezlerini
                         </ng-container>
                     </ng-container>
                     bir arada toplayarak size sunduğu en uygun {{selectedCategoryName | lowercase}} fiyatları, fotoğraf galerileri veya görselleri, olanakları, imkanları, hizmetleri, iletişim ve konum bilgileri hakkında detaylı bilgileri hemen keşfedin! İzmir Eğitim Kurumları
@@ -55,20 +67,26 @@
                         <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
                             kreşler ve anaokullarını
                         </ng-container>
-                        <ng-container *ngSwitchCase="'Lise Koleji'">
+                        <ng-container *ngSwitchCase="'Lise'">
                             lise kolejlerini
                         </ng-container>
-                        <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                        <ng-container *ngSwitchCase="'Ortaokul'">
                             ortaokul kolejlerini
                         </ng-container>
-                        <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                        <ng-container *ngSwitchCase="'İlkokul'">
                             ilkokul kolejlerini
                         </ng-container>
                         <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
                             yabancı dil kurslarını
                         </ng-container>
                         <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
-                            özel öğretim kurslarını
+                            özel eğitim kurslarını, kişisel gelişim kurslarını, özel eğitim ve rehabilitasyon merkezlerini, kurs merkezlerini ve etüt merkezlerini
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Sürücü Kursu'">
+                            sürücü kurslarını
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'Sanat Merkezi'">
+                            sanat merkezlerini
                         </ng-container>
                     </ng-container>
                     listeledi.
@@ -281,20 +299,26 @@
                                 <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
                                     Kreşler ve Anaokulları
                                 </ng-container>
-                                <ng-container *ngSwitchCase="'Lise Koleji'">
+                                <ng-container *ngSwitchCase="'Lise'">
                                     Lise Kolejleri
                                 </ng-container>
-                                <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                                <ng-container *ngSwitchCase="'Ortaokul'">
                                     Ortaokul Kolejleri
                                 </ng-container>
-                                <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                                <ng-container *ngSwitchCase="'İlkokul'">
                                     İlkokul Kolejleri
                                 </ng-container>
                                 <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
                                     Yabancı Dil Kursları
                                 </ng-container>
                                 <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
-                                    Özel Öğretim Kursları
+                                    Etüt Merkezi & Kurs Merkezi & Rehabilitasyon Merkezi & Kişisel Gelişim Kursları
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Sürücü Kursu'">
+                                    Sürücü Kursları
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Sanat Merkezi'">
+                                    Sanat Akademileri
                                 </ng-container>
                             </ng-container>
                         </h2>
@@ -318,7 +342,7 @@
                                     yardımcı olmaktır.
                                 </p>
                             </ng-container>
-                            <ng-container *ngSwitchCase="'Lise Koleji'">
+                            <ng-container *ngSwitchCase="'Lise'">
                                 <p class="f_p l_height26">
                                     İzmir Türkiye'nin en gelişmiş 3 büyük şehrinden biridir. İzmir diğer birçok ile göre eğitim öğretim seviyesi daha yüksek olduğu için veliler de böyle bir ortamda çocuklarını en iyi okula gönderme ve en iyi eğitimi aldırma istiyor. Peki çocuklarımızın
                                     geleceğini güvenle emanet edeceğimiz İzmir'deki kolejler hangileri? Sizler için bir kolej listesi oluşturduk.
@@ -340,7 +364,7 @@
                                     gibi etkenler okul seçerken göz önünde bulundurulması gereken etkenlerdir. Bunların yanında bu hizmetlerin yıllık ücretinin ortalama fiyatı da önem arz etmektedir.
                                 </p>
                             </ng-container>
-                            <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                            <ng-container *ngSwitchCase="'Ortaokul'">
                                 <p class="f_p l_height26">
                                     İzmir Türkiye'nin en gelişmiş 3 büyük şehrinden biridir. İzmir diğer birçok ile göre eğitim öğretim seviyesi daha yüksek olduğu için veliler de böyle bir ortamda çocuklarını en iyi okula gönderme ve en iyi eğitimi aldırma istiyor. Peki çocuklarımızın
                                     geleceğini güvenle emanet edeceğimiz İzmir'deki kolejler hangileri? Sizler için bir kolej listesi oluşturduk.
@@ -362,7 +386,7 @@
                                     Diğer okullara nazaran daha farklı imkanlar üzerinden eğitim faaliyetlerinin sunulması sonucunda kolej fiyatları, diğer okullara harcanan fiyata göre daha pahalıdır.
                                 </p>
                             </ng-container>
-                            <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                            <ng-container *ngSwitchCase="'İlkokul'">
                                 <p class="f_p l_height26">
                                     12 yıllık zorunlu eğitimin ilk 4 yıllık basamağını temsil eden ilkokul eğitimi, çocuğunuzun öğrenim hayatının en önemli dönemlerinden biridir. Özel İlkokul, çocuğunuzun okumayı öğrendiği ve en temel bilgileri alarak, hayata hazırlanmak için gerekli altyapıyı
                                     oluşturacağı eğitim yuvasıdır.
@@ -406,16 +430,55 @@
                             </ng-container>
                             <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
                                 <p class="f_p l_height26">
-                                    Dershane adıyla hizmet veren kurumlar artık Özel Öğretim Kursları olarak hizmet vermeye başlamıştır. Bu hizmetlere belli başlı standartların getirilmesiyle birlikte bu kursların öğrencilere faydaları da standartlarla birlikte artış göstermiştir.
+                                    İzmir {{selectedDistrictName}} Rehabilitasyon Merkezi veya Özel Eğitim ve Rehabilitasyon Kurumları; Rehberlik Araştırma Merkezleri (RAM) tarafından onaylanan zihinsel, bedensel, sosyal, ruhsal, duygusal, konuşma, görme ve işitsel gibi engelleri nedeniyle
+                                    normal günlük yaşamın gerekliliklerini yapamayan bireylerin, fonksiyon kayıplarını gidermek ve toplum içinde kendi kendilerine yeterli olmalarını sağlayıcı beceriler kazandırmak üzere kurulmuş ve bu doğrultuda hizmet
+                                    veren kurumlardır.
                                 </p>
                                 <p class="f_p l_height26">
-                                    Yönetmelikler, özel eğitim kurslarını "okul dışı eğitim ortamı" olarak yorumlamaktadır. Bu derslerin müfredatı yönetmeliklerle belirlenir. Özel bir öğretim kursu sadece üç konuda öğretilebilir. Yönetmelikler hangi binaların, hangi sınıfların ve hangi
-                                    öğretmenlerin derslerinin verileceğini belirler. Her kurs, yönetmelikte belirtilen çerçeve planı uygulamalıdır. Örneğin, her sınıfa bir branş öğretmeni tarafından öğretilmelidir. Bakanlık, tüzüklerdeki standartlara
-                                    göre denetimler de yapacak. Özel öğretim kurumlarının müfredatı için net bir çerçeve yoktur.
+                                    İzmir {{selectedDistrictName}} Kişisel Gelişim Kursları; Uzman kişiler tarafından verilen, kişiye farkındalık oluşturacak ve eksikliğini gördüğü alanda gelişmesini sağlayacak kurslardır. Kişisel Gelişim Kursları bireylere diksiyon, beden dili, etkili
+                                    imaj, sunum teknikleri, zarafet, protokol kuralları, telefonda iletişim, kurumsal yazışma, stres ve zaman yönetimi, algı yönetimi, kurum içi iletişim, zor insanlarla başa çıkma, ikna teknikleri, liderlik ve motivasyon
+                                    gibi eğitimler verir.
                                 </p>
                                 <p class="f_p l_height26">
-                                    İzmir {{selectedDistrictName}} Özel Öğretim Kursları öğrencilere birçok faydası bulunmaktadır. Öğrencinin test çözme becerisini alışkanlık haline getirir. Öğrenciye rekabet duygusu kazandırır. Öğrenciye sınav sistemi hakkında bilgi verir. Öğrencinin var
-                                    olan bilgilerine , yenilerini ekler. Öğrenciyi olumlu yönde motive eder. Bu yüzden Özel Öğretim Kursları özellikle üniversiteye hazırlanan öğrenciler içi büyük önem taşımaktadır.
+                                    İzmir {{selectedDistrictName}} Etüt Merkezi, okul derslerine destek olması amacıyla, okul saatleri dışında öğrencilere eğitim-öğretim hizmeti sağlayan kurumlardır. Bu kurumlardaki eğitimler özel dersten farklı olarak tek bir derse/konuya odaklanmayan
+                                    ve genellikle okul müfredatına paralel yürütülen destek eğitimleridir. Etüt Merkezinin Faydaları; Öğrencinin ödevleri günlük olarak takip edilmiş olur. Ödevler günü gününe atlanmadan yapılınca öğrenci de derslerinden
+                                    kopmaz. Etüt merkezinde yapılacak kitap okuma saatleri ile öğrencinin kitap okumaya da ilgisi artar. Çocuğunuzun ufku genişler.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} YKS TYT AYT YDT kursları şimdi parmaklarınızın ucunda! Bu liste sayede sizin için en uygun YKS TYT AYT YDT kursları bulup istediğiniz üniversiteyi kazanabilirsiniz.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} LGS kursları şimdi parmaklarınızın ucunda! Bu liste sayede sizin için en uygun LGS kursları bulup istediğiniz liseyi kazanabilirsiniz kazanabilirsiniz.
+                                </p>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'Sürücü Kursu'">
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} Sürücü Kursu; M, A1, A2, A, B1, B, BE, C1, C1E, C, CE, D1, D1E, D, DE, F sınıfı sürücü belgeleri alabilmeniz için kurs sağlayan eğitim kurumlarıdır.
+                                </p>
+                                <p class="f_p l_height26">
+                                    Sürücü Kursları listemiz ile size en yakın ve en uygun sürücü kursunu bulabilirsiniz.
+                                </p>
+                                <p class="f_p l_height26">
+                                    18 yaşını tamamlayan ve ehliyet almak isteyenlerin sürücü kursuna kayıt yaptırarak teorik ve pratik eğitimlerini almaları şarttır. İlk kez ehliyet alacak kişilerin sürücü kurslarına kayıt yaptırarak gerekli olan eğitimleri almaları gerekmektedir. </p>
+                                <p class="f_p l_height26">
+                                    Sürücü kursunda trafik ve çevre bilgisi, ilk yardım, motor dersleri ve trafik adabı dersleri verilmektedir. Bu dersler sonrasında sınav yapılır ve sınavda başarılı olanlar uygulamalı direksiyon dersleri ile kursa devam eder. </p>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'Sanat Merkezi'">
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} ilçesindeki Müzik Kursu, Tiyatro Kursu, Fotoğrafçılık Kursu, Resim Kursu, Yazarlık Kursu, Diksiyon Kursu, Sinema Kursu, Dans Kursu, Yaratıcı Drama Kursu, Seramik Kursu, Ebru Kursu, Rölyef Kursu, Mandala Kursu, Çini Kursu,
+                                    Heykel Kursu ve Satranç Kurslarını sizin için listeledik.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} ilçesindeki Müzik Kursları; Gitar Kursu, Keman Kursu, Bateri Kursu, Yan Flüt Kursu ve Piyano Kurslarını sizin için listeledik.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} ilçesindeki Resim Kursları; Karakalem Kursu, Yağlı Boya Kursu, İllustrasyon Kursu, Suluboya Kursu ve Karikatür Kurslarını sizin için listeledik.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} ilçesindeki Tiyatro Kursları; Temel Oyunculuk Kursu, Okula Hazırlık Tiyatro Kursu, Kamera Önü Oyunculuk Kursu, Yaratıcı Drama Kursu ve Doğaçlama Tiyatro Kurslarını sizin için listeledik.
+                                </p>
+                                <p class="f_p l_height26">
+                                    İzmir {{selectedDistrictName}} ilçesindeki Dans Kursları; Düğün Dansı Kursu, Modern Dans Kursu, Hip Hop Kursu, Zeybek Kursu ve Oryantal Kurslarını sizin için listeledik.
                                 </p>
                             </ng-container>
                         </ng-container>
@@ -425,13 +488,13 @@
                                 <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
                                     Kreşler ve Anaokulları
                                 </ng-container>
-                                <ng-container *ngSwitchCase="'Lise Koleji'">
+                                <ng-container *ngSwitchCase="'Lise'">
                                     Lise Kolejleri
                                 </ng-container>
-                                <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                                <ng-container *ngSwitchCase="'Ortaokul'">
                                     Ortaokul Kolejleri
                                 </ng-container>
-                                <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                                <ng-container *ngSwitchCase="'İlkokul'">
                                     İlkokul Kolejleri
                                 </ng-container>
                                 <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
@@ -440,18 +503,24 @@
                                 <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
                                     Özel Öğretim Kursları
                                 </ng-container>
-                            </ng-container> listemiz, siz velilerin ve öğrencilerin en uygun buca
+                                <ng-container *ngSwitchCase="'Sürücü Kursu'">
+                                    Sürücü Kursları
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Sanat Merkezi'">
+                                    Sanat Akademileri
+                                </ng-container>
+                            </ng-container> listemiz, siz velilerin ve öğrencilerin en uygun {{selectedDistrictName}}
                             <ng-container [ngSwitch]="selectedCategoryName">
                                 <ng-container *ngSwitchCase="'Kreş ve Anaokulu'">
                                     kreşler ve anaokullarını
                                 </ng-container>
-                                <ng-container *ngSwitchCase="'Lise Koleji'">
+                                <ng-container *ngSwitchCase="'Lise'">
                                     lise kolejlerini
                                 </ng-container>
-                                <ng-container *ngSwitchCase="'Ortaokul Koleji'">
+                                <ng-container *ngSwitchCase="'Ortaokul'">
                                     ortaokul kolejlerini
                                 </ng-container>
-                                <ng-container *ngSwitchCase="'İlkokul Koleji'">
+                                <ng-container *ngSwitchCase="'İlkokul'">
                                     ilkokul kolejlerini
                                 </ng-container>
                                 <ng-container *ngSwitchCase="'Yabancı Dil Kursu'">
@@ -459,6 +528,12 @@
                                 </ng-container>
                                 <ng-container *ngSwitchCase="'Özel Öğretim Kursu'">
                                     özel öğretim kurslarını
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Sürücü Kursu'">
+                                    sürücü kurslarını
+                                </ng-container>
+                                <ng-container *ngSwitchCase="'Sanat Merkezi'">
+                                    sanat merkezlerini
                                 </ng-container>
                             </ng-container> kolayca bulup iletişime geçebilmeniz için listelenmiştir.
                         </p>

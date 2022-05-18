@@ -10723,3 +10723,11 @@ Main components
 .cd-nav-icons .cd-nav-item.item-6::before {
     background-image: url(../img/egitim-kurumu-1.png);
 }
+
+.cd-nav-icons .cd-nav-item.item-7::before {
+    background-image: url(../img/egitim-kurumu-6.png);
+}
+
+.cd-nav-icons .cd-nav-item.item-8::before {
+    background-image: url(../img/egitim-kurumu-7.png);
+}

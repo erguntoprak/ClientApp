@@ -1,0 +1,27 @@
+<div class="breadcrumb-area">
+    <h1>Role Oluştur</h1>
+
+    <ol class="breadcrumb">
+        <li class="item"><a routerLink="/panel"><i class="bx bx-home-alt"></i></a></li>
+    </ol>
+</div>
+<div class="card mb-30">
+    <div class="card-body">
+        <form [formGroup]="roleInsertForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Role</mat-label>
+                        <input required matInput formControlName="name" [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="roleInsertForm.get('name').hasError('required')">
+                            Lütfen Role Adı giriniz.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-6">
+                    <button type="submit" mat-raised-button color="primary">Kaydet</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

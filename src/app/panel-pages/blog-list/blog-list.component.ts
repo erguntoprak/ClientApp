@@ -6,6 +6,7 @@ import * as _ from 'lodash-es';
 import { AcdcLoadingService } from 'acdc-loading';
 import { environment } from 'src/environments/environment';
 import { SeoService } from 'src/app/_services/seo.service';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'se-blog-list',
@@ -17,7 +18,8 @@ export class BlogListComponent implements OnInit {
   errorList = [];
   apiUrl = environment.apiUrl;
 
-  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService, private seoService: SeoService) {
+  constructor(private baseService: BaseService, private acdcLoadingService: AcdcLoadingService,
+     private seoService: SeoService) {
 
   }
   ngOnInit(): void {
@@ -29,6 +31,7 @@ export class BlogListComponent implements OnInit {
       this.acdcLoadingService.hideLoading();
     });
   }
+  
   deleteBlog(blogId: number) {
     Swal.fire({
       title: 'Silmek istediğinize emin misiniz ?',
